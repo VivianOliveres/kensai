@@ -300,10 +300,12 @@ public final class Trading {
       implements com.google.protobuf.ProtocolMessageEnum {
     ON_MARKET(0, 0),
     TERMINATED(1, 1),
+    DELETED(2, 2),
     ;
     
     public static final int ON_MARKET_VALUE = 0;
     public static final int TERMINATED_VALUE = 1;
+    public static final int DELETED_VALUE = 2;
     
     
     public final int getNumber() { return value; }
@@ -312,6 +314,7 @@ public final class Trading {
       switch (value) {
         case 0: return ON_MARKET;
         case 1: return TERMINATED;
+        case 2: return DELETED;
         default: return null;
       }
     }
@@ -342,7 +345,7 @@ public final class Trading {
     }
     
     private static final OrderStatus[] VALUES = {
-      ON_MARKET, TERMINATED, 
+      ON_MARKET, TERMINATED, DELETED, 
     };
     
     public static OrderStatus valueOf(
@@ -10131,11 +10134,11 @@ public final class Trading {
       "ION\020\002\022\013\n\007WARRANT\020\003*1\n\013OrderAction\022\n\n\006INS" +
       "ERT\020\000\022\n\n\006UPDATE\020\001\022\n\n\006DELETE\020\002*\"\n\rCommand" +
       "Status\022\007\n\003ACK\020\000\022\010\n\004NACK\020\001*&\n\007BuySell\022\007\n\003",
-      "BUY\020\000\022\010\n\004SELL\020\001\022\010\n\004BOTH\020\002*,\n\013OrderStatus" +
-      "\022\r\n\tON_MARKET\020\000\022\016\n\nTERMINATED\020\001*>\n\014Marke" +
-      "tStatus\022\010\n\004OPEN\020\000\022\t\n\005CLOSE\020\001\022\013\n\007PREOPEN\020" +
-      "\002\022\014\n\010PRECLOSE\020\003B\036\n\023com.kensai.protocolB\007" +
-      "Trading"
+      "BUY\020\000\022\010\n\004SELL\020\001\022\010\n\004BOTH\020\002*9\n\013OrderStatus" +
+      "\022\r\n\tON_MARKET\020\000\022\016\n\nTERMINATED\020\001\022\013\n\007DELET" +
+      "ED\020\002*>\n\014MarketStatus\022\010\n\004OPEN\020\000\022\t\n\005CLOSE\020" +
+      "\001\022\013\n\007PREOPEN\020\002\022\014\n\010PRECLOSE\020\003B\036\n\023com.kens" +
+      "ai.protocolB\007Trading"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

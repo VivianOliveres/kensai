@@ -42,6 +42,7 @@ enum BuySell {
 enum OrderStatus {
   ON_MARKET = 0;
   TERMINATED = 1;
+  DELETED = 2;
 }
 
 message Order {
