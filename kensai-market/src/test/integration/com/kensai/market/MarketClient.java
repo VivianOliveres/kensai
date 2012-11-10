@@ -11,11 +11,11 @@ import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelFuture;
 import org.jboss.netty.channel.socket.nio.NioClientSocketChannelFactory;
 
-import com.kensai.trading.Trading.BuySell;
-import com.kensai.trading.Trading.Instrument;
-import com.kensai.trading.Trading.InstrumentType;
-import com.kensai.trading.Trading.Order;
-import com.kensai.trading.Trading.OrderAction;
+import com.kensai.protocol.Trading.BuySell;
+import com.kensai.protocol.Trading.Instrument;
+import com.kensai.protocol.Trading.InstrumentType;
+import com.kensai.protocol.Trading.Order;
+import com.kensai.protocol.Trading.OrderAction;
 
 public class MarketClient {
 

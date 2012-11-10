@@ -8,7 +8,7 @@ import org.jboss.netty.handler.codec.protobuf.ProtobufEncoder;
 import org.jboss.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import org.jboss.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 
-import com.kensai.trading.Trading;
+import com.kensai.protocol.Trading;
 
 public class MarketClientChannelPipelineFactory implements ChannelPipelineFactory {
 

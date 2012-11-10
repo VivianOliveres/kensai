@@ -10,14 +10,14 @@ import org.jboss.netty.channel.SimpleChannelHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kensai.trading.Trading.CommandStatus;
-import com.kensai.trading.Trading.Execution;
-import com.kensai.trading.Trading.Instrument;
-import com.kensai.trading.Trading.Messages;
-import com.kensai.trading.Trading.Order;
-import com.kensai.trading.Trading.SubscribeCommand;
-import com.kensai.trading.Trading.Summary;
-import com.kensai.trading.Trading.UnsubscribeCommand;
+import com.kensai.protocol.Trading.CommandStatus;
+import com.kensai.protocol.Trading.Execution;
+import com.kensai.protocol.Trading.Instrument;
+import com.kensai.protocol.Trading.Messages;
+import com.kensai.protocol.Trading.Order;
+import com.kensai.protocol.Trading.SubscribeCommand;
+import com.kensai.protocol.Trading.Summary;
+import com.kensai.protocol.Trading.UnsubscribeCommand;
 
 public class MarketClientChannelHandler extends SimpleChannelHandler {
 
