@@ -10,8 +10,16 @@ import org.jboss.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepend
 
 import com.kensai.protocol.Trading;
 
+/**
+ * ChannelPipelineFactory for server to manage KensaiProtocol messages (based on protobuf)
+ * 
+ */
 public class MarketServerChannelPipelineFactory implements ChannelPipelineFactory {
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.jboss.netty.channel.ChannelPipelineFactory#getPipeline()
+	 */
 	@Override
 	public ChannelPipeline getPipeline() {
 		ChannelPipeline p = Channels.pipeline();

@@ -17,10 +17,8 @@ public class MarketClientChannelPipelineFactory implements ChannelPipelineFactor
 		ChannelPipeline p = Channels.pipeline();
 		p.addLast("frameDecoder", new ProtobufVarint32FrameDecoder());
 		p.addLast("protobufDecoder", new ProtobufDecoder(Trading.Messages.getDefaultInstance()));
-
 		p.addLast("frameEncoder", new ProtobufVarint32LengthFieldPrepender());
 		p.addLast("protobufEncoder", new ProtobufEncoder());
-
 		p.addLast("handler", new MarketClientChannelHandler());
 		return p;
 	}
