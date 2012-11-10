@@ -1,0 +1,123 @@
+package protocol;
+
+option java_package = "com.kensai.protocol";
+option java_outer_classname = "Trading";
+
+enum InstrumentType {
+  STOCK = 0;
+  FUTURE = 1;
+  OPTION = 2;
+  WARRANT = 3;
+}
+
+message Instrument {
+  required string isin = 1;
+  optional string name = 2;
+  optional string market = 3;
+  optional string description = 4;
+  optional InstrumentType type = 5;
+}
+
+message InstrumentsSnapshot {
+  repeated Instrument instruments = 1;
+}
+
+enum OrderAction {
+  INSERT = 0;
+  UPDATE = 1;
+  DELETE = 2;
+}
+
+enum CommandStatus {
+  ACK = 0;
+  NACK = 1;
+}
+
+enum BuySell {
+  BUY = 0;
+  SELL = 1;
+  BOTH = 2;
+}
+
+message Order {
+  optional int64 id = 1;
+  required BuySell side = 2;
+  required Instrument instrument = 3;
+  required OrderAction action = 4;
+  optional CommandStatus status = 5;
+  optional double price = 6;
+  optional double execPrice = 7;
+  optional int32 initialQuantity = 8;
+  optional int32 executedQuantity = 9;
+  required string userData = 10;
+  required string user = 11;
+  optional int64 insertTime = 12;
+  optional int64 lastUpdateTime = 13;
+}
+
+message OrdersSnapshot {
+  repeated Order orders = 1;
+}
+
+message Execution {
+  required int64 id = 1;
+  required int64 orderId = 2;
+  required int64 orderUserData = 3;
+  required Instrument instrument = 4;
+  required double price = 5;
+  required int32 quantity = 6;
+  required string user = 7;
+  optional int64 time = 8;
+}
+
+message ExecutionsSnapshot {
+  repeated Execution executions = 1;
+}
+
+enum MarketStatus {
+  OPEN = 0;
+  CLOSE = 1;
+  PREOPEN = 2;
+  PRECLOSE = 3;
+}
+
+message Depth {
+  required int32 depth = 1;
+  required double price = 2;
+  required int32 quantity = 3;
+}
+
+message Summary {
+  required Instrument instrument = 1;
+  required MarketStatus marketStatus = 2;
+  optional double open = 3;
+  optional double close = 4;
+  optional double last = 5;
+  repeated Depth buyDepths = 6;
+  repeated Depth sellDepths = 7;
+  required int64 timestamp = 8;
+}
+
+message SummariesSnapshot {
+  repeated Summary summaries = 1;
+}
+
+message SubscribeCommand {
+  required string user = 1;
+  optional CommandStatus status = 2;
+}
+
+message UnsubscribeCommand {
+  required string user = 1;
+  optional CommandStatus status = 2;
+}
+
+message Messages {
+  optional SubscribeCommand subscribeCommand = 1;
+  optional UnsubscribeCommand unsubscribeCommand = 2;
+  optional SummariesSnapshot summariesSnapshot = 3;
+  optional ExecutionsSnapshot executionsSnapshot = 4;
+  optional OrdersSnapshot ordersSnapshot = 5;
+  optional InstrumentsSnapshot instrumentsSnapshot = 6;
+  optional Order order = 7;
+}
