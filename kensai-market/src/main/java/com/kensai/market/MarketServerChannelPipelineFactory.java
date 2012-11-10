@@ -16,6 +16,12 @@ import com.kensai.protocol.Trading;
  */
 public class MarketServerChannelPipelineFactory implements ChannelPipelineFactory {
 
+	private final KensaiMarket core;
+
+	public MarketServerChannelPipelineFactory(KensaiMarket core) {
+		this.core = core;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * @see org.jboss.netty.channel.ChannelPipelineFactory#getPipeline()
@@ -27,7 +33,7 @@ public class MarketServerChannelPipelineFactory implements ChannelPipelineFactor
 		p.addLast("protobufDecoder", new ProtobufDecoder(Trading.Messages.getDefaultInstance()));
 		p.addLast("frameEncoder", new ProtobufVarint32LengthFieldPrepender());
 		p.addLast("protobufEncoder", new ProtobufEncoder());
-		p.addLast("handler", new MarketChannelHandler());
+		p.addLast("handler", new MarketChannelHandler(core));
 		return p;
 	}
 }
