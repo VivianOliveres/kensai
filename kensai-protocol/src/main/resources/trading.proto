@@ -112,11 +112,13 @@ message SummariesSnapshot {
 message SubscribeCommand {
   required string user = 1;
   optional CommandStatus status = 2;
+  optional string errorMessage = 3;
 }
 
 message UnsubscribeCommand {
   required string user = 1;
   optional CommandStatus status = 2;
+  optional string errorMessage = 3;
 }
 
 message Messages {

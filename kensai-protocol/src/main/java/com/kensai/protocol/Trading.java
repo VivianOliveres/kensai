@@ -7570,6 +7570,10 @@ public final class Trading {
     // optional .protocol.CommandStatus status = 2;
     boolean hasStatus();
     com.kensai.protocol.Trading.CommandStatus getStatus();
+    
+    // optional string errorMessage = 3;
+    boolean hasErrorMessage();
+    String getErrorMessage();
   }
   public static final class SubscribeCommand extends
       com.google.protobuf.GeneratedMessage
@@ -7642,9 +7646,42 @@ public final class Trading {
       return status_;
     }
     
+    // optional string errorMessage = 3;
+    public static final int ERRORMESSAGE_FIELD_NUMBER = 3;
+    private java.lang.Object errorMessage_;
+    public boolean hasErrorMessage() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public String getErrorMessage() {
+      java.lang.Object ref = errorMessage_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          errorMessage_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getErrorMessageBytes() {
+      java.lang.Object ref = errorMessage_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        errorMessage_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
     private void initFields() {
       user_ = "";
       status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
+      errorMessage_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -7668,6 +7705,9 @@ public final class Trading {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeEnum(2, status_.getNumber());
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getErrorMessageBytes());
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -7684,6 +7724,10 @@ public final class Trading {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, status_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getErrorMessageBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -7813,6 +7857,8 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000001);
         status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
         bitField0_ = (bitField0_ & ~0x00000002);
+        errorMessage_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       
@@ -7859,6 +7905,10 @@ public final class Trading {
           to_bitField0_ |= 0x00000002;
         }
         result.status_ = status_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.errorMessage_ = errorMessage_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -7880,6 +7930,9 @@ public final class Trading {
         }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
+        }
+        if (other.hasErrorMessage()) {
+          setErrorMessage(other.getErrorMessage());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -7930,6 +7983,11 @@ public final class Trading {
                 bitField0_ |= 0x00000002;
                 status_ = value;
               }
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              errorMessage_ = input.readBytes();
               break;
             }
           }
@@ -7998,6 +8056,42 @@ public final class Trading {
         return this;
       }
       
+      // optional string errorMessage = 3;
+      private java.lang.Object errorMessage_ = "";
+      public boolean hasErrorMessage() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public String getErrorMessage() {
+        java.lang.Object ref = errorMessage_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          errorMessage_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setErrorMessage(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        errorMessage_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearErrorMessage() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        errorMessage_ = getDefaultInstance().getErrorMessage();
+        onChanged();
+        return this;
+      }
+      void setErrorMessage(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000004;
+        errorMessage_ = value;
+        onChanged();
+      }
+      
       // @@protoc_insertion_point(builder_scope:protocol.SubscribeCommand)
     }
     
@@ -8019,6 +8113,10 @@ public final class Trading {
     // optional .protocol.CommandStatus status = 2;
     boolean hasStatus();
     com.kensai.protocol.Trading.CommandStatus getStatus();
+    
+    // optional string errorMessage = 3;
+    boolean hasErrorMessage();
+    String getErrorMessage();
   }
   public static final class UnsubscribeCommand extends
       com.google.protobuf.GeneratedMessage
@@ -8091,9 +8189,42 @@ public final class Trading {
       return status_;
     }
     
+    // optional string errorMessage = 3;
+    public static final int ERRORMESSAGE_FIELD_NUMBER = 3;
+    private java.lang.Object errorMessage_;
+    public boolean hasErrorMessage() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public String getErrorMessage() {
+      java.lang.Object ref = errorMessage_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          errorMessage_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getErrorMessageBytes() {
+      java.lang.Object ref = errorMessage_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        errorMessage_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
     private void initFields() {
       user_ = "";
       status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
+      errorMessage_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -8117,6 +8248,9 @@ public final class Trading {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeEnum(2, status_.getNumber());
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getErrorMessageBytes());
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -8133,6 +8267,10 @@ public final class Trading {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, status_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getErrorMessageBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8262,6 +8400,8 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000001);
         status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
         bitField0_ = (bitField0_ & ~0x00000002);
+        errorMessage_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       
@@ -8308,6 +8448,10 @@ public final class Trading {
           to_bitField0_ |= 0x00000002;
         }
         result.status_ = status_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.errorMessage_ = errorMessage_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -8329,6 +8473,9 @@ public final class Trading {
         }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
+        }
+        if (other.hasErrorMessage()) {
+          setErrorMessage(other.getErrorMessage());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -8379,6 +8526,11 @@ public final class Trading {
                 bitField0_ |= 0x00000002;
                 status_ = value;
               }
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              errorMessage_ = input.readBytes();
               break;
             }
           }
@@ -8445,6 +8597,42 @@ public final class Trading {
         status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
         onChanged();
         return this;
+      }
+      
+      // optional string errorMessage = 3;
+      private java.lang.Object errorMessage_ = "";
+      public boolean hasErrorMessage() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public String getErrorMessage() {
+        java.lang.Object ref = errorMessage_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          errorMessage_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setErrorMessage(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        errorMessage_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearErrorMessage() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        errorMessage_ = getDefaultInstance().getErrorMessage();
+        onChanged();
+        return this;
+      }
+      void setErrorMessage(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000004;
+        errorMessage_ = value;
+        onChanged();
       }
       
       // @@protoc_insertion_point(builder_scope:protocol.UnsubscribeCommand)
@@ -9924,29 +10112,30 @@ public final class Trading {
       "\003(\0132\017.protocol.Depth\022#\n\nsellDepths\030\007 \003(\013" +
       "2\017.protocol.Depth\022\021\n\ttimestamp\030\010 \002(\003\"9\n\021",
       "SummariesSnapshot\022$\n\tsummaries\030\001 \003(\0132\021.p" +
-      "rotocol.Summary\"I\n\020SubscribeCommand\022\014\n\004u" +
+      "rotocol.Summary\"_\n\020SubscribeCommand\022\014\n\004u" +
       "ser\030\001 \002(\t\022\'\n\006status\030\002 \001(\0162\027.protocol.Com" +
-      "mandStatus\"K\n\022UnsubscribeCommand\022\014\n\004user" +
-      "\030\001 \002(\t\022\'\n\006status\030\002 \001(\0162\027.protocol.Comman" +
-      "dStatus\"\372\002\n\010Messages\0224\n\020subscribeCommand" +
-      "\030\001 \001(\0132\032.protocol.SubscribeCommand\0228\n\022un" +
-      "subscribeCommand\030\002 \001(\0132\034.protocol.Unsubs" +
-      "cribeCommand\0226\n\021summariesSnapshot\030\003 \001(\0132" +
-      "\033.protocol.SummariesSnapshot\0228\n\022executio",
-      "nsSnapshot\030\004 \001(\0132\034.protocol.ExecutionsSn" +
-      "apshot\0220\n\016ordersSnapshot\030\005 \001(\0132\030.protoco" +
-      "l.OrdersSnapshot\022:\n\023instrumentsSnapshot\030" +
-      "\006 \001(\0132\035.protocol.InstrumentsSnapshot\022\036\n\005" +
-      "order\030\007 \001(\0132\017.protocol.Order*@\n\016Instrume" +
-      "ntType\022\t\n\005STOCK\020\000\022\n\n\006FUTURE\020\001\022\n\n\006OPTION\020" +
-      "\002\022\013\n\007WARRANT\020\003*1\n\013OrderAction\022\n\n\006INSERT\020" +
-      "\000\022\n\n\006UPDATE\020\001\022\n\n\006DELETE\020\002*\"\n\rCommandStat" +
-      "us\022\007\n\003ACK\020\000\022\010\n\004NACK\020\001*&\n\007BuySell\022\007\n\003BUY\020" +
-      "\000\022\010\n\004SELL\020\001\022\010\n\004BOTH\020\002*,\n\013OrderStatus\022\r\n\t",
-      "ON_MARKET\020\000\022\016\n\nTERMINATED\020\001*>\n\014MarketSta" +
-      "tus\022\010\n\004OPEN\020\000\022\t\n\005CLOSE\020\001\022\013\n\007PREOPEN\020\002\022\014\n" +
-      "\010PRECLOSE\020\003B\036\n\023com.kensai.protocolB\007Trad" +
-      "ing"
+      "mandStatus\022\024\n\014errorMessage\030\003 \001(\t\"a\n\022Unsu" +
+      "bscribeCommand\022\014\n\004user\030\001 \002(\t\022\'\n\006status\030\002" +
+      " \001(\0162\027.protocol.CommandStatus\022\024\n\014errorMe" +
+      "ssage\030\003 \001(\t\"\372\002\n\010Messages\0224\n\020subscribeCom" +
+      "mand\030\001 \001(\0132\032.protocol.SubscribeCommand\0228" +
+      "\n\022unsubscribeCommand\030\002 \001(\0132\034.protocol.Un" +
+      "subscribeCommand\0226\n\021summariesSnapshot\030\003 ",
+      "\001(\0132\033.protocol.SummariesSnapshot\0228\n\022exec" +
+      "utionsSnapshot\030\004 \001(\0132\034.protocol.Executio" +
+      "nsSnapshot\0220\n\016ordersSnapshot\030\005 \001(\0132\030.pro" +
+      "tocol.OrdersSnapshot\022:\n\023instrumentsSnaps" +
+      "hot\030\006 \001(\0132\035.protocol.InstrumentsSnapshot" +
+      "\022\036\n\005order\030\007 \001(\0132\017.protocol.Order*@\n\016Inst" +
+      "rumentType\022\t\n\005STOCK\020\000\022\n\n\006FUTURE\020\001\022\n\n\006OPT" +
+      "ION\020\002\022\013\n\007WARRANT\020\003*1\n\013OrderAction\022\n\n\006INS" +
+      "ERT\020\000\022\n\n\006UPDATE\020\001\022\n\n\006DELETE\020\002*\"\n\rCommand" +
+      "Status\022\007\n\003ACK\020\000\022\010\n\004NACK\020\001*&\n\007BuySell\022\007\n\003",
+      "BUY\020\000\022\010\n\004SELL\020\001\022\010\n\004BOTH\020\002*,\n\013OrderStatus" +
+      "\022\r\n\tON_MARKET\020\000\022\016\n\nTERMINATED\020\001*>\n\014Marke" +
+      "tStatus\022\010\n\004OPEN\020\000\022\t\n\005CLOSE\020\001\022\013\n\007PREOPEN\020" +
+      "\002\022\014\n\010PRECLOSE\020\003B\036\n\023com.kensai.protocolB\007" +
+      "Trading"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -10030,7 +10219,7 @@ public final class Trading {
           internal_static_protocol_SubscribeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_SubscribeCommand_descriptor,
-              new java.lang.String[] { "User", "Status", },
+              new java.lang.String[] { "User", "Status", "ErrorMessage", },
               com.kensai.protocol.Trading.SubscribeCommand.class,
               com.kensai.protocol.Trading.SubscribeCommand.Builder.class);
           internal_static_protocol_UnsubscribeCommand_descriptor =
@@ -10038,7 +10227,7 @@ public final class Trading {
           internal_static_protocol_UnsubscribeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_UnsubscribeCommand_descriptor,
-              new java.lang.String[] { "User", "Status", },
+              new java.lang.String[] { "User", "Status", "ErrorMessage", },
               com.kensai.protocol.Trading.UnsubscribeCommand.class,
               com.kensai.protocol.Trading.UnsubscribeCommand.Builder.class);
           internal_static_protocol_Messages_descriptor =
