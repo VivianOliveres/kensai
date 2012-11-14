@@ -1,4 +1,4 @@
-package com.kensai.market;
+package com.kensai.market.core;
 
 import static com.google.common.collect.Lists.newArrayList;
 

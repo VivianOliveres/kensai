@@ -1,4 +1,4 @@
-package com.kensai.market;
+package com.kensai.market.io;
 
 import org.jboss.netty.channel.ChannelPipeline;
 import org.jboss.netty.channel.ChannelPipelineFactory;
@@ -8,6 +8,7 @@ import org.jboss.netty.handler.codec.protobuf.ProtobufEncoder;
 import org.jboss.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import org.jboss.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 
+import com.kensai.market.core.KensaiMarket;
 import com.kensai.protocol.Trading;
 
 /**

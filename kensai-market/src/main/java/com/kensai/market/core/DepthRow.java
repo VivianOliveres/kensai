@@ -1,10 +1,11 @@
-package com.kensai.market;
+package com.kensai.market.core;
 
 import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.Arrays;
 import java.util.List;
 
+import com.kensai.market.IdGenerator;
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.Depth;
 import com.kensai.protocol.Trading.Execution;

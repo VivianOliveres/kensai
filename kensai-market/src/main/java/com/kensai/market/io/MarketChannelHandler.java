@@ -1,4 +1,4 @@
-package com.kensai.market;
+package com.kensai.market.io;
 
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;
@@ -8,6 +8,7 @@ import org.jboss.netty.channel.SimpleChannelHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.kensai.market.core.KensaiMarket;
 import com.kensai.protocol.Trading.Messages;
 import com.kensai.protocol.Trading.Order;
 

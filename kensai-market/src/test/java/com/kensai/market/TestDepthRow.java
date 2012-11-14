@@ -8,6 +8,8 @@ import java.util.List;
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 
+import com.kensai.market.core.DepthRow;
+import com.kensai.market.core.InsertionResult;
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.Depth;
 import com.kensai.protocol.Trading.Order;

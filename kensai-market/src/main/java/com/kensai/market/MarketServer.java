@@ -15,6 +15,9 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.kensai.market.core.KensaiMarket;
+import com.kensai.market.io.KensaiMessageSender;
+import com.kensai.market.io.MarketServerChannelPipelineFactory;
 import com.kensai.protocol.Trading.Instrument;
 import com.kensai.protocol.Trading.Summary;
 

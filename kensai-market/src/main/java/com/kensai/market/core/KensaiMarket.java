@@ -1,4 +1,4 @@
-package com.kensai.market;
+package com.kensai.market.core;
 
 import static com.google.common.collect.Lists.newArrayList;
 
@@ -13,6 +13,8 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.kensai.market.IdGenerator;
+import com.kensai.market.io.KensaiMessageSender;
 import com.kensai.protocol.Trading.Execution;
 import com.kensai.protocol.Trading.Instrument;
 import com.kensai.protocol.Trading.Order;
