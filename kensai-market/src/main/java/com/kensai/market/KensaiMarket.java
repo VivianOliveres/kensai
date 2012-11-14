@@ -136,7 +136,7 @@ public class KensaiMarket {
 		// TODO Auto-generated method stub
 
 		// Add identifier
-		Order.Builder orderBuilder = Order.newBuilder(order).setId(UniqueIdentifierGenerator.generateId());
+		Order.Builder orderBuilder = Order.newBuilder(order).setId(IdGenerator.generateId());
 	}
 
 }

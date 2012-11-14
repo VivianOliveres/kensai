@@ -4,11 +4,11 @@ import java.util.Set;
 
 import com.google.common.collect.Sets;
 
-public final class UniqueIdentifierGenerator {
+public final class IdGenerator {
 
 	private static Set<Long> ids = Sets.newHashSet();
 
-	private UniqueIdentifierGenerator() {
+	private IdGenerator() {
 		// Not instanciable
 	}
 
