@@ -69,13 +69,11 @@ message OrdersSnapshot {
 
 message Execution {
   required int64 id = 1;
-  required int64 orderId = 2;
-  required int64 orderUserData = 3;
-  required Instrument instrument = 4;
   required double price = 5;
   required int32 quantity = 6;
   required string user = 7;
   optional int64 time = 8;
+  required Order order = 9;
 }
 
 message ExecutionsSnapshot {

@@ -3724,19 +3724,6 @@ public final class Trading {
     boolean hasId();
     long getId();
     
-    // required int64 orderId = 2;
-    boolean hasOrderId();
-    long getOrderId();
-    
-    // required int64 orderUserData = 3;
-    boolean hasOrderUserData();
-    long getOrderUserData();
-    
-    // required .protocol.Instrument instrument = 4;
-    boolean hasInstrument();
-    com.kensai.protocol.Trading.Instrument getInstrument();
-    com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentOrBuilder();
-    
     // required double price = 5;
     boolean hasPrice();
     double getPrice();
@@ -3752,6 +3739,11 @@ public final class Trading {
     // optional int64 time = 8;
     boolean hasTime();
     long getTime();
+    
+    // required .protocol.Order order = 9;
+    boolean hasOrder();
+    com.kensai.protocol.Trading.Order getOrder();
+    com.kensai.protocol.Trading.OrderOrBuilder getOrderOrBuilder();
   }
   public static final class Execution extends
       com.google.protobuf.GeneratedMessage
@@ -3792,44 +3784,11 @@ public final class Trading {
       return id_;
     }
     
-    // required int64 orderId = 2;
-    public static final int ORDERID_FIELD_NUMBER = 2;
-    private long orderId_;
-    public boolean hasOrderId() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public long getOrderId() {
-      return orderId_;
-    }
-    
-    // required int64 orderUserData = 3;
-    public static final int ORDERUSERDATA_FIELD_NUMBER = 3;
-    private long orderUserData_;
-    public boolean hasOrderUserData() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public long getOrderUserData() {
-      return orderUserData_;
-    }
-    
-    // required .protocol.Instrument instrument = 4;
-    public static final int INSTRUMENT_FIELD_NUMBER = 4;
-    private com.kensai.protocol.Trading.Instrument instrument_;
-    public boolean hasInstrument() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    public com.kensai.protocol.Trading.Instrument getInstrument() {
-      return instrument_;
-    }
-    public com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentOrBuilder() {
-      return instrument_;
-    }
-    
     // required double price = 5;
     public static final int PRICE_FIELD_NUMBER = 5;
     private double price_;
     public boolean hasPrice() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     public double getPrice() {
       return price_;
@@ -3839,7 +3798,7 @@ public final class Trading {
     public static final int QUANTITY_FIELD_NUMBER = 6;
     private int quantity_;
     public boolean hasQuantity() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     public int getQuantity() {
       return quantity_;
@@ -3849,7 +3808,7 @@ public final class Trading {
     public static final int USER_FIELD_NUMBER = 7;
     private java.lang.Object user_;
     public boolean hasUser() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     public String getUser() {
       java.lang.Object ref = user_;
@@ -3881,21 +3840,32 @@ public final class Trading {
     public static final int TIME_FIELD_NUMBER = 8;
     private long time_;
     public boolean hasTime() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     public long getTime() {
       return time_;
     }
     
+    // required .protocol.Order order = 9;
+    public static final int ORDER_FIELD_NUMBER = 9;
+    private com.kensai.protocol.Trading.Order order_;
+    public boolean hasOrder() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    public com.kensai.protocol.Trading.Order getOrder() {
+      return order_;
+    }
+    public com.kensai.protocol.Trading.OrderOrBuilder getOrderOrBuilder() {
+      return order_;
+    }
+    
     private void initFields() {
       id_ = 0L;
-      orderId_ = 0L;
-      orderUserData_ = 0L;
-      instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
       price_ = 0D;
       quantity_ = 0;
       user_ = "";
       time_ = 0L;
+      order_ = com.kensai.protocol.Trading.Order.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3903,18 +3873,6 @@ public final class Trading {
       if (isInitialized != -1) return isInitialized == 1;
       
       if (!hasId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasOrderId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasOrderUserData()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasInstrument()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3930,7 +3888,11 @@ public final class Trading {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!getInstrument().isInitialized()) {
+      if (!hasOrder()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getOrder().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3945,25 +3907,19 @@ public final class Trading {
         output.writeInt64(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt64(2, orderId_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt64(3, orderUserData_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, instrument_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeDouble(5, price_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(6, quantity_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBytes(7, getUserBytes());
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt64(8, time_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(9, order_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3980,31 +3936,23 @@ public final class Trading {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, orderId_);
+          .computeDoubleSize(5, price_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, orderUserData_);
+          .computeInt32Size(6, quantity_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, instrument_);
+          .computeBytesSize(7, getUserBytes());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(5, price_);
+          .computeInt64Size(8, time_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, quantity_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, getUserBytes());
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(8, time_);
+          .computeMessageSize(9, order_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4122,7 +4070,7 @@ public final class Trading {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getInstrumentFieldBuilder();
+          getOrderFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4133,24 +4081,20 @@ public final class Trading {
         super.clear();
         id_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        orderId_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        orderUserData_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (instrumentBuilder_ == null) {
-          instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
-        } else {
-          instrumentBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
         price_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000002);
         quantity_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000004);
         user_ = "";
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000008);
         time_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000010);
+        if (orderBuilder_ == null) {
+          order_ = com.kensai.protocol.Trading.Order.getDefaultInstance();
+        } else {
+          orderBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
       
@@ -4196,35 +4140,27 @@ public final class Trading {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.orderId_ = orderId_;
+        result.price_ = price_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.orderUserData_ = orderUserData_;
+        result.quantity_ = quantity_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        if (instrumentBuilder_ == null) {
-          result.instrument_ = instrument_;
-        } else {
-          result.instrument_ = instrumentBuilder_.build();
-        }
+        result.user_ = user_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.price_ = price_;
+        result.time_ = time_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.quantity_ = quantity_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
+        if (orderBuilder_ == null) {
+          result.order_ = order_;
+        } else {
+          result.order_ = orderBuilder_.build();
         }
-        result.user_ = user_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.time_ = time_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4244,15 +4180,6 @@ public final class Trading {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (other.hasOrderId()) {
-          setOrderId(other.getOrderId());
-        }
-        if (other.hasOrderUserData()) {
-          setOrderUserData(other.getOrderUserData());
-        }
-        if (other.hasInstrument()) {
-          mergeInstrument(other.getInstrument());
-        }
         if (other.hasPrice()) {
           setPrice(other.getPrice());
         }
@@ -4265,24 +4192,15 @@ public final class Trading {
         if (other.hasTime()) {
           setTime(other.getTime());
         }
+        if (other.hasOrder()) {
+          mergeOrder(other.getOrder());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
       
       public final boolean isInitialized() {
         if (!hasId()) {
-          
-          return false;
-        }
-        if (!hasOrderId()) {
-          
-          return false;
-        }
-        if (!hasOrderUserData()) {
-          
-          return false;
-        }
-        if (!hasInstrument()) {
           
           return false;
         }
@@ -4298,7 +4216,11 @@ public final class Trading {
           
           return false;
         }
-        if (!getInstrument().isInitialized()) {
+        if (!hasOrder()) {
+          
+          return false;
+        }
+        if (!getOrder().isInitialized()) {
           
           return false;
         }
@@ -4333,43 +4255,33 @@ public final class Trading {
               id_ = input.readInt64();
               break;
             }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              orderId_ = input.readInt64();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              orderUserData_ = input.readInt64();
-              break;
-            }
-            case 34: {
-              com.kensai.protocol.Trading.Instrument.Builder subBuilder = com.kensai.protocol.Trading.Instrument.newBuilder();
-              if (hasInstrument()) {
-                subBuilder.mergeFrom(getInstrument());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setInstrument(subBuilder.buildPartial());
-              break;
-            }
             case 41: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000002;
               price_ = input.readDouble();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000004;
               quantity_ = input.readInt32();
               break;
             }
             case 58: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000008;
               user_ = input.readBytes();
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000010;
               time_ = input.readInt64();
+              break;
+            }
+            case 74: {
+              com.kensai.protocol.Trading.Order.Builder subBuilder = com.kensai.protocol.Trading.Order.newBuilder();
+              if (hasOrder()) {
+                subBuilder.mergeFrom(getOrder());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setOrder(subBuilder.buildPartial());
               break;
             }
           }
@@ -4399,154 +4311,22 @@ public final class Trading {
         return this;
       }
       
-      // required int64 orderId = 2;
-      private long orderId_ ;
-      public boolean hasOrderId() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public long getOrderId() {
-        return orderId_;
-      }
-      public Builder setOrderId(long value) {
-        bitField0_ |= 0x00000002;
-        orderId_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearOrderId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        orderId_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // required int64 orderUserData = 3;
-      private long orderUserData_ ;
-      public boolean hasOrderUserData() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public long getOrderUserData() {
-        return orderUserData_;
-      }
-      public Builder setOrderUserData(long value) {
-        bitField0_ |= 0x00000004;
-        orderUserData_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearOrderUserData() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        orderUserData_ = 0L;
-        onChanged();
-        return this;
-      }
-      
-      // required .protocol.Instrument instrument = 4;
-      private com.kensai.protocol.Trading.Instrument instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.kensai.protocol.Trading.Instrument, com.kensai.protocol.Trading.Instrument.Builder, com.kensai.protocol.Trading.InstrumentOrBuilder> instrumentBuilder_;
-      public boolean hasInstrument() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      public com.kensai.protocol.Trading.Instrument getInstrument() {
-        if (instrumentBuilder_ == null) {
-          return instrument_;
-        } else {
-          return instrumentBuilder_.getMessage();
-        }
-      }
-      public Builder setInstrument(com.kensai.protocol.Trading.Instrument value) {
-        if (instrumentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          instrument_ = value;
-          onChanged();
-        } else {
-          instrumentBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      public Builder setInstrument(
-          com.kensai.protocol.Trading.Instrument.Builder builderForValue) {
-        if (instrumentBuilder_ == null) {
-          instrument_ = builderForValue.build();
-          onChanged();
-        } else {
-          instrumentBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      public Builder mergeInstrument(com.kensai.protocol.Trading.Instrument value) {
-        if (instrumentBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              instrument_ != com.kensai.protocol.Trading.Instrument.getDefaultInstance()) {
-            instrument_ =
-              com.kensai.protocol.Trading.Instrument.newBuilder(instrument_).mergeFrom(value).buildPartial();
-          } else {
-            instrument_ = value;
-          }
-          onChanged();
-        } else {
-          instrumentBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      public Builder clearInstrument() {
-        if (instrumentBuilder_ == null) {
-          instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
-          onChanged();
-        } else {
-          instrumentBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-      public com.kensai.protocol.Trading.Instrument.Builder getInstrumentBuilder() {
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return getInstrumentFieldBuilder().getBuilder();
-      }
-      public com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentOrBuilder() {
-        if (instrumentBuilder_ != null) {
-          return instrumentBuilder_.getMessageOrBuilder();
-        } else {
-          return instrument_;
-        }
-      }
-      private com.google.protobuf.SingleFieldBuilder<
-          com.kensai.protocol.Trading.Instrument, com.kensai.protocol.Trading.Instrument.Builder, com.kensai.protocol.Trading.InstrumentOrBuilder> 
-          getInstrumentFieldBuilder() {
-        if (instrumentBuilder_ == null) {
-          instrumentBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.kensai.protocol.Trading.Instrument, com.kensai.protocol.Trading.Instrument.Builder, com.kensai.protocol.Trading.InstrumentOrBuilder>(
-                  instrument_,
-                  getParentForChildren(),
-                  isClean());
-          instrument_ = null;
-        }
-        return instrumentBuilder_;
-      }
-      
       // required double price = 5;
       private double price_ ;
       public boolean hasPrice() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       public double getPrice() {
         return price_;
       }
       public Builder setPrice(double value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000002;
         price_ = value;
         onChanged();
         return this;
       }
       public Builder clearPrice() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000002);
         price_ = 0D;
         onChanged();
         return this;
@@ -4555,19 +4335,19 @@ public final class Trading {
       // required int32 quantity = 6;
       private int quantity_ ;
       public boolean hasQuantity() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       public int getQuantity() {
         return quantity_;
       }
       public Builder setQuantity(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000004;
         quantity_ = value;
         onChanged();
         return this;
       }
       public Builder clearQuantity() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000004);
         quantity_ = 0;
         onChanged();
         return this;
@@ -4576,7 +4356,7 @@ public final class Trading {
       // required string user = 7;
       private java.lang.Object user_ = "";
       public boolean hasUser() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       public String getUser() {
         java.lang.Object ref = user_;
@@ -4592,19 +4372,19 @@ public final class Trading {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000008;
         user_ = value;
         onChanged();
         return this;
       }
       public Builder clearUser() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000008);
         user_ = getDefaultInstance().getUser();
         onChanged();
         return this;
       }
       void setUser(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000008;
         user_ = value;
         onChanged();
       }
@@ -4612,22 +4392,112 @@ public final class Trading {
       // optional int64 time = 8;
       private long time_ ;
       public boolean hasTime() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       public long getTime() {
         return time_;
       }
       public Builder setTime(long value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000010;
         time_ = value;
         onChanged();
         return this;
       }
       public Builder clearTime() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000010);
         time_ = 0L;
         onChanged();
         return this;
+      }
+      
+      // required .protocol.Order order = 9;
+      private com.kensai.protocol.Trading.Order order_ = com.kensai.protocol.Trading.Order.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kensai.protocol.Trading.Order, com.kensai.protocol.Trading.Order.Builder, com.kensai.protocol.Trading.OrderOrBuilder> orderBuilder_;
+      public boolean hasOrder() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      public com.kensai.protocol.Trading.Order getOrder() {
+        if (orderBuilder_ == null) {
+          return order_;
+        } else {
+          return orderBuilder_.getMessage();
+        }
+      }
+      public Builder setOrder(com.kensai.protocol.Trading.Order value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          order_ = value;
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      public Builder setOrder(
+          com.kensai.protocol.Trading.Order.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          order_ = builderForValue.build();
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      public Builder mergeOrder(com.kensai.protocol.Trading.Order value) {
+        if (orderBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              order_ != com.kensai.protocol.Trading.Order.getDefaultInstance()) {
+            order_ =
+              com.kensai.protocol.Trading.Order.newBuilder(order_).mergeFrom(value).buildPartial();
+          } else {
+            order_ = value;
+          }
+          onChanged();
+        } else {
+          orderBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      public Builder clearOrder() {
+        if (orderBuilder_ == null) {
+          order_ = com.kensai.protocol.Trading.Order.getDefaultInstance();
+          onChanged();
+        } else {
+          orderBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      public com.kensai.protocol.Trading.Order.Builder getOrderBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getOrderFieldBuilder().getBuilder();
+      }
+      public com.kensai.protocol.Trading.OrderOrBuilder getOrderOrBuilder() {
+        if (orderBuilder_ != null) {
+          return orderBuilder_.getMessageOrBuilder();
+        } else {
+          return order_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kensai.protocol.Trading.Order, com.kensai.protocol.Trading.Order.Builder, com.kensai.protocol.Trading.OrderOrBuilder> 
+          getOrderFieldBuilder() {
+        if (orderBuilder_ == null) {
+          orderBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.kensai.protocol.Trading.Order, com.kensai.protocol.Trading.Order.Builder, com.kensai.protocol.Trading.OrderOrBuilder>(
+                  order_,
+                  getParentForChildren(),
+                  isClean());
+          order_ = null;
+        }
+        return orderBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:protocol.Execution)
@@ -10100,45 +9970,44 @@ public final class Trading {
       "tTime\030\014 \001(\003\022\026\n\016lastUpdateTime\030\r \001(\003\022*\n\013o" +
       "rderStatus\030\016 \001(\0162\025.protocol.OrderStatus\022" +
       "\024\n\014errorMessage\030\017 \001(\t\"1\n\016OrdersSnapshot\022" +
-      "\037\n\006orders\030\001 \003(\0132\017.protocol.Order\"\246\001\n\tExe" +
-      "cution\022\n\n\002id\030\001 \002(\003\022\017\n\007orderId\030\002 \002(\003\022\025\n\ro" +
-      "rderUserData\030\003 \002(\003\022(\n\ninstrument\030\004 \002(\0132\024" +
-      ".protocol.Instrument\022\r\n\005price\030\005 \002(\001\022\020\n\010q",
-      "uantity\030\006 \002(\005\022\014\n\004user\030\007 \002(\t\022\014\n\004time\030\010 \001(" +
-      "\003\"=\n\022ExecutionsSnapshot\022\'\n\nexecutions\030\001 " +
-      "\003(\0132\023.protocol.Execution\"7\n\005Depth\022\r\n\005dep" +
-      "th\030\001 \002(\005\022\r\n\005price\030\002 \002(\001\022\020\n\010quantity\030\003 \002(" +
-      "\005\"\350\001\n\007Summary\022(\n\ninstrument\030\001 \002(\0132\024.prot" +
-      "ocol.Instrument\022,\n\014marketStatus\030\002 \002(\0162\026." +
-      "protocol.MarketStatus\022\014\n\004open\030\003 \001(\001\022\r\n\005c" +
-      "lose\030\004 \001(\001\022\014\n\004last\030\005 \001(\001\022\"\n\tbuyDepths\030\006 " +
-      "\003(\0132\017.protocol.Depth\022#\n\nsellDepths\030\007 \003(\013" +
-      "2\017.protocol.Depth\022\021\n\ttimestamp\030\010 \002(\003\"9\n\021",
-      "SummariesSnapshot\022$\n\tsummaries\030\001 \003(\0132\021.p" +
-      "rotocol.Summary\"_\n\020SubscribeCommand\022\014\n\004u" +
-      "ser\030\001 \002(\t\022\'\n\006status\030\002 \001(\0162\027.protocol.Com" +
-      "mandStatus\022\024\n\014errorMessage\030\003 \001(\t\"a\n\022Unsu" +
-      "bscribeCommand\022\014\n\004user\030\001 \002(\t\022\'\n\006status\030\002" +
-      " \001(\0162\027.protocol.CommandStatus\022\024\n\014errorMe" +
-      "ssage\030\003 \001(\t\"\372\002\n\010Messages\0224\n\020subscribeCom" +
-      "mand\030\001 \001(\0132\032.protocol.SubscribeCommand\0228" +
-      "\n\022unsubscribeCommand\030\002 \001(\0132\034.protocol.Un" +
-      "subscribeCommand\0226\n\021summariesSnapshot\030\003 ",
-      "\001(\0132\033.protocol.SummariesSnapshot\0228\n\022exec" +
-      "utionsSnapshot\030\004 \001(\0132\034.protocol.Executio" +
-      "nsSnapshot\0220\n\016ordersSnapshot\030\005 \001(\0132\030.pro" +
-      "tocol.OrdersSnapshot\022:\n\023instrumentsSnaps" +
-      "hot\030\006 \001(\0132\035.protocol.InstrumentsSnapshot" +
-      "\022\036\n\005order\030\007 \001(\0132\017.protocol.Order*@\n\016Inst" +
-      "rumentType\022\t\n\005STOCK\020\000\022\n\n\006FUTURE\020\001\022\n\n\006OPT" +
-      "ION\020\002\022\013\n\007WARRANT\020\003*1\n\013OrderAction\022\n\n\006INS" +
-      "ERT\020\000\022\n\n\006UPDATE\020\001\022\n\n\006DELETE\020\002*\"\n\rCommand" +
-      "Status\022\007\n\003ACK\020\000\022\010\n\004NACK\020\001*&\n\007BuySell\022\007\n\003",
-      "BUY\020\000\022\010\n\004SELL\020\001\022\010\n\004BOTH\020\002*9\n\013OrderStatus" +
-      "\022\r\n\tON_MARKET\020\000\022\016\n\nTERMINATED\020\001\022\013\n\007DELET" +
-      "ED\020\002*>\n\014MarketStatus\022\010\n\004OPEN\020\000\022\t\n\005CLOSE\020" +
-      "\001\022\013\n\007PREOPEN\020\002\022\014\n\010PRECLOSE\020\003B\036\n\023com.kens" +
-      "ai.protocolB\007Trading"
+      "\037\n\006orders\030\001 \003(\0132\017.protocol.Order\"t\n\tExec" +
+      "ution\022\n\n\002id\030\001 \002(\003\022\r\n\005price\030\005 \002(\001\022\020\n\010quan" +
+      "tity\030\006 \002(\005\022\014\n\004user\030\007 \002(\t\022\014\n\004time\030\010 \001(\003\022\036" +
+      "\n\005order\030\t \002(\0132\017.protocol.Order\"=\n\022Execut",
+      "ionsSnapshot\022\'\n\nexecutions\030\001 \003(\0132\023.proto" +
+      "col.Execution\"7\n\005Depth\022\r\n\005depth\030\001 \002(\005\022\r\n" +
+      "\005price\030\002 \002(\001\022\020\n\010quantity\030\003 \002(\005\"\350\001\n\007Summa" +
+      "ry\022(\n\ninstrument\030\001 \002(\0132\024.protocol.Instru" +
+      "ment\022,\n\014marketStatus\030\002 \002(\0162\026.protocol.Ma" +
+      "rketStatus\022\014\n\004open\030\003 \001(\001\022\r\n\005close\030\004 \001(\001\022" +
+      "\014\n\004last\030\005 \001(\001\022\"\n\tbuyDepths\030\006 \003(\0132\017.proto" +
+      "col.Depth\022#\n\nsellDepths\030\007 \003(\0132\017.protocol" +
+      ".Depth\022\021\n\ttimestamp\030\010 \002(\003\"9\n\021SummariesSn" +
+      "apshot\022$\n\tsummaries\030\001 \003(\0132\021.protocol.Sum",
+      "mary\"_\n\020SubscribeCommand\022\014\n\004user\030\001 \002(\t\022\'" +
+      "\n\006status\030\002 \001(\0162\027.protocol.CommandStatus\022" +
+      "\024\n\014errorMessage\030\003 \001(\t\"a\n\022UnsubscribeComm" +
+      "and\022\014\n\004user\030\001 \002(\t\022\'\n\006status\030\002 \001(\0162\027.prot" +
+      "ocol.CommandStatus\022\024\n\014errorMessage\030\003 \001(\t" +
+      "\"\372\002\n\010Messages\0224\n\020subscribeCommand\030\001 \001(\0132" +
+      "\032.protocol.SubscribeCommand\0228\n\022unsubscri" +
+      "beCommand\030\002 \001(\0132\034.protocol.UnsubscribeCo" +
+      "mmand\0226\n\021summariesSnapshot\030\003 \001(\0132\033.proto" +
+      "col.SummariesSnapshot\0228\n\022executionsSnaps",
+      "hot\030\004 \001(\0132\034.protocol.ExecutionsSnapshot\022" +
+      "0\n\016ordersSnapshot\030\005 \001(\0132\030.protocol.Order" +
+      "sSnapshot\022:\n\023instrumentsSnapshot\030\006 \001(\0132\035" +
+      ".protocol.InstrumentsSnapshot\022\036\n\005order\030\007" +
+      " \001(\0132\017.protocol.Order*@\n\016InstrumentType\022" +
+      "\t\n\005STOCK\020\000\022\n\n\006FUTURE\020\001\022\n\n\006OPTION\020\002\022\013\n\007WA" +
+      "RRANT\020\003*1\n\013OrderAction\022\n\n\006INSERT\020\000\022\n\n\006UP" +
+      "DATE\020\001\022\n\n\006DELETE\020\002*\"\n\rCommandStatus\022\007\n\003A" +
+      "CK\020\000\022\010\n\004NACK\020\001*&\n\007BuySell\022\007\n\003BUY\020\000\022\010\n\004SE" +
+      "LL\020\001\022\010\n\004BOTH\020\002*9\n\013OrderStatus\022\r\n\tON_MARK",
+      "ET\020\000\022\016\n\nTERMINATED\020\001\022\013\n\007DELETED\020\002*>\n\014Mar" +
+      "ketStatus\022\010\n\004OPEN\020\000\022\t\n\005CLOSE\020\001\022\013\n\007PREOPE" +
+      "N\020\002\022\014\n\010PRECLOSE\020\003B\036\n\023com.kensai.protocol" +
+      "B\007Trading"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -10182,7 +10051,7 @@ public final class Trading {
           internal_static_protocol_Execution_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Execution_descriptor,
-              new java.lang.String[] { "Id", "OrderId", "OrderUserData", "Instrument", "Price", "Quantity", "User", "Time", },
+              new java.lang.String[] { "Id", "Price", "Quantity", "User", "Time", "Order", },
               com.kensai.protocol.Trading.Execution.class,
               com.kensai.protocol.Trading.Execution.Builder.class);
           internal_static_protocol_ExecutionsSnapshot_descriptor =
