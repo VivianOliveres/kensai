@@ -75,7 +75,7 @@ public class DepthRow implements Comparable<DepthRow> {
 	}
 
 	public InsertionResult insert(Order order) throws IllegalArgumentException {
-		if (order == null || order.getPrice() != price) {
+		if (order == null) {
 			throw new IllegalArgumentException("Invalid order [" + order == null ? null : order.getPrice() + "] for this depth[price=" + price + "]");
 		}
 
@@ -94,7 +94,6 @@ public class DepthRow implements Comparable<DepthRow> {
 	}
 
 	private InsertionResult insertInOppositeSide(Order order) {
-		// TODO Auto-generated method stub
 		List<Order> executedOrders = newArrayList();
 		List<Execution> executions = newArrayList();
 		if (!couldMakeExecutions(order)) {
@@ -103,7 +102,8 @@ public class DepthRow implements Comparable<DepthRow> {
 
 		long now = System.currentTimeMillis();
 		List<Order> newDepthRow = newArrayList();
-		int remainingQty = order.getInitialQuantity() - order.getExecutedQuantity();
+		int initialExecQty = order.getExecutedQuantity();
+		int remainingQty = order.getInitialQuantity() - initialExecQty;
 		for (Order oppositeOrder : orders) {
 			if (remainingQty <= 0) {
 				newDepthRow.add(oppositeOrder);
@@ -153,8 +153,12 @@ public class DepthRow implements Comparable<DepthRow> {
 		orders.clear();
 		orders.addAll(newDepthRow);
 
+		// New execPrice
+		double execPrice = computeExecPrice(order.getExecPrice(), initialExecQty, price, order.getInitialQuantity() - remainingQty - initialExecQty);
+
 		// Build resultedOrder
-		Order.Builder resultedOrder = Order.newBuilder(order).setLastUpdateTime(now).setExecutedQuantity(order.getInitialQuantity() - remainingQty);
+		Order.Builder resultedOrder = Order.newBuilder(order).setLastUpdateTime(now).setExecutedQuantity(order.getInitialQuantity() - remainingQty)
+			.setExecPrice(execPrice);
 		if (remainingQty <= 0) {
 			resultedOrder.setOrderStatus(OrderStatus.TERMINATED);
 
@@ -163,6 +167,13 @@ public class DepthRow implements Comparable<DepthRow> {
 		}
 
 		return new InsertionResult(resultedOrder.build(), executedOrders, executions);
+	}
+
+	/**
+	 * Compute an average execPrice
+	 */
+	private double computeExecPrice(double oldExecPrice, int oldExecQty, double currentExecPrice, int currentExecQty) {
+		return (oldExecPrice * oldExecQty + currentExecPrice * currentExecQty) / (oldExecQty + currentExecQty);
 	}
 
 	@Override
@@ -181,6 +192,43 @@ public class DepthRow implements Comparable<DepthRow> {
 		} else {
 			return side.equals(BuySell.BUY) ? -1 : 1;
 		}
+	}
+
+	public boolean contains(Order orderToCheck) {
+		for (Order order : orders) {
+			if (order.getId() == orderToCheck.getId()) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public void remove(Order orderToRemove) {
+		for (int i = 0; i < orders.size(); i++) {
+			if (orders.get(i).getId() == orderToRemove.getId()) {
+				orders.remove(i);
+				return;
+			}
+		}
+	}
+
+	public List<Order> getAllOrders() {
+		return newArrayList(orders);
+	}
+
+	public int getQuantity() {
+		int qty = 0;
+		for (Order order : orders) {
+			qty += order.getInitialQuantity() - order.getExecutedQuantity();
+		}
+
+		return qty;
+	}
+
+	@Override
+	public String toString() {
+		return "DepthRow[side=" + side.toString() + ", price=" + price + ", " + "qty=" + getQuantity() + "]";
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.kensai.market;
+package com.kensai.market.core;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -8,6 +8,7 @@ import java.util.List;
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 
+import com.kensai.market.OrderBuilderHelper;
 import com.kensai.market.core.DepthRow;
 import com.kensai.market.core.InsertionResult;
 import com.kensai.protocol.Trading.BuySell;

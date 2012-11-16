@@ -45,4 +45,14 @@ public class InsertionResult {
 		return resultedOrder;
 	}
 
+	public InsertionResult mergeWith(InsertionResult other) {
+		List<Order> newExecutedOrders = newArrayList(executedOrders);
+		newExecutedOrders.addAll(other.getExecutedOrders());
+
+		List<Execution> newExecutions = newArrayList(executions);
+		newExecutions.addAll(other.getExecutions());
+
+		return new InsertionResult(other.getResultedOrder(), newExecutedOrders, newExecutions);
+	}
+
 }

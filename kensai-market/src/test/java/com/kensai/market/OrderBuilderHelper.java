@@ -32,4 +32,14 @@ public final class OrderBuilderHelper {
 		return Order.newBuilder().setInitialQuantity(initialQty).setExecutedQuantity(execQty).setSide(side).setPrice(price).setUserData(USER_DATA)
 			.setUser(USER).setAction(OrderAction.INSERT).setInstrument(INSTRUMENT).setOrderStatus(status);
 	}
+
+	public final static Order.Builder create(double price, int initialQty, BuySell side) {
+		return Order.newBuilder().setInitialQuantity(initialQty).setSide(side).setPrice(price).setUserData(USER_DATA).setUser(USER)
+			.setAction(OrderAction.INSERT).setInstrument(INSTRUMENT);
+	}
+
+	public final static Order.Builder create(double price, int initialQty, BuySell side, OrderStatus status) {
+		return Order.newBuilder().setInitialQuantity(initialQty).setSide(side).setPrice(price).setUserData(USER_DATA).setUser(USER)
+			.setAction(OrderAction.INSERT).setInstrument(INSTRUMENT).setOrderStatus(status);
+	}
 }
