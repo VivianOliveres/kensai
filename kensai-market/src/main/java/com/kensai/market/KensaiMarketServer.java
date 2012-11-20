@@ -1,8 +1,10 @@
 package com.kensai.market;
 
+import static com.google.common.collect.Lists.newArrayList;
+
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.net.InetSocketAddress;
-import java.util.Map;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
@@ -13,17 +15,15 @@ import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.kensai.market.core.InstrumentDepth;
 import com.kensai.market.core.KensaiMarket;
 import com.kensai.market.io.KensaiMessageSender;
 import com.kensai.market.io.MarketServerChannelPipelineFactory;
-import com.kensai.protocol.Trading.Instrument;
-import com.kensai.protocol.Trading.Summary;
 
-public class MarketServer {
+public class KensaiMarketServer {
 
-	private static final Logger log = LoggerFactory.getLogger(MarketServer.class);
+	private static final Logger log = LoggerFactory.getLogger(KensaiMarketServer.class);
 
 	private static final int SERVER_PORT = 1664;
 
@@ -46,14 +46,14 @@ public class MarketServer {
 		ChannelFactory factory = new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), coreExecutor);
 
 		// Retrieve dico and initial summaries
-		Map<Instrument, Summary> summariesByInstrument = Maps.newHashMap();
-		if (summariesByInstrument.isEmpty()) {
+		List<InstrumentDepth> depths = newArrayList();
+		if (depths.isEmpty()) {
 			throw new IllegalArgumentException("Dictionary is empty - write correct code before !!!");
 		}
 
 		// Initialize core classes
 		KensaiMessageSender sender = new KensaiMessageSender();
-		KensaiMarket core = new KensaiMarket(summariesByInstrument, sender);
+		KensaiMarket core = new KensaiMarket(sender, depths);
 
 		// Initialize server
 		ServerBootstrap bootstrap = new ServerBootstrap(factory);

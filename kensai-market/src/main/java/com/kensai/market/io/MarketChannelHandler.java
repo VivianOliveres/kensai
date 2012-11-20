@@ -30,15 +30,15 @@ public class MarketChannelHandler extends SimpleChannelHandler {
 
 		// Precondition: check message validity
 		if (msg.hasSubscribeCommand()) {
-			core.doSubscribeCommand(msg.getSubscribeCommand(), channel);
+			core.receivedSubscribe(msg.getSubscribeCommand(), channel);
 
 		} else if (msg.hasUnsubscribeCommand()) {
-			core.doUnsubscribeCommand(msg.getUnsubscribeCommand(), channel);
+			core.receivedUnsubscribed(msg.getUnsubscribeCommand(), channel);
 		}
 
 		if (msg.hasOrder()) {
 			Order order = msg.getOrder();
-			core.doOrder(order, channel);
+			core.receivedOrder(order, channel);
 		}
 	}
 

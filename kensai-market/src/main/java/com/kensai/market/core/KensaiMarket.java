@@ -3,22 +3,16 @@ package com.kensai.market.core;
 import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
-import java.util.Map;
 
 import org.jboss.netty.channel.Channel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.kensai.market.IdGenerator;
 import com.kensai.market.io.KensaiMessageSender;
 import com.kensai.protocol.Trading.Execution;
 import com.kensai.protocol.Trading.Instrument;
 import com.kensai.protocol.Trading.Order;
-import com.kensai.protocol.Trading.OrderStatus;
 import com.kensai.protocol.Trading.SubscribeCommand;
 import com.kensai.protocol.Trading.Summary;
 import com.kensai.protocol.Trading.UnsubscribeCommand;
@@ -29,23 +23,24 @@ public class KensaiMarket {
 
 	private final KensaiMessageSender sender;
 
-	private final List<Instrument> instruments = Lists.newArrayList();
-	private final Map<Instrument, Summary> summariesByInstrument = Maps.newHashMap();
+	private final List<InstrumentDepth> depths = Lists.newArrayList();
 
-	private final Map<Long, Order> orders = Maps.newHashMap();
-	private final ListMultimap<Long, Execution> executionsByOrder = ArrayListMultimap.create();
-
-	public KensaiMarket(Map<Instrument, Summary> summariesByInstrument, KensaiMessageSender sender) {
-		this.instruments.addAll(summariesByInstrument.keySet());
-		this.summariesByInstrument.putAll(summariesByInstrument);
+	public KensaiMarket(KensaiMessageSender sender, List<InstrumentDepth> depths) {
 		this.sender = sender;
+		this.depths.addAll(depths);
 	}
 
-	public void doSubscribeCommand(SubscribeCommand cmd, Channel channel) {
-		// Preconditions
+	public void receivedSubscribe(SubscribeCommand cmd, Channel channel) {
+		// Precondition: command not null
+		if (cmd == null) {
+			log.error("Invalid SubscribeCommand[{}]", cmd);
+			return;
+		}
+
+		// If user is already subscribed, send NACK
 		String user = cmd.getUser();
-		if (!sender.isValidUser(user)) {
-			sender.sendNack(cmd, channel, "Invalid user [" + user + "]");
+		if (sender.contains(user)) {
+			sender.sendNack(cmd, channel, "User [" + user + "] already subscribed");
 			return;
 		}
 
@@ -54,17 +49,64 @@ public class KensaiMarket {
 		sender.sendAck(cmd, channel);
 
 		// Send snapshots
-		sender.sendInstrumentsSnapshot(user, newArrayList(instruments));
-		sender.sendSummariesSnapshot(user, newArrayList(summariesByInstrument.values()));
-		sender.sendOrdersSnapshot(user, newArrayList(orders.values()));
-		sender.sendExecutionsSnapshot(user, newArrayList(executionsByOrder.values()));
+		sender.sendInstrumentsSnapshot(user, getInstruments());
+		sender.sendSummariesSnapshot(user, getSummariesSnapshot());
+		sender.sendOrdersSnapshot(user, getOrdersSnapshot(user));
+		sender.sendExecutionsSnapshot(user, getExecutionsSnapshot(user));
 	}
 
-	public void doUnsubscribeCommand(UnsubscribeCommand cmd, Channel channel) {
-		// Preconditions
+	public List<Summary> getSummariesSnapshot() {
+		List<Summary> summaries = newArrayList();
+		for (InstrumentDepth depth : depths) {
+			Summary summary = depth.toSummary();
+			if (summary == null) {
+				continue;
+			}
+
+			summaries.add(summary);
+		}
+
+		return summaries;
+	}
+
+	public List<Instrument> getInstruments() {
+		List<Instrument> instruments = newArrayList();
+		for (InstrumentDepth depth : depths) {
+			instruments.add(depth.getInstrument());
+		}
+
+		return instruments;
+	}
+
+	public List<Order> getOrdersSnapshot(String user) {
+		List<Order> orders = newArrayList();
+		for (InstrumentDepth depth : depths) {
+			orders.addAll(depth.getAllOrders(user));
+		}
+
+		return orders;
+	}
+
+	public List<Execution> getExecutionsSnapshot(String user) {
+		List<Execution> executions = newArrayList();
+		for (InstrumentDepth depth : depths) {
+			executions.addAll(depth.getAllExecutions(user));
+		}
+
+		return executions;
+	}
+
+	public void receivedUnsubscribed(UnsubscribeCommand cmd, Channel channel) {
+		// Precondition: command not null
+		if (cmd == null) {
+			log.error("Invalid UnsubscribeCommand [{}]", cmd);
+			return;
+		}
+
+		// If user already subscribed, send NACK
 		String user = cmd.getUser();
-		if (!sender.isValidUser(user)) {
-			sender.sendNack(cmd, channel, "Invalid user [" + user + "]");
+		if (!sender.contains(user)) {
+			sender.sendNack(cmd, channel, "Invalid or unknow user [" + user + "]");
 			return;
 		}
 
@@ -73,10 +115,10 @@ public class KensaiMarket {
 		sender.sendAck(cmd, channel);
 	}
 
-	public void doOrder(Order order, Channel channel) {
+	public void receivedOrder(Order order, Channel channel) {
 		// Check user credentials
 		String user = order.getUser();
-		if (!sender.isValidUser(user)) {
+		if (!sender.contains(user)) {
 			String errorMesg = "User [" + user + "] does not have credentials to manage orders";
 			log.info(errorMesg);
 			sender.sendNack(order, channel, errorMesg);
@@ -98,28 +140,71 @@ public class KensaiMarket {
 			break;
 
 		default:
-			String errorMesg = "Unknow OrderAction[" + order.getAction() + "]";
-			log.warn(errorMesg);
-			sender.sendNack(order, channel, errorMesg);
+			String errorMsg = "Unknow OrderAction[" + order.getAction() + "]";
+			log.warn(errorMsg);
+			sender.sendNack(order, channel, errorMsg);
 			return;
 		}
 	}
 
 	private boolean isValidOrderId(long id) {
-		return orders.containsKey(id);
+		for (InstrumentDepth depth : depths) {
+			if (depth.hasOrder(id)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	private void doDeleteOrder(Order order, Channel channel) {
+		// Check if this order exist
 		if (!isValidOrderId(order.getId())) {
-			String errorMesg = "Invalid orderId[" + order.getId() + "]";
+			String errorMesg = "Unknow orderId[" + order.getId() + "]";
 			log.error(errorMesg);
 			sender.sendNack(order, channel, errorMesg);
 			return;
 		}
 
 		// Update order status and send notification
-		Order.Builder orderBuilder = Order.newBuilder(order).setOrderStatus(OrderStatus.DELETED);
-		sender.sendAck(orderBuilder, channel);
+		InstrumentDepth depth = getDepth(order.getInstrument());
+		InsertionResult result = depth.delete(order);
+		manageResult(result, channel);
+	}
+
+	private InstrumentDepth getDepth(Instrument instrument) {
+		for (InstrumentDepth depth : depths) {
+			if (depth.getInstrument().equals(instrument)) {
+				return depth;
+			}
+		}
+
+		return null;
+	}
+
+	private void manageResult(InsertionResult result, Channel channel) {
+		// Send resulted order
+		sender.send(result.getResultedOrder(), channel);
+
+		// Send executed orders
+		if (result.hasExecutedOrders()) {
+			for (Order execOrder : result.getExecutedOrders()) {
+				sender.send(execOrder, channel);
+			}
+		}
+
+		// Send executions
+		if (result.hasExecutions()) {
+			for (Execution exec : result.getExecutions()) {
+				sender.send(exec, channel);
+			}
+		}
+
+		// Send summary update
+		Instrument instrument = result.getResultedOrder().getInstrument();
+		InstrumentDepth depth = getDepth(instrument);
+		Summary summary = depth.toSummary();
+		sender.send(summary, channel);
 	}
 
 	private void doUpdateOrder(Order order, Channel channel) {
@@ -130,15 +215,25 @@ public class KensaiMarket {
 			return;
 		}
 
-		// TODO Auto-generated method stub
-
+		// Update order status and send notification
+		InstrumentDepth depth = getDepth(order.getInstrument());
+		InsertionResult result = depth.update(order);
+		manageResult(result, channel);
 	}
 
 	private void doInsertOrder(Order order, Channel channel) {
-		// TODO Auto-generated method stub
+		// Check if this order has not been already inserted
+		if (order.getId() > 0 && isValidOrderId(order.getId())) {
+			String errorMesg = "Can not insert an already inserted order: orderId[" + order.getId() + "]";
+			log.error(errorMesg);
+			sender.sendNack(order, channel, errorMesg);
+			return;
+		}
 
-		// Add identifier
-		Order.Builder orderBuilder = Order.newBuilder(order).setId(IdGenerator.generateId());
+		// Insert order and send notification
+		InstrumentDepth depth = getDepth(order.getInstrument());
+		InsertionResult result = depth.insert(order);
+		manageResult(result, channel);
 	}
 
 }

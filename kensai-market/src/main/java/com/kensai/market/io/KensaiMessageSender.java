@@ -27,21 +27,20 @@ public class KensaiMessageSender {
 
 	private Map<String, Channel> users = Maps.newHashMap();
 
-	public boolean isValidUser(String user) {
-		if (user == null) {
-			return false;
-
-		} else {
-			return users.containsKey(user);
-		}
-	}
-
 	public void addUser(String user, Channel channel) {
 		users.put(user, channel);
 	}
 
 	public void removeUser(String user) {
 		users.remove(user);
+	}
+
+	public boolean contains(String user) {
+		if (user == null) {
+			return false;
+		}
+
+		return users.containsKey(user);
 	}
 
 	public void sendNack(Order order, Channel channel, String errorMsg) {
@@ -149,6 +148,21 @@ public class KensaiMessageSender {
 		Channel channel = users.get(user);
 		ExecutionsSnapshot snapshot = ExecutionsSnapshot.newBuilder().addAllExecutions(executions).build();
 		Messages msg = Messages.newBuilder().setExecutionsSnapshot(snapshot).build();
+		channel.write(msg);
+	}
+
+	public void send(Order order, Channel channel) {
+		Messages msg = Messages.newBuilder().setOrder(order).build();
+		channel.write(msg);
+	}
+
+	public void send(Execution exec, Channel channel) {
+		Messages msg = Messages.newBuilder().setExecution(exec).build();
+		channel.write(msg);
+	}
+
+	public void send(Summary summary, Channel channel) {
+		Messages msg = Messages.newBuilder().setSummary(summary).build();
 		channel.write(msg);
 	}
 

@@ -40,11 +40,19 @@ public class InstrumentDepth {
 		this.close = close;
 	}
 
+	public InstrumentDepth(Summary summary) {
+		this(summary.getInstrument(), summary.getOpen(), summary.getClose());
+	}
+
 	public Instrument getInstrument() {
 		return instrument;
 	}
 
-	public Summary.Builder toSummary() {
+	public Summary toSummary() {
+		return toSummaryBuilder().build();
+	}
+
+	public Summary.Builder toSummaryBuilder() {
 		Builder builder = Summary.newBuilder().setInstrument(instrument).setLast(last).setMarketStatus(marketStatus).setClose(close).setOpen(open)
 			.setTimestamp(lastUpdate);
 
@@ -357,5 +365,16 @@ public class InstrumentDepth {
 		}
 
 		return executions;
+	}
+
+	public boolean hasOrder(long orderId) {
+		List<Order> allOrders = getAllOrders();
+		for (Order order : allOrders) {
+			if (order.getId() == orderId) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

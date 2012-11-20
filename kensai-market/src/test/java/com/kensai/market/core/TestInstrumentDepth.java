@@ -229,7 +229,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is two buy depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getSellDepthsCount()).isZero();
 		assertThat(summary.getBuyDepthsCount()).isEqualTo(2);
@@ -284,7 +284,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is two buy depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getSellDepthsCount()).isZero();
 		assertThat(summary.getBuyDepthsCount()).isEqualTo(2);
@@ -339,7 +339,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is only one buy depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getSellDepthsCount()).isZero();
 		assertThat(summary.getBuyDepthsCount()).isEqualTo(1);
@@ -395,7 +395,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).containsOnly(topOrderInserted, bottomOrderInserted, resultedOrder);
 
 		// AND: there is only 3 buy depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getSellDepthsCount()).isZero();
 		assertThat(summary.getBuyDepthsCount()).isEqualTo(3);
@@ -454,7 +454,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is two buy depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getSellDepthsCount()).isEqualTo(2);
 		assertThat(summary.getBuyDepthsCount()).isZero();
@@ -509,7 +509,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is two buy depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getSellDepthsCount()).isEqualTo(2);
 		assertThat(summary.getBuyDepthsCount()).isZero();
@@ -564,7 +564,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is only one buy depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getSellDepthsCount()).isEqualTo(1);
 		assertThat(summary.getBuyDepthsCount()).isZero();
@@ -620,7 +620,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).containsOnly(topOrderInserted, bottomOrderInserted, resultedOrder);
 
 		// AND: there is only 3 sell depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getBuyDepthsCount()).isZero();
 		assertThat(summary.getSellDepthsCount()).isEqualTo(3);
@@ -687,7 +687,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).containsOnly(executedOrder);
 
 		// AND: there is only 1 sell depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getBuyDepthsCount()).isZero();
 		assertThat(summary.getSellDepthsCount()).isEqualTo(1);
@@ -744,7 +744,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).containsOnly(executedOrder);
 
 		// AND: there is only 1 buy depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getSellDepthsCount()).isZero();
 		assertThat(summary.getBuyDepthsCount()).isEqualTo(1);
@@ -822,7 +822,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).hasSize(2);
 
 		// AND: there is only 1 buy and 1 sell depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getSellDepthsCount()).isEqualTo(1);
 		assertThat(summary.getBuyDepthsCount()).isEqualTo(1);
@@ -902,7 +902,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllActiveOrders(user)).hasSize(2);
 
 		// AND: there is only 1 buy and 1 sell depth
-		Summary summary = depth.toSummary().build();
+		Summary summary = depth.toSummary();
 		assertThat(summary).isNotNull();
 		assertThat(summary.getSellDepthsCount()).isEqualTo(1);
 		assertThat(summary.getBuyDepthsCount()).isEqualTo(1);
