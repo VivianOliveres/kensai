@@ -128,4 +128,6 @@ message Messages {
   optional OrdersSnapshot ordersSnapshot = 5;
   optional InstrumentsSnapshot instrumentsSnapshot = 6;
   optional Order order = 7;
+  optional Execution execution = 8;
+  optional Summary summary = 9;
 }
