@@ -98,7 +98,7 @@ public class MarketClientChannelHandler extends SimpleChannelHandler {
 
 		if (message.hasOrder()) {
 			hasReceivedOrder = true;
-			isOrderOk = message.getOrder().getStatus().equals(CommandStatus.ACK);
+			isOrderOk = message.getOrder().getCommandStatus().equals(CommandStatus.ACK);
 		}
 	}
 
