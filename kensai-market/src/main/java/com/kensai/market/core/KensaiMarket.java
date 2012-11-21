@@ -116,6 +116,12 @@ public class KensaiMarket {
 	}
 
 	public void receivedOrder(Order order, Channel channel) {
+		// Precondition: order is not null
+		if (order == null) {
+			log.error("Receive an invalid order [{}]", order);
+			return;
+		}
+
 		// Check user credentials
 		String user = order.getUser();
 		if (!sender.contains(user)) {

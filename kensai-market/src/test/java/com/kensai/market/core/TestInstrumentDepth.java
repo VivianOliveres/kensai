@@ -5,7 +5,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.kensai.market.OrderBuilderHelper;
+import com.kensai.market.factories.OrderFactory;
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.CommandStatus;
 import com.kensai.protocol.Trading.Instrument;
@@ -15,11 +15,11 @@ import com.kensai.protocol.Trading.Summary;
 
 public class TestInstrumentDepth {
 
-	private Instrument instr = OrderBuilderHelper.INSTRUMENT;
+	private Instrument instr = OrderFactory.INSTRUMENT;
 	private double open = 15;
 	private double close = 20;
 
-	private String user = OrderBuilderHelper.USER;
+	private String user = OrderFactory.USER;
 
 	private InstrumentDepth depth;
 
@@ -34,7 +34,7 @@ public class TestInstrumentDepth {
 		double price = 123.456;
 		int initialQty = 99;
 		BuySell side = BuySell.BUY;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -71,7 +71,7 @@ public class TestInstrumentDepth {
 		double price = 123.456;
 		int initialQty = 99;
 		BuySell side = BuySell.SELL;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -107,14 +107,14 @@ public class TestInstrumentDepth {
 	@Test
 	public void shouldInsertBuyOrderWithEmptyBuyDepthAndNotEmptySellDepthAndNoExec() {
 		// GIVEN: a sell order is already in depth
-		Order oppositeOrder = OrderBuilderHelper.create(456.123, 753, BuySell.SELL).build();
+		Order oppositeOrder = OrderFactory.create(456.123, 753, BuySell.SELL).build();
 		Order oppositeOrderInserted = depth.insert(oppositeOrder).getResultedOrder();
 
 		// AND: a buy order to insert
 		double price = 123.456;
 		int initialQty = 99;
 		BuySell side = BuySell.BUY;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -148,14 +148,14 @@ public class TestInstrumentDepth {
 	@Test
 	public void shouldInsertSellOrderWithEmptySellDepthAndNotEmptyBuyDepthAndNoExec() {
 		// GIVEN: a sell order is already in depth
-		Order oppositeOrder = OrderBuilderHelper.create(123.456, 753, BuySell.BUY).build();
+		Order oppositeOrder = OrderFactory.create(123.456, 753, BuySell.BUY).build();
 		Order oppositeOrderOrderInserted = depth.insert(oppositeOrder).getResultedOrder();
 
 		// AND: a buy order to insert
 		double price = 456.123;
 		int initialQty = 99;
 		BuySell side = BuySell.SELL;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -191,14 +191,14 @@ public class TestInstrumentDepth {
 	@Test
 	public void shouldInsertBuyOrderOnTopWithEmptySellDepthAndNoExec() {
 		// GIVEN: a buy order with low price is already in depth
-		Order initialOrder = OrderBuilderHelper.create(123.456, 753, BuySell.BUY).build();
+		Order initialOrder = OrderFactory.create(123.456, 753, BuySell.BUY).build();
 		Order initialOrderInserted = depth.insert(initialOrder).getResultedOrder();
 
 		// AND: a buy order with high price to insert
 		double price = 456.123;
 		int initialQty = 99;
 		BuySell side = BuySell.BUY;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -246,14 +246,14 @@ public class TestInstrumentDepth {
 	@Test
 	public void shouldInsertBuyOrderOnBottomWithEmptySellDepthAndNoExec() {
 		// GIVEN: a buy order with high price is already in depth
-		Order initialOrder = OrderBuilderHelper.create(456.123, 753, BuySell.BUY).build();
+		Order initialOrder = OrderFactory.create(456.123, 753, BuySell.BUY).build();
 		Order initialOrderInserted = depth.insert(initialOrder).getResultedOrder();
 
 		// AND: a buy order with low price to insert
 		double price = 123.456;
 		int initialQty = 99;
 		BuySell side = BuySell.BUY;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -302,13 +302,13 @@ public class TestInstrumentDepth {
 	public void shouldInsertBuyOrderOnSameLevelWithEmptySellDepthAndNoExec() {
 		// GIVEN: a buy order is already in depth
 		double price = 123.456;
-		Order initialOrder = OrderBuilderHelper.create(price, 753, BuySell.BUY).build();
+		Order initialOrder = OrderFactory.create(price, 753, BuySell.BUY).build();
 		Order initialOrderInserted = depth.insert(initialOrder).getResultedOrder();
 
 		// AND: a buy order with same price to insert
 		int initialQty = 99;
 		BuySell side = BuySell.BUY;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -354,17 +354,17 @@ public class TestInstrumentDepth {
 		BuySell side = BuySell.BUY;
 
 		// GIVEN: a buy order with high price is already in depth
-		Order topOrder = OrderBuilderHelper.create(789.456, 753, side).build();
+		Order topOrder = OrderFactory.create(789.456, 753, side).build();
 		Order topOrderInserted = depth.insert(topOrder).getResultedOrder();
 
 		// AND: a buy order with low price is already in depth
-		Order bottomOrder = OrderBuilderHelper.create(123.456, 159, side).build();
+		Order bottomOrder = OrderFactory.create(123.456, 159, side).build();
 		Order bottomOrderInserted = depth.insert(bottomOrder).getResultedOrder();
 
 		// AND: a buy order with middle price to insert
 		int initialQty = 99;
 		double price = 456.456;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -416,14 +416,14 @@ public class TestInstrumentDepth {
 	@Test
 	public void shouldInsertSellOrderOnTopWithEmptyBuyDepthAndNoExec() {
 		// GIVEN: a sell order with high price is already in depth
-		Order initialOrder = OrderBuilderHelper.create(456.123, 753, BuySell.SELL).build();
+		Order initialOrder = OrderFactory.create(456.123, 753, BuySell.SELL).build();
 		Order initialOrderInserted = depth.insert(initialOrder).getResultedOrder();
 
 		// AND: a sell order with low price to insert
 		double price = 123.456;
 		int initialQty = 99;
 		BuySell side = BuySell.SELL;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -471,14 +471,14 @@ public class TestInstrumentDepth {
 	@Test
 	public void shouldInsertSellOrderOnBottomWithEmptyBuyDepthAndNoExec() {
 		// GIVEN: a sell order with low price is already in depth
-		Order initialOrder = OrderBuilderHelper.create(123.456, 753, BuySell.SELL).build();
+		Order initialOrder = OrderFactory.create(123.456, 753, BuySell.SELL).build();
 		Order initialOrderInserted = depth.insert(initialOrder).getResultedOrder();
 
 		// AND: a sell order with high price to insert
 		double price = 456.123;
 		int initialQty = 99;
 		BuySell side = BuySell.SELL;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -528,12 +528,12 @@ public class TestInstrumentDepth {
 		// GIVEN: a sell order is already in depth
 		double price = 123.456;
 		BuySell side = BuySell.SELL;
-		Order initialOrder = OrderBuilderHelper.create(price, 753, side).build();
+		Order initialOrder = OrderFactory.create(price, 753, side).build();
 		Order initialOrderInserted = depth.insert(initialOrder).getResultedOrder();
 
 		// AND: a sell order with same price to insert
 		int initialQty = 99;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -579,17 +579,17 @@ public class TestInstrumentDepth {
 		BuySell side = BuySell.SELL;
 
 		// GIVEN: a sell order with low price is already in depth
-		Order topOrder = OrderBuilderHelper.create(123.123, 753, side).build();
+		Order topOrder = OrderFactory.create(123.123, 753, side).build();
 		Order topOrderInserted = depth.insert(topOrder).getResultedOrder();
 
 		// AND: a sell order with high price is already in depth
-		Order bottomOrder = OrderBuilderHelper.create(789.789, 159, side).build();
+		Order bottomOrder = OrderFactory.create(789.789, 159, side).build();
 		Order bottomOrderInserted = depth.insert(bottomOrder).getResultedOrder();
 
 		// AND: a sell order with middle price to insert
 		int initialQty = 99;
 		double price = 456.456;
-		Order order = OrderBuilderHelper.create(price, initialQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, side).build();
 
 		// WHEN: Insert this order
 		InsertionResult result = depth.insert(order);
@@ -645,13 +645,13 @@ public class TestInstrumentDepth {
 		// GIVEN: depth contains big sell order
 		int initialQty = 999;
 		double price = 123.123;
-		Order initialOrder = OrderBuilderHelper.create(price, initialQty, BuySell.SELL).build();
+		Order initialOrder = OrderFactory.create(price, initialQty, BuySell.SELL).build();
 		Order initialOrderInserted = depth.insert(initialOrder).getResultedOrder();
 
 		// AND: a buy order with same price and small quantity has to be inserted
 		int qty = 5;
 		BuySell side = BuySell.BUY;
-		Order order = OrderBuilderHelper.create(price, qty, side).build();
+		Order order = OrderFactory.create(price, qty, side).build();
 
 		// WHEN: insert order
 		InsertionResult result = depth.insert(order);
@@ -702,13 +702,13 @@ public class TestInstrumentDepth {
 		// GIVEN: depth contains big buy order
 		int initialQty = 999;
 		double price = 123.123;
-		Order initialOrder = OrderBuilderHelper.create(price, initialQty, BuySell.BUY).build();
+		Order initialOrder = OrderFactory.create(price, initialQty, BuySell.BUY).build();
 		Order initialOrderInserted = depth.insert(initialOrder).getResultedOrder();
 
 		// AND: a sell order with same price and small quantity has to be inserted
 		int qty = 5;
 		BuySell side = BuySell.SELL;
-		Order order = OrderBuilderHelper.create(price, qty, side).build();
+		Order order = OrderFactory.create(price, qty, side).build();
 
 		// WHEN: insert order
 		InsertionResult result = depth.insert(order);
@@ -761,30 +761,30 @@ public class TestInstrumentDepth {
 		// GIVEN: depth contains 3 small sell orders
 		int qtySell1 = 3;
 		double priceSell1 = 410.0;
-		Order orderSell1 = OrderBuilderHelper.create(priceSell1, qtySell1, BuySell.SELL).build();
+		Order orderSell1 = OrderFactory.create(priceSell1, qtySell1, BuySell.SELL).build();
 		depth.insert(orderSell1);
 
 		int qtySell2 = 5;
 		double priceSell2 = 420.0;
-		Order orderSell2 = OrderBuilderHelper.create(priceSell2, qtySell2, BuySell.SELL).build();
+		Order orderSell2 = OrderFactory.create(priceSell2, qtySell2, BuySell.SELL).build();
 		depth.insert(orderSell2);
 
 		int qtySell3 = 7;
 		double priceSell3 = 430.0;
-		Order orderSell3 = OrderBuilderHelper.create(priceSell3, qtySell3, BuySell.SELL).build();
+		Order orderSell3 = OrderFactory.create(priceSell3, qtySell3, BuySell.SELL).build();
 		depth.insert(orderSell3);
 
 		// AND: depth contains a big order in last limit
 		int qtySell4 = 999;
 		double priceSell4 = 440.0;
-		Order orderSell4 = OrderBuilderHelper.create(priceSell4, qtySell4, BuySell.SELL).build();
+		Order orderSell4 = OrderFactory.create(priceSell4, qtySell4, BuySell.SELL).build();
 		Order orderSell4Inserted = depth.insert(orderSell4).getResultedOrder();
 
 		// AND: a buy order with price between 3 and 4 th limits has to be inserted
 		int qty = 500;
 		double price = 435.0;
 		BuySell side = BuySell.BUY;
-		Order order = OrderBuilderHelper.create(price, qty, side).build();
+		Order order = OrderFactory.create(price, qty, side).build();
 
 		// WHEN: insert order
 		InsertionResult result = depth.insert(order);
@@ -841,30 +841,30 @@ public class TestInstrumentDepth {
 		// GIVEN: depth contains 3 small buy orders
 		int qtyBuy1 = 3;
 		double priceBuy1 = 440.0;
-		Order orderBuy1 = OrderBuilderHelper.create(priceBuy1, qtyBuy1, BuySell.BUY).build();
+		Order orderBuy1 = OrderFactory.create(priceBuy1, qtyBuy1, BuySell.BUY).build();
 		depth.insert(orderBuy1);
 
 		int qtyBuy2 = 5;
 		double priceBuy2 = 430.0;
-		Order orderBuy2 = OrderBuilderHelper.create(priceBuy2, qtyBuy2, BuySell.BUY).build();
+		Order orderBuy2 = OrderFactory.create(priceBuy2, qtyBuy2, BuySell.BUY).build();
 		depth.insert(orderBuy2);
 
 		int qtyBuy3 = 7;
 		double priceBuy3 = 420.0;
-		Order orderBuy3 = OrderBuilderHelper.create(priceBuy3, qtyBuy3, BuySell.BUY).build();
+		Order orderBuy3 = OrderFactory.create(priceBuy3, qtyBuy3, BuySell.BUY).build();
 		depth.insert(orderBuy3);
 
 		// AND: depth contains a big order in last limit
 		int qtyBuy4 = 999;
 		double priceBuy4 = 410.0;
-		Order orderBuy4 = OrderBuilderHelper.create(priceBuy4, qtyBuy4, BuySell.BUY).build();
+		Order orderBuy4 = OrderFactory.create(priceBuy4, qtyBuy4, BuySell.BUY).build();
 		Order orderBuy4Inserted = depth.insert(orderBuy4).getResultedOrder();
 
 		// AND: a sell order with price between 3 and 4 th limits has to be inserted
 		int qty = 500;
 		double price = 415.0;
 		BuySell side = BuySell.SELL;
-		Order order = OrderBuilderHelper.create(price, qty, side).build();
+		Order order = OrderFactory.create(price, qty, side).build();
 
 		// WHEN: insert order
 		InsertionResult result = depth.insert(order);

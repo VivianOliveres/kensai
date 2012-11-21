@@ -76,7 +76,7 @@ public class DepthRow implements Comparable<DepthRow> {
 
 	public InsertionResult insert(Order order) throws IllegalArgumentException {
 		if (order == null) {
-			throw new IllegalArgumentException("Invalid order [" + order == null ? null : order.getPrice() + "] for this depth[price=" + price + "]");
+			throw new IllegalArgumentException("Invalid order [null] for this depth[price=" + price + "]");
 		}
 
 		if (order.getSide().equals(side)) {

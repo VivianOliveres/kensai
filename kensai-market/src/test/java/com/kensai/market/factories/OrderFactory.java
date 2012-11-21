@@ -1,4 +1,4 @@
-package com.kensai.market;
+package com.kensai.market.factories;
 
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.Instrument;
@@ -6,7 +6,7 @@ import com.kensai.protocol.Trading.Order;
 import com.kensai.protocol.Trading.OrderAction;
 import com.kensai.protocol.Trading.OrderStatus;
 
-public final class OrderBuilderHelper {
+public final class OrderFactory {
 
 	public static final String USER_DATA = "user_data";
 	public static final String USER = "user";

@@ -2,15 +2,13 @@ package com.kensai.market.core;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.failBecauseExceptionWasNotThrown;
 
 import java.util.List;
 
-import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 
-import com.kensai.market.OrderBuilderHelper;
-import com.kensai.market.core.DepthRow;
-import com.kensai.market.core.InsertionResult;
+import com.kensai.market.factories.OrderFactory;
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.Depth;
 import com.kensai.protocol.Trading.Order;
@@ -25,12 +23,12 @@ public class TestDepthRow {
 		// GIVEN: An empty order
 		int firstOrderInitialQty = 7;
 		int firstOrderExecutedQty = 0;
-		Order firstOrder = OrderBuilderHelper.create(firstOrderInitialQty, firstOrderExecutedQty, side).build();
+		Order firstOrder = OrderFactory.create(firstOrderInitialQty, firstOrderExecutedQty, side).build();
 
 		// AND: A partially executed order
 		int secondOrderInitialQty = 17;
 		int secondOrderExecutedQty = 13;
-		Order secondOrder = OrderBuilderHelper.create(secondOrderInitialQty, secondOrderExecutedQty, side).build();
+		Order secondOrder = OrderFactory.create(secondOrderInitialQty, secondOrderExecutedQty, side).build();
 
 		// AND: a DepthRow is created
 		double price = 123.456;
@@ -51,7 +49,7 @@ public class TestDepthRow {
 		// GIVEN: An empty order
 		int firstOrderInitialQty = 7;
 		int firstOrderExecutedQty = 0;
-		Order firstOrder = OrderBuilderHelper.create(firstOrderInitialQty, firstOrderExecutedQty, side).build();
+		Order firstOrder = OrderFactory.create(firstOrderInitialQty, firstOrderExecutedQty, side).build();
 
 		// AND: a DepthRow is created with this order
 		double price = 123.456;
@@ -60,7 +58,7 @@ public class TestDepthRow {
 		// AND: A partially executed order
 		int secondOrderInitialQty = 17;
 		int secondOrderExecutedQty = 13;
-		Order secondOrder = OrderBuilderHelper.create(secondOrderInitialQty, secondOrderExecutedQty, side).build();
+		Order secondOrder = OrderFactory.create(secondOrderInitialQty, secondOrderExecutedQty, side).build();
 
 		// WHEN: check if insertion of this order could make execution
 		boolean couldMakeExecutions = row.couldMakeExecutions(secondOrder);
@@ -73,7 +71,7 @@ public class TestDepthRow {
 	public void shouldCanMakeExecutionsReturnTrueWhenDepthIsBuyAndOrderIsSellAndOrderPriceIsLesser() {
 		// GIVEN: A sell order
 		double orderPrice = 123.456;
-		Order order = OrderBuilderHelper.create(orderPrice, 7, 0, BuySell.SELL).build();
+		Order order = OrderFactory.create(orderPrice, 7, 0, BuySell.SELL).build();
 
 		// AND: a DepthRow is created
 		double price = 456.789;
@@ -90,7 +88,7 @@ public class TestDepthRow {
 	public void shouldCanMakeExecutionsReturnTrueWhenDepthIsBuyAndOrderIsSellAndPricesAreEquals() {
 		// GIVEN: A sell order
 		double orderPrice = 123.456;
-		Order order = OrderBuilderHelper.create(orderPrice, 7, 0, BuySell.SELL).build();
+		Order order = OrderFactory.create(orderPrice, 7, 0, BuySell.SELL).build();
 
 		// AND: a DepthRow is created
 		DepthRow row = new DepthRow(orderPrice, BuySell.BUY);
@@ -106,7 +104,7 @@ public class TestDepthRow {
 	public void shouldCanMakeExecutionsReturnTrueWhenDepthIsSellAndOrderIsBuyAndOrderPriceIsGreatter() {
 		// GIVEN: A sell order
 		double orderPrice = 456.123;
-		Order order = OrderBuilderHelper.create(orderPrice, 7, 0, BuySell.BUY).build();
+		Order order = OrderFactory.create(orderPrice, 7, 0, BuySell.BUY).build();
 
 		// AND: a DepthRow is created
 		double price = 123.456;
@@ -123,7 +121,7 @@ public class TestDepthRow {
 	public void shouldCanMakeExecutionsReturnTrueWhenDepthIsSellAndOrderIsBuyAndPricesAreEquals() {
 		// GIVEN: A sell order
 		double orderPrice = 456.123;
-		Order order = OrderBuilderHelper.create(orderPrice, 7, 0, BuySell.BUY).build();
+		Order order = OrderFactory.create(orderPrice, 7, 0, BuySell.BUY).build();
 
 		// AND: a DepthRow is created
 		DepthRow row = new DepthRow(orderPrice, BuySell.SELL);
@@ -136,19 +134,15 @@ public class TestDepthRow {
 	}
 
 	@Test
-	public void shouldInsertThrowsExceptionWhenOrderPriceIsNotSameThanDepthPrice() {
-		// GIVEN: A sell order
-		double orderPrice = 456.123;
-		Order order = OrderBuilderHelper.create(orderPrice, 7, 0, BuySell.BUY).build();
-
-		// AND: a DepthRow is created with different price
+	public void shouldInsertThrowsExceptionWhenOrderIsNull() {
+		// GIVEN: a DepthRow
 		double price = 123.456;
 		DepthRow row = new DepthRow(price, BuySell.SELL);
 
 		try {
-			// WHEN: insert this order
-			row.insert(order);
-			Assertions.failBecauseExceptionWasNotThrown(IllegalArgumentException.class);
+			// WHEN: insert null order
+			row.insert(null);
+			failBecauseExceptionWasNotThrown(IllegalArgumentException.class);
 
 		} catch (IllegalArgumentException e) {
 			// OK
@@ -160,7 +154,7 @@ public class TestDepthRow {
 		// GIVEN: A sell order
 		BuySell side = BuySell.BUY;
 		double orderPrice = 456.123;
-		Order order = OrderBuilderHelper.create(orderPrice, 7, 0, side).build();
+		Order order = OrderFactory.create(orderPrice, 7, 0, side).build();
 
 		// AND: a DepthRow is created
 		DepthRow row = new DepthRow(orderPrice, side);
@@ -190,14 +184,14 @@ public class TestDepthRow {
 		double price = 456.123;
 		int initialQty = 789;
 		int initialExecQty = 123;
-		Order order = OrderBuilderHelper.create(price, initialQty, initialExecQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, initialExecQty, side).build();
 
 		// AND: a DepthRow is created
 		DepthRow row = new DepthRow(price, side, order);
 
 		// AND: a small buy order to insert
 		int insertQty = 5;
-		Order orderToInsert = OrderBuilderHelper.create(price, insertQty, 0, BuySell.SELL).build();
+		Order orderToInsert = OrderFactory.create(price, insertQty, 0, BuySell.SELL).build();
 
 		// WHEN: insert this order
 		InsertionResult result = row.insert(orderToInsert);
@@ -231,14 +225,14 @@ public class TestDepthRow {
 		double price = 456.123;
 		int initialQty = 123;
 		int initialExecQty = 1;
-		Order order = OrderBuilderHelper.create(price, initialQty, initialExecQty, side).build();
+		Order order = OrderFactory.create(price, initialQty, initialExecQty, side).build();
 
 		// AND: a DepthRow is created
 		DepthRow row = new DepthRow(price, side, order);
 
 		// AND: a small buy order to insert
 		int insertQty = 456;
-		Order orderToInsert = OrderBuilderHelper.create(price, insertQty, 0, BuySell.SELL).build();
+		Order orderToInsert = OrderFactory.create(price, insertQty, 0, BuySell.SELL).build();
 
 		// WHEN: insert this order
 		InsertionResult result = row.insert(orderToInsert);
@@ -266,18 +260,18 @@ public class TestDepthRow {
 		BuySell side = BuySell.BUY;
 		double price = 456.123;
 		List<Order> initialOrders = newArrayList();
-		initialOrders.add(OrderBuilderHelper.create(price, 2, 1, side).build());
-		initialOrders.add(OrderBuilderHelper.create(price, 2, 0, side).build());
-		initialOrders.add(OrderBuilderHelper.create(price, 2, 0, side).build());
-		initialOrders.add(OrderBuilderHelper.create(price, 2, 0, side).build());
-		initialOrders.add(OrderBuilderHelper.create(price, 2, 0, side).build());
+		initialOrders.add(OrderFactory.create(price, 2, 1, side).build());
+		initialOrders.add(OrderFactory.create(price, 2, 0, side).build());
+		initialOrders.add(OrderFactory.create(price, 2, 0, side).build());
+		initialOrders.add(OrderFactory.create(price, 2, 0, side).build());
+		initialOrders.add(OrderFactory.create(price, 2, 0, side).build());
 
 		// AND: a DepthRow is created with initial orders
 		DepthRow row = new DepthRow(price, side, initialOrders);
 
 		// AND: a small buy order to insert
 		int insertQty = 456;
-		Order orderToInsert = OrderBuilderHelper.create(price, insertQty, 0, BuySell.SELL).build();
+		Order orderToInsert = OrderFactory.create(price, insertQty, 0, BuySell.SELL).build();
 
 		// WHEN: insert this order
 		InsertionResult result = row.insert(orderToInsert);
