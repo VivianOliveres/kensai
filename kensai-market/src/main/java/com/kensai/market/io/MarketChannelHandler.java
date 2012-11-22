@@ -26,7 +26,7 @@ public class MarketChannelHandler extends SimpleChannelHandler {
 	public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) {
 		Channel channel = e.getChannel();
 		Messages msg = (Messages) e.getMessage();
-		log.debug("Channel has received a new message [{}]", msg);
+		log.info("Channel has received a new message [{}]", msg);
 
 		// Precondition: check message validity
 		if (msg.hasSubscribeCommand()) {

@@ -30,6 +30,7 @@ public class KensaiMarketServer {
 	private static final int SERVER_PORT = 1664;
 
 	public static void main(String[] args) throws Exception {
+		log.info("Starting server...");
 		UncaughtExceptionHandler exceptionHandler = new UncaughtExceptionHandler() {
 
 			@Override
@@ -61,17 +62,21 @@ public class KensaiMarketServer {
 		if (depths.isEmpty()) {
 			throw new IllegalArgumentException("Dictionary is empty - load correct values before starting server!!!");
 		}
+		log.info("{} instruments has been load", depths.size());
 
 		// Initialize core classes
 		KensaiMessageSender sender = new KensaiMessageSender();
 		KensaiMarket core = new KensaiMarket(sender, depths);
 
 		// Initialize server
+		log.info("Starting connections...");
 		ServerBootstrap bootstrap = new ServerBootstrap(factory);
 		bootstrap.setPipelineFactory(new MarketServerChannelPipelineFactory(core));
 		bootstrap.setOption("child.tcpNoDelay", true);
 		bootstrap.setOption("child.keepAlive", true);
 		bootstrap.bind(new InetSocketAddress(SERVER_PORT));
+
+		log.info("Server started!");
 	}
 
 }
