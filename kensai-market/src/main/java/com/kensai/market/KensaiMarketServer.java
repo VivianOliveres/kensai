@@ -1,9 +1,10 @@
 package com.kensai.market;
 
-import static com.google.common.collect.Lists.newArrayList;
-
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.net.InetSocketAddress;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -20,6 +21,7 @@ import com.kensai.market.core.InstrumentDepth;
 import com.kensai.market.core.KensaiMarket;
 import com.kensai.market.io.KensaiMessageSender;
 import com.kensai.market.io.MarketServerChannelPipelineFactory;
+import com.kensai.market.persist.InstrumentDepthsLoader;
 
 public class KensaiMarketServer {
 
@@ -45,10 +47,19 @@ public class KensaiMarketServer {
 		ExecutorService coreExecutor = Executors.newSingleThreadExecutor(coreThreadFactory);
 		ChannelFactory factory = new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), coreExecutor);
 
-		// Retrieve dico and initial summaries
-		List<InstrumentDepth> depths = newArrayList();
+		// Retrieve instruments and initial summaries
+		URL url = KensaiMarketServer.class.getClassLoader().getResource("cac.csv");
+		Path path = Paths.get(url.toURI());
+		List<InstrumentDepth> depths;
+		try {
+			depths = new InstrumentDepthsLoader(path).load();
+
+		} catch (Exception e) {
+			log.error("Can not load instruments", e);
+			return;
+		}
 		if (depths.isEmpty()) {
-			throw new IllegalArgumentException("Dictionary is empty - write correct code before !!!");
+			throw new IllegalArgumentException("Dictionary is empty - load correct values before starting server!!!");
 		}
 
 		// Initialize core classes
