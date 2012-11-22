@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
 <log4j:configuration>
-	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{ABSOLUTE} %5p [%20t] %c{1}: %m%n" />
-
+		</layout>
+	</appender>
+	
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="target/market.log" />
+		<param name="MaxFileSize" value="100000KB" />
+		<!-- Keep one backup file -->
+		<param name="MaxBackupIndex" value="1" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %5p [%20t] %c{1}: %m%n" />
 		</layout>
 	</appender>
 	
@@ -14,6 +23,7 @@
 	
 	<root>
 		<level value="debug"></level>
-		<appender-ref ref="stdout" />
+		<appender-ref ref="console" />
+		<appender-ref ref="file" />
 	</root>
 </log4j:configuration>
