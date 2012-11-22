@@ -53,6 +53,7 @@ public class RandomAnimator extends AbstractSubscriberAnimator {
 			@Override
 			public void run() {
 				synchronized (instruments) {
+					log.info("Run task on {} instruments", instruments.size());
 					for (Summary summary : instruments.values()) {
 						boolean isBuyOrder = random.nextBoolean();
 						int qty = generateQty(summary);
@@ -95,8 +96,10 @@ public class RandomAnimator extends AbstractSubscriberAnimator {
 
 	private void sendOrder(int qty, double price, BuySell side, Instrument instrument) {
 		String userData = UserDataGenerator.generate();
+		log.info("send order [instr[{}] side[{}] qty[{}] price[{}] userData[{}] user[{}]]", new Object[] { instrument.getName(), side, qty, price,
+				userData, user });
 		Order order = Order.newBuilder().setAction(OrderAction.INSERT).setInitialQuantity(qty).setInstrument(instrument).setPrice(price).setSide(side)
-			.setUser(userData).setUser(user).build();
+			.setUserData(userData).setUser(user).build();
 		getMessageSender().send(order);
 	}
 
