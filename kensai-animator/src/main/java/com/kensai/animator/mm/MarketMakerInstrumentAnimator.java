@@ -2,6 +2,9 @@ package com.kensai.animator.mm;
 
 import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.kensai.animator.core.MessageSender;
 import com.kensai.animator.sdk.AbstractAnimator;
 import com.kensai.animator.sdk.UserDataGenerator;
@@ -13,6 +16,7 @@ import com.kensai.protocol.Trading.SummariesSnapshot;
 import com.kensai.protocol.Trading.Summary;
 
 public class MarketMakerInstrumentAnimator extends AbstractAnimator {
+	private static final Logger log = LoggerFactory.getLogger(MarketMakerInstrumentAnimator.class);
 
 	private final Random random = new Random();
 
@@ -47,9 +51,11 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 	public void onSummary(Summary summary) {
 		// Precondition
 		if (summary == null) {
+			log.warn("Receive an invalid summary [{}]", summary);
 			return;
 		}
 
+		log.debug("onSummary({})", summary);
 		boolean isBuyDepthEmpty = summary.getBuyDepthsList().isEmpty();
 		boolean isSellDepthEmpty = summary.getSellDepthsList().isEmpty();
 		if (isBuyDepthEmpty || isSellDepthEmpty) {
@@ -99,6 +105,8 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 	}
 
 	private void sendOrder(int initialQty, double price, BuySell side, String userData) {
+		log.info("send order [instr[{}] qty[{}] price[{}] side[{}] userData[{}] user[{}]]", new Object[] { instrument.getName(), qty, price, side,
+				userData, user });
 		Order order = Order.newBuilder().setInstrument(instrument).setAction(OrderAction.INSERT).setInitialQuantity(initialQty).setPrice(price)
 			.setUser(user).setSide(side).setUserData(userData).build();
 		sender.send(order);

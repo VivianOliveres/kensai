@@ -7,7 +7,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
 import org.jboss.netty.bootstrap.ClientBootstrap;
-import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelFuture;
 import org.jboss.netty.channel.socket.nio.NioClientSocketChannelFactory;
 import org.slf4j.Logger;
@@ -55,10 +54,6 @@ public class AnimatorClient {
 		ChannelFuture connectFuture = bootstrap.connect(new InetSocketAddress(host, port));
 
 		// Wait until the connection is made successfully.
-		Channel channel = connectFuture.awaitUninterruptibly().getChannel();
-
-		// Get the handler instance to initiate the request.
-		AnimatorChannelHandler handler = channel.getPipeline().get(AnimatorChannelHandler.class);
+		connectFuture.awaitUninterruptibly();
 	}
-
 }

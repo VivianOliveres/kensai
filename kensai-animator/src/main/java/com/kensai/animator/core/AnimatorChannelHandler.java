@@ -2,6 +2,7 @@ package com.kensai.animator.core;
 
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ChannelStateEvent;
+import org.jboss.netty.channel.ExceptionEvent;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
 import org.slf4j.Logger;
@@ -21,8 +22,15 @@ public class AnimatorChannelHandler extends SimpleChannelHandler {
 	}
 
 	@Override
+	public void exceptionCaught(ChannelHandlerContext ctx, ExceptionEvent e) {
+		log.error("exceptionCaught from ChannelHandler -> exit", e.getCause());
+		System.exit(0);
+	}
+
+	@Override
 	public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception {
 		super.channelConnected(ctx, e);
+		log.info("Channel connected");
 		animator.setMessageSender(new MessageSender(e.getChannel()));
 	}
 

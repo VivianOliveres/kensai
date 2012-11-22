@@ -14,11 +14,9 @@ import com.kensai.animator.core.MessageSender;
 import com.kensai.animator.sdk.AbstractSubscriberAnimator;
 import com.kensai.animator.sdk.UserDataGenerator;
 import com.kensai.protocol.Trading.BuySell;
-import com.kensai.protocol.Trading.CommandStatus;
 import com.kensai.protocol.Trading.Instrument;
 import com.kensai.protocol.Trading.Order;
 import com.kensai.protocol.Trading.OrderAction;
-import com.kensai.protocol.Trading.SubscribeCommand;
 import com.kensai.protocol.Trading.SummariesSnapshot;
 import com.kensai.protocol.Trading.Summary;
 
@@ -101,23 +99,6 @@ public class RandomAnimator extends AbstractSubscriberAnimator {
 		Order order = Order.newBuilder().setAction(OrderAction.INSERT).setInitialQuantity(qty).setInstrument(instrument).setPrice(price).setSide(side)
 			.setUserData(userData).setUser(user).build();
 		getMessageSender().send(order);
-	}
-
-	@Override
-	public void onSubscribe(SubscribeCommand cmd) {
-		log.debug("onSubscribe({})", cmd);
-		if (cmd == null) {
-			log.warn("Receive an invalid SubscribeCommand: {}", cmd);
-			return;
-		}
-
-		if (cmd.getStatus().equals(CommandStatus.ACK)) {
-			log.info("Successfully connected to market!");
-
-		} else {
-			log.error("Can not subscribe to market. Schedule a retry...");
-			requestSubscribe();
-		}
 	}
 
 	@Override

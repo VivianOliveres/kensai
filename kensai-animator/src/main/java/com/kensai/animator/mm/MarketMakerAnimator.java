@@ -9,44 +9,24 @@ import org.slf4j.LoggerFactory;
 
 import com.kensai.animator.core.MessageSender;
 import com.kensai.animator.sdk.AbstractSubscriberAnimator;
-import com.kensai.protocol.Trading.CommandStatus;
 import com.kensai.protocol.Trading.Instrument;
-import com.kensai.protocol.Trading.SubscribeCommand;
 import com.kensai.protocol.Trading.SummariesSnapshot;
 import com.kensai.protocol.Trading.Summary;
 
 public class MarketMakerAnimator extends AbstractSubscriberAnimator {
-
 	private static final Logger log = LoggerFactory.getLogger(MarketMakerAnimator.class);
 
 	private final String user;
-	private final int minQty;
-	private final int maxQty;
+	private final int qty;
+	private final double delta;
 
 	private Map<Instrument, MarketMakerInstrumentAnimator> animators = newHashMap();
 
-	public MarketMakerAnimator(String user, int minQty, int maxQty) {
+	public MarketMakerAnimator(String user, int qty, double delta) {
 		super(user);
 		this.user = user;
-		this.minQty = minQty;
-		this.maxQty = maxQty;
-	}
-
-	@Override
-	public void onSubscribe(SubscribeCommand cmd) {
-		log.debug("onSubscribe({})", cmd);
-		if (cmd == null) {
-			log.warn("Receive an invalid SubscribeCommand: {}", cmd);
-			return;
-		}
-
-		if (cmd.getStatus().equals(CommandStatus.ACK)) {
-			log.info("Successfully connected to market!");
-
-		} else {
-			log.error("Can not subscribe to market. Schedule a retry...");
-			requestSubscribe();
-		}
+		this.qty = qty;
+		this.delta = delta;
 	}
 
 	@Override
@@ -64,7 +44,8 @@ public class MarketMakerAnimator extends AbstractSubscriberAnimator {
 				continue;
 			}
 
-			MarketMakerInstrumentAnimator animator = new MarketMakerInstrumentAnimator(user, minQty, maxQty, instrument, getMessageSender());
+			MarketMakerInstrumentAnimator animator = new MarketMakerInstrumentAnimator(user, qty, delta, instrument, getMessageSender());
+			animator.setMessageSender(getMessageSender());
 			animators.put(instrument, animator);
 			animator.onSummary(summary);
 		}
@@ -72,6 +53,8 @@ public class MarketMakerAnimator extends AbstractSubscriberAnimator {
 
 	@Override
 	public void onSummary(Summary summary) {
+		log.debug("onSummary({})", summary);
+
 		// Retrieve InstrumentAnimator (or create it)
 		Instrument instrument = summary.getInstrument();
 		MarketMakerInstrumentAnimator animator;
@@ -79,7 +62,8 @@ public class MarketMakerAnimator extends AbstractSubscriberAnimator {
 			animator = animators.get(instrument);
 
 		} else {
-			animator = new MarketMakerInstrumentAnimator(user, minQty, maxQty, instrument, getMessageSender());
+			animator = new MarketMakerInstrumentAnimator(user, qty, delta, instrument, getMessageSender());
+			animator.setMessageSender(getMessageSender());
 			animators.put(instrument, animator);
 		}
 
@@ -94,5 +78,4 @@ public class MarketMakerAnimator extends AbstractSubscriberAnimator {
 		// Send subscribe
 		subscribe();
 	}
-
 }

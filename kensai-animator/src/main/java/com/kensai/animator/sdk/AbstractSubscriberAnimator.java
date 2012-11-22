@@ -3,10 +3,15 @@ package com.kensai.animator.sdk;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.kensai.animator.core.MessageSender;
+import com.kensai.protocol.Trading.CommandStatus;
 import com.kensai.protocol.Trading.SubscribeCommand;
 
 public class AbstractSubscriberAnimator extends AbstractAnimator {
+	private static final Logger log = LoggerFactory.getLogger(AbstractSubscriberAnimator.class);
 
 	private static final int DEFAULT_SUBSCRIPTION_TIME = 5000;
 
@@ -40,8 +45,26 @@ public class AbstractSubscriberAnimator extends AbstractAnimator {
 	}
 
 	protected void subscribe() {
+		log.info("Send subscribe command");
 		SubscribeCommand cmd = SubscribeCommand.newBuilder().setUser(user).build();
 		sender.send(cmd);
+	}
+
+	@Override
+	public void onSubscribe(SubscribeCommand cmd) {
+		log.debug("onSubscribe({})", cmd);
+		if (cmd == null) {
+			log.warn("Receive an invalid SubscribeCommand: {}", cmd);
+			return;
+		}
+
+		if (cmd.getStatus().equals(CommandStatus.ACK)) {
+			log.info("Successfully connected to market!");
+
+		} else {
+			log.error("Can not subscribe to market. Schedule a retry...");
+			requestSubscribe();
+		}
 	}
 
 	public MessageSender getMessageSender() {
