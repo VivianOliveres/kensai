@@ -4,7 +4,7 @@
 
 	<groupId>com.kensai</groupId>
 	<artifactId>kensai-protocol</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.5-SNAPSHOT</version>
 
 	<name>Kensai Protocol</name>
 	<description>Messaging API to make communicate clients and server (based on protobuf)</description>
