@@ -49,11 +49,17 @@ public class AnimatorClient {
 
 		// Configure the event pipeline factory.
 		bootstrap.setPipelineFactory(new AnimatorChannelPipelineFactory(animator));
+		bootstrap.setOption("tcpNoDelay", true);
+		bootstrap.setOption("keepAlive", true);
 
 		// Make a new connection.
 		ChannelFuture connectFuture = bootstrap.connect(new InetSocketAddress(host, port));
 
 		// Wait until the connection is made successfully.
 		connectFuture.awaitUninterruptibly();
+		if (!connectFuture.isSuccess()) {
+			log.error("Can not connect to server [" + host + ":" + port + "]", connectFuture.getCause());
+			System.exit(0);
+		}
 	}
 }
