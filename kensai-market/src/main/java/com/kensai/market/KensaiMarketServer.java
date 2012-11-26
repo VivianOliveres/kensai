@@ -42,11 +42,11 @@ public class KensaiMarketServer {
 		// Set DefaultUncaughtExceptionHandler for all threads
 		Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
 
-		// Create ChannelFactory which uses only one thread for ChannelHandler
+		// Create ChannelFactory which uses only one thread for ChannelHandler (Thread-confinement strategy)
 		ThreadFactory coreThreadFactory = new ThreadFactoryBuilder().setDaemon(false).setNameFormat("CoreThread")
 			.setUncaughtExceptionHandler(exceptionHandler).build();
 		ExecutorService coreExecutor = Executors.newSingleThreadExecutor(coreThreadFactory);
-		ChannelFactory factory = new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), coreExecutor);
+		ChannelFactory factory = new NioServerSocketChannelFactory(Executors.newCachedThreadPool(), coreExecutor, 1);
 
 		// Retrieve instruments and initial summaries
 		URL url = KensaiMarketServer.class.getClassLoader().getResource("cac.csv");
