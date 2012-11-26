@@ -51,6 +51,10 @@ public class RandomAnimator extends AbstractSubscriberAnimator {
 			@Override
 			public void run() {
 				synchronized (instruments) {
+					if (instruments.isEmpty()) {
+						return;
+					}
+
 					log.info("Run task on {} instruments", instruments.size());
 					for (Summary summary : instruments.values()) {
 						boolean isBuyOrder = random.nextBoolean();
