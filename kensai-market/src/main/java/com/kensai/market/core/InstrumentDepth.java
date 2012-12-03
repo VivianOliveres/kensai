@@ -48,6 +48,18 @@ public class InstrumentDepth {
 		return instrument;
 	}
 
+	public double getOpen() {
+		return open;
+	}
+
+	public double getClose() {
+		return close;
+	}
+
+	public double getLast() {
+		return last;
+	}
+
 	public Summary toSummary() {
 		return toSummaryBuilder().build();
 	}
@@ -156,7 +168,7 @@ public class InstrumentDepth {
 			return doInsert(orderToInsert, sellDepths, buyDepths);
 
 		} else {
-			// This order could match nothing
+			// This order matches nothing
 			return doInsertInSameSide(orderToInsert);
 		}
 	}

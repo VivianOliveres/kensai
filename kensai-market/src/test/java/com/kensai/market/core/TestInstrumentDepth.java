@@ -2,6 +2,7 @@ package com.kensai.market.core;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
+import org.fest.assertions.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,6 +10,7 @@ import com.kensai.market.factories.OrderFactory;
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.CommandStatus;
 import com.kensai.protocol.Trading.Instrument;
+import com.kensai.protocol.Trading.InstrumentType;
 import com.kensai.protocol.Trading.Order;
 import com.kensai.protocol.Trading.OrderStatus;
 import com.kensai.protocol.Trading.Summary;
@@ -26,6 +28,63 @@ public class TestInstrumentDepth {
 	@Before
 	public void init() {
 		depth = new InstrumentDepth(instr, open, close);
+	}
+
+	@Test
+	public void shouldInsertOrderWithDifferentInstrumentThrowsException() {
+		// GIVEN: an order with different instrument than one in depth
+		double price = 123.456;
+		int initialQty = 99;
+		BuySell side = BuySell.BUY;
+		Instrument other = Instrument.newBuilder().setIsin("my-isin").setMarket("my-market").setName("my-name").setType(InstrumentType.WARRANT).build();
+		Order order = OrderFactory.create(price, initialQty, side).setInstrument(other).build();
+
+		// WHEN: Insert this order
+		try {
+			depth.insert(order);
+			Assertions.failBecauseExceptionWasNotThrown(IllegalArgumentException.class);
+
+		} catch (RuntimeException e) {
+			assertThat(e).isNotNull();
+		}
+	}
+
+	@Test
+	public void shouldUpdateOrderWithDifferentInstrumentThrowsException() {
+		// GIVEN: an order with different instrument than one in depth
+		double price = 123.456;
+		int initialQty = 99;
+		BuySell side = BuySell.BUY;
+		Instrument other = Instrument.newBuilder().setIsin("my-isin").setMarket("my-market").setName("my-name").setType(InstrumentType.WARRANT).build();
+		Order order = OrderFactory.create(price, initialQty, side).setInstrument(other).build();
+
+		// WHEN: Update this order
+		try {
+			depth.insert(order);
+			Assertions.failBecauseExceptionWasNotThrown(IllegalArgumentException.class);
+
+		} catch (RuntimeException e) {
+			assertThat(e).isNotNull();
+		}
+	}
+
+	@Test
+	public void shouldDeleteOrderWithDifferentInstrumentThrowsException() {
+		// GIVEN: an order with different instrument than one in depth
+		double price = 123.456;
+		int initialQty = 99;
+		BuySell side = BuySell.BUY;
+		Instrument other = Instrument.newBuilder().setIsin("my-isin").setMarket("my-market").setName("my-name").setType(InstrumentType.WARRANT).build();
+		Order order = OrderFactory.create(price, initialQty, side).setInstrument(other).build();
+
+		// WHEN: Delete this order
+		try {
+			depth.insert(order);
+			Assertions.failBecauseExceptionWasNotThrown(IllegalArgumentException.class);
+
+		} catch (RuntimeException e) {
+			assertThat(e).isNotNull();
+		}
 	}
 
 	@Test
