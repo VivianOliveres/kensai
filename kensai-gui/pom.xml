@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>org.easytesting</groupId>
 			<artifactId>fest-assert-core</artifactId>
-			<version>2.0M2</version>
+			<version>2.0M8</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -63,26 +63,21 @@
 
 		<!-- Logs -->
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.0-beta3</version>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.6.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.6</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.0-beta3</version>
 		</dependency>
 
 		<!-- Utils -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>13.0.1</version>
+			<version>14.0-rc2</version>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
@@ -110,34 +105,12 @@
 		</dependency>
 
 		<!-- JavaFX -->
-     <dependency>
-         <groupId>com.oracle</groupId>
-         <artifactId>javafx</artifactId>
-         <version>2.2.3</version>
-            <systemPath>${fx.home}/jfxrt.jar</systemPath>
-         <scope>system</scope>
-     </dependency>
-
-		<!-- JacpFX dependencies -->
 		<dependency>
-			<groupId>org.jacp.project</groupId>
-			<artifactId>JACP.API</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jacp.project</groupId>
-			<artifactId>JACP.JavaFX</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jacp.project</groupId>
-			<artifactId>JACP.JavaFXSpring</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jacp.project</groupId>
-			<artifactId>JACP.JavaFXControls</artifactId>
-			<version>1.1</version>
+			<groupId>com.oracle</groupId>
+			<artifactId>javafx</artifactId>
+			<version>2.2.3</version>
+			<systemPath>${fx.home}/jfxrt.jar</systemPath>
+			<scope>system</scope>
 		</dependency>
 	</dependencies>
 </project>
