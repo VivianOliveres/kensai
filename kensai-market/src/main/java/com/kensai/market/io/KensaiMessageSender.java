@@ -3,9 +3,9 @@ package com.kensai.market.io;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jboss.netty.channel.Channel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Maps;
 import com.kensai.protocol.Trading.CommandStatus;
@@ -23,7 +23,7 @@ import com.kensai.protocol.Trading.UnsubscribeCommand;
 
 public class KensaiMessageSender {
 
-	private static final Logger log = LoggerFactory.getLogger(KensaiMessageSender.class);
+	private static final Logger log = LogManager.getLogger(KensaiMessageSender.class);
 
 	private Map<String, Channel> users = Maps.newHashMap();
 

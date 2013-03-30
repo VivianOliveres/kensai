@@ -9,8 +9,8 @@ import java.nio.file.Path;
 import java.util.Iterator;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.google.common.base.Splitter;
 import com.kensai.market.core.InstrumentDepth;
@@ -21,7 +21,7 @@ import com.kensai.protocol.Trading.Summary;
 
 public class InstrumentDepthsLoader {
 
-	public static final Logger log = LoggerFactory.getLogger(InstrumentDepthsLoader.class);
+	public static final Logger log = LogManager.getLogger(InstrumentDepthsLoader.class);
 
 	private final Path path;
 

@@ -1,11 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kensai</groupId>
 	<artifactId>kensai-market</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>Kensai Market</name>
 	<description>Test market</description>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -16,19 +18,19 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-			  <plugin>
-			    <groupId>org.pitest</groupId>
-			    <artifactId>pitest-maven</artifactId>
-			    <version>0.29</version>
-			    <configuration>
-			      <targetClasses>
-			        <param>com.kensai.market*</param>
-			      </targetClasses>
-			      <targetTests>
-			        <param>com.kensai.market*</param>
-			      </targetTests>
-			    </configuration>
-			  </plugin>
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>0.29</version>
+				<configuration>
+					<targetClasses>
+						<param>com.kensai.market*</param>
+					</targetClasses>
+					<targetTests>
+						<param>com.kensai.market*</param>
+					</targetTests>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -56,32 +58,31 @@
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
 		</dependency>
+
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.0-beta3</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.0-beta3</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.easytesting</groupId>
 			<artifactId>fest-assert-core</artifactId>
 			<version>2.0M2</version>
 		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.6.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.6</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
 			<version>1.9.5</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -92,6 +93,7 @@
 			<artifactId>joda-time</artifactId>
 			<version>2.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.google.protobuf</groupId>
 			<artifactId>protobuf-java</artifactId>
@@ -102,6 +104,7 @@
 			<artifactId>netty</artifactId>
 			<version>3.5.9.Final</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.kensai</groupId>
 			<artifactId>kensai-protocol</artifactId>

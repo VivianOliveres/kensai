@@ -2,13 +2,13 @@ package com.kensai.market;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ChannelStateEvent;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.kensai.protocol.Trading.CommandStatus;
 import com.kensai.protocol.Trading.Execution;
@@ -21,7 +21,7 @@ import com.kensai.protocol.Trading.UnsubscribeCommand;
 
 public class MarketClientChannelHandler extends SimpleChannelHandler {
 
-	private static final Logger log = LoggerFactory.getLogger(MarketClientChannelHandler.class);
+	private static final Logger log = LogManager.getLogger(MarketClientChannelHandler.class);
 
 	private Channel channel;
 
