@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration monitorInterval="30">
+
+  <properties>
+    <property name="log_file">target/$${date:yyyy-dd-MM-ss}-KensaiAnimator.log</property>
+    <property name="msg_layout">%d{HH:mm:ss SSS} [%-5level] [%-10t] %logger{1} - %m%n%ex</property>
+  </properties>
+
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${msg_layout}" />
+		</Console>
+
+		<RollingFile name="File" fileName="${log_file}" filePattern="${log_file}.%i">
+			<PatternLayout pattern="${msg_layout}" />
+			<SizeBasedTriggeringPolicy size="500 MB" />
+		</RollingFile>
+
+		<Asynch name="Asynch">
+			<appender-ref ref="File" />
+			<appender-ref ref="Console" />
+		</Asynch>
+	</appenders>
+
+	<loggers>
+		<root level="debug">
+			<appender-ref ref="Asynch" />
+		</root>
+	</loggers>
+</configuration>

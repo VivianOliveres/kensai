@@ -7,8 +7,8 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.kensai.animator.core.MessageSender;
 import com.kensai.animator.sdk.AbstractSubscriberAnimator;
@@ -22,7 +22,7 @@ import com.kensai.protocol.Trading.Summary;
 
 public class RandomAnimator extends AbstractSubscriberAnimator {
 
-	private static final Logger log = LoggerFactory.getLogger(RandomAnimator.class);
+	private static final Logger log = LogManager.getLogger(RandomAnimator.class);
 
 	private final Random random = new Random();
 

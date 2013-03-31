@@ -1,19 +1,19 @@
 package com.kensai.animator.core;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.channel.ChannelStateEvent;
 import org.jboss.netty.channel.ExceptionEvent;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.kensai.animator.sdk.Animator;
 import com.kensai.protocol.Trading.Messages;
 
 public class AnimatorChannelHandler extends SimpleChannelHandler {
 
-	private static final Logger log = LoggerFactory.getLogger(AnimatorChannelHandler.class);
+	private static final Logger log = LogManager.getLogger(AnimatorChannelHandler.class);
 
 	private final Animator animator;
 

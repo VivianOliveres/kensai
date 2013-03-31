@@ -3,15 +3,15 @@ package com.kensai.animator.sdk;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.kensai.animator.core.MessageSender;
 import com.kensai.protocol.Trading.CommandStatus;
 import com.kensai.protocol.Trading.SubscribeCommand;
 
 public class AbstractSubscriberAnimator extends AbstractAnimator {
-	private static final Logger log = LoggerFactory.getLogger(AbstractSubscriberAnimator.class);
+	private static final Logger log = LogManager.getLogger(AbstractSubscriberAnimator.class);
 
 	private static final int DEFAULT_SUBSCRIPTION_TIME = 5000;
 

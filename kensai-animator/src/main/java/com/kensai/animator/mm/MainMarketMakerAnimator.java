@@ -1,13 +1,13 @@
 package com.kensai.animator.mm;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.kensai.animator.core.AnimatorClient;
 import com.kensai.animator.sdk.Animator;
 
 public class MainMarketMakerAnimator {
-	private static final Logger log = LoggerFactory.getLogger(MainMarketMakerAnimator.class);
+	private static final Logger log = LogManager.getLogger(MainMarketMakerAnimator.class);
 
 	private static final String DEFAULT_HOST = "localhost";
 	private static final int DEFAULT_PORT = 1664;

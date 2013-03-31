@@ -6,18 +6,18 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jboss.netty.bootstrap.ClientBootstrap;
 import org.jboss.netty.channel.ChannelFuture;
 import org.jboss.netty.channel.socket.nio.NioClientSocketChannelFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.kensai.animator.sdk.Animator;
 
 public class AnimatorClient {
 
-	private static final Logger log = LoggerFactory.getLogger(AnimatorClient.class);
+	private static final Logger log = LogManager.getLogger(AnimatorClient.class);
 
 	private final String host;
 	private final int port;

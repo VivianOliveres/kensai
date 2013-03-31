@@ -4,8 +4,8 @@ import static com.google.common.collect.Maps.newHashMap;
 
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.kensai.animator.core.MessageSender;
 import com.kensai.animator.sdk.AbstractSubscriberAnimator;
@@ -14,7 +14,7 @@ import com.kensai.protocol.Trading.SummariesSnapshot;
 import com.kensai.protocol.Trading.Summary;
 
 public class MarketMakerAnimator extends AbstractSubscriberAnimator {
-	private static final Logger log = LoggerFactory.getLogger(MarketMakerAnimator.class);
+	private static final Logger log = LogManager.getLogger(MarketMakerAnimator.class);
 
 	private final String user;
 	private final int qty;

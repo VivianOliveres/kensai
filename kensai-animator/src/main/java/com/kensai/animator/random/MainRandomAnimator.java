@@ -2,14 +2,14 @@ package com.kensai.animator.random;
 
 import java.util.Random;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.kensai.animator.core.AnimatorClient;
 import com.kensai.animator.sdk.Animator;
 
 public class MainRandomAnimator {
-	private static final Logger log = LoggerFactory.getLogger(MainRandomAnimator.class);
+	private static final Logger log = LogManager.getLogger(MainRandomAnimator.class);
 
 	private static final String DEFAULT_HOST = "localhost";
 	private static final int DEFAULT_PORT = 1664;

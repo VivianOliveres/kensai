@@ -2,8 +2,8 @@ package com.kensai.animator.mm;
 
 import java.util.Random;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.kensai.animator.core.MessageSender;
 import com.kensai.animator.sdk.AbstractAnimator;
@@ -16,7 +16,7 @@ import com.kensai.protocol.Trading.SummariesSnapshot;
 import com.kensai.protocol.Trading.Summary;
 
 public class MarketMakerInstrumentAnimator extends AbstractAnimator {
-	private static final Logger log = LoggerFactory.getLogger(MarketMakerInstrumentAnimator.class);
+	private static final Logger log = LogManager.getLogger(MarketMakerInstrumentAnimator.class);
 
 	private final Random random = new Random();
 
