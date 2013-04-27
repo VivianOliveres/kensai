@@ -1,0 +1,185 @@
+.root {
+	/* Dark base
+	-fx-base: rgb(36, 36, 36);
+	-fx-background-color: black;*/ 
+
+    /* Blue base */
+	-fx-base: rgb(24, 61, 86); 
+	-fx-background-color: black;
+	
+	-fx-control-inner-background: rgb(71, 71, 71);
+	
+	/* Light Blue: Default light and mid colors for text
+	-fx-light-text-color: rgb(64,173,209);
+	-fx-mid-text-color: rgb(64,173,209); */
+	-fx-light-text-color: white;
+	-fx-mid-text-color: white;
+	
+	/* Color for selected text/item */
+	-fx-accent: derive(-fx-base, 60%);
+	
+	-fx-color: black;
+	
+	/* Color for scroll-bar-arrows, bowes, radio buttons
+	-fx-mark-color: derive(-fx-base, 100%);*/
+	-fx-mark-color: white;
+	
+	/* Color for hovered rows/cells in ListView, TableView, TreeView */
+	-fx-cell-hover-color: derive(-fx-base, -10%);
+
+	/* A blue gradient often re-used */
+	-linear-blue: linear-gradient(to bottom, derive(-fx-base,30%) 0%, derive(-fx-base,-60%) 100%);
+	-linear-blue-light: linear-gradient(to bottom, derive(-fx-base,70%) 0%, derive(-fx-base,-20%) 100%);
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TableView                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+.table-view {
+	-fx-table-cell-border-color: -fx-accent;
+}
+
+.table-row-cell:filled:selected:focused, .table-row-cell:filled:selected {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: -linear-blue;
+}
+
+/* Those two declarations avoid to paint empty cells */
+.table-row-cell:empty {
+    -fx-background-color: null;
+}
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ListView and ListCell                                                       *
+ *                                                                             *
+ ******************************************************************************/
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected, .list-view:horizontal .list-cell:filled:selected {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+/* Those two declarations avoid to paint empty cells */
+.list-cell:empty {
+    -fx-background-color: null;
+}
+.list-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ScrollBar                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+/* Replace use of -fx-color to -fx-base */
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color:
+        -fx-box-border,
+        linear-gradient(to bottom, derive(-fx-base,95%), derive(-fx-base,10%)),
+        linear-gradient(to bottom, derive(-fx-base,38%), derive(-fx-base,-16%));
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0.5em; /* makes sure this remains circular */
+}
+.scroll-bar:vertical .thumb {
+    -fx-background-color:
+        -fx-box-border,
+        linear-gradient(to right, derive(-fx-base,95%), derive(-fx-base,10%)),
+        linear-gradient(to right, derive(-fx-base,38%), derive(-fx-base,-16%));
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0.5em; /* makes sure this remains circular */
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TabPane                                                                     *
+ *                                                                             *
+ ******************************************************************************/
+
+/* Use -linear-blue for tabs background */
+.tab:top {
+    -fx-background-color: -fx-tab-border-color, -fx-inner-border, -linear-blue;
+}
+.tab:right {
+    -fx-background-color: -fx-tab-border-color, -fx-inner-border-bottomup, -linear-blue;
+}
+.tab:bottom {
+    -fx-background-color: -fx-tab-border-color, -fx-inner-border-bottomup, -linear-blue;
+}
+.tab:left {
+    -fx-background-color: -fx-tab-border-color, -fx-inner-border, -linear-blue;
+}
+
+/* Use -fx-accent for tab slected background */
+.tab:selected {
+    -fx-background-color: -linear-blue-light;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TextField                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.text-field {
+    -fx-background-color: -fx-accent, -fx-control-inner-background;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Menu                                                                        *
+ *                                                                             *
+ ******************************************************************************/
+
+.menu-bar {
+	/* Must overide -fx-base because default menu-bar overide it */
+	-fx-base: rgb(24, 61, 86);
+    -fx-background-color: -linear-blue;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ChoiceBox                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.combo-box-base .cell {
+    -fx-background-color: transparent;
+}
+
+
+
+
+
+
+/*******************************************************************************
+ *                                                                             *
+ * jfx-application-framework                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.decorated-view-header {
+	-fx-padding: 2.5 5 2.5 5;
+	-fx-background-color: linear-gradient(to left, derive(-fx-base, -75%) 0%, derive(-fx-base, 20%) 100%);
+}
+
+
+.decorated-view-header-label {
+	-fx-text-fill: red ;
+	-fx-font-weight: bold;
+	-fx-font-size: 12;
+}
+
+.decorated-view-header-provider {
+}
