@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import fr.kensai.fmk.providing.DataProvider;
 import fr.kensai.fmk.providing.DataProviderService;
+import fr.kensai.fmk.service.ServiceRepository;
 import fr.kensai.fmk.view.View;
 
 /**
@@ -41,6 +42,10 @@ public class DecoratedView extends Tab {
 	private final View view;
 
 	public DecoratedView(View view) {
+		this(view, ServiceRepository.getInstance().get(DataProviderService.class));
+	}
+
+	public DecoratedView(View view, DataProviderService service) {
 		this.view = view;
 		setText(view.getViewName());
 		setId(view.getViewName());
@@ -58,7 +63,7 @@ public class DecoratedView extends Tab {
 		// Create providerComboBox
 		Map<Class, ListChangeListener> dataProviderListeners = view.getDataProviderListeners();
 		if (dataProviderListeners != null && !dataProviderListeners.isEmpty()) {
-			providerComboBox = DataProviderService.getInstance().createDataProviderChooser(this);
+			providerComboBox = service.createDataProviderChooser(this);
 			providerComboBox.getStyleClass().add("decorated-view-header-provider");
 			headerPane.getChildren().add(providerComboBox);
 
@@ -71,7 +76,7 @@ public class DecoratedView extends Tab {
 		// Register view DataProvider (if any)
 		if (view.getDataProviders() != null) {
 			for (DataProvider provider : view.getDataProviders()) {
-				DataProviderService.getInstance().addDataProvider(provider);
+				service.addProvider(provider);
 			}
 		}
 

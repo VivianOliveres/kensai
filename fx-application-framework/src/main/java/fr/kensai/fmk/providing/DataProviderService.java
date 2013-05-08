@@ -1,26 +1,14 @@
 package fr.kensai.fmk.providing;
 
-import javafx.scene.control.ComboBox;
-import fr.kensai.fmk.docking.DecoratedView;
+import fr.kensai.fmk.service.Service;
 
-public class DataProviderService {
+public interface DataProviderService extends Service {
 
-	private static final DataProviderService instance = new DataProviderService();
+	void addProvider(DataProvider provider);
 
-	public static DataProviderService getInstance() {
-		return instance;
-	}
+	void removeProvider(DataProvider provider);
 
-	private DataProviderService() {
-		// Not instanciable
-	}
+	ProviderController addListener(DataListener listener);
 
-	public ComboBox<DataProvider> createDataProviderChooser(DecoratedView decoratedView) {
-		throw new RuntimeException("Not yet implemented");
-	}
-
-	public void addDataProvider(DataProvider provider) {
-		throw new RuntimeException("Not yet implemented");
-	}
-
+	void removeListener(DataListener listener);
 }
