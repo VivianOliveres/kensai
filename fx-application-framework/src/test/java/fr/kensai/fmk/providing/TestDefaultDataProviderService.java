@@ -1,4 +1,4 @@
-package fr.kensai.fmk;
+package fr.kensai.fmk.providing;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyList;

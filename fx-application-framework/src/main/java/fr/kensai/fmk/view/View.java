@@ -1,10 +1,9 @@
 package fr.kensai.fmk.view;
 
 import java.util.List;
-import java.util.Map;
 
-import javafx.collections.ListChangeListener;
 import javafx.scene.Node;
+import fr.kensai.fmk.providing.DataListener;
 import fr.kensai.fmk.providing.DataProvider;
 
 public interface View {
@@ -15,7 +14,7 @@ public interface View {
 
 	String getViewName();
 
-	Map<Class, ListChangeListener> getDataProviderListeners();
+	DataListener getDataListener();
 
 	List<DataProvider> getDataProviders();
 

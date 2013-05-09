@@ -1,15 +1,14 @@
 package fr.kensai.fmk.docking;
 
-import java.util.Map;
-
-import javafx.collections.ListChangeListener;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import fr.kensai.fmk.providing.DataListener;
 import fr.kensai.fmk.providing.DataProvider;
 import fr.kensai.fmk.providing.DataProviderService;
+import fr.kensai.fmk.providing.ProviderController;
 import fr.kensai.fmk.service.ServiceRepository;
 import fr.kensai.fmk.view.View;
 
@@ -47,6 +46,10 @@ public class DecoratedView extends Tab {
 
 	public DecoratedView(View view, DataProviderService service) {
 		this.view = view;
+		init(view, service);
+	}
+
+	private void init(View view2, DataProviderService service) {
 		setText(view.getViewName());
 		setId(view.getViewName());
 
@@ -61,24 +64,10 @@ public class DecoratedView extends Tab {
 		AnchorPane.setBottomAnchor(tabName, 2.5);
 
 		// Create providerComboBox
-		Map<Class, ListChangeListener> dataProviderListeners = view.getDataProviderListeners();
-		if (dataProviderListeners != null && !dataProviderListeners.isEmpty()) {
-			providerComboBox = service.createDataProviderChooser(this);
-			providerComboBox.getStyleClass().add("decorated-view-header-provider");
-			headerPane.getChildren().add(providerComboBox);
-
-			// providerComboBox is anchored at right
-			AnchorPane.setRightAnchor(providerComboBox, 5.0);
-			AnchorPane.setTopAnchor(providerComboBox, 2.5);
-			AnchorPane.setBottomAnchor(providerComboBox, 2.5);
-		}
+		registerDataListener(service);
 
 		// Register view DataProvider (if any)
-		if (view.getDataProviders() != null) {
-			for (DataProvider provider : view.getDataProviders()) {
-				service.addProvider(provider);
-			}
-		}
+		registerProviders(view, service);
 
 		// Init mainPane layout
 		headerPane.getStyleClass().add("decorated-view-header");
@@ -88,6 +77,35 @@ public class DecoratedView extends Tab {
 
 		// Init tab layout
 		setContent(mainPane);
+	}
+
+	private void registerDataListener(DataProviderService service) {
+		DataListener dataListener = view.getDataListener();
+		if (dataListener == null) {
+			return;
+		}
+
+		ProviderController controller = service.addListener(dataListener);
+		providerComboBox = controller.getComboBox();
+		if (providerComboBox.getStyleClass() != null) {
+			providerComboBox.getStyleClass().add("decorated-view-header-provider");
+		}
+		headerPane.getChildren().add(providerComboBox);
+
+		// providerComboBox is anchored at right
+		AnchorPane.setRightAnchor(providerComboBox, 5.0);
+		AnchorPane.setTopAnchor(providerComboBox, 2.5);
+		AnchorPane.setBottomAnchor(providerComboBox, 2.5);
+	}
+
+	private void registerProviders(View view, DataProviderService service) {
+		if (view.getDataProviders() == null) {
+			return;
+		}
+
+		for (DataProvider provider : view.getDataProviders()) {
+			service.addProvider(provider);
+		}
 	}
 
 	/*
