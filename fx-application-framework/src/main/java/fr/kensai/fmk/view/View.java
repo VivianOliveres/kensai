@@ -10,7 +10,9 @@ public interface View {
 
 	void init();
 
-	void setFactoryClass(Class<? extends FactoryView> class1);
+	Class<? extends FactoryView> getFactoryClass();
+
+	void setFactoryClass(Class<? extends FactoryView> factoryClass);
 
 	String getViewName();
 
