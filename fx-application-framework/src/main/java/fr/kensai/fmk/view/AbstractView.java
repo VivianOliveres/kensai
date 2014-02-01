@@ -14,10 +14,12 @@ public abstract class AbstractView implements View {
 		return viewName;
 	}
 
+	@Override
 	public void setFactoryClass(Class<? extends ViewFactory> factoryClass) {
 		this.factoryClass = factoryClass;
 	}
 
+	@Override
 	public Class<? extends ViewFactory> getFactoryClass() {
 		return factoryClass;
 	}
