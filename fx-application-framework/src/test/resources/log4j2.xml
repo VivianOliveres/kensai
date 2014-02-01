@@ -5,19 +5,15 @@
     <property name="msg_layout">%d{HH:mm:ss SSS} [%-5level] [%-10t] %logger{1} - %m%n%ex</property>
   </properties>
 
-	<appenders>
-		<Console name="Console" target="SYSTEM_OUT">
-			<PatternLayout pattern="${msg_layout}" />
-		</Console>
+  <appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="${msg_layout}" />
+    </Console>
+  </appenders>
 
-		<Asynch name="Asynch">
-			<appender-ref ref="Console" />
-		</Asynch>
-	</appenders>
-
-	<loggers>
-		<root level="debug">
-			<appender-ref ref="Asynch" />
-		</root>
-	</loggers>
+  <loggers>
+    <root level="debug">
+      <appender-ref ref="Console" />
+    </root>
+  </loggers>
 </configuration>
