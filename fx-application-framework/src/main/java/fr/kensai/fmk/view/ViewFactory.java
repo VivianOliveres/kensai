@@ -1,6 +1,6 @@
 package fr.kensai.fmk.view;
 
-public interface FactoryView {
+public interface ViewFactory {
 
 	String getGenericViewName();
 

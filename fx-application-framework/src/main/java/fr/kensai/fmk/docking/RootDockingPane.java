@@ -19,7 +19,7 @@ import com.google.common.collect.Maps;
 import fr.kensai.fmk.persist.ContainerPersist;
 import fr.kensai.fmk.persist.NodePersist;
 import fr.kensai.fmk.persist.ViewPersist;
-import fr.kensai.fmk.view.FactoryView;
+import fr.kensai.fmk.view.ViewFactory;
 import fr.kensai.fmk.view.View;
 
 /**
@@ -43,9 +43,9 @@ public class RootDockingPane extends BorderPane {
 	/**
 	 * All factories instances. Used when reloading layout to recreate View Instance(s).
 	 */
-	private List<FactoryView> factories;
+	private List<ViewFactory> factories;
 
-	public RootDockingPane(List<FactoryView> factories) {
+	public RootDockingPane(List<ViewFactory> factories) {
 		this.factories = factories;
 		root = new DockedContainer(true, this);
 		setCenter(root);
@@ -89,7 +89,7 @@ public class RootDockingPane extends BorderPane {
 		root.setDividerPositions(rootPersisted.getDividerPositions());
 	}
 
-	public void createAndShowFloatingView(FactoryView factory) {
+	public void createAndShowFloatingView(ViewFactory factory) {
 		String viewName = generateUniqueViewName(factory.getGenericViewName());
 		View view = factory.createView(viewName);
 		view.init();
@@ -100,7 +100,7 @@ public class RootDockingPane extends BorderPane {
 		views.put(decoratedView.getText(), decoratedView);
 
 		Scene sceneView = new Scene(tabPane);
-		sceneView.getStylesheets().add("north/marketaccess/nma/jfxappfwk/jfx-application-framework.css");
+		sceneView.getStylesheets().add("fx-app-fmk.css");
 
 		final Stage stage = new Stage();
 		stage.setScene(sceneView);
@@ -119,8 +119,8 @@ public class RootDockingPane extends BorderPane {
 
 	public DecoratedView createView(ViewPersist viewPersist) {
 		// Retrieve FactoryView used to instanciate this view instance
-		FactoryView factory = null;
-		for (FactoryView viewFactory : factories) {
+		ViewFactory factory = null;
+		for (ViewFactory viewFactory : factories) {
 			if (viewFactory.getClass().equals(viewPersist.getFactoryClass())) {
 				factory = viewFactory;
 				break;

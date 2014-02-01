@@ -3,7 +3,7 @@ package fr.kensai.fmk.view;
 public abstract class AbstractView implements View {
 
 	private final String viewName;
-	private Class<? extends FactoryView> factoryClass;
+	private Class<? extends ViewFactory> factoryClass;
 
 	public AbstractView(String viewName) {
 		this.viewName = viewName;
@@ -14,11 +14,11 @@ public abstract class AbstractView implements View {
 		return viewName;
 	}
 
-	public void setFactoryClass(Class<? extends FactoryView> factoryClass) {
+	public void setFactoryClass(Class<? extends ViewFactory> factoryClass) {
 		this.factoryClass = factoryClass;
 	}
 
-	public Class<? extends FactoryView> getFactoryClass() {
+	public Class<? extends ViewFactory> getFactoryClass() {
 		return factoryClass;
 	}
 }
