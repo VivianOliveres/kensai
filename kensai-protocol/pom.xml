@@ -32,6 +32,31 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<tasks>
+								<exec executable="/home/kensai/Téléchargements/protobuf-2.5.0-bin/bin/protoc">
+									<arg value="--proto_path=src/main/resources/" />
+
+									<arg value="--java_out=src/main/java" />
+									<arg value="src/main/resources/trading.proto" />
+								</exec>
+
+							</tasks>
+							<sourceRoot>target/generated-sources</sourceRoot>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

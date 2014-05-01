@@ -8,22 +8,49 @@ public final class Trading {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code protocol.InstrumentType}
+   */
   public enum InstrumentType
       implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>STOCK = 0;</code>
+     */
     STOCK(0, 0),
+    /**
+     * <code>FUTURE = 1;</code>
+     */
     FUTURE(1, 1),
+    /**
+     * <code>OPTION = 2;</code>
+     */
     OPTION(2, 2),
+    /**
+     * <code>WARRANT = 3;</code>
+     */
     WARRANT(3, 3),
     ;
-    
+
+    /**
+     * <code>STOCK = 0;</code>
+     */
     public static final int STOCK_VALUE = 0;
+    /**
+     * <code>FUTURE = 1;</code>
+     */
     public static final int FUTURE_VALUE = 1;
+    /**
+     * <code>OPTION = 2;</code>
+     */
     public static final int OPTION_VALUE = 2;
+    /**
+     * <code>WARRANT = 3;</code>
+     */
     public static final int WARRANT_VALUE = 3;
-    
-    
+
+
     public final int getNumber() { return value; }
-    
+
     public static InstrumentType valueOf(int value) {
       switch (value) {
         case 0: return STOCK;
@@ -33,7 +60,7 @@ public final class Trading {
         default: return null;
       }
     }
-    
+
     public static com.google.protobuf.Internal.EnumLiteMap<InstrumentType>
         internalGetValueMap() {
       return internalValueMap;
@@ -45,7 +72,7 @@ public final class Trading {
               return InstrumentType.valueOf(number);
             }
           };
-    
+
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -58,11 +85,9 @@ public final class Trading {
         getDescriptor() {
       return com.kensai.protocol.Trading.getDescriptor().getEnumTypes().get(0);
     }
-    
-    private static final InstrumentType[] VALUES = {
-      STOCK, FUTURE, OPTION, WARRANT, 
-    };
-    
+
+    private static final InstrumentType[] VALUES = values();
+
     public static InstrumentType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -71,32 +96,53 @@ public final class Trading {
       }
       return VALUES[desc.getIndex()];
     }
-    
+
     private final int index;
     private final int value;
-    
+
     private InstrumentType(int index, int value) {
       this.index = index;
       this.value = value;
     }
-    
+
     // @@protoc_insertion_point(enum_scope:protocol.InstrumentType)
   }
-  
+
+  /**
+   * Protobuf enum {@code protocol.OrderAction}
+   */
   public enum OrderAction
       implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>INSERT = 0;</code>
+     */
     INSERT(0, 0),
+    /**
+     * <code>UPDATE = 1;</code>
+     */
     UPDATE(1, 1),
+    /**
+     * <code>DELETE = 2;</code>
+     */
     DELETE(2, 2),
     ;
-    
+
+    /**
+     * <code>INSERT = 0;</code>
+     */
     public static final int INSERT_VALUE = 0;
+    /**
+     * <code>UPDATE = 1;</code>
+     */
     public static final int UPDATE_VALUE = 1;
+    /**
+     * <code>DELETE = 2;</code>
+     */
     public static final int DELETE_VALUE = 2;
-    
-    
+
+
     public final int getNumber() { return value; }
-    
+
     public static OrderAction valueOf(int value) {
       switch (value) {
         case 0: return INSERT;
@@ -105,7 +151,7 @@ public final class Trading {
         default: return null;
       }
     }
-    
+
     public static com.google.protobuf.Internal.EnumLiteMap<OrderAction>
         internalGetValueMap() {
       return internalValueMap;
@@ -117,7 +163,7 @@ public final class Trading {
               return OrderAction.valueOf(number);
             }
           };
-    
+
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -130,11 +176,9 @@ public final class Trading {
         getDescriptor() {
       return com.kensai.protocol.Trading.getDescriptor().getEnumTypes().get(1);
     }
-    
-    private static final OrderAction[] VALUES = {
-      INSERT, UPDATE, DELETE, 
-    };
-    
+
+    private static final OrderAction[] VALUES = values();
+
     public static OrderAction valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -143,30 +187,45 @@ public final class Trading {
       }
       return VALUES[desc.getIndex()];
     }
-    
+
     private final int index;
     private final int value;
-    
+
     private OrderAction(int index, int value) {
       this.index = index;
       this.value = value;
     }
-    
+
     // @@protoc_insertion_point(enum_scope:protocol.OrderAction)
   }
-  
+
+  /**
+   * Protobuf enum {@code protocol.CommandStatus}
+   */
   public enum CommandStatus
       implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ACK = 0;</code>
+     */
     ACK(0, 0),
+    /**
+     * <code>NACK = 1;</code>
+     */
     NACK(1, 1),
     ;
-    
+
+    /**
+     * <code>ACK = 0;</code>
+     */
     public static final int ACK_VALUE = 0;
+    /**
+     * <code>NACK = 1;</code>
+     */
     public static final int NACK_VALUE = 1;
-    
-    
+
+
     public final int getNumber() { return value; }
-    
+
     public static CommandStatus valueOf(int value) {
       switch (value) {
         case 0: return ACK;
@@ -174,7 +233,7 @@ public final class Trading {
         default: return null;
       }
     }
-    
+
     public static com.google.protobuf.Internal.EnumLiteMap<CommandStatus>
         internalGetValueMap() {
       return internalValueMap;
@@ -186,7 +245,7 @@ public final class Trading {
               return CommandStatus.valueOf(number);
             }
           };
-    
+
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -199,11 +258,9 @@ public final class Trading {
         getDescriptor() {
       return com.kensai.protocol.Trading.getDescriptor().getEnumTypes().get(2);
     }
-    
-    private static final CommandStatus[] VALUES = {
-      ACK, NACK, 
-    };
-    
+
+    private static final CommandStatus[] VALUES = values();
+
     public static CommandStatus valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -212,32 +269,53 @@ public final class Trading {
       }
       return VALUES[desc.getIndex()];
     }
-    
+
     private final int index;
     private final int value;
-    
+
     private CommandStatus(int index, int value) {
       this.index = index;
       this.value = value;
     }
-    
+
     // @@protoc_insertion_point(enum_scope:protocol.CommandStatus)
   }
-  
+
+  /**
+   * Protobuf enum {@code protocol.BuySell}
+   */
   public enum BuySell
       implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>BUY = 0;</code>
+     */
     BUY(0, 0),
+    /**
+     * <code>SELL = 1;</code>
+     */
     SELL(1, 1),
+    /**
+     * <code>BOTH = 2;</code>
+     */
     BOTH(2, 2),
     ;
-    
+
+    /**
+     * <code>BUY = 0;</code>
+     */
     public static final int BUY_VALUE = 0;
+    /**
+     * <code>SELL = 1;</code>
+     */
     public static final int SELL_VALUE = 1;
+    /**
+     * <code>BOTH = 2;</code>
+     */
     public static final int BOTH_VALUE = 2;
-    
-    
+
+
     public final int getNumber() { return value; }
-    
+
     public static BuySell valueOf(int value) {
       switch (value) {
         case 0: return BUY;
@@ -246,7 +324,7 @@ public final class Trading {
         default: return null;
       }
     }
-    
+
     public static com.google.protobuf.Internal.EnumLiteMap<BuySell>
         internalGetValueMap() {
       return internalValueMap;
@@ -258,7 +336,7 @@ public final class Trading {
               return BuySell.valueOf(number);
             }
           };
-    
+
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -271,11 +349,9 @@ public final class Trading {
         getDescriptor() {
       return com.kensai.protocol.Trading.getDescriptor().getEnumTypes().get(3);
     }
-    
-    private static final BuySell[] VALUES = {
-      BUY, SELL, BOTH, 
-    };
-    
+
+    private static final BuySell[] VALUES = values();
+
     public static BuySell valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -284,32 +360,53 @@ public final class Trading {
       }
       return VALUES[desc.getIndex()];
     }
-    
+
     private final int index;
     private final int value;
-    
+
     private BuySell(int index, int value) {
       this.index = index;
       this.value = value;
     }
-    
+
     // @@protoc_insertion_point(enum_scope:protocol.BuySell)
   }
-  
+
+  /**
+   * Protobuf enum {@code protocol.OrderStatus}
+   */
   public enum OrderStatus
       implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ON_MARKET = 0;</code>
+     */
     ON_MARKET(0, 0),
+    /**
+     * <code>TERMINATED = 1;</code>
+     */
     TERMINATED(1, 1),
+    /**
+     * <code>DELETED = 2;</code>
+     */
     DELETED(2, 2),
     ;
-    
+
+    /**
+     * <code>ON_MARKET = 0;</code>
+     */
     public static final int ON_MARKET_VALUE = 0;
+    /**
+     * <code>TERMINATED = 1;</code>
+     */
     public static final int TERMINATED_VALUE = 1;
+    /**
+     * <code>DELETED = 2;</code>
+     */
     public static final int DELETED_VALUE = 2;
-    
-    
+
+
     public final int getNumber() { return value; }
-    
+
     public static OrderStatus valueOf(int value) {
       switch (value) {
         case 0: return ON_MARKET;
@@ -318,7 +415,7 @@ public final class Trading {
         default: return null;
       }
     }
-    
+
     public static com.google.protobuf.Internal.EnumLiteMap<OrderStatus>
         internalGetValueMap() {
       return internalValueMap;
@@ -330,7 +427,7 @@ public final class Trading {
               return OrderStatus.valueOf(number);
             }
           };
-    
+
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -343,11 +440,9 @@ public final class Trading {
         getDescriptor() {
       return com.kensai.protocol.Trading.getDescriptor().getEnumTypes().get(4);
     }
-    
-    private static final OrderStatus[] VALUES = {
-      ON_MARKET, TERMINATED, DELETED, 
-    };
-    
+
+    private static final OrderStatus[] VALUES = values();
+
     public static OrderStatus valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -356,34 +451,61 @@ public final class Trading {
       }
       return VALUES[desc.getIndex()];
     }
-    
+
     private final int index;
     private final int value;
-    
+
     private OrderStatus(int index, int value) {
       this.index = index;
       this.value = value;
     }
-    
+
     // @@protoc_insertion_point(enum_scope:protocol.OrderStatus)
   }
-  
+
+  /**
+   * Protobuf enum {@code protocol.MarketStatus}
+   */
   public enum MarketStatus
       implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>OPEN = 0;</code>
+     */
     OPEN(0, 0),
+    /**
+     * <code>CLOSE = 1;</code>
+     */
     CLOSE(1, 1),
+    /**
+     * <code>PREOPEN = 2;</code>
+     */
     PREOPEN(2, 2),
+    /**
+     * <code>PRECLOSE = 3;</code>
+     */
     PRECLOSE(3, 3),
     ;
-    
+
+    /**
+     * <code>OPEN = 0;</code>
+     */
     public static final int OPEN_VALUE = 0;
+    /**
+     * <code>CLOSE = 1;</code>
+     */
     public static final int CLOSE_VALUE = 1;
+    /**
+     * <code>PREOPEN = 2;</code>
+     */
     public static final int PREOPEN_VALUE = 2;
+    /**
+     * <code>PRECLOSE = 3;</code>
+     */
     public static final int PRECLOSE_VALUE = 3;
-    
-    
+
+
     public final int getNumber() { return value; }
-    
+
     public static MarketStatus valueOf(int value) {
       switch (value) {
         case 0: return OPEN;
@@ -393,7 +515,7 @@ public final class Trading {
         default: return null;
       }
     }
-    
+
     public static com.google.protobuf.Internal.EnumLiteMap<MarketStatus>
         internalGetValueMap() {
       return internalValueMap;
@@ -405,7 +527,7 @@ public final class Trading {
               return MarketStatus.valueOf(number);
             }
           };
-    
+
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -418,11 +540,9 @@ public final class Trading {
         getDescriptor() {
       return com.kensai.protocol.Trading.getDescriptor().getEnumTypes().get(5);
     }
-    
-    private static final MarketStatus[] VALUES = {
-      OPEN, CLOSE, PREOPEN, PRECLOSE, 
-    };
-    
+
+    private static final MarketStatus[] VALUES = values();
+
     public static MarketStatus valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -431,530 +551,139 @@ public final class Trading {
       }
       return VALUES[desc.getIndex()];
     }
-    
+
     private final int index;
     private final int value;
-    
+
     private MarketStatus(int index, int value) {
       this.index = index;
       this.value = value;
     }
-    
+
     // @@protoc_insertion_point(enum_scope:protocol.MarketStatus)
   }
-  
+
   public interface InstrumentOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // required string isin = 1;
+    /**
+     * <code>required string isin = 1;</code>
+     */
     boolean hasIsin();
-    String getIsin();
-    
+    /**
+     * <code>required string isin = 1;</code>
+     */
+    java.lang.String getIsin();
+    /**
+     * <code>required string isin = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIsinBytes();
+
     // optional string name = 2;
+    /**
+     * <code>optional string name = 2;</code>
+     */
     boolean hasName();
-    String getName();
-    
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
     // optional string market = 3;
+    /**
+     * <code>optional string market = 3;</code>
+     */
     boolean hasMarket();
-    String getMarket();
-    
+    /**
+     * <code>optional string market = 3;</code>
+     */
+    java.lang.String getMarket();
+    /**
+     * <code>optional string market = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getMarketBytes();
+
     // optional string description = 4;
+    /**
+     * <code>optional string description = 4;</code>
+     */
     boolean hasDescription();
-    String getDescription();
-    
+    /**
+     * <code>optional string description = 4;</code>
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>optional string description = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
+
     // optional .protocol.InstrumentType type = 5;
+    /**
+     * <code>optional .protocol.InstrumentType type = 5;</code>
+     */
     boolean hasType();
+    /**
+     * <code>optional .protocol.InstrumentType type = 5;</code>
+     */
     com.kensai.protocol.Trading.InstrumentType getType();
   }
+  /**
+   * Protobuf type {@code protocol.Instrument}
+   */
   public static final class Instrument extends
       com.google.protobuf.GeneratedMessage
       implements InstrumentOrBuilder {
     // Use Instrument.newBuilder() to construct.
-    private Instrument(Builder builder) {
+    private Instrument(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Instrument(boolean noInit) {}
-    
+    private Instrument(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final Instrument defaultInstance;
     public static Instrument getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public Instrument getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.kensai.protocol.Trading.internal_static_protocol_Instrument_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_Instrument_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // required string isin = 1;
-    public static final int ISIN_FIELD_NUMBER = 1;
-    private java.lang.Object isin_;
-    public boolean hasIsin() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public String getIsin() {
-      java.lang.Object ref = isin_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          isin_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getIsinBytes() {
-      java.lang.Object ref = isin_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        isin_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // optional string name = 2;
-    public static final int NAME_FIELD_NUMBER = 2;
-    private java.lang.Object name_;
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          name_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // optional string market = 3;
-    public static final int MARKET_FIELD_NUMBER = 3;
-    private java.lang.Object market_;
-    public boolean hasMarket() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public String getMarket() {
-      java.lang.Object ref = market_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          market_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getMarketBytes() {
-      java.lang.Object ref = market_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        market_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // optional string description = 4;
-    public static final int DESCRIPTION_FIELD_NUMBER = 4;
-    private java.lang.Object description_;
-    public boolean hasDescription() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    public String getDescription() {
-      java.lang.Object ref = description_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          description_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getDescriptionBytes() {
-      java.lang.Object ref = description_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        description_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // optional .protocol.InstrumentType type = 5;
-    public static final int TYPE_FIELD_NUMBER = 5;
-    private com.kensai.protocol.Trading.InstrumentType type_;
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    public com.kensai.protocol.Trading.InstrumentType getType() {
-      return type_;
-    }
-    
-    private void initFields() {
-      isin_ = "";
-      name_ = "";
-      market_ = "";
-      description_ = "";
-      type_ = com.kensai.protocol.Trading.InstrumentType.STOCK;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasIsin()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIsinBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getMarketBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getDescriptionBytes());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeEnum(5, type_.getNumber());
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIsinBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getMarketBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getDescriptionBytes());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(5, type_.getNumber());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
     }
-    
-    public static com.kensai.protocol.Trading.Instrument parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Instrument parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Instrument parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Instrument parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Instrument parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Instrument parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Instrument parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.kensai.protocol.Trading.Instrument parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.kensai.protocol.Trading.Instrument parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Instrument parseFrom(
+    private Instrument(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.kensai.protocol.Trading.Instrument prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.kensai.protocol.Trading.InstrumentOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kensai.protocol.Trading.internal_static_protocol_Instrument_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_Instrument_fieldAccessorTable;
-      }
-      
-      // Construct using com.kensai.protocol.Trading.Instrument.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        isin_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        market_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        description_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
-        type_ = com.kensai.protocol.Trading.InstrumentType.STOCK;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kensai.protocol.Trading.Instrument.getDescriptor();
-      }
-      
-      public com.kensai.protocol.Trading.Instrument getDefaultInstanceForType() {
-        return com.kensai.protocol.Trading.Instrument.getDefaultInstance();
-      }
-      
-      public com.kensai.protocol.Trading.Instrument build() {
-        com.kensai.protocol.Trading.Instrument result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private com.kensai.protocol.Trading.Instrument buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.Instrument result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public com.kensai.protocol.Trading.Instrument buildPartial() {
-        com.kensai.protocol.Trading.Instrument result = new com.kensai.protocol.Trading.Instrument(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.isin_ = isin_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.name_ = name_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.market_ = market_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.description_ = description_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.type_ = type_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kensai.protocol.Trading.Instrument) {
-          return mergeFrom((com.kensai.protocol.Trading.Instrument)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(com.kensai.protocol.Trading.Instrument other) {
-        if (other == com.kensai.protocol.Trading.Instrument.getDefaultInstance()) return this;
-        if (other.hasIsin()) {
-          setIsin(other.getIsin());
-        }
-        if (other.hasName()) {
-          setName(other.getName());
-        }
-        if (other.hasMarket()) {
-          setMarket(other.getMarket());
-        }
-        if (other.hasDescription()) {
-          setDescription(other.getDescription());
-        }
-        if (other.hasType()) {
-          setType(other.getType());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        if (!hasIsin()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -991,26 +720,586 @@ public final class Trading {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.kensai.protocol.Trading.internal_static_protocol_Instrument_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.kensai.protocol.Trading.internal_static_protocol_Instrument_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.Instrument.class, com.kensai.protocol.Trading.Instrument.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Instrument> PARSER =
+        new com.google.protobuf.AbstractParser<Instrument>() {
+      public Instrument parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Instrument(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Instrument> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string isin = 1;
+    public static final int ISIN_FIELD_NUMBER = 1;
+    private java.lang.Object isin_;
+    /**
+     * <code>required string isin = 1;</code>
+     */
+    public boolean hasIsin() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string isin = 1;</code>
+     */
+    public java.lang.String getIsin() {
+      java.lang.Object ref = isin_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          isin_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string isin = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIsinBytes() {
+      java.lang.Object ref = isin_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        isin_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string name = 2;
+    public static final int NAME_FIELD_NUMBER = 2;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string market = 3;
+    public static final int MARKET_FIELD_NUMBER = 3;
+    private java.lang.Object market_;
+    /**
+     * <code>optional string market = 3;</code>
+     */
+    public boolean hasMarket() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string market = 3;</code>
+     */
+    public java.lang.String getMarket() {
+      java.lang.Object ref = market_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          market_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string market = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMarketBytes() {
+      java.lang.Object ref = market_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        market_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string description = 4;
+    public static final int DESCRIPTION_FIELD_NUMBER = 4;
+    private java.lang.Object description_;
+    /**
+     * <code>optional string description = 4;</code>
+     */
+    public boolean hasDescription() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional string description = 4;</code>
+     */
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          description_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string description = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional .protocol.InstrumentType type = 5;
+    public static final int TYPE_FIELD_NUMBER = 5;
+    private com.kensai.protocol.Trading.InstrumentType type_;
+    /**
+     * <code>optional .protocol.InstrumentType type = 5;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .protocol.InstrumentType type = 5;</code>
+     */
+    public com.kensai.protocol.Trading.InstrumentType getType() {
+      return type_;
+    }
+
+    private void initFields() {
+      isin_ = "";
+      name_ = "";
+      market_ = "";
+      description_ = "";
+      type_ = com.kensai.protocol.Trading.InstrumentType.STOCK;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasIsin()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIsinBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getMarketBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getDescriptionBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeEnum(5, type_.getNumber());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIsinBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getMarketBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getDescriptionBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, type_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.kensai.protocol.Trading.Instrument parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kensai.protocol.Trading.Instrument parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Instrument parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kensai.protocol.Trading.Instrument parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Instrument parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.kensai.protocol.Trading.Instrument parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Instrument parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.kensai.protocol.Trading.Instrument parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Instrument parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.kensai.protocol.Trading.Instrument parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.kensai.protocol.Trading.Instrument prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protocol.Instrument}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.kensai.protocol.Trading.InstrumentOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.kensai.protocol.Trading.internal_static_protocol_Instrument_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.kensai.protocol.Trading.internal_static_protocol_Instrument_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.Instrument.class, com.kensai.protocol.Trading.Instrument.Builder.class);
+      }
+
+      // Construct using com.kensai.protocol.Trading.Instrument.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        isin_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        market_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        description_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        type_ = com.kensai.protocol.Trading.InstrumentType.STOCK;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.kensai.protocol.Trading.internal_static_protocol_Instrument_descriptor;
+      }
+
+      public com.kensai.protocol.Trading.Instrument getDefaultInstanceForType() {
+        return com.kensai.protocol.Trading.Instrument.getDefaultInstance();
+      }
+
+      public com.kensai.protocol.Trading.Instrument build() {
+        com.kensai.protocol.Trading.Instrument result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.kensai.protocol.Trading.Instrument buildPartial() {
+        com.kensai.protocol.Trading.Instrument result = new com.kensai.protocol.Trading.Instrument(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.isin_ = isin_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.market_ = market_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.description_ = description_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.type_ = type_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.kensai.protocol.Trading.Instrument) {
+          return mergeFrom((com.kensai.protocol.Trading.Instrument)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.kensai.protocol.Trading.Instrument other) {
+        if (other == com.kensai.protocol.Trading.Instrument.getDefaultInstance()) return this;
+        if (other.hasIsin()) {
+          bitField0_ |= 0x00000001;
+          isin_ = other.isin_;
+          onChanged();
+        }
+        if (other.hasName()) {
+          bitField0_ |= 0x00000002;
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.hasMarket()) {
+          bitField0_ |= 0x00000004;
+          market_ = other.market_;
+          onChanged();
+        }
+        if (other.hasDescription()) {
+          bitField0_ |= 0x00000008;
+          description_ = other.description_;
+          onChanged();
+        }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasIsin()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.kensai.protocol.Trading.Instrument parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.Instrument) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
+
       // required string isin = 1;
       private java.lang.Object isin_ = "";
+      /**
+       * <code>required string isin = 1;</code>
+       */
       public boolean hasIsin() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public String getIsin() {
+      /**
+       * <code>required string isin = 1;</code>
+       */
+      public java.lang.String getIsin() {
         java.lang.Object ref = isin_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           isin_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setIsin(String value) {
+      /**
+       * <code>required string isin = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIsinBytes() {
+        java.lang.Object ref = isin_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          isin_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string isin = 1;</code>
+       */
+      public Builder setIsin(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1019,34 +1308,72 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>required string isin = 1;</code>
+       */
       public Builder clearIsin() {
         bitField0_ = (bitField0_ & ~0x00000001);
         isin_ = getDefaultInstance().getIsin();
         onChanged();
         return this;
       }
-      void setIsin(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
+      /**
+       * <code>required string isin = 1;</code>
+       */
+      public Builder setIsinBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         isin_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional string name = 2;
       private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 2;</code>
+       */
       public boolean hasName() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      public String getName() {
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public java.lang.String getName() {
         java.lang.Object ref = name_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           name_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setName(String value) {
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1055,34 +1382,72 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string name = 2;</code>
+       */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000002);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
-      void setName(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000002;
+      /**
+       * <code>optional string name = 2;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
         name_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional string market = 3;
       private java.lang.Object market_ = "";
+      /**
+       * <code>optional string market = 3;</code>
+       */
       public boolean hasMarket() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      public String getMarket() {
+      /**
+       * <code>optional string market = 3;</code>
+       */
+      public java.lang.String getMarket() {
         java.lang.Object ref = market_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           market_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setMarket(String value) {
+      /**
+       * <code>optional string market = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getMarketBytes() {
+        java.lang.Object ref = market_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          market_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string market = 3;</code>
+       */
+      public Builder setMarket(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1091,34 +1456,72 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string market = 3;</code>
+       */
       public Builder clearMarket() {
         bitField0_ = (bitField0_ & ~0x00000004);
         market_ = getDefaultInstance().getMarket();
         onChanged();
         return this;
       }
-      void setMarket(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000004;
+      /**
+       * <code>optional string market = 3;</code>
+       */
+      public Builder setMarketBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
         market_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional string description = 4;
       private java.lang.Object description_ = "";
+      /**
+       * <code>optional string description = 4;</code>
+       */
       public boolean hasDescription() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      public String getDescription() {
+      /**
+       * <code>optional string description = 4;</code>
+       */
+      public java.lang.String getDescription() {
         java.lang.Object ref = description_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           description_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setDescription(String value) {
+      /**
+       * <code>optional string description = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string description = 4;</code>
+       */
+      public Builder setDescription(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1127,26 +1530,46 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string description = 4;</code>
+       */
       public Builder clearDescription() {
         bitField0_ = (bitField0_ & ~0x00000008);
         description_ = getDefaultInstance().getDescription();
         onChanged();
         return this;
       }
-      void setDescription(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000008;
+      /**
+       * <code>optional string description = 4;</code>
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
         description_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional .protocol.InstrumentType type = 5;
       private com.kensai.protocol.Trading.InstrumentType type_ = com.kensai.protocol.Trading.InstrumentType.STOCK;
+      /**
+       * <code>optional .protocol.InstrumentType type = 5;</code>
+       */
       public boolean hasType() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
+      /**
+       * <code>optional .protocol.InstrumentType type = 5;</code>
+       */
       public com.kensai.protocol.Trading.InstrumentType getType() {
         return type_;
       }
+      /**
+       * <code>optional .protocol.InstrumentType type = 5;</code>
+       */
       public Builder setType(com.kensai.protocol.Trading.InstrumentType value) {
         if (value == null) {
           throw new NullPointerException();
@@ -1156,86 +1579,192 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional .protocol.InstrumentType type = 5;</code>
+       */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000010);
         type_ = com.kensai.protocol.Trading.InstrumentType.STOCK;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:protocol.Instrument)
     }
-    
+
     static {
       defaultInstance = new Instrument(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:protocol.Instrument)
   }
-  
+
   public interface InstrumentsSnapshotOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // repeated .protocol.Instrument instruments = 1;
+    /**
+     * <code>repeated .protocol.Instrument instruments = 1;</code>
+     */
     java.util.List<com.kensai.protocol.Trading.Instrument> 
         getInstrumentsList();
+    /**
+     * <code>repeated .protocol.Instrument instruments = 1;</code>
+     */
     com.kensai.protocol.Trading.Instrument getInstruments(int index);
+    /**
+     * <code>repeated .protocol.Instrument instruments = 1;</code>
+     */
     int getInstrumentsCount();
+    /**
+     * <code>repeated .protocol.Instrument instruments = 1;</code>
+     */
     java.util.List<? extends com.kensai.protocol.Trading.InstrumentOrBuilder> 
         getInstrumentsOrBuilderList();
+    /**
+     * <code>repeated .protocol.Instrument instruments = 1;</code>
+     */
     com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentsOrBuilder(
         int index);
   }
+  /**
+   * Protobuf type {@code protocol.InstrumentsSnapshot}
+   */
   public static final class InstrumentsSnapshot extends
       com.google.protobuf.GeneratedMessage
       implements InstrumentsSnapshotOrBuilder {
     // Use InstrumentsSnapshot.newBuilder() to construct.
-    private InstrumentsSnapshot(Builder builder) {
+    private InstrumentsSnapshot(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private InstrumentsSnapshot(boolean noInit) {}
-    
+    private InstrumentsSnapshot(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final InstrumentsSnapshot defaultInstance;
     public static InstrumentsSnapshot getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public InstrumentsSnapshot getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InstrumentsSnapshot(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                instruments_ = new java.util.ArrayList<com.kensai.protocol.Trading.Instrument>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              instruments_.add(input.readMessage(com.kensai.protocol.Trading.Instrument.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          instruments_ = java.util.Collections.unmodifiableList(instruments_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.kensai.protocol.Trading.internal_static_protocol_InstrumentsSnapshot_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_InstrumentsSnapshot_fieldAccessorTable;
+      return com.kensai.protocol.Trading.internal_static_protocol_InstrumentsSnapshot_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.InstrumentsSnapshot.class, com.kensai.protocol.Trading.InstrumentsSnapshot.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<InstrumentsSnapshot> PARSER =
+        new com.google.protobuf.AbstractParser<InstrumentsSnapshot>() {
+      public InstrumentsSnapshot parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InstrumentsSnapshot(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InstrumentsSnapshot> getParserForType() {
+      return PARSER;
+    }
+
     // repeated .protocol.Instrument instruments = 1;
     public static final int INSTRUMENTS_FIELD_NUMBER = 1;
     private java.util.List<com.kensai.protocol.Trading.Instrument> instruments_;
+    /**
+     * <code>repeated .protocol.Instrument instruments = 1;</code>
+     */
     public java.util.List<com.kensai.protocol.Trading.Instrument> getInstrumentsList() {
       return instruments_;
     }
+    /**
+     * <code>repeated .protocol.Instrument instruments = 1;</code>
+     */
     public java.util.List<? extends com.kensai.protocol.Trading.InstrumentOrBuilder> 
         getInstrumentsOrBuilderList() {
       return instruments_;
     }
+    /**
+     * <code>repeated .protocol.Instrument instruments = 1;</code>
+     */
     public int getInstrumentsCount() {
       return instruments_.size();
     }
+    /**
+     * <code>repeated .protocol.Instrument instruments = 1;</code>
+     */
     public com.kensai.protocol.Trading.Instrument getInstruments(int index) {
       return instruments_.get(index);
     }
+    /**
+     * <code>repeated .protocol.Instrument instruments = 1;</code>
+     */
     public com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentsOrBuilder(
         int index) {
       return instruments_.get(index);
     }
-    
+
     private void initFields() {
       instruments_ = java.util.Collections.emptyList();
     }
@@ -1243,7 +1772,7 @@ public final class Trading {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       for (int i = 0; i < getInstrumentsCount(); i++) {
         if (!getInstruments(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -1253,7 +1782,7 @@ public final class Trading {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -1262,12 +1791,12 @@ public final class Trading {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       for (int i = 0; i < instruments_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -1277,94 +1806,83 @@ public final class Trading {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static com.kensai.protocol.Trading.InstrumentsSnapshot parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.InstrumentsSnapshot parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.InstrumentsSnapshot parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.InstrumentsSnapshot parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.InstrumentsSnapshot parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.InstrumentsSnapshot parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.InstrumentsSnapshot parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.kensai.protocol.Trading.InstrumentsSnapshot parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.InstrumentsSnapshot parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.InstrumentsSnapshot parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.kensai.protocol.Trading.InstrumentsSnapshot prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code protocol.InstrumentsSnapshot}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.kensai.protocol.Trading.InstrumentsSnapshotOrBuilder {
@@ -1372,18 +1890,21 @@ public final class Trading {
           getDescriptor() {
         return com.kensai.protocol.Trading.internal_static_protocol_InstrumentsSnapshot_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_InstrumentsSnapshot_fieldAccessorTable;
+        return com.kensai.protocol.Trading.internal_static_protocol_InstrumentsSnapshot_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.InstrumentsSnapshot.class, com.kensai.protocol.Trading.InstrumentsSnapshot.Builder.class);
       }
-      
+
       // Construct using com.kensai.protocol.Trading.InstrumentsSnapshot.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1395,7 +1916,7 @@ public final class Trading {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         if (instrumentsBuilder_ == null) {
@@ -1406,20 +1927,20 @@ public final class Trading {
         }
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.kensai.protocol.Trading.InstrumentsSnapshot.getDescriptor();
+        return com.kensai.protocol.Trading.internal_static_protocol_InstrumentsSnapshot_descriptor;
       }
-      
+
       public com.kensai.protocol.Trading.InstrumentsSnapshot getDefaultInstanceForType() {
         return com.kensai.protocol.Trading.InstrumentsSnapshot.getDefaultInstance();
       }
-      
+
       public com.kensai.protocol.Trading.InstrumentsSnapshot build() {
         com.kensai.protocol.Trading.InstrumentsSnapshot result = buildPartial();
         if (!result.isInitialized()) {
@@ -1427,17 +1948,7 @@ public final class Trading {
         }
         return result;
       }
-      
-      private com.kensai.protocol.Trading.InstrumentsSnapshot buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.InstrumentsSnapshot result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public com.kensai.protocol.Trading.InstrumentsSnapshot buildPartial() {
         com.kensai.protocol.Trading.InstrumentsSnapshot result = new com.kensai.protocol.Trading.InstrumentsSnapshot(this);
         int from_bitField0_ = bitField0_;
@@ -1453,7 +1964,7 @@ public final class Trading {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.kensai.protocol.Trading.InstrumentsSnapshot) {
           return mergeFrom((com.kensai.protocol.Trading.InstrumentsSnapshot)other);
@@ -1462,7 +1973,7 @@ public final class Trading {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(com.kensai.protocol.Trading.InstrumentsSnapshot other) {
         if (other == com.kensai.protocol.Trading.InstrumentsSnapshot.getDefaultInstance()) return this;
         if (instrumentsBuilder_ == null) {
@@ -1494,7 +2005,7 @@ public final class Trading {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         for (int i = 0; i < getInstrumentsCount(); i++) {
           if (!getInstruments(i).isInitialized()) {
@@ -1504,42 +2015,26 @@ public final class Trading {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              com.kensai.protocol.Trading.Instrument.Builder subBuilder = com.kensai.protocol.Trading.Instrument.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addInstruments(subBuilder.buildPartial());
-              break;
-            }
+        com.kensai.protocol.Trading.InstrumentsSnapshot parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.InstrumentsSnapshot) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // repeated .protocol.Instrument instruments = 1;
       private java.util.List<com.kensai.protocol.Trading.Instrument> instruments_ =
         java.util.Collections.emptyList();
@@ -1549,10 +2044,13 @@ public final class Trading {
           bitField0_ |= 0x00000001;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           com.kensai.protocol.Trading.Instrument, com.kensai.protocol.Trading.Instrument.Builder, com.kensai.protocol.Trading.InstrumentOrBuilder> instrumentsBuilder_;
-      
+
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Instrument> getInstrumentsList() {
         if (instrumentsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(instruments_);
@@ -1560,6 +2058,9 @@ public final class Trading {
           return instrumentsBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public int getInstrumentsCount() {
         if (instrumentsBuilder_ == null) {
           return instruments_.size();
@@ -1567,6 +2068,9 @@ public final class Trading {
           return instrumentsBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public com.kensai.protocol.Trading.Instrument getInstruments(int index) {
         if (instrumentsBuilder_ == null) {
           return instruments_.get(index);
@@ -1574,6 +2078,9 @@ public final class Trading {
           return instrumentsBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public Builder setInstruments(
           int index, com.kensai.protocol.Trading.Instrument value) {
         if (instrumentsBuilder_ == null) {
@@ -1588,6 +2095,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public Builder setInstruments(
           int index, com.kensai.protocol.Trading.Instrument.Builder builderForValue) {
         if (instrumentsBuilder_ == null) {
@@ -1599,6 +2109,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public Builder addInstruments(com.kensai.protocol.Trading.Instrument value) {
         if (instrumentsBuilder_ == null) {
           if (value == null) {
@@ -1612,6 +2125,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public Builder addInstruments(
           int index, com.kensai.protocol.Trading.Instrument value) {
         if (instrumentsBuilder_ == null) {
@@ -1626,6 +2142,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public Builder addInstruments(
           com.kensai.protocol.Trading.Instrument.Builder builderForValue) {
         if (instrumentsBuilder_ == null) {
@@ -1637,6 +2156,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public Builder addInstruments(
           int index, com.kensai.protocol.Trading.Instrument.Builder builderForValue) {
         if (instrumentsBuilder_ == null) {
@@ -1648,6 +2170,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public Builder addAllInstruments(
           java.lang.Iterable<? extends com.kensai.protocol.Trading.Instrument> values) {
         if (instrumentsBuilder_ == null) {
@@ -1659,6 +2184,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public Builder clearInstruments() {
         if (instrumentsBuilder_ == null) {
           instruments_ = java.util.Collections.emptyList();
@@ -1669,6 +2197,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public Builder removeInstruments(int index) {
         if (instrumentsBuilder_ == null) {
           ensureInstrumentsIsMutable();
@@ -1679,10 +2210,16 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public com.kensai.protocol.Trading.Instrument.Builder getInstrumentsBuilder(
           int index) {
         return getInstrumentsFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentsOrBuilder(
           int index) {
         if (instrumentsBuilder_ == null) {
@@ -1690,6 +2227,9 @@ public final class Trading {
           return instrumentsBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public java.util.List<? extends com.kensai.protocol.Trading.InstrumentOrBuilder> 
            getInstrumentsOrBuilderList() {
         if (instrumentsBuilder_ != null) {
@@ -1698,15 +2238,24 @@ public final class Trading {
           return java.util.Collections.unmodifiableList(instruments_);
         }
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public com.kensai.protocol.Trading.Instrument.Builder addInstrumentsBuilder() {
         return getInstrumentsFieldBuilder().addBuilder(
             com.kensai.protocol.Trading.Instrument.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public com.kensai.protocol.Trading.Instrument.Builder addInstrumentsBuilder(
           int index) {
         return getInstrumentsFieldBuilder().addBuilder(
             index, com.kensai.protocol.Trading.Instrument.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Instrument instruments = 1;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Instrument.Builder> 
            getInstrumentsBuilderList() {
         return getInstrumentsFieldBuilder().getBuilderList();
@@ -1725,871 +2274,238 @@ public final class Trading {
         }
         return instrumentsBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:protocol.InstrumentsSnapshot)
     }
-    
+
     static {
       defaultInstance = new InstrumentsSnapshot(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:protocol.InstrumentsSnapshot)
   }
-  
+
   public interface OrderOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional int64 id = 1;
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     boolean hasId();
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
     long getId();
-    
+
     // required .protocol.BuySell side = 2;
+    /**
+     * <code>required .protocol.BuySell side = 2;</code>
+     */
     boolean hasSide();
+    /**
+     * <code>required .protocol.BuySell side = 2;</code>
+     */
     com.kensai.protocol.Trading.BuySell getSide();
-    
+
     // required .protocol.Instrument instrument = 3;
+    /**
+     * <code>required .protocol.Instrument instrument = 3;</code>
+     */
     boolean hasInstrument();
+    /**
+     * <code>required .protocol.Instrument instrument = 3;</code>
+     */
     com.kensai.protocol.Trading.Instrument getInstrument();
+    /**
+     * <code>required .protocol.Instrument instrument = 3;</code>
+     */
     com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentOrBuilder();
-    
+
     // required .protocol.OrderAction action = 4;
+    /**
+     * <code>required .protocol.OrderAction action = 4;</code>
+     */
     boolean hasAction();
+    /**
+     * <code>required .protocol.OrderAction action = 4;</code>
+     */
     com.kensai.protocol.Trading.OrderAction getAction();
-    
+
     // optional .protocol.CommandStatus commandStatus = 5;
+    /**
+     * <code>optional .protocol.CommandStatus commandStatus = 5;</code>
+     */
     boolean hasCommandStatus();
+    /**
+     * <code>optional .protocol.CommandStatus commandStatus = 5;</code>
+     */
     com.kensai.protocol.Trading.CommandStatus getCommandStatus();
-    
+
     // optional double price = 6;
+    /**
+     * <code>optional double price = 6;</code>
+     */
     boolean hasPrice();
+    /**
+     * <code>optional double price = 6;</code>
+     */
     double getPrice();
-    
+
     // optional double execPrice = 7;
+    /**
+     * <code>optional double execPrice = 7;</code>
+     */
     boolean hasExecPrice();
+    /**
+     * <code>optional double execPrice = 7;</code>
+     */
     double getExecPrice();
-    
+
     // optional int32 initialQuantity = 8;
+    /**
+     * <code>optional int32 initialQuantity = 8;</code>
+     */
     boolean hasInitialQuantity();
+    /**
+     * <code>optional int32 initialQuantity = 8;</code>
+     */
     int getInitialQuantity();
-    
+
     // optional int32 executedQuantity = 9;
+    /**
+     * <code>optional int32 executedQuantity = 9;</code>
+     */
     boolean hasExecutedQuantity();
+    /**
+     * <code>optional int32 executedQuantity = 9;</code>
+     */
     int getExecutedQuantity();
-    
+
     // required string userData = 10;
+    /**
+     * <code>required string userData = 10;</code>
+     */
     boolean hasUserData();
-    String getUserData();
-    
+    /**
+     * <code>required string userData = 10;</code>
+     */
+    java.lang.String getUserData();
+    /**
+     * <code>required string userData = 10;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserDataBytes();
+
     // required string user = 11;
+    /**
+     * <code>required string user = 11;</code>
+     */
     boolean hasUser();
-    String getUser();
-    
+    /**
+     * <code>required string user = 11;</code>
+     */
+    java.lang.String getUser();
+    /**
+     * <code>required string user = 11;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserBytes();
+
     // optional int64 insertTime = 12;
+    /**
+     * <code>optional int64 insertTime = 12;</code>
+     */
     boolean hasInsertTime();
+    /**
+     * <code>optional int64 insertTime = 12;</code>
+     */
     long getInsertTime();
-    
+
     // optional int64 lastUpdateTime = 13;
+    /**
+     * <code>optional int64 lastUpdateTime = 13;</code>
+     */
     boolean hasLastUpdateTime();
+    /**
+     * <code>optional int64 lastUpdateTime = 13;</code>
+     */
     long getLastUpdateTime();
-    
+
     // optional .protocol.OrderStatus orderStatus = 14;
+    /**
+     * <code>optional .protocol.OrderStatus orderStatus = 14;</code>
+     */
     boolean hasOrderStatus();
+    /**
+     * <code>optional .protocol.OrderStatus orderStatus = 14;</code>
+     */
     com.kensai.protocol.Trading.OrderStatus getOrderStatus();
-    
+
     // optional string errorMessage = 15;
+    /**
+     * <code>optional string errorMessage = 15;</code>
+     */
     boolean hasErrorMessage();
-    String getErrorMessage();
+    /**
+     * <code>optional string errorMessage = 15;</code>
+     */
+    java.lang.String getErrorMessage();
+    /**
+     * <code>optional string errorMessage = 15;</code>
+     */
+    com.google.protobuf.ByteString
+        getErrorMessageBytes();
   }
+  /**
+   * Protobuf type {@code protocol.Order}
+   */
   public static final class Order extends
       com.google.protobuf.GeneratedMessage
       implements OrderOrBuilder {
     // Use Order.newBuilder() to construct.
-    private Order(Builder builder) {
+    private Order(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Order(boolean noInit) {}
-    
+    private Order(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final Order defaultInstance;
     public static Order getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public Order getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.kensai.protocol.Trading.internal_static_protocol_Order_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_Order_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // optional int64 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private long id_;
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public long getId() {
-      return id_;
-    }
-    
-    // required .protocol.BuySell side = 2;
-    public static final int SIDE_FIELD_NUMBER = 2;
-    private com.kensai.protocol.Trading.BuySell side_;
-    public boolean hasSide() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public com.kensai.protocol.Trading.BuySell getSide() {
-      return side_;
-    }
-    
-    // required .protocol.Instrument instrument = 3;
-    public static final int INSTRUMENT_FIELD_NUMBER = 3;
-    private com.kensai.protocol.Trading.Instrument instrument_;
-    public boolean hasInstrument() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public com.kensai.protocol.Trading.Instrument getInstrument() {
-      return instrument_;
-    }
-    public com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentOrBuilder() {
-      return instrument_;
-    }
-    
-    // required .protocol.OrderAction action = 4;
-    public static final int ACTION_FIELD_NUMBER = 4;
-    private com.kensai.protocol.Trading.OrderAction action_;
-    public boolean hasAction() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    public com.kensai.protocol.Trading.OrderAction getAction() {
-      return action_;
-    }
-    
-    // optional .protocol.CommandStatus commandStatus = 5;
-    public static final int COMMANDSTATUS_FIELD_NUMBER = 5;
-    private com.kensai.protocol.Trading.CommandStatus commandStatus_;
-    public boolean hasCommandStatus() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    public com.kensai.protocol.Trading.CommandStatus getCommandStatus() {
-      return commandStatus_;
-    }
-    
-    // optional double price = 6;
-    public static final int PRICE_FIELD_NUMBER = 6;
-    private double price_;
-    public boolean hasPrice() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    public double getPrice() {
-      return price_;
-    }
-    
-    // optional double execPrice = 7;
-    public static final int EXECPRICE_FIELD_NUMBER = 7;
-    private double execPrice_;
-    public boolean hasExecPrice() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    public double getExecPrice() {
-      return execPrice_;
-    }
-    
-    // optional int32 initialQuantity = 8;
-    public static final int INITIALQUANTITY_FIELD_NUMBER = 8;
-    private int initialQuantity_;
-    public boolean hasInitialQuantity() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    public int getInitialQuantity() {
-      return initialQuantity_;
-    }
-    
-    // optional int32 executedQuantity = 9;
-    public static final int EXECUTEDQUANTITY_FIELD_NUMBER = 9;
-    private int executedQuantity_;
-    public boolean hasExecutedQuantity() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    public int getExecutedQuantity() {
-      return executedQuantity_;
-    }
-    
-    // required string userData = 10;
-    public static final int USERDATA_FIELD_NUMBER = 10;
-    private java.lang.Object userData_;
-    public boolean hasUserData() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
-    }
-    public String getUserData() {
-      java.lang.Object ref = userData_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          userData_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getUserDataBytes() {
-      java.lang.Object ref = userData_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        userData_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // required string user = 11;
-    public static final int USER_FIELD_NUMBER = 11;
-    private java.lang.Object user_;
-    public boolean hasUser() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    public String getUser() {
-      java.lang.Object ref = user_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          user_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getUserBytes() {
-      java.lang.Object ref = user_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        user_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // optional int64 insertTime = 12;
-    public static final int INSERTTIME_FIELD_NUMBER = 12;
-    private long insertTime_;
-    public boolean hasInsertTime() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
-    }
-    public long getInsertTime() {
-      return insertTime_;
-    }
-    
-    // optional int64 lastUpdateTime = 13;
-    public static final int LASTUPDATETIME_FIELD_NUMBER = 13;
-    private long lastUpdateTime_;
-    public boolean hasLastUpdateTime() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
-    }
-    public long getLastUpdateTime() {
-      return lastUpdateTime_;
-    }
-    
-    // optional .protocol.OrderStatus orderStatus = 14;
-    public static final int ORDERSTATUS_FIELD_NUMBER = 14;
-    private com.kensai.protocol.Trading.OrderStatus orderStatus_;
-    public boolean hasOrderStatus() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
-    }
-    public com.kensai.protocol.Trading.OrderStatus getOrderStatus() {
-      return orderStatus_;
-    }
-    
-    // optional string errorMessage = 15;
-    public static final int ERRORMESSAGE_FIELD_NUMBER = 15;
-    private java.lang.Object errorMessage_;
-    public boolean hasErrorMessage() {
-      return ((bitField0_ & 0x00004000) == 0x00004000);
-    }
-    public String getErrorMessage() {
-      java.lang.Object ref = errorMessage_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          errorMessage_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getErrorMessageBytes() {
-      java.lang.Object ref = errorMessage_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        errorMessage_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    private void initFields() {
-      id_ = 0L;
-      side_ = com.kensai.protocol.Trading.BuySell.BUY;
-      instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
-      action_ = com.kensai.protocol.Trading.OrderAction.INSERT;
-      commandStatus_ = com.kensai.protocol.Trading.CommandStatus.ACK;
-      price_ = 0D;
-      execPrice_ = 0D;
-      initialQuantity_ = 0;
-      executedQuantity_ = 0;
-      userData_ = "";
-      user_ = "";
-      insertTime_ = 0L;
-      lastUpdateTime_ = 0L;
-      orderStatus_ = com.kensai.protocol.Trading.OrderStatus.ON_MARKET;
-      errorMessage_ = "";
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasSide()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasInstrument()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasAction()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasUserData()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasUser()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getInstrument().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt64(1, id_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, side_.getNumber());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, instrument_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeEnum(4, action_.getNumber());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeEnum(5, commandStatus_.getNumber());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeDouble(6, price_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeDouble(7, execPrice_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(8, initialQuantity_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(9, executedQuantity_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeBytes(10, getUserDataBytes());
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeBytes(11, getUserBytes());
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeInt64(12, insertTime_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        output.writeInt64(13, lastUpdateTime_);
-      }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
-        output.writeEnum(14, orderStatus_.getNumber());
-      }
-      if (((bitField0_ & 0x00004000) == 0x00004000)) {
-        output.writeBytes(15, getErrorMessageBytes());
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, id_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, side_.getNumber());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, instrument_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, action_.getNumber());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(5, commandStatus_.getNumber());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(6, price_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(7, execPrice_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, initialQuantity_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, executedQuantity_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(10, getUserDataBytes());
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(11, getUserBytes());
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(12, insertTime_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(13, lastUpdateTime_);
-      }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(14, orderStatus_.getNumber());
-      }
-      if (((bitField0_ & 0x00004000) == 0x00004000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(15, getErrorMessageBytes());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
     }
-    
-    public static com.kensai.protocol.Trading.Order parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Order parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Order parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Order parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Order parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Order parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Order parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.kensai.protocol.Trading.Order parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.kensai.protocol.Trading.Order parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Order parseFrom(
+    private Order(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.kensai.protocol.Trading.Order prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.kensai.protocol.Trading.OrderOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kensai.protocol.Trading.internal_static_protocol_Order_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_Order_fieldAccessorTable;
-      }
-      
-      // Construct using com.kensai.protocol.Trading.Order.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getInstrumentFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        id_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        side_ = com.kensai.protocol.Trading.BuySell.BUY;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (instrumentBuilder_ == null) {
-          instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
-        } else {
-          instrumentBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        action_ = com.kensai.protocol.Trading.OrderAction.INSERT;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        commandStatus_ = com.kensai.protocol.Trading.CommandStatus.ACK;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        price_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        execPrice_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        initialQuantity_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        executedQuantity_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        userData_ = "";
-        bitField0_ = (bitField0_ & ~0x00000200);
-        user_ = "";
-        bitField0_ = (bitField0_ & ~0x00000400);
-        insertTime_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000800);
-        lastUpdateTime_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00001000);
-        orderStatus_ = com.kensai.protocol.Trading.OrderStatus.ON_MARKET;
-        bitField0_ = (bitField0_ & ~0x00002000);
-        errorMessage_ = "";
-        bitField0_ = (bitField0_ & ~0x00004000);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kensai.protocol.Trading.Order.getDescriptor();
-      }
-      
-      public com.kensai.protocol.Trading.Order getDefaultInstanceForType() {
-        return com.kensai.protocol.Trading.Order.getDefaultInstance();
-      }
-      
-      public com.kensai.protocol.Trading.Order build() {
-        com.kensai.protocol.Trading.Order result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private com.kensai.protocol.Trading.Order buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.Order result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public com.kensai.protocol.Trading.Order buildPartial() {
-        com.kensai.protocol.Trading.Order result = new com.kensai.protocol.Trading.Order(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.side_ = side_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        if (instrumentBuilder_ == null) {
-          result.instrument_ = instrument_;
-        } else {
-          result.instrument_ = instrumentBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.action_ = action_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.commandStatus_ = commandStatus_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.price_ = price_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.execPrice_ = execPrice_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.initialQuantity_ = initialQuantity_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.executedQuantity_ = executedQuantity_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.userData_ = userData_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.user_ = user_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000800;
-        }
-        result.insertTime_ = insertTime_;
-        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
-          to_bitField0_ |= 0x00001000;
-        }
-        result.lastUpdateTime_ = lastUpdateTime_;
-        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
-          to_bitField0_ |= 0x00002000;
-        }
-        result.orderStatus_ = orderStatus_;
-        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
-          to_bitField0_ |= 0x00004000;
-        }
-        result.errorMessage_ = errorMessage_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kensai.protocol.Trading.Order) {
-          return mergeFrom((com.kensai.protocol.Trading.Order)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(com.kensai.protocol.Trading.Order other) {
-        if (other == com.kensai.protocol.Trading.Order.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          setId(other.getId());
-        }
-        if (other.hasSide()) {
-          setSide(other.getSide());
-        }
-        if (other.hasInstrument()) {
-          mergeInstrument(other.getInstrument());
-        }
-        if (other.hasAction()) {
-          setAction(other.getAction());
-        }
-        if (other.hasCommandStatus()) {
-          setCommandStatus(other.getCommandStatus());
-        }
-        if (other.hasPrice()) {
-          setPrice(other.getPrice());
-        }
-        if (other.hasExecPrice()) {
-          setExecPrice(other.getExecPrice());
-        }
-        if (other.hasInitialQuantity()) {
-          setInitialQuantity(other.getInitialQuantity());
-        }
-        if (other.hasExecutedQuantity()) {
-          setExecutedQuantity(other.getExecutedQuantity());
-        }
-        if (other.hasUserData()) {
-          setUserData(other.getUserData());
-        }
-        if (other.hasUser()) {
-          setUser(other.getUser());
-        }
-        if (other.hasInsertTime()) {
-          setInsertTime(other.getInsertTime());
-        }
-        if (other.hasLastUpdateTime()) {
-          setLastUpdateTime(other.getLastUpdateTime());
-        }
-        if (other.hasOrderStatus()) {
-          setOrderStatus(other.getOrderStatus());
-        }
-        if (other.hasErrorMessage()) {
-          setErrorMessage(other.getErrorMessage());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        if (!hasSide()) {
-          
-          return false;
-        }
-        if (!hasInstrument()) {
-          
-          return false;
-        }
-        if (!hasAction()) {
-          
-          return false;
-        }
-        if (!hasUserData()) {
-          
-          return false;
-        }
-        if (!hasUser()) {
-          
-          return false;
-        }
-        if (!getInstrument().isInitialized()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -2610,12 +2526,16 @@ public final class Trading {
               break;
             }
             case 26: {
-              com.kensai.protocol.Trading.Instrument.Builder subBuilder = com.kensai.protocol.Trading.Instrument.newBuilder();
-              if (hasInstrument()) {
-                subBuilder.mergeFrom(getInstrument());
+              com.kensai.protocol.Trading.Instrument.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = instrument_.toBuilder();
               }
-              input.readMessage(subBuilder, extensionRegistry);
-              setInstrument(subBuilder.buildPartial());
+              instrument_ = input.readMessage(com.kensai.protocol.Trading.Instrument.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(instrument_);
+                instrument_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
               break;
             }
             case 32: {
@@ -2698,39 +2618,949 @@ public final class Trading {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.kensai.protocol.Trading.internal_static_protocol_Order_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.kensai.protocol.Trading.internal_static_protocol_Order_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.Order.class, com.kensai.protocol.Trading.Order.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Order> PARSER =
+        new com.google.protobuf.AbstractParser<Order>() {
+      public Order parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Order(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Order> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int64 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private long id_;
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int64 id = 1;</code>
+     */
+    public long getId() {
+      return id_;
+    }
+
+    // required .protocol.BuySell side = 2;
+    public static final int SIDE_FIELD_NUMBER = 2;
+    private com.kensai.protocol.Trading.BuySell side_;
+    /**
+     * <code>required .protocol.BuySell side = 2;</code>
+     */
+    public boolean hasSide() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .protocol.BuySell side = 2;</code>
+     */
+    public com.kensai.protocol.Trading.BuySell getSide() {
+      return side_;
+    }
+
+    // required .protocol.Instrument instrument = 3;
+    public static final int INSTRUMENT_FIELD_NUMBER = 3;
+    private com.kensai.protocol.Trading.Instrument instrument_;
+    /**
+     * <code>required .protocol.Instrument instrument = 3;</code>
+     */
+    public boolean hasInstrument() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required .protocol.Instrument instrument = 3;</code>
+     */
+    public com.kensai.protocol.Trading.Instrument getInstrument() {
+      return instrument_;
+    }
+    /**
+     * <code>required .protocol.Instrument instrument = 3;</code>
+     */
+    public com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentOrBuilder() {
+      return instrument_;
+    }
+
+    // required .protocol.OrderAction action = 4;
+    public static final int ACTION_FIELD_NUMBER = 4;
+    private com.kensai.protocol.Trading.OrderAction action_;
+    /**
+     * <code>required .protocol.OrderAction action = 4;</code>
+     */
+    public boolean hasAction() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required .protocol.OrderAction action = 4;</code>
+     */
+    public com.kensai.protocol.Trading.OrderAction getAction() {
+      return action_;
+    }
+
+    // optional .protocol.CommandStatus commandStatus = 5;
+    public static final int COMMANDSTATUS_FIELD_NUMBER = 5;
+    private com.kensai.protocol.Trading.CommandStatus commandStatus_;
+    /**
+     * <code>optional .protocol.CommandStatus commandStatus = 5;</code>
+     */
+    public boolean hasCommandStatus() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .protocol.CommandStatus commandStatus = 5;</code>
+     */
+    public com.kensai.protocol.Trading.CommandStatus getCommandStatus() {
+      return commandStatus_;
+    }
+
+    // optional double price = 6;
+    public static final int PRICE_FIELD_NUMBER = 6;
+    private double price_;
+    /**
+     * <code>optional double price = 6;</code>
+     */
+    public boolean hasPrice() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional double price = 6;</code>
+     */
+    public double getPrice() {
+      return price_;
+    }
+
+    // optional double execPrice = 7;
+    public static final int EXECPRICE_FIELD_NUMBER = 7;
+    private double execPrice_;
+    /**
+     * <code>optional double execPrice = 7;</code>
+     */
+    public boolean hasExecPrice() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional double execPrice = 7;</code>
+     */
+    public double getExecPrice() {
+      return execPrice_;
+    }
+
+    // optional int32 initialQuantity = 8;
+    public static final int INITIALQUANTITY_FIELD_NUMBER = 8;
+    private int initialQuantity_;
+    /**
+     * <code>optional int32 initialQuantity = 8;</code>
+     */
+    public boolean hasInitialQuantity() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional int32 initialQuantity = 8;</code>
+     */
+    public int getInitialQuantity() {
+      return initialQuantity_;
+    }
+
+    // optional int32 executedQuantity = 9;
+    public static final int EXECUTEDQUANTITY_FIELD_NUMBER = 9;
+    private int executedQuantity_;
+    /**
+     * <code>optional int32 executedQuantity = 9;</code>
+     */
+    public boolean hasExecutedQuantity() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional int32 executedQuantity = 9;</code>
+     */
+    public int getExecutedQuantity() {
+      return executedQuantity_;
+    }
+
+    // required string userData = 10;
+    public static final int USERDATA_FIELD_NUMBER = 10;
+    private java.lang.Object userData_;
+    /**
+     * <code>required string userData = 10;</code>
+     */
+    public boolean hasUserData() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>required string userData = 10;</code>
+     */
+    public java.lang.String getUserData() {
+      java.lang.Object ref = userData_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          userData_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string userData = 10;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserDataBytes() {
+      java.lang.Object ref = userData_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userData_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required string user = 11;
+    public static final int USER_FIELD_NUMBER = 11;
+    private java.lang.Object user_;
+    /**
+     * <code>required string user = 11;</code>
+     */
+    public boolean hasUser() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>required string user = 11;</code>
+     */
+    public java.lang.String getUser() {
+      java.lang.Object ref = user_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          user_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string user = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserBytes() {
+      java.lang.Object ref = user_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        user_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional int64 insertTime = 12;
+    public static final int INSERTTIME_FIELD_NUMBER = 12;
+    private long insertTime_;
+    /**
+     * <code>optional int64 insertTime = 12;</code>
+     */
+    public boolean hasInsertTime() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional int64 insertTime = 12;</code>
+     */
+    public long getInsertTime() {
+      return insertTime_;
+    }
+
+    // optional int64 lastUpdateTime = 13;
+    public static final int LASTUPDATETIME_FIELD_NUMBER = 13;
+    private long lastUpdateTime_;
+    /**
+     * <code>optional int64 lastUpdateTime = 13;</code>
+     */
+    public boolean hasLastUpdateTime() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>optional int64 lastUpdateTime = 13;</code>
+     */
+    public long getLastUpdateTime() {
+      return lastUpdateTime_;
+    }
+
+    // optional .protocol.OrderStatus orderStatus = 14;
+    public static final int ORDERSTATUS_FIELD_NUMBER = 14;
+    private com.kensai.protocol.Trading.OrderStatus orderStatus_;
+    /**
+     * <code>optional .protocol.OrderStatus orderStatus = 14;</code>
+     */
+    public boolean hasOrderStatus() {
+      return ((bitField0_ & 0x00002000) == 0x00002000);
+    }
+    /**
+     * <code>optional .protocol.OrderStatus orderStatus = 14;</code>
+     */
+    public com.kensai.protocol.Trading.OrderStatus getOrderStatus() {
+      return orderStatus_;
+    }
+
+    // optional string errorMessage = 15;
+    public static final int ERRORMESSAGE_FIELD_NUMBER = 15;
+    private java.lang.Object errorMessage_;
+    /**
+     * <code>optional string errorMessage = 15;</code>
+     */
+    public boolean hasErrorMessage() {
+      return ((bitField0_ & 0x00004000) == 0x00004000);
+    }
+    /**
+     * <code>optional string errorMessage = 15;</code>
+     */
+    public java.lang.String getErrorMessage() {
+      java.lang.Object ref = errorMessage_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          errorMessage_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string errorMessage = 15;</code>
+     */
+    public com.google.protobuf.ByteString
+        getErrorMessageBytes() {
+      java.lang.Object ref = errorMessage_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        errorMessage_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      id_ = 0L;
+      side_ = com.kensai.protocol.Trading.BuySell.BUY;
+      instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
+      action_ = com.kensai.protocol.Trading.OrderAction.INSERT;
+      commandStatus_ = com.kensai.protocol.Trading.CommandStatus.ACK;
+      price_ = 0D;
+      execPrice_ = 0D;
+      initialQuantity_ = 0;
+      executedQuantity_ = 0;
+      userData_ = "";
+      user_ = "";
+      insertTime_ = 0L;
+      lastUpdateTime_ = 0L;
+      orderStatus_ = com.kensai.protocol.Trading.OrderStatus.ON_MARKET;
+      errorMessage_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasSide()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasInstrument()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAction()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUserData()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUser()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getInstrument().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(2, side_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, instrument_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeEnum(4, action_.getNumber());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeEnum(5, commandStatus_.getNumber());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeDouble(6, price_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeDouble(7, execPrice_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(8, initialQuantity_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeInt32(9, executedQuantity_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeBytes(10, getUserDataBytes());
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeBytes(11, getUserBytes());
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeInt64(12, insertTime_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeInt64(13, lastUpdateTime_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        output.writeEnum(14, orderStatus_.getNumber());
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        output.writeBytes(15, getErrorMessageBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, side_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, instrument_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, action_.getNumber());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, commandStatus_.getNumber());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(6, price_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(7, execPrice_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, initialQuantity_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, executedQuantity_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(10, getUserDataBytes());
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(11, getUserBytes());
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(12, insertTime_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(13, lastUpdateTime_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(14, orderStatus_.getNumber());
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(15, getErrorMessageBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.kensai.protocol.Trading.Order parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kensai.protocol.Trading.Order parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Order parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kensai.protocol.Trading.Order parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Order parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.kensai.protocol.Trading.Order parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Order parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.kensai.protocol.Trading.Order parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Order parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.kensai.protocol.Trading.Order parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.kensai.protocol.Trading.Order prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protocol.Order}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.kensai.protocol.Trading.OrderOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.kensai.protocol.Trading.internal_static_protocol_Order_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.kensai.protocol.Trading.internal_static_protocol_Order_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.Order.class, com.kensai.protocol.Trading.Order.Builder.class);
+      }
+
+      // Construct using com.kensai.protocol.Trading.Order.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getInstrumentFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        side_ = com.kensai.protocol.Trading.BuySell.BUY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (instrumentBuilder_ == null) {
+          instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
+        } else {
+          instrumentBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        action_ = com.kensai.protocol.Trading.OrderAction.INSERT;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        commandStatus_ = com.kensai.protocol.Trading.CommandStatus.ACK;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        price_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        execPrice_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        initialQuantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        executedQuantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        userData_ = "";
+        bitField0_ = (bitField0_ & ~0x00000200);
+        user_ = "";
+        bitField0_ = (bitField0_ & ~0x00000400);
+        insertTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000800);
+        lastUpdateTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        orderStatus_ = com.kensai.protocol.Trading.OrderStatus.ON_MARKET;
+        bitField0_ = (bitField0_ & ~0x00002000);
+        errorMessage_ = "";
+        bitField0_ = (bitField0_ & ~0x00004000);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.kensai.protocol.Trading.internal_static_protocol_Order_descriptor;
+      }
+
+      public com.kensai.protocol.Trading.Order getDefaultInstanceForType() {
+        return com.kensai.protocol.Trading.Order.getDefaultInstance();
+      }
+
+      public com.kensai.protocol.Trading.Order build() {
+        com.kensai.protocol.Trading.Order result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.kensai.protocol.Trading.Order buildPartial() {
+        com.kensai.protocol.Trading.Order result = new com.kensai.protocol.Trading.Order(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.side_ = side_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (instrumentBuilder_ == null) {
+          result.instrument_ = instrument_;
+        } else {
+          result.instrument_ = instrumentBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.action_ = action_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.commandStatus_ = commandStatus_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.price_ = price_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.execPrice_ = execPrice_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.initialQuantity_ = initialQuantity_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.executedQuantity_ = executedQuantity_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.userData_ = userData_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.user_ = user_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.insertTime_ = insertTime_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
+        result.lastUpdateTime_ = lastUpdateTime_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00002000;
+        }
+        result.orderStatus_ = orderStatus_;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00004000;
+        }
+        result.errorMessage_ = errorMessage_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.kensai.protocol.Trading.Order) {
+          return mergeFrom((com.kensai.protocol.Trading.Order)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.kensai.protocol.Trading.Order other) {
+        if (other == com.kensai.protocol.Trading.Order.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasSide()) {
+          setSide(other.getSide());
+        }
+        if (other.hasInstrument()) {
+          mergeInstrument(other.getInstrument());
+        }
+        if (other.hasAction()) {
+          setAction(other.getAction());
+        }
+        if (other.hasCommandStatus()) {
+          setCommandStatus(other.getCommandStatus());
+        }
+        if (other.hasPrice()) {
+          setPrice(other.getPrice());
+        }
+        if (other.hasExecPrice()) {
+          setExecPrice(other.getExecPrice());
+        }
+        if (other.hasInitialQuantity()) {
+          setInitialQuantity(other.getInitialQuantity());
+        }
+        if (other.hasExecutedQuantity()) {
+          setExecutedQuantity(other.getExecutedQuantity());
+        }
+        if (other.hasUserData()) {
+          bitField0_ |= 0x00000200;
+          userData_ = other.userData_;
+          onChanged();
+        }
+        if (other.hasUser()) {
+          bitField0_ |= 0x00000400;
+          user_ = other.user_;
+          onChanged();
+        }
+        if (other.hasInsertTime()) {
+          setInsertTime(other.getInsertTime());
+        }
+        if (other.hasLastUpdateTime()) {
+          setLastUpdateTime(other.getLastUpdateTime());
+        }
+        if (other.hasOrderStatus()) {
+          setOrderStatus(other.getOrderStatus());
+        }
+        if (other.hasErrorMessage()) {
+          bitField0_ |= 0x00004000;
+          errorMessage_ = other.errorMessage_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasSide()) {
+          
+          return false;
+        }
+        if (!hasInstrument()) {
+          
+          return false;
+        }
+        if (!hasAction()) {
+          
+          return false;
+        }
+        if (!hasUserData()) {
+          
+          return false;
+        }
+        if (!hasUser()) {
+          
+          return false;
+        }
+        if (!getInstrument().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.kensai.protocol.Trading.Order parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.Order) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
+
       // optional int64 id = 1;
       private long id_ ;
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public long getId() {
         return id_;
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public Builder setId(long value) {
         bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 id = 1;</code>
+       */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // required .protocol.BuySell side = 2;
       private com.kensai.protocol.Trading.BuySell side_ = com.kensai.protocol.Trading.BuySell.BUY;
+      /**
+       * <code>required .protocol.BuySell side = 2;</code>
+       */
       public boolean hasSide() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>required .protocol.BuySell side = 2;</code>
+       */
       public com.kensai.protocol.Trading.BuySell getSide() {
         return side_;
       }
+      /**
+       * <code>required .protocol.BuySell side = 2;</code>
+       */
       public Builder setSide(com.kensai.protocol.Trading.BuySell value) {
         if (value == null) {
           throw new NullPointerException();
@@ -2740,20 +3570,29 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>required .protocol.BuySell side = 2;</code>
+       */
       public Builder clearSide() {
         bitField0_ = (bitField0_ & ~0x00000002);
         side_ = com.kensai.protocol.Trading.BuySell.BUY;
         onChanged();
         return this;
       }
-      
+
       // required .protocol.Instrument instrument = 3;
       private com.kensai.protocol.Trading.Instrument instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Instrument, com.kensai.protocol.Trading.Instrument.Builder, com.kensai.protocol.Trading.InstrumentOrBuilder> instrumentBuilder_;
+      /**
+       * <code>required .protocol.Instrument instrument = 3;</code>
+       */
       public boolean hasInstrument() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 3;</code>
+       */
       public com.kensai.protocol.Trading.Instrument getInstrument() {
         if (instrumentBuilder_ == null) {
           return instrument_;
@@ -2761,6 +3600,9 @@ public final class Trading {
           return instrumentBuilder_.getMessage();
         }
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 3;</code>
+       */
       public Builder setInstrument(com.kensai.protocol.Trading.Instrument value) {
         if (instrumentBuilder_ == null) {
           if (value == null) {
@@ -2774,6 +3616,9 @@ public final class Trading {
         bitField0_ |= 0x00000004;
         return this;
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 3;</code>
+       */
       public Builder setInstrument(
           com.kensai.protocol.Trading.Instrument.Builder builderForValue) {
         if (instrumentBuilder_ == null) {
@@ -2785,6 +3630,9 @@ public final class Trading {
         bitField0_ |= 0x00000004;
         return this;
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 3;</code>
+       */
       public Builder mergeInstrument(com.kensai.protocol.Trading.Instrument value) {
         if (instrumentBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
@@ -2801,6 +3649,9 @@ public final class Trading {
         bitField0_ |= 0x00000004;
         return this;
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 3;</code>
+       */
       public Builder clearInstrument() {
         if (instrumentBuilder_ == null) {
           instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
@@ -2811,11 +3662,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 3;</code>
+       */
       public com.kensai.protocol.Trading.Instrument.Builder getInstrumentBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getInstrumentFieldBuilder().getBuilder();
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 3;</code>
+       */
       public com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentOrBuilder() {
         if (instrumentBuilder_ != null) {
           return instrumentBuilder_.getMessageOrBuilder();
@@ -2823,6 +3680,9 @@ public final class Trading {
           return instrument_;
         }
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 3;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Instrument, com.kensai.protocol.Trading.Instrument.Builder, com.kensai.protocol.Trading.InstrumentOrBuilder> 
           getInstrumentFieldBuilder() {
@@ -2836,15 +3696,24 @@ public final class Trading {
         }
         return instrumentBuilder_;
       }
-      
+
       // required .protocol.OrderAction action = 4;
       private com.kensai.protocol.Trading.OrderAction action_ = com.kensai.protocol.Trading.OrderAction.INSERT;
+      /**
+       * <code>required .protocol.OrderAction action = 4;</code>
+       */
       public boolean hasAction() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
+      /**
+       * <code>required .protocol.OrderAction action = 4;</code>
+       */
       public com.kensai.protocol.Trading.OrderAction getAction() {
         return action_;
       }
+      /**
+       * <code>required .protocol.OrderAction action = 4;</code>
+       */
       public Builder setAction(com.kensai.protocol.Trading.OrderAction value) {
         if (value == null) {
           throw new NullPointerException();
@@ -2854,21 +3723,33 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>required .protocol.OrderAction action = 4;</code>
+       */
       public Builder clearAction() {
         bitField0_ = (bitField0_ & ~0x00000008);
         action_ = com.kensai.protocol.Trading.OrderAction.INSERT;
         onChanged();
         return this;
       }
-      
+
       // optional .protocol.CommandStatus commandStatus = 5;
       private com.kensai.protocol.Trading.CommandStatus commandStatus_ = com.kensai.protocol.Trading.CommandStatus.ACK;
+      /**
+       * <code>optional .protocol.CommandStatus commandStatus = 5;</code>
+       */
       public boolean hasCommandStatus() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
+      /**
+       * <code>optional .protocol.CommandStatus commandStatus = 5;</code>
+       */
       public com.kensai.protocol.Trading.CommandStatus getCommandStatus() {
         return commandStatus_;
       }
+      /**
+       * <code>optional .protocol.CommandStatus commandStatus = 5;</code>
+       */
       public Builder setCommandStatus(com.kensai.protocol.Trading.CommandStatus value) {
         if (value == null) {
           throw new NullPointerException();
@@ -2878,113 +3759,191 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional .protocol.CommandStatus commandStatus = 5;</code>
+       */
       public Builder clearCommandStatus() {
         bitField0_ = (bitField0_ & ~0x00000010);
         commandStatus_ = com.kensai.protocol.Trading.CommandStatus.ACK;
         onChanged();
         return this;
       }
-      
+
       // optional double price = 6;
       private double price_ ;
+      /**
+       * <code>optional double price = 6;</code>
+       */
       public boolean hasPrice() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
+      /**
+       * <code>optional double price = 6;</code>
+       */
       public double getPrice() {
         return price_;
       }
+      /**
+       * <code>optional double price = 6;</code>
+       */
       public Builder setPrice(double value) {
         bitField0_ |= 0x00000020;
         price_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional double price = 6;</code>
+       */
       public Builder clearPrice() {
         bitField0_ = (bitField0_ & ~0x00000020);
         price_ = 0D;
         onChanged();
         return this;
       }
-      
+
       // optional double execPrice = 7;
       private double execPrice_ ;
+      /**
+       * <code>optional double execPrice = 7;</code>
+       */
       public boolean hasExecPrice() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
+      /**
+       * <code>optional double execPrice = 7;</code>
+       */
       public double getExecPrice() {
         return execPrice_;
       }
+      /**
+       * <code>optional double execPrice = 7;</code>
+       */
       public Builder setExecPrice(double value) {
         bitField0_ |= 0x00000040;
         execPrice_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional double execPrice = 7;</code>
+       */
       public Builder clearExecPrice() {
         bitField0_ = (bitField0_ & ~0x00000040);
         execPrice_ = 0D;
         onChanged();
         return this;
       }
-      
+
       // optional int32 initialQuantity = 8;
       private int initialQuantity_ ;
+      /**
+       * <code>optional int32 initialQuantity = 8;</code>
+       */
       public boolean hasInitialQuantity() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
+      /**
+       * <code>optional int32 initialQuantity = 8;</code>
+       */
       public int getInitialQuantity() {
         return initialQuantity_;
       }
+      /**
+       * <code>optional int32 initialQuantity = 8;</code>
+       */
       public Builder setInitialQuantity(int value) {
         bitField0_ |= 0x00000080;
         initialQuantity_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int32 initialQuantity = 8;</code>
+       */
       public Builder clearInitialQuantity() {
         bitField0_ = (bitField0_ & ~0x00000080);
         initialQuantity_ = 0;
         onChanged();
         return this;
       }
-      
+
       // optional int32 executedQuantity = 9;
       private int executedQuantity_ ;
+      /**
+       * <code>optional int32 executedQuantity = 9;</code>
+       */
       public boolean hasExecutedQuantity() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
+      /**
+       * <code>optional int32 executedQuantity = 9;</code>
+       */
       public int getExecutedQuantity() {
         return executedQuantity_;
       }
+      /**
+       * <code>optional int32 executedQuantity = 9;</code>
+       */
       public Builder setExecutedQuantity(int value) {
         bitField0_ |= 0x00000100;
         executedQuantity_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int32 executedQuantity = 9;</code>
+       */
       public Builder clearExecutedQuantity() {
         bitField0_ = (bitField0_ & ~0x00000100);
         executedQuantity_ = 0;
         onChanged();
         return this;
       }
-      
+
       // required string userData = 10;
       private java.lang.Object userData_ = "";
+      /**
+       * <code>required string userData = 10;</code>
+       */
       public boolean hasUserData() {
         return ((bitField0_ & 0x00000200) == 0x00000200);
       }
-      public String getUserData() {
+      /**
+       * <code>required string userData = 10;</code>
+       */
+      public java.lang.String getUserData() {
         java.lang.Object ref = userData_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           userData_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setUserData(String value) {
+      /**
+       * <code>required string userData = 10;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserDataBytes() {
+        java.lang.Object ref = userData_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userData_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string userData = 10;</code>
+       */
+      public Builder setUserData(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2993,34 +3952,72 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>required string userData = 10;</code>
+       */
       public Builder clearUserData() {
         bitField0_ = (bitField0_ & ~0x00000200);
         userData_ = getDefaultInstance().getUserData();
         onChanged();
         return this;
       }
-      void setUserData(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000200;
+      /**
+       * <code>required string userData = 10;</code>
+       */
+      public Builder setUserDataBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
         userData_ = value;
         onChanged();
+        return this;
       }
-      
+
       // required string user = 11;
       private java.lang.Object user_ = "";
+      /**
+       * <code>required string user = 11;</code>
+       */
       public boolean hasUser() {
         return ((bitField0_ & 0x00000400) == 0x00000400);
       }
-      public String getUser() {
+      /**
+       * <code>required string user = 11;</code>
+       */
+      public java.lang.String getUser() {
         java.lang.Object ref = user_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           user_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setUser(String value) {
+      /**
+       * <code>required string user = 11;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserBytes() {
+        java.lang.Object ref = user_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          user_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string user = 11;</code>
+       */
+      public Builder setUser(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -3029,68 +4026,112 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>required string user = 11;</code>
+       */
       public Builder clearUser() {
         bitField0_ = (bitField0_ & ~0x00000400);
         user_ = getDefaultInstance().getUser();
         onChanged();
         return this;
       }
-      void setUser(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000400;
+      /**
+       * <code>required string user = 11;</code>
+       */
+      public Builder setUserBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000400;
         user_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional int64 insertTime = 12;
       private long insertTime_ ;
+      /**
+       * <code>optional int64 insertTime = 12;</code>
+       */
       public boolean hasInsertTime() {
         return ((bitField0_ & 0x00000800) == 0x00000800);
       }
+      /**
+       * <code>optional int64 insertTime = 12;</code>
+       */
       public long getInsertTime() {
         return insertTime_;
       }
+      /**
+       * <code>optional int64 insertTime = 12;</code>
+       */
       public Builder setInsertTime(long value) {
         bitField0_ |= 0x00000800;
         insertTime_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 insertTime = 12;</code>
+       */
       public Builder clearInsertTime() {
         bitField0_ = (bitField0_ & ~0x00000800);
         insertTime_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional int64 lastUpdateTime = 13;
       private long lastUpdateTime_ ;
+      /**
+       * <code>optional int64 lastUpdateTime = 13;</code>
+       */
       public boolean hasLastUpdateTime() {
         return ((bitField0_ & 0x00001000) == 0x00001000);
       }
+      /**
+       * <code>optional int64 lastUpdateTime = 13;</code>
+       */
       public long getLastUpdateTime() {
         return lastUpdateTime_;
       }
+      /**
+       * <code>optional int64 lastUpdateTime = 13;</code>
+       */
       public Builder setLastUpdateTime(long value) {
         bitField0_ |= 0x00001000;
         lastUpdateTime_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 lastUpdateTime = 13;</code>
+       */
       public Builder clearLastUpdateTime() {
         bitField0_ = (bitField0_ & ~0x00001000);
         lastUpdateTime_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // optional .protocol.OrderStatus orderStatus = 14;
       private com.kensai.protocol.Trading.OrderStatus orderStatus_ = com.kensai.protocol.Trading.OrderStatus.ON_MARKET;
+      /**
+       * <code>optional .protocol.OrderStatus orderStatus = 14;</code>
+       */
       public boolean hasOrderStatus() {
         return ((bitField0_ & 0x00002000) == 0x00002000);
       }
+      /**
+       * <code>optional .protocol.OrderStatus orderStatus = 14;</code>
+       */
       public com.kensai.protocol.Trading.OrderStatus getOrderStatus() {
         return orderStatus_;
       }
+      /**
+       * <code>optional .protocol.OrderStatus orderStatus = 14;</code>
+       */
       public Builder setOrderStatus(com.kensai.protocol.Trading.OrderStatus value) {
         if (value == null) {
           throw new NullPointerException();
@@ -3100,29 +4141,59 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional .protocol.OrderStatus orderStatus = 14;</code>
+       */
       public Builder clearOrderStatus() {
         bitField0_ = (bitField0_ & ~0x00002000);
         orderStatus_ = com.kensai.protocol.Trading.OrderStatus.ON_MARKET;
         onChanged();
         return this;
       }
-      
+
       // optional string errorMessage = 15;
       private java.lang.Object errorMessage_ = "";
+      /**
+       * <code>optional string errorMessage = 15;</code>
+       */
       public boolean hasErrorMessage() {
         return ((bitField0_ & 0x00004000) == 0x00004000);
       }
-      public String getErrorMessage() {
+      /**
+       * <code>optional string errorMessage = 15;</code>
+       */
+      public java.lang.String getErrorMessage() {
         java.lang.Object ref = errorMessage_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           errorMessage_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setErrorMessage(String value) {
+      /**
+       * <code>optional string errorMessage = 15;</code>
+       */
+      public com.google.protobuf.ByteString
+          getErrorMessageBytes() {
+        java.lang.Object ref = errorMessage_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          errorMessage_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string errorMessage = 15;</code>
+       */
+      public Builder setErrorMessage(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -3131,91 +4202,205 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string errorMessage = 15;</code>
+       */
       public Builder clearErrorMessage() {
         bitField0_ = (bitField0_ & ~0x00004000);
         errorMessage_ = getDefaultInstance().getErrorMessage();
         onChanged();
         return this;
       }
-      void setErrorMessage(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00004000;
+      /**
+       * <code>optional string errorMessage = 15;</code>
+       */
+      public Builder setErrorMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00004000;
         errorMessage_ = value;
         onChanged();
+        return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:protocol.Order)
     }
-    
+
     static {
       defaultInstance = new Order(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:protocol.Order)
   }
-  
+
   public interface OrdersSnapshotOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // repeated .protocol.Order orders = 1;
+    /**
+     * <code>repeated .protocol.Order orders = 1;</code>
+     */
     java.util.List<com.kensai.protocol.Trading.Order> 
         getOrdersList();
+    /**
+     * <code>repeated .protocol.Order orders = 1;</code>
+     */
     com.kensai.protocol.Trading.Order getOrders(int index);
+    /**
+     * <code>repeated .protocol.Order orders = 1;</code>
+     */
     int getOrdersCount();
+    /**
+     * <code>repeated .protocol.Order orders = 1;</code>
+     */
     java.util.List<? extends com.kensai.protocol.Trading.OrderOrBuilder> 
         getOrdersOrBuilderList();
+    /**
+     * <code>repeated .protocol.Order orders = 1;</code>
+     */
     com.kensai.protocol.Trading.OrderOrBuilder getOrdersOrBuilder(
         int index);
   }
+  /**
+   * Protobuf type {@code protocol.OrdersSnapshot}
+   */
   public static final class OrdersSnapshot extends
       com.google.protobuf.GeneratedMessage
       implements OrdersSnapshotOrBuilder {
     // Use OrdersSnapshot.newBuilder() to construct.
-    private OrdersSnapshot(Builder builder) {
+    private OrdersSnapshot(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private OrdersSnapshot(boolean noInit) {}
-    
+    private OrdersSnapshot(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final OrdersSnapshot defaultInstance;
     public static OrdersSnapshot getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public OrdersSnapshot getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private OrdersSnapshot(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                orders_ = new java.util.ArrayList<com.kensai.protocol.Trading.Order>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              orders_.add(input.readMessage(com.kensai.protocol.Trading.Order.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          orders_ = java.util.Collections.unmodifiableList(orders_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.kensai.protocol.Trading.internal_static_protocol_OrdersSnapshot_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_OrdersSnapshot_fieldAccessorTable;
+      return com.kensai.protocol.Trading.internal_static_protocol_OrdersSnapshot_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.OrdersSnapshot.class, com.kensai.protocol.Trading.OrdersSnapshot.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<OrdersSnapshot> PARSER =
+        new com.google.protobuf.AbstractParser<OrdersSnapshot>() {
+      public OrdersSnapshot parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new OrdersSnapshot(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OrdersSnapshot> getParserForType() {
+      return PARSER;
+    }
+
     // repeated .protocol.Order orders = 1;
     public static final int ORDERS_FIELD_NUMBER = 1;
     private java.util.List<com.kensai.protocol.Trading.Order> orders_;
+    /**
+     * <code>repeated .protocol.Order orders = 1;</code>
+     */
     public java.util.List<com.kensai.protocol.Trading.Order> getOrdersList() {
       return orders_;
     }
+    /**
+     * <code>repeated .protocol.Order orders = 1;</code>
+     */
     public java.util.List<? extends com.kensai.protocol.Trading.OrderOrBuilder> 
         getOrdersOrBuilderList() {
       return orders_;
     }
+    /**
+     * <code>repeated .protocol.Order orders = 1;</code>
+     */
     public int getOrdersCount() {
       return orders_.size();
     }
+    /**
+     * <code>repeated .protocol.Order orders = 1;</code>
+     */
     public com.kensai.protocol.Trading.Order getOrders(int index) {
       return orders_.get(index);
     }
+    /**
+     * <code>repeated .protocol.Order orders = 1;</code>
+     */
     public com.kensai.protocol.Trading.OrderOrBuilder getOrdersOrBuilder(
         int index) {
       return orders_.get(index);
     }
-    
+
     private void initFields() {
       orders_ = java.util.Collections.emptyList();
     }
@@ -3223,7 +4408,7 @@ public final class Trading {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       for (int i = 0; i < getOrdersCount(); i++) {
         if (!getOrders(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -3233,7 +4418,7 @@ public final class Trading {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -3242,12 +4427,12 @@ public final class Trading {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       for (int i = 0; i < orders_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -3257,94 +4442,83 @@ public final class Trading {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static com.kensai.protocol.Trading.OrdersSnapshot parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.OrdersSnapshot parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.OrdersSnapshot parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.OrdersSnapshot parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.OrdersSnapshot parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.OrdersSnapshot parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.OrdersSnapshot parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.kensai.protocol.Trading.OrdersSnapshot parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.OrdersSnapshot parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.OrdersSnapshot parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.kensai.protocol.Trading.OrdersSnapshot prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code protocol.OrdersSnapshot}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.kensai.protocol.Trading.OrdersSnapshotOrBuilder {
@@ -3352,18 +4526,21 @@ public final class Trading {
           getDescriptor() {
         return com.kensai.protocol.Trading.internal_static_protocol_OrdersSnapshot_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_OrdersSnapshot_fieldAccessorTable;
+        return com.kensai.protocol.Trading.internal_static_protocol_OrdersSnapshot_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.OrdersSnapshot.class, com.kensai.protocol.Trading.OrdersSnapshot.Builder.class);
       }
-      
+
       // Construct using com.kensai.protocol.Trading.OrdersSnapshot.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -3375,7 +4552,7 @@ public final class Trading {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         if (ordersBuilder_ == null) {
@@ -3386,20 +4563,20 @@ public final class Trading {
         }
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.kensai.protocol.Trading.OrdersSnapshot.getDescriptor();
+        return com.kensai.protocol.Trading.internal_static_protocol_OrdersSnapshot_descriptor;
       }
-      
+
       public com.kensai.protocol.Trading.OrdersSnapshot getDefaultInstanceForType() {
         return com.kensai.protocol.Trading.OrdersSnapshot.getDefaultInstance();
       }
-      
+
       public com.kensai.protocol.Trading.OrdersSnapshot build() {
         com.kensai.protocol.Trading.OrdersSnapshot result = buildPartial();
         if (!result.isInitialized()) {
@@ -3407,17 +4584,7 @@ public final class Trading {
         }
         return result;
       }
-      
-      private com.kensai.protocol.Trading.OrdersSnapshot buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.OrdersSnapshot result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public com.kensai.protocol.Trading.OrdersSnapshot buildPartial() {
         com.kensai.protocol.Trading.OrdersSnapshot result = new com.kensai.protocol.Trading.OrdersSnapshot(this);
         int from_bitField0_ = bitField0_;
@@ -3433,7 +4600,7 @@ public final class Trading {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.kensai.protocol.Trading.OrdersSnapshot) {
           return mergeFrom((com.kensai.protocol.Trading.OrdersSnapshot)other);
@@ -3442,7 +4609,7 @@ public final class Trading {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(com.kensai.protocol.Trading.OrdersSnapshot other) {
         if (other == com.kensai.protocol.Trading.OrdersSnapshot.getDefaultInstance()) return this;
         if (ordersBuilder_ == null) {
@@ -3474,7 +4641,7 @@ public final class Trading {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         for (int i = 0; i < getOrdersCount(); i++) {
           if (!getOrders(i).isInitialized()) {
@@ -3484,42 +4651,26 @@ public final class Trading {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              com.kensai.protocol.Trading.Order.Builder subBuilder = com.kensai.protocol.Trading.Order.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addOrders(subBuilder.buildPartial());
-              break;
-            }
+        com.kensai.protocol.Trading.OrdersSnapshot parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.OrdersSnapshot) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // repeated .protocol.Order orders = 1;
       private java.util.List<com.kensai.protocol.Trading.Order> orders_ =
         java.util.Collections.emptyList();
@@ -3529,10 +4680,13 @@ public final class Trading {
           bitField0_ |= 0x00000001;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           com.kensai.protocol.Trading.Order, com.kensai.protocol.Trading.Order.Builder, com.kensai.protocol.Trading.OrderOrBuilder> ordersBuilder_;
-      
+
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Order> getOrdersList() {
         if (ordersBuilder_ == null) {
           return java.util.Collections.unmodifiableList(orders_);
@@ -3540,6 +4694,9 @@ public final class Trading {
           return ordersBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public int getOrdersCount() {
         if (ordersBuilder_ == null) {
           return orders_.size();
@@ -3547,6 +4704,9 @@ public final class Trading {
           return ordersBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public com.kensai.protocol.Trading.Order getOrders(int index) {
         if (ordersBuilder_ == null) {
           return orders_.get(index);
@@ -3554,6 +4714,9 @@ public final class Trading {
           return ordersBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public Builder setOrders(
           int index, com.kensai.protocol.Trading.Order value) {
         if (ordersBuilder_ == null) {
@@ -3568,6 +4731,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public Builder setOrders(
           int index, com.kensai.protocol.Trading.Order.Builder builderForValue) {
         if (ordersBuilder_ == null) {
@@ -3579,6 +4745,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public Builder addOrders(com.kensai.protocol.Trading.Order value) {
         if (ordersBuilder_ == null) {
           if (value == null) {
@@ -3592,6 +4761,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public Builder addOrders(
           int index, com.kensai.protocol.Trading.Order value) {
         if (ordersBuilder_ == null) {
@@ -3606,6 +4778,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public Builder addOrders(
           com.kensai.protocol.Trading.Order.Builder builderForValue) {
         if (ordersBuilder_ == null) {
@@ -3617,6 +4792,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public Builder addOrders(
           int index, com.kensai.protocol.Trading.Order.Builder builderForValue) {
         if (ordersBuilder_ == null) {
@@ -3628,6 +4806,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public Builder addAllOrders(
           java.lang.Iterable<? extends com.kensai.protocol.Trading.Order> values) {
         if (ordersBuilder_ == null) {
@@ -3639,6 +4820,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public Builder clearOrders() {
         if (ordersBuilder_ == null) {
           orders_ = java.util.Collections.emptyList();
@@ -3649,6 +4833,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public Builder removeOrders(int index) {
         if (ordersBuilder_ == null) {
           ensureOrdersIsMutable();
@@ -3659,10 +4846,16 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public com.kensai.protocol.Trading.Order.Builder getOrdersBuilder(
           int index) {
         return getOrdersFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public com.kensai.protocol.Trading.OrderOrBuilder getOrdersOrBuilder(
           int index) {
         if (ordersBuilder_ == null) {
@@ -3670,6 +4863,9 @@ public final class Trading {
           return ordersBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public java.util.List<? extends com.kensai.protocol.Trading.OrderOrBuilder> 
            getOrdersOrBuilderList() {
         if (ordersBuilder_ != null) {
@@ -3678,15 +4874,24 @@ public final class Trading {
           return java.util.Collections.unmodifiableList(orders_);
         }
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public com.kensai.protocol.Trading.Order.Builder addOrdersBuilder() {
         return getOrdersFieldBuilder().addBuilder(
             com.kensai.protocol.Trading.Order.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public com.kensai.protocol.Trading.Order.Builder addOrdersBuilder(
           int index) {
         return getOrdersFieldBuilder().addBuilder(
             index, com.kensai.protocol.Trading.Order.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Order orders = 1;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Order.Builder> 
            getOrdersBuilderList() {
         return getOrdersFieldBuilder().getBuilderList();
@@ -3705,160 +4910,348 @@ public final class Trading {
         }
         return ordersBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:protocol.OrdersSnapshot)
     }
-    
+
     static {
       defaultInstance = new OrdersSnapshot(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:protocol.OrdersSnapshot)
   }
-  
+
   public interface ExecutionOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // required int64 id = 1;
+    /**
+     * <code>required int64 id = 1;</code>
+     */
     boolean hasId();
+    /**
+     * <code>required int64 id = 1;</code>
+     */
     long getId();
-    
+
     // required double price = 5;
+    /**
+     * <code>required double price = 5;</code>
+     */
     boolean hasPrice();
+    /**
+     * <code>required double price = 5;</code>
+     */
     double getPrice();
-    
+
     // required int32 quantity = 6;
+    /**
+     * <code>required int32 quantity = 6;</code>
+     */
     boolean hasQuantity();
+    /**
+     * <code>required int32 quantity = 6;</code>
+     */
     int getQuantity();
-    
+
     // required string user = 7;
+    /**
+     * <code>required string user = 7;</code>
+     */
     boolean hasUser();
-    String getUser();
-    
+    /**
+     * <code>required string user = 7;</code>
+     */
+    java.lang.String getUser();
+    /**
+     * <code>required string user = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserBytes();
+
     // optional int64 time = 8;
+    /**
+     * <code>optional int64 time = 8;</code>
+     */
     boolean hasTime();
+    /**
+     * <code>optional int64 time = 8;</code>
+     */
     long getTime();
-    
+
     // required .protocol.Order order = 9;
+    /**
+     * <code>required .protocol.Order order = 9;</code>
+     */
     boolean hasOrder();
+    /**
+     * <code>required .protocol.Order order = 9;</code>
+     */
     com.kensai.protocol.Trading.Order getOrder();
+    /**
+     * <code>required .protocol.Order order = 9;</code>
+     */
     com.kensai.protocol.Trading.OrderOrBuilder getOrderOrBuilder();
   }
+  /**
+   * Protobuf type {@code protocol.Execution}
+   */
   public static final class Execution extends
       com.google.protobuf.GeneratedMessage
       implements ExecutionOrBuilder {
     // Use Execution.newBuilder() to construct.
-    private Execution(Builder builder) {
+    private Execution(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Execution(boolean noInit) {}
-    
+    private Execution(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final Execution defaultInstance;
     public static Execution getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public Execution getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Execution(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt64();
+              break;
+            }
+            case 41: {
+              bitField0_ |= 0x00000002;
+              price_ = input.readDouble();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000004;
+              quantity_ = input.readInt32();
+              break;
+            }
+            case 58: {
+              bitField0_ |= 0x00000008;
+              user_ = input.readBytes();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000010;
+              time_ = input.readInt64();
+              break;
+            }
+            case 74: {
+              com.kensai.protocol.Trading.Order.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = order_.toBuilder();
+              }
+              order_ = input.readMessage(com.kensai.protocol.Trading.Order.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(order_);
+                order_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.kensai.protocol.Trading.internal_static_protocol_Execution_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_Execution_fieldAccessorTable;
+      return com.kensai.protocol.Trading.internal_static_protocol_Execution_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.Execution.class, com.kensai.protocol.Trading.Execution.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<Execution> PARSER =
+        new com.google.protobuf.AbstractParser<Execution>() {
+      public Execution parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Execution(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Execution> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // required int64 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private long id_;
+    /**
+     * <code>required int64 id = 1;</code>
+     */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>required int64 id = 1;</code>
+     */
     public long getId() {
       return id_;
     }
-    
+
     // required double price = 5;
     public static final int PRICE_FIELD_NUMBER = 5;
     private double price_;
+    /**
+     * <code>required double price = 5;</code>
+     */
     public boolean hasPrice() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>required double price = 5;</code>
+     */
     public double getPrice() {
       return price_;
     }
-    
+
     // required int32 quantity = 6;
     public static final int QUANTITY_FIELD_NUMBER = 6;
     private int quantity_;
+    /**
+     * <code>required int32 quantity = 6;</code>
+     */
     public boolean hasQuantity() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
+    /**
+     * <code>required int32 quantity = 6;</code>
+     */
     public int getQuantity() {
       return quantity_;
     }
-    
+
     // required string user = 7;
     public static final int USER_FIELD_NUMBER = 7;
     private java.lang.Object user_;
+    /**
+     * <code>required string user = 7;</code>
+     */
     public boolean hasUser() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    public String getUser() {
+    /**
+     * <code>required string user = 7;</code>
+     */
+    public java.lang.String getUser() {
       java.lang.Object ref = user_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           user_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getUserBytes() {
+    /**
+     * <code>required string user = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserBytes() {
       java.lang.Object ref = user_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         user_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional int64 time = 8;
     public static final int TIME_FIELD_NUMBER = 8;
     private long time_;
+    /**
+     * <code>optional int64 time = 8;</code>
+     */
     public boolean hasTime() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
+    /**
+     * <code>optional int64 time = 8;</code>
+     */
     public long getTime() {
       return time_;
     }
-    
+
     // required .protocol.Order order = 9;
     public static final int ORDER_FIELD_NUMBER = 9;
     private com.kensai.protocol.Trading.Order order_;
+    /**
+     * <code>required .protocol.Order order = 9;</code>
+     */
     public boolean hasOrder() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
+    /**
+     * <code>required .protocol.Order order = 9;</code>
+     */
     public com.kensai.protocol.Trading.Order getOrder() {
       return order_;
     }
+    /**
+     * <code>required .protocol.Order order = 9;</code>
+     */
     public com.kensai.protocol.Trading.OrderOrBuilder getOrderOrBuilder() {
       return order_;
     }
-    
+
     private void initFields() {
       id_ = 0L;
       price_ = 0D;
@@ -3871,7 +5264,7 @@ public final class Trading {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       if (!hasId()) {
         memoizedIsInitialized = 0;
         return false;
@@ -3899,7 +5292,7 @@ public final class Trading {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -3923,12 +5316,12 @@ public final class Trading {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3958,94 +5351,83 @@ public final class Trading {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static com.kensai.protocol.Trading.Execution parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.Execution parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Execution parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.Execution parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Execution parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.Execution parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Execution parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.kensai.protocol.Trading.Execution parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Execution parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.Execution parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.kensai.protocol.Trading.Execution prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code protocol.Execution}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.kensai.protocol.Trading.ExecutionOrBuilder {
@@ -4053,18 +5435,21 @@ public final class Trading {
           getDescriptor() {
         return com.kensai.protocol.Trading.internal_static_protocol_Execution_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_Execution_fieldAccessorTable;
+        return com.kensai.protocol.Trading.internal_static_protocol_Execution_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.Execution.class, com.kensai.protocol.Trading.Execution.Builder.class);
       }
-      
+
       // Construct using com.kensai.protocol.Trading.Execution.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -4076,7 +5461,7 @@ public final class Trading {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         id_ = 0L;
@@ -4097,20 +5482,20 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.kensai.protocol.Trading.Execution.getDescriptor();
+        return com.kensai.protocol.Trading.internal_static_protocol_Execution_descriptor;
       }
-      
+
       public com.kensai.protocol.Trading.Execution getDefaultInstanceForType() {
         return com.kensai.protocol.Trading.Execution.getDefaultInstance();
       }
-      
+
       public com.kensai.protocol.Trading.Execution build() {
         com.kensai.protocol.Trading.Execution result = buildPartial();
         if (!result.isInitialized()) {
@@ -4118,17 +5503,7 @@ public final class Trading {
         }
         return result;
       }
-      
-      private com.kensai.protocol.Trading.Execution buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.Execution result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public com.kensai.protocol.Trading.Execution buildPartial() {
         com.kensai.protocol.Trading.Execution result = new com.kensai.protocol.Trading.Execution(this);
         int from_bitField0_ = bitField0_;
@@ -4165,7 +5540,7 @@ public final class Trading {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.kensai.protocol.Trading.Execution) {
           return mergeFrom((com.kensai.protocol.Trading.Execution)other);
@@ -4174,7 +5549,7 @@ public final class Trading {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(com.kensai.protocol.Trading.Execution other) {
         if (other == com.kensai.protocol.Trading.Execution.getDefaultInstance()) return this;
         if (other.hasId()) {
@@ -4187,7 +5562,9 @@ public final class Trading {
           setQuantity(other.getQuantity());
         }
         if (other.hasUser()) {
-          setUser(other.getUser());
+          bitField0_ |= 0x00000008;
+          user_ = other.user_;
+          onChanged();
         }
         if (other.hasTime()) {
           setTime(other.getTime());
@@ -4198,7 +5575,7 @@ public final class Trading {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         if (!hasId()) {
           
@@ -4226,149 +5603,168 @@ public final class Trading {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              id_ = input.readInt64();
-              break;
-            }
-            case 41: {
-              bitField0_ |= 0x00000002;
-              price_ = input.readDouble();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000004;
-              quantity_ = input.readInt32();
-              break;
-            }
-            case 58: {
-              bitField0_ |= 0x00000008;
-              user_ = input.readBytes();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000010;
-              time_ = input.readInt64();
-              break;
-            }
-            case 74: {
-              com.kensai.protocol.Trading.Order.Builder subBuilder = com.kensai.protocol.Trading.Order.newBuilder();
-              if (hasOrder()) {
-                subBuilder.mergeFrom(getOrder());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setOrder(subBuilder.buildPartial());
-              break;
-            }
+        com.kensai.protocol.Trading.Execution parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.Execution) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // required int64 id = 1;
       private long id_ ;
+      /**
+       * <code>required int64 id = 1;</code>
+       */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
       public long getId() {
         return id_;
       }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
       public Builder setId(long value) {
         bitField0_ |= 0x00000001;
         id_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>required int64 id = 1;</code>
+       */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // required double price = 5;
       private double price_ ;
+      /**
+       * <code>required double price = 5;</code>
+       */
       public boolean hasPrice() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>required double price = 5;</code>
+       */
       public double getPrice() {
         return price_;
       }
+      /**
+       * <code>required double price = 5;</code>
+       */
       public Builder setPrice(double value) {
         bitField0_ |= 0x00000002;
         price_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>required double price = 5;</code>
+       */
       public Builder clearPrice() {
         bitField0_ = (bitField0_ & ~0x00000002);
         price_ = 0D;
         onChanged();
         return this;
       }
-      
+
       // required int32 quantity = 6;
       private int quantity_ ;
+      /**
+       * <code>required int32 quantity = 6;</code>
+       */
       public boolean hasQuantity() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>required int32 quantity = 6;</code>
+       */
       public int getQuantity() {
         return quantity_;
       }
+      /**
+       * <code>required int32 quantity = 6;</code>
+       */
       public Builder setQuantity(int value) {
         bitField0_ |= 0x00000004;
         quantity_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>required int32 quantity = 6;</code>
+       */
       public Builder clearQuantity() {
         bitField0_ = (bitField0_ & ~0x00000004);
         quantity_ = 0;
         onChanged();
         return this;
       }
-      
+
       // required string user = 7;
       private java.lang.Object user_ = "";
+      /**
+       * <code>required string user = 7;</code>
+       */
       public boolean hasUser() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      public String getUser() {
+      /**
+       * <code>required string user = 7;</code>
+       */
+      public java.lang.String getUser() {
         java.lang.Object ref = user_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           user_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setUser(String value) {
+      /**
+       * <code>required string user = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserBytes() {
+        java.lang.Object ref = user_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          user_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string user = 7;</code>
+       */
+      public Builder setUser(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -4377,46 +5773,75 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>required string user = 7;</code>
+       */
       public Builder clearUser() {
         bitField0_ = (bitField0_ & ~0x00000008);
         user_ = getDefaultInstance().getUser();
         onChanged();
         return this;
       }
-      void setUser(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000008;
+      /**
+       * <code>required string user = 7;</code>
+       */
+      public Builder setUserBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
         user_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional int64 time = 8;
       private long time_ ;
+      /**
+       * <code>optional int64 time = 8;</code>
+       */
       public boolean hasTime() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
+      /**
+       * <code>optional int64 time = 8;</code>
+       */
       public long getTime() {
         return time_;
       }
+      /**
+       * <code>optional int64 time = 8;</code>
+       */
       public Builder setTime(long value) {
         bitField0_ |= 0x00000010;
         time_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int64 time = 8;</code>
+       */
       public Builder clearTime() {
         bitField0_ = (bitField0_ & ~0x00000010);
         time_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // required .protocol.Order order = 9;
       private com.kensai.protocol.Trading.Order order_ = com.kensai.protocol.Trading.Order.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Order, com.kensai.protocol.Trading.Order.Builder, com.kensai.protocol.Trading.OrderOrBuilder> orderBuilder_;
+      /**
+       * <code>required .protocol.Order order = 9;</code>
+       */
       public boolean hasOrder() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
+      /**
+       * <code>required .protocol.Order order = 9;</code>
+       */
       public com.kensai.protocol.Trading.Order getOrder() {
         if (orderBuilder_ == null) {
           return order_;
@@ -4424,6 +5849,9 @@ public final class Trading {
           return orderBuilder_.getMessage();
         }
       }
+      /**
+       * <code>required .protocol.Order order = 9;</code>
+       */
       public Builder setOrder(com.kensai.protocol.Trading.Order value) {
         if (orderBuilder_ == null) {
           if (value == null) {
@@ -4437,6 +5865,9 @@ public final class Trading {
         bitField0_ |= 0x00000020;
         return this;
       }
+      /**
+       * <code>required .protocol.Order order = 9;</code>
+       */
       public Builder setOrder(
           com.kensai.protocol.Trading.Order.Builder builderForValue) {
         if (orderBuilder_ == null) {
@@ -4448,6 +5879,9 @@ public final class Trading {
         bitField0_ |= 0x00000020;
         return this;
       }
+      /**
+       * <code>required .protocol.Order order = 9;</code>
+       */
       public Builder mergeOrder(com.kensai.protocol.Trading.Order value) {
         if (orderBuilder_ == null) {
           if (((bitField0_ & 0x00000020) == 0x00000020) &&
@@ -4464,6 +5898,9 @@ public final class Trading {
         bitField0_ |= 0x00000020;
         return this;
       }
+      /**
+       * <code>required .protocol.Order order = 9;</code>
+       */
       public Builder clearOrder() {
         if (orderBuilder_ == null) {
           order_ = com.kensai.protocol.Trading.Order.getDefaultInstance();
@@ -4474,11 +5911,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
+      /**
+       * <code>required .protocol.Order order = 9;</code>
+       */
       public com.kensai.protocol.Trading.Order.Builder getOrderBuilder() {
         bitField0_ |= 0x00000020;
         onChanged();
         return getOrderFieldBuilder().getBuilder();
       }
+      /**
+       * <code>required .protocol.Order order = 9;</code>
+       */
       public com.kensai.protocol.Trading.OrderOrBuilder getOrderOrBuilder() {
         if (orderBuilder_ != null) {
           return orderBuilder_.getMessageOrBuilder();
@@ -4486,6 +5929,9 @@ public final class Trading {
           return order_;
         }
       }
+      /**
+       * <code>required .protocol.Order order = 9;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Order, com.kensai.protocol.Trading.Order.Builder, com.kensai.protocol.Trading.OrderOrBuilder> 
           getOrderFieldBuilder() {
@@ -4499,80 +5945,183 @@ public final class Trading {
         }
         return orderBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:protocol.Execution)
     }
-    
+
     static {
       defaultInstance = new Execution(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:protocol.Execution)
   }
-  
+
   public interface ExecutionsSnapshotOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // repeated .protocol.Execution executions = 1;
+    /**
+     * <code>repeated .protocol.Execution executions = 1;</code>
+     */
     java.util.List<com.kensai.protocol.Trading.Execution> 
         getExecutionsList();
+    /**
+     * <code>repeated .protocol.Execution executions = 1;</code>
+     */
     com.kensai.protocol.Trading.Execution getExecutions(int index);
+    /**
+     * <code>repeated .protocol.Execution executions = 1;</code>
+     */
     int getExecutionsCount();
+    /**
+     * <code>repeated .protocol.Execution executions = 1;</code>
+     */
     java.util.List<? extends com.kensai.protocol.Trading.ExecutionOrBuilder> 
         getExecutionsOrBuilderList();
+    /**
+     * <code>repeated .protocol.Execution executions = 1;</code>
+     */
     com.kensai.protocol.Trading.ExecutionOrBuilder getExecutionsOrBuilder(
         int index);
   }
+  /**
+   * Protobuf type {@code protocol.ExecutionsSnapshot}
+   */
   public static final class ExecutionsSnapshot extends
       com.google.protobuf.GeneratedMessage
       implements ExecutionsSnapshotOrBuilder {
     // Use ExecutionsSnapshot.newBuilder() to construct.
-    private ExecutionsSnapshot(Builder builder) {
+    private ExecutionsSnapshot(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private ExecutionsSnapshot(boolean noInit) {}
-    
+    private ExecutionsSnapshot(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final ExecutionsSnapshot defaultInstance;
     public static ExecutionsSnapshot getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public ExecutionsSnapshot getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ExecutionsSnapshot(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                executions_ = new java.util.ArrayList<com.kensai.protocol.Trading.Execution>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              executions_.add(input.readMessage(com.kensai.protocol.Trading.Execution.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          executions_ = java.util.Collections.unmodifiableList(executions_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.kensai.protocol.Trading.internal_static_protocol_ExecutionsSnapshot_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_ExecutionsSnapshot_fieldAccessorTable;
+      return com.kensai.protocol.Trading.internal_static_protocol_ExecutionsSnapshot_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.ExecutionsSnapshot.class, com.kensai.protocol.Trading.ExecutionsSnapshot.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<ExecutionsSnapshot> PARSER =
+        new com.google.protobuf.AbstractParser<ExecutionsSnapshot>() {
+      public ExecutionsSnapshot parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ExecutionsSnapshot(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ExecutionsSnapshot> getParserForType() {
+      return PARSER;
+    }
+
     // repeated .protocol.Execution executions = 1;
     public static final int EXECUTIONS_FIELD_NUMBER = 1;
     private java.util.List<com.kensai.protocol.Trading.Execution> executions_;
+    /**
+     * <code>repeated .protocol.Execution executions = 1;</code>
+     */
     public java.util.List<com.kensai.protocol.Trading.Execution> getExecutionsList() {
       return executions_;
     }
+    /**
+     * <code>repeated .protocol.Execution executions = 1;</code>
+     */
     public java.util.List<? extends com.kensai.protocol.Trading.ExecutionOrBuilder> 
         getExecutionsOrBuilderList() {
       return executions_;
     }
+    /**
+     * <code>repeated .protocol.Execution executions = 1;</code>
+     */
     public int getExecutionsCount() {
       return executions_.size();
     }
+    /**
+     * <code>repeated .protocol.Execution executions = 1;</code>
+     */
     public com.kensai.protocol.Trading.Execution getExecutions(int index) {
       return executions_.get(index);
     }
+    /**
+     * <code>repeated .protocol.Execution executions = 1;</code>
+     */
     public com.kensai.protocol.Trading.ExecutionOrBuilder getExecutionsOrBuilder(
         int index) {
       return executions_.get(index);
     }
-    
+
     private void initFields() {
       executions_ = java.util.Collections.emptyList();
     }
@@ -4580,7 +6129,7 @@ public final class Trading {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       for (int i = 0; i < getExecutionsCount(); i++) {
         if (!getExecutions(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -4590,7 +6139,7 @@ public final class Trading {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -4599,12 +6148,12 @@ public final class Trading {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       for (int i = 0; i < executions_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -4614,94 +6163,83 @@ public final class Trading {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static com.kensai.protocol.Trading.ExecutionsSnapshot parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.ExecutionsSnapshot parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.ExecutionsSnapshot parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.ExecutionsSnapshot parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.ExecutionsSnapshot parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.ExecutionsSnapshot parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.ExecutionsSnapshot parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.kensai.protocol.Trading.ExecutionsSnapshot parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.ExecutionsSnapshot parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.ExecutionsSnapshot parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.kensai.protocol.Trading.ExecutionsSnapshot prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code protocol.ExecutionsSnapshot}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.kensai.protocol.Trading.ExecutionsSnapshotOrBuilder {
@@ -4709,18 +6247,21 @@ public final class Trading {
           getDescriptor() {
         return com.kensai.protocol.Trading.internal_static_protocol_ExecutionsSnapshot_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_ExecutionsSnapshot_fieldAccessorTable;
+        return com.kensai.protocol.Trading.internal_static_protocol_ExecutionsSnapshot_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.ExecutionsSnapshot.class, com.kensai.protocol.Trading.ExecutionsSnapshot.Builder.class);
       }
-      
+
       // Construct using com.kensai.protocol.Trading.ExecutionsSnapshot.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -4732,7 +6273,7 @@ public final class Trading {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         if (executionsBuilder_ == null) {
@@ -4743,20 +6284,20 @@ public final class Trading {
         }
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.kensai.protocol.Trading.ExecutionsSnapshot.getDescriptor();
+        return com.kensai.protocol.Trading.internal_static_protocol_ExecutionsSnapshot_descriptor;
       }
-      
+
       public com.kensai.protocol.Trading.ExecutionsSnapshot getDefaultInstanceForType() {
         return com.kensai.protocol.Trading.ExecutionsSnapshot.getDefaultInstance();
       }
-      
+
       public com.kensai.protocol.Trading.ExecutionsSnapshot build() {
         com.kensai.protocol.Trading.ExecutionsSnapshot result = buildPartial();
         if (!result.isInitialized()) {
@@ -4764,17 +6305,7 @@ public final class Trading {
         }
         return result;
       }
-      
-      private com.kensai.protocol.Trading.ExecutionsSnapshot buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.ExecutionsSnapshot result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public com.kensai.protocol.Trading.ExecutionsSnapshot buildPartial() {
         com.kensai.protocol.Trading.ExecutionsSnapshot result = new com.kensai.protocol.Trading.ExecutionsSnapshot(this);
         int from_bitField0_ = bitField0_;
@@ -4790,7 +6321,7 @@ public final class Trading {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.kensai.protocol.Trading.ExecutionsSnapshot) {
           return mergeFrom((com.kensai.protocol.Trading.ExecutionsSnapshot)other);
@@ -4799,7 +6330,7 @@ public final class Trading {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(com.kensai.protocol.Trading.ExecutionsSnapshot other) {
         if (other == com.kensai.protocol.Trading.ExecutionsSnapshot.getDefaultInstance()) return this;
         if (executionsBuilder_ == null) {
@@ -4831,7 +6362,7 @@ public final class Trading {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         for (int i = 0; i < getExecutionsCount(); i++) {
           if (!getExecutions(i).isInitialized()) {
@@ -4841,42 +6372,26 @@ public final class Trading {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              com.kensai.protocol.Trading.Execution.Builder subBuilder = com.kensai.protocol.Trading.Execution.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addExecutions(subBuilder.buildPartial());
-              break;
-            }
+        com.kensai.protocol.Trading.ExecutionsSnapshot parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.ExecutionsSnapshot) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // repeated .protocol.Execution executions = 1;
       private java.util.List<com.kensai.protocol.Trading.Execution> executions_ =
         java.util.Collections.emptyList();
@@ -4886,10 +6401,13 @@ public final class Trading {
           bitField0_ |= 0x00000001;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           com.kensai.protocol.Trading.Execution, com.kensai.protocol.Trading.Execution.Builder, com.kensai.protocol.Trading.ExecutionOrBuilder> executionsBuilder_;
-      
+
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Execution> getExecutionsList() {
         if (executionsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(executions_);
@@ -4897,6 +6415,9 @@ public final class Trading {
           return executionsBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public int getExecutionsCount() {
         if (executionsBuilder_ == null) {
           return executions_.size();
@@ -4904,6 +6425,9 @@ public final class Trading {
           return executionsBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public com.kensai.protocol.Trading.Execution getExecutions(int index) {
         if (executionsBuilder_ == null) {
           return executions_.get(index);
@@ -4911,6 +6435,9 @@ public final class Trading {
           return executionsBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public Builder setExecutions(
           int index, com.kensai.protocol.Trading.Execution value) {
         if (executionsBuilder_ == null) {
@@ -4925,6 +6452,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public Builder setExecutions(
           int index, com.kensai.protocol.Trading.Execution.Builder builderForValue) {
         if (executionsBuilder_ == null) {
@@ -4936,6 +6466,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public Builder addExecutions(com.kensai.protocol.Trading.Execution value) {
         if (executionsBuilder_ == null) {
           if (value == null) {
@@ -4949,6 +6482,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public Builder addExecutions(
           int index, com.kensai.protocol.Trading.Execution value) {
         if (executionsBuilder_ == null) {
@@ -4963,6 +6499,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public Builder addExecutions(
           com.kensai.protocol.Trading.Execution.Builder builderForValue) {
         if (executionsBuilder_ == null) {
@@ -4974,6 +6513,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public Builder addExecutions(
           int index, com.kensai.protocol.Trading.Execution.Builder builderForValue) {
         if (executionsBuilder_ == null) {
@@ -4985,6 +6527,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public Builder addAllExecutions(
           java.lang.Iterable<? extends com.kensai.protocol.Trading.Execution> values) {
         if (executionsBuilder_ == null) {
@@ -4996,6 +6541,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public Builder clearExecutions() {
         if (executionsBuilder_ == null) {
           executions_ = java.util.Collections.emptyList();
@@ -5006,6 +6554,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public Builder removeExecutions(int index) {
         if (executionsBuilder_ == null) {
           ensureExecutionsIsMutable();
@@ -5016,10 +6567,16 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public com.kensai.protocol.Trading.Execution.Builder getExecutionsBuilder(
           int index) {
         return getExecutionsFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public com.kensai.protocol.Trading.ExecutionOrBuilder getExecutionsOrBuilder(
           int index) {
         if (executionsBuilder_ == null) {
@@ -5027,6 +6584,9 @@ public final class Trading {
           return executionsBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public java.util.List<? extends com.kensai.protocol.Trading.ExecutionOrBuilder> 
            getExecutionsOrBuilderList() {
         if (executionsBuilder_ != null) {
@@ -5035,15 +6595,24 @@ public final class Trading {
           return java.util.Collections.unmodifiableList(executions_);
         }
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public com.kensai.protocol.Trading.Execution.Builder addExecutionsBuilder() {
         return getExecutionsFieldBuilder().addBuilder(
             com.kensai.protocol.Trading.Execution.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public com.kensai.protocol.Trading.Execution.Builder addExecutionsBuilder(
           int index) {
         return getExecutionsFieldBuilder().addBuilder(
             index, com.kensai.protocol.Trading.Execution.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Execution executions = 1;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Execution.Builder> 
            getExecutionsBuilderList() {
         return getExecutionsFieldBuilder().getBuilderList();
@@ -5062,396 +6631,99 @@ public final class Trading {
         }
         return executionsBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:protocol.ExecutionsSnapshot)
     }
-    
+
     static {
       defaultInstance = new ExecutionsSnapshot(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:protocol.ExecutionsSnapshot)
   }
-  
+
   public interface DepthOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // required int32 depth = 1;
+    /**
+     * <code>required int32 depth = 1;</code>
+     */
     boolean hasDepth();
+    /**
+     * <code>required int32 depth = 1;</code>
+     */
     int getDepth();
-    
+
     // required double price = 2;
+    /**
+     * <code>required double price = 2;</code>
+     */
     boolean hasPrice();
+    /**
+     * <code>required double price = 2;</code>
+     */
     double getPrice();
-    
+
     // required int32 quantity = 3;
+    /**
+     * <code>required int32 quantity = 3;</code>
+     */
     boolean hasQuantity();
+    /**
+     * <code>required int32 quantity = 3;</code>
+     */
     int getQuantity();
   }
+  /**
+   * Protobuf type {@code protocol.Depth}
+   */
   public static final class Depth extends
       com.google.protobuf.GeneratedMessage
       implements DepthOrBuilder {
     // Use Depth.newBuilder() to construct.
-    private Depth(Builder builder) {
+    private Depth(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Depth(boolean noInit) {}
-    
+    private Depth(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final Depth defaultInstance;
     public static Depth getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public Depth getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.kensai.protocol.Trading.internal_static_protocol_Depth_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_Depth_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // required int32 depth = 1;
-    public static final int DEPTH_FIELD_NUMBER = 1;
-    private int depth_;
-    public boolean hasDepth() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public int getDepth() {
-      return depth_;
-    }
-    
-    // required double price = 2;
-    public static final int PRICE_FIELD_NUMBER = 2;
-    private double price_;
-    public boolean hasPrice() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public double getPrice() {
-      return price_;
-    }
-    
-    // required int32 quantity = 3;
-    public static final int QUANTITY_FIELD_NUMBER = 3;
-    private int quantity_;
-    public boolean hasQuantity() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public int getQuantity() {
-      return quantity_;
-    }
-    
-    private void initFields() {
-      depth_ = 0;
-      price_ = 0D;
-      quantity_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasDepth()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasPrice()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasQuantity()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, depth_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeDouble(2, price_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, quantity_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, depth_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(2, price_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, quantity_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
     }
-    
-    public static com.kensai.protocol.Trading.Depth parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Depth parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Depth parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Depth parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Depth parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Depth parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Depth parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.kensai.protocol.Trading.Depth parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.kensai.protocol.Trading.Depth parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.kensai.protocol.Trading.Depth parseFrom(
+    private Depth(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.kensai.protocol.Trading.Depth prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.kensai.protocol.Trading.DepthOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.kensai.protocol.Trading.internal_static_protocol_Depth_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_Depth_fieldAccessorTable;
-      }
-      
-      // Construct using com.kensai.protocol.Trading.Depth.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        depth_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        price_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        quantity_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.kensai.protocol.Trading.Depth.getDescriptor();
-      }
-      
-      public com.kensai.protocol.Trading.Depth getDefaultInstanceForType() {
-        return com.kensai.protocol.Trading.Depth.getDefaultInstance();
-      }
-      
-      public com.kensai.protocol.Trading.Depth build() {
-        com.kensai.protocol.Trading.Depth result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private com.kensai.protocol.Trading.Depth buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.Depth result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public com.kensai.protocol.Trading.Depth buildPartial() {
-        com.kensai.protocol.Trading.Depth result = new com.kensai.protocol.Trading.Depth(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.depth_ = depth_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.price_ = price_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.quantity_ = quantity_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.kensai.protocol.Trading.Depth) {
-          return mergeFrom((com.kensai.protocol.Trading.Depth)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(com.kensai.protocol.Trading.Depth other) {
-        if (other == com.kensai.protocol.Trading.Depth.getDefaultInstance()) return this;
-        if (other.hasDepth()) {
-          setDepth(other.getDepth());
-        }
-        if (other.hasPrice()) {
-          setPrice(other.getPrice());
-        }
-        if (other.hasQuantity()) {
-          setQuantity(other.getQuantity());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        if (!hasDepth()) {
-          
-          return false;
-        }
-        if (!hasPrice()) {
-          
-          return false;
-        }
-        if (!hasQuantity()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -5472,266 +6744,935 @@ public final class Trading {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.kensai.protocol.Trading.internal_static_protocol_Depth_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.kensai.protocol.Trading.internal_static_protocol_Depth_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.Depth.class, com.kensai.protocol.Trading.Depth.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Depth> PARSER =
+        new com.google.protobuf.AbstractParser<Depth>() {
+      public Depth parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Depth(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Depth> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 depth = 1;
+    public static final int DEPTH_FIELD_NUMBER = 1;
+    private int depth_;
+    /**
+     * <code>required int32 depth = 1;</code>
+     */
+    public boolean hasDepth() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 depth = 1;</code>
+     */
+    public int getDepth() {
+      return depth_;
+    }
+
+    // required double price = 2;
+    public static final int PRICE_FIELD_NUMBER = 2;
+    private double price_;
+    /**
+     * <code>required double price = 2;</code>
+     */
+    public boolean hasPrice() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required double price = 2;</code>
+     */
+    public double getPrice() {
+      return price_;
+    }
+
+    // required int32 quantity = 3;
+    public static final int QUANTITY_FIELD_NUMBER = 3;
+    private int quantity_;
+    /**
+     * <code>required int32 quantity = 3;</code>
+     */
+    public boolean hasQuantity() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 quantity = 3;</code>
+     */
+    public int getQuantity() {
+      return quantity_;
+    }
+
+    private void initFields() {
+      depth_ = 0;
+      price_ = 0D;
+      quantity_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasDepth()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPrice()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasQuantity()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, depth_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeDouble(2, price_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, quantity_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, depth_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, price_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, quantity_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.kensai.protocol.Trading.Depth parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kensai.protocol.Trading.Depth parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Depth parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kensai.protocol.Trading.Depth parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Depth parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.kensai.protocol.Trading.Depth parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Depth parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.kensai.protocol.Trading.Depth parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.Depth parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.kensai.protocol.Trading.Depth parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.kensai.protocol.Trading.Depth prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protocol.Depth}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.kensai.protocol.Trading.DepthOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.kensai.protocol.Trading.internal_static_protocol_Depth_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.kensai.protocol.Trading.internal_static_protocol_Depth_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.Depth.class, com.kensai.protocol.Trading.Depth.Builder.class);
+      }
+
+      // Construct using com.kensai.protocol.Trading.Depth.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        depth_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        price_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        quantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.kensai.protocol.Trading.internal_static_protocol_Depth_descriptor;
+      }
+
+      public com.kensai.protocol.Trading.Depth getDefaultInstanceForType() {
+        return com.kensai.protocol.Trading.Depth.getDefaultInstance();
+      }
+
+      public com.kensai.protocol.Trading.Depth build() {
+        com.kensai.protocol.Trading.Depth result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.kensai.protocol.Trading.Depth buildPartial() {
+        com.kensai.protocol.Trading.Depth result = new com.kensai.protocol.Trading.Depth(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.depth_ = depth_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.price_ = price_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.quantity_ = quantity_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.kensai.protocol.Trading.Depth) {
+          return mergeFrom((com.kensai.protocol.Trading.Depth)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.kensai.protocol.Trading.Depth other) {
+        if (other == com.kensai.protocol.Trading.Depth.getDefaultInstance()) return this;
+        if (other.hasDepth()) {
+          setDepth(other.getDepth());
+        }
+        if (other.hasPrice()) {
+          setPrice(other.getPrice());
+        }
+        if (other.hasQuantity()) {
+          setQuantity(other.getQuantity());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasDepth()) {
+          
+          return false;
+        }
+        if (!hasPrice()) {
+          
+          return false;
+        }
+        if (!hasQuantity()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.kensai.protocol.Trading.Depth parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.Depth) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
+
       // required int32 depth = 1;
       private int depth_ ;
+      /**
+       * <code>required int32 depth = 1;</code>
+       */
       public boolean hasDepth() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>required int32 depth = 1;</code>
+       */
       public int getDepth() {
         return depth_;
       }
+      /**
+       * <code>required int32 depth = 1;</code>
+       */
       public Builder setDepth(int value) {
         bitField0_ |= 0x00000001;
         depth_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>required int32 depth = 1;</code>
+       */
       public Builder clearDepth() {
         bitField0_ = (bitField0_ & ~0x00000001);
         depth_ = 0;
         onChanged();
         return this;
       }
-      
+
       // required double price = 2;
       private double price_ ;
+      /**
+       * <code>required double price = 2;</code>
+       */
       public boolean hasPrice() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>required double price = 2;</code>
+       */
       public double getPrice() {
         return price_;
       }
+      /**
+       * <code>required double price = 2;</code>
+       */
       public Builder setPrice(double value) {
         bitField0_ |= 0x00000002;
         price_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>required double price = 2;</code>
+       */
       public Builder clearPrice() {
         bitField0_ = (bitField0_ & ~0x00000002);
         price_ = 0D;
         onChanged();
         return this;
       }
-      
+
       // required int32 quantity = 3;
       private int quantity_ ;
+      /**
+       * <code>required int32 quantity = 3;</code>
+       */
       public boolean hasQuantity() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>required int32 quantity = 3;</code>
+       */
       public int getQuantity() {
         return quantity_;
       }
+      /**
+       * <code>required int32 quantity = 3;</code>
+       */
       public Builder setQuantity(int value) {
         bitField0_ |= 0x00000004;
         quantity_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>required int32 quantity = 3;</code>
+       */
       public Builder clearQuantity() {
         bitField0_ = (bitField0_ & ~0x00000004);
         quantity_ = 0;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:protocol.Depth)
     }
-    
+
     static {
       defaultInstance = new Depth(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:protocol.Depth)
   }
-  
+
   public interface SummaryOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // required .protocol.Instrument instrument = 1;
+    /**
+     * <code>required .protocol.Instrument instrument = 1;</code>
+     */
     boolean hasInstrument();
+    /**
+     * <code>required .protocol.Instrument instrument = 1;</code>
+     */
     com.kensai.protocol.Trading.Instrument getInstrument();
+    /**
+     * <code>required .protocol.Instrument instrument = 1;</code>
+     */
     com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentOrBuilder();
-    
+
     // required .protocol.MarketStatus marketStatus = 2;
+    /**
+     * <code>required .protocol.MarketStatus marketStatus = 2;</code>
+     */
     boolean hasMarketStatus();
+    /**
+     * <code>required .protocol.MarketStatus marketStatus = 2;</code>
+     */
     com.kensai.protocol.Trading.MarketStatus getMarketStatus();
-    
+
     // optional double open = 3;
+    /**
+     * <code>optional double open = 3;</code>
+     */
     boolean hasOpen();
+    /**
+     * <code>optional double open = 3;</code>
+     */
     double getOpen();
-    
+
     // optional double close = 4;
+    /**
+     * <code>optional double close = 4;</code>
+     */
     boolean hasClose();
+    /**
+     * <code>optional double close = 4;</code>
+     */
     double getClose();
-    
+
     // optional double last = 5;
+    /**
+     * <code>optional double last = 5;</code>
+     */
     boolean hasLast();
+    /**
+     * <code>optional double last = 5;</code>
+     */
     double getLast();
-    
+
     // repeated .protocol.Depth buyDepths = 6;
+    /**
+     * <code>repeated .protocol.Depth buyDepths = 6;</code>
+     */
     java.util.List<com.kensai.protocol.Trading.Depth> 
         getBuyDepthsList();
+    /**
+     * <code>repeated .protocol.Depth buyDepths = 6;</code>
+     */
     com.kensai.protocol.Trading.Depth getBuyDepths(int index);
+    /**
+     * <code>repeated .protocol.Depth buyDepths = 6;</code>
+     */
     int getBuyDepthsCount();
+    /**
+     * <code>repeated .protocol.Depth buyDepths = 6;</code>
+     */
     java.util.List<? extends com.kensai.protocol.Trading.DepthOrBuilder> 
         getBuyDepthsOrBuilderList();
+    /**
+     * <code>repeated .protocol.Depth buyDepths = 6;</code>
+     */
     com.kensai.protocol.Trading.DepthOrBuilder getBuyDepthsOrBuilder(
         int index);
-    
+
     // repeated .protocol.Depth sellDepths = 7;
+    /**
+     * <code>repeated .protocol.Depth sellDepths = 7;</code>
+     */
     java.util.List<com.kensai.protocol.Trading.Depth> 
         getSellDepthsList();
+    /**
+     * <code>repeated .protocol.Depth sellDepths = 7;</code>
+     */
     com.kensai.protocol.Trading.Depth getSellDepths(int index);
+    /**
+     * <code>repeated .protocol.Depth sellDepths = 7;</code>
+     */
     int getSellDepthsCount();
+    /**
+     * <code>repeated .protocol.Depth sellDepths = 7;</code>
+     */
     java.util.List<? extends com.kensai.protocol.Trading.DepthOrBuilder> 
         getSellDepthsOrBuilderList();
+    /**
+     * <code>repeated .protocol.Depth sellDepths = 7;</code>
+     */
     com.kensai.protocol.Trading.DepthOrBuilder getSellDepthsOrBuilder(
         int index);
-    
+
     // required int64 timestamp = 8;
+    /**
+     * <code>required int64 timestamp = 8;</code>
+     */
     boolean hasTimestamp();
+    /**
+     * <code>required int64 timestamp = 8;</code>
+     */
     long getTimestamp();
   }
+  /**
+   * Protobuf type {@code protocol.Summary}
+   */
   public static final class Summary extends
       com.google.protobuf.GeneratedMessage
       implements SummaryOrBuilder {
     // Use Summary.newBuilder() to construct.
-    private Summary(Builder builder) {
+    private Summary(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Summary(boolean noInit) {}
-    
+    private Summary(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final Summary defaultInstance;
     public static Summary getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public Summary getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Summary(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.kensai.protocol.Trading.Instrument.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = instrument_.toBuilder();
+              }
+              instrument_ = input.readMessage(com.kensai.protocol.Trading.Instrument.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(instrument_);
+                instrument_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+              com.kensai.protocol.Trading.MarketStatus value = com.kensai.protocol.Trading.MarketStatus.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                marketStatus_ = value;
+              }
+              break;
+            }
+            case 25: {
+              bitField0_ |= 0x00000004;
+              open_ = input.readDouble();
+              break;
+            }
+            case 33: {
+              bitField0_ |= 0x00000008;
+              close_ = input.readDouble();
+              break;
+            }
+            case 41: {
+              bitField0_ |= 0x00000010;
+              last_ = input.readDouble();
+              break;
+            }
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                buyDepths_ = new java.util.ArrayList<com.kensai.protocol.Trading.Depth>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              buyDepths_.add(input.readMessage(com.kensai.protocol.Trading.Depth.PARSER, extensionRegistry));
+              break;
+            }
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                sellDepths_ = new java.util.ArrayList<com.kensai.protocol.Trading.Depth>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              sellDepths_.add(input.readMessage(com.kensai.protocol.Trading.Depth.PARSER, extensionRegistry));
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000020;
+              timestamp_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          buyDepths_ = java.util.Collections.unmodifiableList(buyDepths_);
+        }
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          sellDepths_ = java.util.Collections.unmodifiableList(sellDepths_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.kensai.protocol.Trading.internal_static_protocol_Summary_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_Summary_fieldAccessorTable;
+      return com.kensai.protocol.Trading.internal_static_protocol_Summary_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.Summary.class, com.kensai.protocol.Trading.Summary.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<Summary> PARSER =
+        new com.google.protobuf.AbstractParser<Summary>() {
+      public Summary parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Summary(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Summary> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // required .protocol.Instrument instrument = 1;
     public static final int INSTRUMENT_FIELD_NUMBER = 1;
     private com.kensai.protocol.Trading.Instrument instrument_;
+    /**
+     * <code>required .protocol.Instrument instrument = 1;</code>
+     */
     public boolean hasInstrument() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>required .protocol.Instrument instrument = 1;</code>
+     */
     public com.kensai.protocol.Trading.Instrument getInstrument() {
       return instrument_;
     }
+    /**
+     * <code>required .protocol.Instrument instrument = 1;</code>
+     */
     public com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentOrBuilder() {
       return instrument_;
     }
-    
+
     // required .protocol.MarketStatus marketStatus = 2;
     public static final int MARKETSTATUS_FIELD_NUMBER = 2;
     private com.kensai.protocol.Trading.MarketStatus marketStatus_;
+    /**
+     * <code>required .protocol.MarketStatus marketStatus = 2;</code>
+     */
     public boolean hasMarketStatus() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>required .protocol.MarketStatus marketStatus = 2;</code>
+     */
     public com.kensai.protocol.Trading.MarketStatus getMarketStatus() {
       return marketStatus_;
     }
-    
+
     // optional double open = 3;
     public static final int OPEN_FIELD_NUMBER = 3;
     private double open_;
+    /**
+     * <code>optional double open = 3;</code>
+     */
     public boolean hasOpen() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
+    /**
+     * <code>optional double open = 3;</code>
+     */
     public double getOpen() {
       return open_;
     }
-    
+
     // optional double close = 4;
     public static final int CLOSE_FIELD_NUMBER = 4;
     private double close_;
+    /**
+     * <code>optional double close = 4;</code>
+     */
     public boolean hasClose() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
+    /**
+     * <code>optional double close = 4;</code>
+     */
     public double getClose() {
       return close_;
     }
-    
+
     // optional double last = 5;
     public static final int LAST_FIELD_NUMBER = 5;
     private double last_;
+    /**
+     * <code>optional double last = 5;</code>
+     */
     public boolean hasLast() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
+    /**
+     * <code>optional double last = 5;</code>
+     */
     public double getLast() {
       return last_;
     }
-    
+
     // repeated .protocol.Depth buyDepths = 6;
     public static final int BUYDEPTHS_FIELD_NUMBER = 6;
     private java.util.List<com.kensai.protocol.Trading.Depth> buyDepths_;
+    /**
+     * <code>repeated .protocol.Depth buyDepths = 6;</code>
+     */
     public java.util.List<com.kensai.protocol.Trading.Depth> getBuyDepthsList() {
       return buyDepths_;
     }
+    /**
+     * <code>repeated .protocol.Depth buyDepths = 6;</code>
+     */
     public java.util.List<? extends com.kensai.protocol.Trading.DepthOrBuilder> 
         getBuyDepthsOrBuilderList() {
       return buyDepths_;
     }
+    /**
+     * <code>repeated .protocol.Depth buyDepths = 6;</code>
+     */
     public int getBuyDepthsCount() {
       return buyDepths_.size();
     }
+    /**
+     * <code>repeated .protocol.Depth buyDepths = 6;</code>
+     */
     public com.kensai.protocol.Trading.Depth getBuyDepths(int index) {
       return buyDepths_.get(index);
     }
+    /**
+     * <code>repeated .protocol.Depth buyDepths = 6;</code>
+     */
     public com.kensai.protocol.Trading.DepthOrBuilder getBuyDepthsOrBuilder(
         int index) {
       return buyDepths_.get(index);
     }
-    
+
     // repeated .protocol.Depth sellDepths = 7;
     public static final int SELLDEPTHS_FIELD_NUMBER = 7;
     private java.util.List<com.kensai.protocol.Trading.Depth> sellDepths_;
+    /**
+     * <code>repeated .protocol.Depth sellDepths = 7;</code>
+     */
     public java.util.List<com.kensai.protocol.Trading.Depth> getSellDepthsList() {
       return sellDepths_;
     }
+    /**
+     * <code>repeated .protocol.Depth sellDepths = 7;</code>
+     */
     public java.util.List<? extends com.kensai.protocol.Trading.DepthOrBuilder> 
         getSellDepthsOrBuilderList() {
       return sellDepths_;
     }
+    /**
+     * <code>repeated .protocol.Depth sellDepths = 7;</code>
+     */
     public int getSellDepthsCount() {
       return sellDepths_.size();
     }
+    /**
+     * <code>repeated .protocol.Depth sellDepths = 7;</code>
+     */
     public com.kensai.protocol.Trading.Depth getSellDepths(int index) {
       return sellDepths_.get(index);
     }
+    /**
+     * <code>repeated .protocol.Depth sellDepths = 7;</code>
+     */
     public com.kensai.protocol.Trading.DepthOrBuilder getSellDepthsOrBuilder(
         int index) {
       return sellDepths_.get(index);
     }
-    
+
     // required int64 timestamp = 8;
     public static final int TIMESTAMP_FIELD_NUMBER = 8;
     private long timestamp_;
+    /**
+     * <code>required int64 timestamp = 8;</code>
+     */
     public boolean hasTimestamp() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
+    /**
+     * <code>required int64 timestamp = 8;</code>
+     */
     public long getTimestamp() {
       return timestamp_;
     }
-    
+
     private void initFields() {
       instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
       marketStatus_ = com.kensai.protocol.Trading.MarketStatus.OPEN;
@@ -5746,7 +7687,7 @@ public final class Trading {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       if (!hasInstrument()) {
         memoizedIsInitialized = 0;
         return false;
@@ -5778,7 +7719,7 @@ public final class Trading {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -5808,12 +7749,12 @@ public final class Trading {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -5851,94 +7792,83 @@ public final class Trading {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static com.kensai.protocol.Trading.Summary parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.Summary parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Summary parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.Summary parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Summary parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.Summary parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Summary parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.kensai.protocol.Trading.Summary parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Summary parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.Summary parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.kensai.protocol.Trading.Summary prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code protocol.Summary}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.kensai.protocol.Trading.SummaryOrBuilder {
@@ -5946,18 +7876,21 @@ public final class Trading {
           getDescriptor() {
         return com.kensai.protocol.Trading.internal_static_protocol_Summary_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_Summary_fieldAccessorTable;
+        return com.kensai.protocol.Trading.internal_static_protocol_Summary_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.Summary.class, com.kensai.protocol.Trading.Summary.Builder.class);
       }
-      
+
       // Construct using com.kensai.protocol.Trading.Summary.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -5971,7 +7904,7 @@ public final class Trading {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         if (instrumentBuilder_ == null) {
@@ -6004,20 +7937,20 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.kensai.protocol.Trading.Summary.getDescriptor();
+        return com.kensai.protocol.Trading.internal_static_protocol_Summary_descriptor;
       }
-      
+
       public com.kensai.protocol.Trading.Summary getDefaultInstanceForType() {
         return com.kensai.protocol.Trading.Summary.getDefaultInstance();
       }
-      
+
       public com.kensai.protocol.Trading.Summary build() {
         com.kensai.protocol.Trading.Summary result = buildPartial();
         if (!result.isInitialized()) {
@@ -6025,17 +7958,7 @@ public final class Trading {
         }
         return result;
       }
-      
-      private com.kensai.protocol.Trading.Summary buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.Summary result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public com.kensai.protocol.Trading.Summary buildPartial() {
         com.kensai.protocol.Trading.Summary result = new com.kensai.protocol.Trading.Summary(this);
         int from_bitField0_ = bitField0_;
@@ -6090,7 +8013,7 @@ public final class Trading {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.kensai.protocol.Trading.Summary) {
           return mergeFrom((com.kensai.protocol.Trading.Summary)other);
@@ -6099,7 +8022,7 @@ public final class Trading {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(com.kensai.protocol.Trading.Summary other) {
         if (other == com.kensai.protocol.Trading.Summary.getDefaultInstance()) return this;
         if (other.hasInstrument()) {
@@ -6175,7 +8098,7 @@ public final class Trading {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         if (!hasInstrument()) {
           
@@ -6207,95 +8130,39 @@ public final class Trading {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              com.kensai.protocol.Trading.Instrument.Builder subBuilder = com.kensai.protocol.Trading.Instrument.newBuilder();
-              if (hasInstrument()) {
-                subBuilder.mergeFrom(getInstrument());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setInstrument(subBuilder.buildPartial());
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-              com.kensai.protocol.Trading.MarketStatus value = com.kensai.protocol.Trading.MarketStatus.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
-              } else {
-                bitField0_ |= 0x00000002;
-                marketStatus_ = value;
-              }
-              break;
-            }
-            case 25: {
-              bitField0_ |= 0x00000004;
-              open_ = input.readDouble();
-              break;
-            }
-            case 33: {
-              bitField0_ |= 0x00000008;
-              close_ = input.readDouble();
-              break;
-            }
-            case 41: {
-              bitField0_ |= 0x00000010;
-              last_ = input.readDouble();
-              break;
-            }
-            case 50: {
-              com.kensai.protocol.Trading.Depth.Builder subBuilder = com.kensai.protocol.Trading.Depth.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addBuyDepths(subBuilder.buildPartial());
-              break;
-            }
-            case 58: {
-              com.kensai.protocol.Trading.Depth.Builder subBuilder = com.kensai.protocol.Trading.Depth.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addSellDepths(subBuilder.buildPartial());
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000080;
-              timestamp_ = input.readInt64();
-              break;
-            }
+        com.kensai.protocol.Trading.Summary parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.Summary) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // required .protocol.Instrument instrument = 1;
       private com.kensai.protocol.Trading.Instrument instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Instrument, com.kensai.protocol.Trading.Instrument.Builder, com.kensai.protocol.Trading.InstrumentOrBuilder> instrumentBuilder_;
+      /**
+       * <code>required .protocol.Instrument instrument = 1;</code>
+       */
       public boolean hasInstrument() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 1;</code>
+       */
       public com.kensai.protocol.Trading.Instrument getInstrument() {
         if (instrumentBuilder_ == null) {
           return instrument_;
@@ -6303,6 +8170,9 @@ public final class Trading {
           return instrumentBuilder_.getMessage();
         }
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 1;</code>
+       */
       public Builder setInstrument(com.kensai.protocol.Trading.Instrument value) {
         if (instrumentBuilder_ == null) {
           if (value == null) {
@@ -6316,6 +8186,9 @@ public final class Trading {
         bitField0_ |= 0x00000001;
         return this;
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 1;</code>
+       */
       public Builder setInstrument(
           com.kensai.protocol.Trading.Instrument.Builder builderForValue) {
         if (instrumentBuilder_ == null) {
@@ -6327,6 +8200,9 @@ public final class Trading {
         bitField0_ |= 0x00000001;
         return this;
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 1;</code>
+       */
       public Builder mergeInstrument(com.kensai.protocol.Trading.Instrument value) {
         if (instrumentBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
@@ -6343,6 +8219,9 @@ public final class Trading {
         bitField0_ |= 0x00000001;
         return this;
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 1;</code>
+       */
       public Builder clearInstrument() {
         if (instrumentBuilder_ == null) {
           instrument_ = com.kensai.protocol.Trading.Instrument.getDefaultInstance();
@@ -6353,11 +8232,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 1;</code>
+       */
       public com.kensai.protocol.Trading.Instrument.Builder getInstrumentBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
         return getInstrumentFieldBuilder().getBuilder();
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 1;</code>
+       */
       public com.kensai.protocol.Trading.InstrumentOrBuilder getInstrumentOrBuilder() {
         if (instrumentBuilder_ != null) {
           return instrumentBuilder_.getMessageOrBuilder();
@@ -6365,6 +8250,9 @@ public final class Trading {
           return instrument_;
         }
       }
+      /**
+       * <code>required .protocol.Instrument instrument = 1;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Instrument, com.kensai.protocol.Trading.Instrument.Builder, com.kensai.protocol.Trading.InstrumentOrBuilder> 
           getInstrumentFieldBuilder() {
@@ -6378,15 +8266,24 @@ public final class Trading {
         }
         return instrumentBuilder_;
       }
-      
+
       // required .protocol.MarketStatus marketStatus = 2;
       private com.kensai.protocol.Trading.MarketStatus marketStatus_ = com.kensai.protocol.Trading.MarketStatus.OPEN;
+      /**
+       * <code>required .protocol.MarketStatus marketStatus = 2;</code>
+       */
       public boolean hasMarketStatus() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>required .protocol.MarketStatus marketStatus = 2;</code>
+       */
       public com.kensai.protocol.Trading.MarketStatus getMarketStatus() {
         return marketStatus_;
       }
+      /**
+       * <code>required .protocol.MarketStatus marketStatus = 2;</code>
+       */
       public Builder setMarketStatus(com.kensai.protocol.Trading.MarketStatus value) {
         if (value == null) {
           throw new NullPointerException();
@@ -6396,76 +8293,115 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>required .protocol.MarketStatus marketStatus = 2;</code>
+       */
       public Builder clearMarketStatus() {
         bitField0_ = (bitField0_ & ~0x00000002);
         marketStatus_ = com.kensai.protocol.Trading.MarketStatus.OPEN;
         onChanged();
         return this;
       }
-      
+
       // optional double open = 3;
       private double open_ ;
+      /**
+       * <code>optional double open = 3;</code>
+       */
       public boolean hasOpen() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional double open = 3;</code>
+       */
       public double getOpen() {
         return open_;
       }
+      /**
+       * <code>optional double open = 3;</code>
+       */
       public Builder setOpen(double value) {
         bitField0_ |= 0x00000004;
         open_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional double open = 3;</code>
+       */
       public Builder clearOpen() {
         bitField0_ = (bitField0_ & ~0x00000004);
         open_ = 0D;
         onChanged();
         return this;
       }
-      
+
       // optional double close = 4;
       private double close_ ;
+      /**
+       * <code>optional double close = 4;</code>
+       */
       public boolean hasClose() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
+      /**
+       * <code>optional double close = 4;</code>
+       */
       public double getClose() {
         return close_;
       }
+      /**
+       * <code>optional double close = 4;</code>
+       */
       public Builder setClose(double value) {
         bitField0_ |= 0x00000008;
         close_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional double close = 4;</code>
+       */
       public Builder clearClose() {
         bitField0_ = (bitField0_ & ~0x00000008);
         close_ = 0D;
         onChanged();
         return this;
       }
-      
+
       // optional double last = 5;
       private double last_ ;
+      /**
+       * <code>optional double last = 5;</code>
+       */
       public boolean hasLast() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
+      /**
+       * <code>optional double last = 5;</code>
+       */
       public double getLast() {
         return last_;
       }
+      /**
+       * <code>optional double last = 5;</code>
+       */
       public Builder setLast(double value) {
         bitField0_ |= 0x00000010;
         last_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional double last = 5;</code>
+       */
       public Builder clearLast() {
         bitField0_ = (bitField0_ & ~0x00000010);
         last_ = 0D;
         onChanged();
         return this;
       }
-      
+
       // repeated .protocol.Depth buyDepths = 6;
       private java.util.List<com.kensai.protocol.Trading.Depth> buyDepths_ =
         java.util.Collections.emptyList();
@@ -6475,10 +8411,13 @@ public final class Trading {
           bitField0_ |= 0x00000020;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           com.kensai.protocol.Trading.Depth, com.kensai.protocol.Trading.Depth.Builder, com.kensai.protocol.Trading.DepthOrBuilder> buyDepthsBuilder_;
-      
+
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Depth> getBuyDepthsList() {
         if (buyDepthsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(buyDepths_);
@@ -6486,6 +8425,9 @@ public final class Trading {
           return buyDepthsBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public int getBuyDepthsCount() {
         if (buyDepthsBuilder_ == null) {
           return buyDepths_.size();
@@ -6493,6 +8435,9 @@ public final class Trading {
           return buyDepthsBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public com.kensai.protocol.Trading.Depth getBuyDepths(int index) {
         if (buyDepthsBuilder_ == null) {
           return buyDepths_.get(index);
@@ -6500,6 +8445,9 @@ public final class Trading {
           return buyDepthsBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public Builder setBuyDepths(
           int index, com.kensai.protocol.Trading.Depth value) {
         if (buyDepthsBuilder_ == null) {
@@ -6514,6 +8462,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public Builder setBuyDepths(
           int index, com.kensai.protocol.Trading.Depth.Builder builderForValue) {
         if (buyDepthsBuilder_ == null) {
@@ -6525,6 +8476,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public Builder addBuyDepths(com.kensai.protocol.Trading.Depth value) {
         if (buyDepthsBuilder_ == null) {
           if (value == null) {
@@ -6538,6 +8492,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public Builder addBuyDepths(
           int index, com.kensai.protocol.Trading.Depth value) {
         if (buyDepthsBuilder_ == null) {
@@ -6552,6 +8509,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public Builder addBuyDepths(
           com.kensai.protocol.Trading.Depth.Builder builderForValue) {
         if (buyDepthsBuilder_ == null) {
@@ -6563,6 +8523,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public Builder addBuyDepths(
           int index, com.kensai.protocol.Trading.Depth.Builder builderForValue) {
         if (buyDepthsBuilder_ == null) {
@@ -6574,6 +8537,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public Builder addAllBuyDepths(
           java.lang.Iterable<? extends com.kensai.protocol.Trading.Depth> values) {
         if (buyDepthsBuilder_ == null) {
@@ -6585,6 +8551,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public Builder clearBuyDepths() {
         if (buyDepthsBuilder_ == null) {
           buyDepths_ = java.util.Collections.emptyList();
@@ -6595,6 +8564,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public Builder removeBuyDepths(int index) {
         if (buyDepthsBuilder_ == null) {
           ensureBuyDepthsIsMutable();
@@ -6605,10 +8577,16 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public com.kensai.protocol.Trading.Depth.Builder getBuyDepthsBuilder(
           int index) {
         return getBuyDepthsFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public com.kensai.protocol.Trading.DepthOrBuilder getBuyDepthsOrBuilder(
           int index) {
         if (buyDepthsBuilder_ == null) {
@@ -6616,6 +8594,9 @@ public final class Trading {
           return buyDepthsBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public java.util.List<? extends com.kensai.protocol.Trading.DepthOrBuilder> 
            getBuyDepthsOrBuilderList() {
         if (buyDepthsBuilder_ != null) {
@@ -6624,15 +8605,24 @@ public final class Trading {
           return java.util.Collections.unmodifiableList(buyDepths_);
         }
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public com.kensai.protocol.Trading.Depth.Builder addBuyDepthsBuilder() {
         return getBuyDepthsFieldBuilder().addBuilder(
             com.kensai.protocol.Trading.Depth.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public com.kensai.protocol.Trading.Depth.Builder addBuyDepthsBuilder(
           int index) {
         return getBuyDepthsFieldBuilder().addBuilder(
             index, com.kensai.protocol.Trading.Depth.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Depth buyDepths = 6;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Depth.Builder> 
            getBuyDepthsBuilderList() {
         return getBuyDepthsFieldBuilder().getBuilderList();
@@ -6651,7 +8641,7 @@ public final class Trading {
         }
         return buyDepthsBuilder_;
       }
-      
+
       // repeated .protocol.Depth sellDepths = 7;
       private java.util.List<com.kensai.protocol.Trading.Depth> sellDepths_ =
         java.util.Collections.emptyList();
@@ -6661,10 +8651,13 @@ public final class Trading {
           bitField0_ |= 0x00000040;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           com.kensai.protocol.Trading.Depth, com.kensai.protocol.Trading.Depth.Builder, com.kensai.protocol.Trading.DepthOrBuilder> sellDepthsBuilder_;
-      
+
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Depth> getSellDepthsList() {
         if (sellDepthsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(sellDepths_);
@@ -6672,6 +8665,9 @@ public final class Trading {
           return sellDepthsBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public int getSellDepthsCount() {
         if (sellDepthsBuilder_ == null) {
           return sellDepths_.size();
@@ -6679,6 +8675,9 @@ public final class Trading {
           return sellDepthsBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public com.kensai.protocol.Trading.Depth getSellDepths(int index) {
         if (sellDepthsBuilder_ == null) {
           return sellDepths_.get(index);
@@ -6686,6 +8685,9 @@ public final class Trading {
           return sellDepthsBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public Builder setSellDepths(
           int index, com.kensai.protocol.Trading.Depth value) {
         if (sellDepthsBuilder_ == null) {
@@ -6700,6 +8702,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public Builder setSellDepths(
           int index, com.kensai.protocol.Trading.Depth.Builder builderForValue) {
         if (sellDepthsBuilder_ == null) {
@@ -6711,6 +8716,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public Builder addSellDepths(com.kensai.protocol.Trading.Depth value) {
         if (sellDepthsBuilder_ == null) {
           if (value == null) {
@@ -6724,6 +8732,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public Builder addSellDepths(
           int index, com.kensai.protocol.Trading.Depth value) {
         if (sellDepthsBuilder_ == null) {
@@ -6738,6 +8749,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public Builder addSellDepths(
           com.kensai.protocol.Trading.Depth.Builder builderForValue) {
         if (sellDepthsBuilder_ == null) {
@@ -6749,6 +8763,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public Builder addSellDepths(
           int index, com.kensai.protocol.Trading.Depth.Builder builderForValue) {
         if (sellDepthsBuilder_ == null) {
@@ -6760,6 +8777,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public Builder addAllSellDepths(
           java.lang.Iterable<? extends com.kensai.protocol.Trading.Depth> values) {
         if (sellDepthsBuilder_ == null) {
@@ -6771,6 +8791,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public Builder clearSellDepths() {
         if (sellDepthsBuilder_ == null) {
           sellDepths_ = java.util.Collections.emptyList();
@@ -6781,6 +8804,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public Builder removeSellDepths(int index) {
         if (sellDepthsBuilder_ == null) {
           ensureSellDepthsIsMutable();
@@ -6791,10 +8817,16 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public com.kensai.protocol.Trading.Depth.Builder getSellDepthsBuilder(
           int index) {
         return getSellDepthsFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public com.kensai.protocol.Trading.DepthOrBuilder getSellDepthsOrBuilder(
           int index) {
         if (sellDepthsBuilder_ == null) {
@@ -6802,6 +8834,9 @@ public final class Trading {
           return sellDepthsBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public java.util.List<? extends com.kensai.protocol.Trading.DepthOrBuilder> 
            getSellDepthsOrBuilderList() {
         if (sellDepthsBuilder_ != null) {
@@ -6810,15 +8845,24 @@ public final class Trading {
           return java.util.Collections.unmodifiableList(sellDepths_);
         }
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public com.kensai.protocol.Trading.Depth.Builder addSellDepthsBuilder() {
         return getSellDepthsFieldBuilder().addBuilder(
             com.kensai.protocol.Trading.Depth.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public com.kensai.protocol.Trading.Depth.Builder addSellDepthsBuilder(
           int index) {
         return getSellDepthsFieldBuilder().addBuilder(
             index, com.kensai.protocol.Trading.Depth.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Depth sellDepths = 7;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Depth.Builder> 
            getSellDepthsBuilderList() {
         return getSellDepthsFieldBuilder().getBuilderList();
@@ -6837,101 +8881,216 @@ public final class Trading {
         }
         return sellDepthsBuilder_;
       }
-      
+
       // required int64 timestamp = 8;
       private long timestamp_ ;
+      /**
+       * <code>required int64 timestamp = 8;</code>
+       */
       public boolean hasTimestamp() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
+      /**
+       * <code>required int64 timestamp = 8;</code>
+       */
       public long getTimestamp() {
         return timestamp_;
       }
+      /**
+       * <code>required int64 timestamp = 8;</code>
+       */
       public Builder setTimestamp(long value) {
         bitField0_ |= 0x00000080;
         timestamp_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>required int64 timestamp = 8;</code>
+       */
       public Builder clearTimestamp() {
         bitField0_ = (bitField0_ & ~0x00000080);
         timestamp_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:protocol.Summary)
     }
-    
+
     static {
       defaultInstance = new Summary(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:protocol.Summary)
   }
-  
+
   public interface SummariesSnapshotOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // repeated .protocol.Summary summaries = 1;
+    /**
+     * <code>repeated .protocol.Summary summaries = 1;</code>
+     */
     java.util.List<com.kensai.protocol.Trading.Summary> 
         getSummariesList();
+    /**
+     * <code>repeated .protocol.Summary summaries = 1;</code>
+     */
     com.kensai.protocol.Trading.Summary getSummaries(int index);
+    /**
+     * <code>repeated .protocol.Summary summaries = 1;</code>
+     */
     int getSummariesCount();
+    /**
+     * <code>repeated .protocol.Summary summaries = 1;</code>
+     */
     java.util.List<? extends com.kensai.protocol.Trading.SummaryOrBuilder> 
         getSummariesOrBuilderList();
+    /**
+     * <code>repeated .protocol.Summary summaries = 1;</code>
+     */
     com.kensai.protocol.Trading.SummaryOrBuilder getSummariesOrBuilder(
         int index);
   }
+  /**
+   * Protobuf type {@code protocol.SummariesSnapshot}
+   */
   public static final class SummariesSnapshot extends
       com.google.protobuf.GeneratedMessage
       implements SummariesSnapshotOrBuilder {
     // Use SummariesSnapshot.newBuilder() to construct.
-    private SummariesSnapshot(Builder builder) {
+    private SummariesSnapshot(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private SummariesSnapshot(boolean noInit) {}
-    
+    private SummariesSnapshot(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final SummariesSnapshot defaultInstance;
     public static SummariesSnapshot getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public SummariesSnapshot getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SummariesSnapshot(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                summaries_ = new java.util.ArrayList<com.kensai.protocol.Trading.Summary>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              summaries_.add(input.readMessage(com.kensai.protocol.Trading.Summary.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          summaries_ = java.util.Collections.unmodifiableList(summaries_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.kensai.protocol.Trading.internal_static_protocol_SummariesSnapshot_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_SummariesSnapshot_fieldAccessorTable;
+      return com.kensai.protocol.Trading.internal_static_protocol_SummariesSnapshot_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.SummariesSnapshot.class, com.kensai.protocol.Trading.SummariesSnapshot.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<SummariesSnapshot> PARSER =
+        new com.google.protobuf.AbstractParser<SummariesSnapshot>() {
+      public SummariesSnapshot parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SummariesSnapshot(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SummariesSnapshot> getParserForType() {
+      return PARSER;
+    }
+
     // repeated .protocol.Summary summaries = 1;
     public static final int SUMMARIES_FIELD_NUMBER = 1;
     private java.util.List<com.kensai.protocol.Trading.Summary> summaries_;
+    /**
+     * <code>repeated .protocol.Summary summaries = 1;</code>
+     */
     public java.util.List<com.kensai.protocol.Trading.Summary> getSummariesList() {
       return summaries_;
     }
+    /**
+     * <code>repeated .protocol.Summary summaries = 1;</code>
+     */
     public java.util.List<? extends com.kensai.protocol.Trading.SummaryOrBuilder> 
         getSummariesOrBuilderList() {
       return summaries_;
     }
+    /**
+     * <code>repeated .protocol.Summary summaries = 1;</code>
+     */
     public int getSummariesCount() {
       return summaries_.size();
     }
+    /**
+     * <code>repeated .protocol.Summary summaries = 1;</code>
+     */
     public com.kensai.protocol.Trading.Summary getSummaries(int index) {
       return summaries_.get(index);
     }
+    /**
+     * <code>repeated .protocol.Summary summaries = 1;</code>
+     */
     public com.kensai.protocol.Trading.SummaryOrBuilder getSummariesOrBuilder(
         int index) {
       return summaries_.get(index);
     }
-    
+
     private void initFields() {
       summaries_ = java.util.Collections.emptyList();
     }
@@ -6939,7 +9098,7 @@ public final class Trading {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       for (int i = 0; i < getSummariesCount(); i++) {
         if (!getSummaries(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -6949,7 +9108,7 @@ public final class Trading {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -6958,12 +9117,12 @@ public final class Trading {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       for (int i = 0; i < summaries_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -6973,94 +9132,83 @@ public final class Trading {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static com.kensai.protocol.Trading.SummariesSnapshot parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.SummariesSnapshot parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.SummariesSnapshot parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.SummariesSnapshot parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.SummariesSnapshot parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.SummariesSnapshot parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.SummariesSnapshot parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.kensai.protocol.Trading.SummariesSnapshot parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.SummariesSnapshot parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.SummariesSnapshot parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.kensai.protocol.Trading.SummariesSnapshot prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code protocol.SummariesSnapshot}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.kensai.protocol.Trading.SummariesSnapshotOrBuilder {
@@ -7068,18 +9216,21 @@ public final class Trading {
           getDescriptor() {
         return com.kensai.protocol.Trading.internal_static_protocol_SummariesSnapshot_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_SummariesSnapshot_fieldAccessorTable;
+        return com.kensai.protocol.Trading.internal_static_protocol_SummariesSnapshot_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.SummariesSnapshot.class, com.kensai.protocol.Trading.SummariesSnapshot.Builder.class);
       }
-      
+
       // Construct using com.kensai.protocol.Trading.SummariesSnapshot.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -7091,7 +9242,7 @@ public final class Trading {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         if (summariesBuilder_ == null) {
@@ -7102,20 +9253,20 @@ public final class Trading {
         }
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.kensai.protocol.Trading.SummariesSnapshot.getDescriptor();
+        return com.kensai.protocol.Trading.internal_static_protocol_SummariesSnapshot_descriptor;
       }
-      
+
       public com.kensai.protocol.Trading.SummariesSnapshot getDefaultInstanceForType() {
         return com.kensai.protocol.Trading.SummariesSnapshot.getDefaultInstance();
       }
-      
+
       public com.kensai.protocol.Trading.SummariesSnapshot build() {
         com.kensai.protocol.Trading.SummariesSnapshot result = buildPartial();
         if (!result.isInitialized()) {
@@ -7123,17 +9274,7 @@ public final class Trading {
         }
         return result;
       }
-      
-      private com.kensai.protocol.Trading.SummariesSnapshot buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.SummariesSnapshot result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public com.kensai.protocol.Trading.SummariesSnapshot buildPartial() {
         com.kensai.protocol.Trading.SummariesSnapshot result = new com.kensai.protocol.Trading.SummariesSnapshot(this);
         int from_bitField0_ = bitField0_;
@@ -7149,7 +9290,7 @@ public final class Trading {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.kensai.protocol.Trading.SummariesSnapshot) {
           return mergeFrom((com.kensai.protocol.Trading.SummariesSnapshot)other);
@@ -7158,7 +9299,7 @@ public final class Trading {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(com.kensai.protocol.Trading.SummariesSnapshot other) {
         if (other == com.kensai.protocol.Trading.SummariesSnapshot.getDefaultInstance()) return this;
         if (summariesBuilder_ == null) {
@@ -7190,7 +9331,7 @@ public final class Trading {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         for (int i = 0; i < getSummariesCount(); i++) {
           if (!getSummaries(i).isInitialized()) {
@@ -7200,42 +9341,26 @@ public final class Trading {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              com.kensai.protocol.Trading.Summary.Builder subBuilder = com.kensai.protocol.Trading.Summary.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addSummaries(subBuilder.buildPartial());
-              break;
-            }
+        com.kensai.protocol.Trading.SummariesSnapshot parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.SummariesSnapshot) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // repeated .protocol.Summary summaries = 1;
       private java.util.List<com.kensai.protocol.Trading.Summary> summaries_ =
         java.util.Collections.emptyList();
@@ -7245,10 +9370,13 @@ public final class Trading {
           bitField0_ |= 0x00000001;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           com.kensai.protocol.Trading.Summary, com.kensai.protocol.Trading.Summary.Builder, com.kensai.protocol.Trading.SummaryOrBuilder> summariesBuilder_;
-      
+
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Summary> getSummariesList() {
         if (summariesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(summaries_);
@@ -7256,6 +9384,9 @@ public final class Trading {
           return summariesBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public int getSummariesCount() {
         if (summariesBuilder_ == null) {
           return summaries_.size();
@@ -7263,6 +9394,9 @@ public final class Trading {
           return summariesBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public com.kensai.protocol.Trading.Summary getSummaries(int index) {
         if (summariesBuilder_ == null) {
           return summaries_.get(index);
@@ -7270,6 +9404,9 @@ public final class Trading {
           return summariesBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public Builder setSummaries(
           int index, com.kensai.protocol.Trading.Summary value) {
         if (summariesBuilder_ == null) {
@@ -7284,6 +9421,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public Builder setSummaries(
           int index, com.kensai.protocol.Trading.Summary.Builder builderForValue) {
         if (summariesBuilder_ == null) {
@@ -7295,6 +9435,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public Builder addSummaries(com.kensai.protocol.Trading.Summary value) {
         if (summariesBuilder_ == null) {
           if (value == null) {
@@ -7308,6 +9451,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public Builder addSummaries(
           int index, com.kensai.protocol.Trading.Summary value) {
         if (summariesBuilder_ == null) {
@@ -7322,6 +9468,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public Builder addSummaries(
           com.kensai.protocol.Trading.Summary.Builder builderForValue) {
         if (summariesBuilder_ == null) {
@@ -7333,6 +9482,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public Builder addSummaries(
           int index, com.kensai.protocol.Trading.Summary.Builder builderForValue) {
         if (summariesBuilder_ == null) {
@@ -7344,6 +9496,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public Builder addAllSummaries(
           java.lang.Iterable<? extends com.kensai.protocol.Trading.Summary> values) {
         if (summariesBuilder_ == null) {
@@ -7355,6 +9510,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public Builder clearSummaries() {
         if (summariesBuilder_ == null) {
           summaries_ = java.util.Collections.emptyList();
@@ -7365,6 +9523,9 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public Builder removeSummaries(int index) {
         if (summariesBuilder_ == null) {
           ensureSummariesIsMutable();
@@ -7375,10 +9536,16 @@ public final class Trading {
         }
         return this;
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public com.kensai.protocol.Trading.Summary.Builder getSummariesBuilder(
           int index) {
         return getSummariesFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public com.kensai.protocol.Trading.SummaryOrBuilder getSummariesOrBuilder(
           int index) {
         if (summariesBuilder_ == null) {
@@ -7386,6 +9553,9 @@ public final class Trading {
           return summariesBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public java.util.List<? extends com.kensai.protocol.Trading.SummaryOrBuilder> 
            getSummariesOrBuilderList() {
         if (summariesBuilder_ != null) {
@@ -7394,15 +9564,24 @@ public final class Trading {
           return java.util.Collections.unmodifiableList(summaries_);
         }
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public com.kensai.protocol.Trading.Summary.Builder addSummariesBuilder() {
         return getSummariesFieldBuilder().addBuilder(
             com.kensai.protocol.Trading.Summary.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public com.kensai.protocol.Trading.Summary.Builder addSummariesBuilder(
           int index) {
         return getSummariesFieldBuilder().addBuilder(
             index, com.kensai.protocol.Trading.Summary.getDefaultInstance());
       }
+      /**
+       * <code>repeated .protocol.Summary summaries = 1;</code>
+       */
       public java.util.List<com.kensai.protocol.Trading.Summary.Builder> 
            getSummariesBuilderList() {
         return getSummariesFieldBuilder().getBuilderList();
@@ -7421,136 +9600,275 @@ public final class Trading {
         }
         return summariesBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:protocol.SummariesSnapshot)
     }
-    
+
     static {
       defaultInstance = new SummariesSnapshot(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:protocol.SummariesSnapshot)
   }
-  
+
   public interface SubscribeCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // required string user = 1;
+    /**
+     * <code>required string user = 1;</code>
+     */
     boolean hasUser();
-    String getUser();
-    
+    /**
+     * <code>required string user = 1;</code>
+     */
+    java.lang.String getUser();
+    /**
+     * <code>required string user = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserBytes();
+
     // optional .protocol.CommandStatus status = 2;
+    /**
+     * <code>optional .protocol.CommandStatus status = 2;</code>
+     */
     boolean hasStatus();
+    /**
+     * <code>optional .protocol.CommandStatus status = 2;</code>
+     */
     com.kensai.protocol.Trading.CommandStatus getStatus();
-    
+
     // optional string errorMessage = 3;
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
     boolean hasErrorMessage();
-    String getErrorMessage();
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
+    java.lang.String getErrorMessage();
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getErrorMessageBytes();
   }
+  /**
+   * Protobuf type {@code protocol.SubscribeCommand}
+   */
   public static final class SubscribeCommand extends
       com.google.protobuf.GeneratedMessage
       implements SubscribeCommandOrBuilder {
     // Use SubscribeCommand.newBuilder() to construct.
-    private SubscribeCommand(Builder builder) {
+    private SubscribeCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private SubscribeCommand(boolean noInit) {}
-    
+    private SubscribeCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final SubscribeCommand defaultInstance;
     public static SubscribeCommand getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public SubscribeCommand getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SubscribeCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              user_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+              com.kensai.protocol.Trading.CommandStatus value = com.kensai.protocol.Trading.CommandStatus.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                status_ = value;
+              }
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              errorMessage_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.kensai.protocol.Trading.internal_static_protocol_SubscribeCommand_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_SubscribeCommand_fieldAccessorTable;
+      return com.kensai.protocol.Trading.internal_static_protocol_SubscribeCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.SubscribeCommand.class, com.kensai.protocol.Trading.SubscribeCommand.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<SubscribeCommand> PARSER =
+        new com.google.protobuf.AbstractParser<SubscribeCommand>() {
+      public SubscribeCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SubscribeCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SubscribeCommand> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // required string user = 1;
     public static final int USER_FIELD_NUMBER = 1;
     private java.lang.Object user_;
+    /**
+     * <code>required string user = 1;</code>
+     */
     public boolean hasUser() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public String getUser() {
+    /**
+     * <code>required string user = 1;</code>
+     */
+    public java.lang.String getUser() {
       java.lang.Object ref = user_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           user_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getUserBytes() {
+    /**
+     * <code>required string user = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserBytes() {
       java.lang.Object ref = user_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         user_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional .protocol.CommandStatus status = 2;
     public static final int STATUS_FIELD_NUMBER = 2;
     private com.kensai.protocol.Trading.CommandStatus status_;
+    /**
+     * <code>optional .protocol.CommandStatus status = 2;</code>
+     */
     public boolean hasStatus() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional .protocol.CommandStatus status = 2;</code>
+     */
     public com.kensai.protocol.Trading.CommandStatus getStatus() {
       return status_;
     }
-    
+
     // optional string errorMessage = 3;
     public static final int ERRORMESSAGE_FIELD_NUMBER = 3;
     private java.lang.Object errorMessage_;
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
     public boolean hasErrorMessage() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public String getErrorMessage() {
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
+    public java.lang.String getErrorMessage() {
       java.lang.Object ref = errorMessage_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           errorMessage_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getErrorMessageBytes() {
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getErrorMessageBytes() {
       java.lang.Object ref = errorMessage_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         errorMessage_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     private void initFields() {
       user_ = "";
       status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
@@ -7560,7 +9878,7 @@ public final class Trading {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       if (!hasUser()) {
         memoizedIsInitialized = 0;
         return false;
@@ -7568,7 +9886,7 @@ public final class Trading {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -7583,12 +9901,12 @@ public final class Trading {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -7606,94 +9924,83 @@ public final class Trading {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static com.kensai.protocol.Trading.SubscribeCommand parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.SubscribeCommand parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.SubscribeCommand parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.SubscribeCommand parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.SubscribeCommand parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.SubscribeCommand parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.SubscribeCommand parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.kensai.protocol.Trading.SubscribeCommand parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.SubscribeCommand parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.SubscribeCommand parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.kensai.protocol.Trading.SubscribeCommand prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code protocol.SubscribeCommand}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.kensai.protocol.Trading.SubscribeCommandOrBuilder {
@@ -7701,18 +10008,21 @@ public final class Trading {
           getDescriptor() {
         return com.kensai.protocol.Trading.internal_static_protocol_SubscribeCommand_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_SubscribeCommand_fieldAccessorTable;
+        return com.kensai.protocol.Trading.internal_static_protocol_SubscribeCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.SubscribeCommand.class, com.kensai.protocol.Trading.SubscribeCommand.Builder.class);
       }
-      
+
       // Construct using com.kensai.protocol.Trading.SubscribeCommand.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -7723,7 +10033,7 @@ public final class Trading {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         user_ = "";
@@ -7734,20 +10044,20 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.kensai.protocol.Trading.SubscribeCommand.getDescriptor();
+        return com.kensai.protocol.Trading.internal_static_protocol_SubscribeCommand_descriptor;
       }
-      
+
       public com.kensai.protocol.Trading.SubscribeCommand getDefaultInstanceForType() {
         return com.kensai.protocol.Trading.SubscribeCommand.getDefaultInstance();
       }
-      
+
       public com.kensai.protocol.Trading.SubscribeCommand build() {
         com.kensai.protocol.Trading.SubscribeCommand result = buildPartial();
         if (!result.isInitialized()) {
@@ -7755,17 +10065,7 @@ public final class Trading {
         }
         return result;
       }
-      
-      private com.kensai.protocol.Trading.SubscribeCommand buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.SubscribeCommand result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public com.kensai.protocol.Trading.SubscribeCommand buildPartial() {
         com.kensai.protocol.Trading.SubscribeCommand result = new com.kensai.protocol.Trading.SubscribeCommand(this);
         int from_bitField0_ = bitField0_;
@@ -7786,7 +10086,7 @@ public final class Trading {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.kensai.protocol.Trading.SubscribeCommand) {
           return mergeFrom((com.kensai.protocol.Trading.SubscribeCommand)other);
@@ -7795,22 +10095,26 @@ public final class Trading {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(com.kensai.protocol.Trading.SubscribeCommand other) {
         if (other == com.kensai.protocol.Trading.SubscribeCommand.getDefaultInstance()) return this;
         if (other.hasUser()) {
-          setUser(other.getUser());
+          bitField0_ |= 0x00000001;
+          user_ = other.user_;
+          onChanged();
         }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
         }
         if (other.hasErrorMessage()) {
-          setErrorMessage(other.getErrorMessage());
+          bitField0_ |= 0x00000004;
+          errorMessage_ = other.errorMessage_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         if (!hasUser()) {
           
@@ -7818,27 +10122,312 @@ public final class Trading {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        com.kensai.protocol.Trading.SubscribeCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.SubscribeCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string user = 1;
+      private java.lang.Object user_ = "";
+      /**
+       * <code>required string user = 1;</code>
+       */
+      public boolean hasUser() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string user = 1;</code>
+       */
+      public java.lang.String getUser() {
+        java.lang.Object ref = user_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          user_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string user = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserBytes() {
+        java.lang.Object ref = user_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          user_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string user = 1;</code>
+       */
+      public Builder setUser(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        user_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string user = 1;</code>
+       */
+      public Builder clearUser() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        user_ = getDefaultInstance().getUser();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string user = 1;</code>
+       */
+      public Builder setUserBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        user_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional .protocol.CommandStatus status = 2;
+      private com.kensai.protocol.Trading.CommandStatus status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
+      /**
+       * <code>optional .protocol.CommandStatus status = 2;</code>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .protocol.CommandStatus status = 2;</code>
+       */
+      public com.kensai.protocol.Trading.CommandStatus getStatus() {
+        return status_;
+      }
+      /**
+       * <code>optional .protocol.CommandStatus status = 2;</code>
+       */
+      public Builder setStatus(com.kensai.protocol.Trading.CommandStatus value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000002;
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .protocol.CommandStatus status = 2;</code>
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
+        onChanged();
+        return this;
+      }
+
+      // optional string errorMessage = 3;
+      private java.lang.Object errorMessage_ = "";
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
+      public boolean hasErrorMessage() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
+      public java.lang.String getErrorMessage() {
+        java.lang.Object ref = errorMessage_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          errorMessage_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getErrorMessageBytes() {
+        java.lang.Object ref = errorMessage_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          errorMessage_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
+      public Builder setErrorMessage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        errorMessage_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
+      public Builder clearErrorMessage() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        errorMessage_ = getDefaultInstance().getErrorMessage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
+      public Builder setErrorMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        errorMessage_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:protocol.SubscribeCommand)
+    }
+
+    static {
+      defaultInstance = new SubscribeCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:protocol.SubscribeCommand)
+  }
+
+  public interface UnsubscribeCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string user = 1;
+    /**
+     * <code>required string user = 1;</code>
+     */
+    boolean hasUser();
+    /**
+     * <code>required string user = 1;</code>
+     */
+    java.lang.String getUser();
+    /**
+     * <code>required string user = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserBytes();
+
+    // optional .protocol.CommandStatus status = 2;
+    /**
+     * <code>optional .protocol.CommandStatus status = 2;</code>
+     */
+    boolean hasStatus();
+    /**
+     * <code>optional .protocol.CommandStatus status = 2;</code>
+     */
+    com.kensai.protocol.Trading.CommandStatus getStatus();
+
+    // optional string errorMessage = 3;
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
+    boolean hasErrorMessage();
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
+    java.lang.String getErrorMessage();
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getErrorMessageBytes();
+  }
+  /**
+   * Protobuf type {@code protocol.UnsubscribeCommand}
+   */
+  public static final class UnsubscribeCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements UnsubscribeCommandOrBuilder {
+    // Use UnsubscribeCommand.newBuilder() to construct.
+    private UnsubscribeCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private UnsubscribeCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final UnsubscribeCommand defaultInstance;
+    public static UnsubscribeCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public UnsubscribeCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UnsubscribeCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -7865,235 +10454,146 @@ public final class Trading {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
-      private int bitField0_;
-      
-      // required string user = 1;
-      private java.lang.Object user_ = "";
-      public boolean hasUser() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public String getUser() {
-        java.lang.Object ref = user_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          user_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      public Builder setUser(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        user_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearUser() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        user_ = getDefaultInstance().getUser();
-        onChanged();
-        return this;
-      }
-      void setUser(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
-        user_ = value;
-        onChanged();
-      }
-      
-      // optional .protocol.CommandStatus status = 2;
-      private com.kensai.protocol.Trading.CommandStatus status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
-      public boolean hasStatus() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public com.kensai.protocol.Trading.CommandStatus getStatus() {
-        return status_;
-      }
-      public Builder setStatus(com.kensai.protocol.Trading.CommandStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000002;
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearStatus() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
-        onChanged();
-        return this;
-      }
-      
-      // optional string errorMessage = 3;
-      private java.lang.Object errorMessage_ = "";
-      public boolean hasErrorMessage() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public String getErrorMessage() {
-        java.lang.Object ref = errorMessage_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          errorMessage_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      public Builder setErrorMessage(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        errorMessage_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearErrorMessage() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        errorMessage_ = getDefaultInstance().getErrorMessage();
-        onChanged();
-        return this;
-      }
-      void setErrorMessage(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000004;
-        errorMessage_ = value;
-        onChanged();
-      }
-      
-      // @@protoc_insertion_point(builder_scope:protocol.SubscribeCommand)
     }
-    
-    static {
-      defaultInstance = new SubscribeCommand(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:protocol.SubscribeCommand)
-  }
-  
-  public interface UnsubscribeCommandOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required string user = 1;
-    boolean hasUser();
-    String getUser();
-    
-    // optional .protocol.CommandStatus status = 2;
-    boolean hasStatus();
-    com.kensai.protocol.Trading.CommandStatus getStatus();
-    
-    // optional string errorMessage = 3;
-    boolean hasErrorMessage();
-    String getErrorMessage();
-  }
-  public static final class UnsubscribeCommand extends
-      com.google.protobuf.GeneratedMessage
-      implements UnsubscribeCommandOrBuilder {
-    // Use UnsubscribeCommand.newBuilder() to construct.
-    private UnsubscribeCommand(Builder builder) {
-      super(builder);
-    }
-    private UnsubscribeCommand(boolean noInit) {}
-    
-    private static final UnsubscribeCommand defaultInstance;
-    public static UnsubscribeCommand getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public UnsubscribeCommand getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.kensai.protocol.Trading.internal_static_protocol_UnsubscribeCommand_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_UnsubscribeCommand_fieldAccessorTable;
+      return com.kensai.protocol.Trading.internal_static_protocol_UnsubscribeCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.UnsubscribeCommand.class, com.kensai.protocol.Trading.UnsubscribeCommand.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<UnsubscribeCommand> PARSER =
+        new com.google.protobuf.AbstractParser<UnsubscribeCommand>() {
+      public UnsubscribeCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UnsubscribeCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UnsubscribeCommand> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // required string user = 1;
     public static final int USER_FIELD_NUMBER = 1;
     private java.lang.Object user_;
+    /**
+     * <code>required string user = 1;</code>
+     */
     public boolean hasUser() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public String getUser() {
+    /**
+     * <code>required string user = 1;</code>
+     */
+    public java.lang.String getUser() {
       java.lang.Object ref = user_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           user_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getUserBytes() {
+    /**
+     * <code>required string user = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserBytes() {
       java.lang.Object ref = user_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         user_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // optional .protocol.CommandStatus status = 2;
     public static final int STATUS_FIELD_NUMBER = 2;
     private com.kensai.protocol.Trading.CommandStatus status_;
+    /**
+     * <code>optional .protocol.CommandStatus status = 2;</code>
+     */
     public boolean hasStatus() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional .protocol.CommandStatus status = 2;</code>
+     */
     public com.kensai.protocol.Trading.CommandStatus getStatus() {
       return status_;
     }
-    
+
     // optional string errorMessage = 3;
     public static final int ERRORMESSAGE_FIELD_NUMBER = 3;
     private java.lang.Object errorMessage_;
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
     public boolean hasErrorMessage() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public String getErrorMessage() {
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
+    public java.lang.String getErrorMessage() {
       java.lang.Object ref = errorMessage_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           errorMessage_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getErrorMessageBytes() {
+    /**
+     * <code>optional string errorMessage = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getErrorMessageBytes() {
       java.lang.Object ref = errorMessage_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         errorMessage_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     private void initFields() {
       user_ = "";
       status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
@@ -8103,7 +10603,7 @@ public final class Trading {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       if (!hasUser()) {
         memoizedIsInitialized = 0;
         return false;
@@ -8111,7 +10611,7 @@ public final class Trading {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -8126,12 +10626,12 @@ public final class Trading {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -8149,94 +10649,83 @@ public final class Trading {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static com.kensai.protocol.Trading.UnsubscribeCommand parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.UnsubscribeCommand parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.UnsubscribeCommand parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.UnsubscribeCommand parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.UnsubscribeCommand parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.UnsubscribeCommand parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.UnsubscribeCommand parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.kensai.protocol.Trading.UnsubscribeCommand parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.UnsubscribeCommand parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.UnsubscribeCommand parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.kensai.protocol.Trading.UnsubscribeCommand prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code protocol.UnsubscribeCommand}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.kensai.protocol.Trading.UnsubscribeCommandOrBuilder {
@@ -8244,18 +10733,21 @@ public final class Trading {
           getDescriptor() {
         return com.kensai.protocol.Trading.internal_static_protocol_UnsubscribeCommand_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_UnsubscribeCommand_fieldAccessorTable;
+        return com.kensai.protocol.Trading.internal_static_protocol_UnsubscribeCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.UnsubscribeCommand.class, com.kensai.protocol.Trading.UnsubscribeCommand.Builder.class);
       }
-      
+
       // Construct using com.kensai.protocol.Trading.UnsubscribeCommand.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -8266,7 +10758,7 @@ public final class Trading {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         user_ = "";
@@ -8277,20 +10769,20 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.kensai.protocol.Trading.UnsubscribeCommand.getDescriptor();
+        return com.kensai.protocol.Trading.internal_static_protocol_UnsubscribeCommand_descriptor;
       }
-      
+
       public com.kensai.protocol.Trading.UnsubscribeCommand getDefaultInstanceForType() {
         return com.kensai.protocol.Trading.UnsubscribeCommand.getDefaultInstance();
       }
-      
+
       public com.kensai.protocol.Trading.UnsubscribeCommand build() {
         com.kensai.protocol.Trading.UnsubscribeCommand result = buildPartial();
         if (!result.isInitialized()) {
@@ -8298,17 +10790,7 @@ public final class Trading {
         }
         return result;
       }
-      
-      private com.kensai.protocol.Trading.UnsubscribeCommand buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.UnsubscribeCommand result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public com.kensai.protocol.Trading.UnsubscribeCommand buildPartial() {
         com.kensai.protocol.Trading.UnsubscribeCommand result = new com.kensai.protocol.Trading.UnsubscribeCommand(this);
         int from_bitField0_ = bitField0_;
@@ -8329,7 +10811,7 @@ public final class Trading {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.kensai.protocol.Trading.UnsubscribeCommand) {
           return mergeFrom((com.kensai.protocol.Trading.UnsubscribeCommand)other);
@@ -8338,22 +10820,26 @@ public final class Trading {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(com.kensai.protocol.Trading.UnsubscribeCommand other) {
         if (other == com.kensai.protocol.Trading.UnsubscribeCommand.getDefaultInstance()) return this;
         if (other.hasUser()) {
-          setUser(other.getUser());
+          bitField0_ |= 0x00000001;
+          user_ = other.user_;
+          onChanged();
         }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
         }
         if (other.hasErrorMessage()) {
-          setErrorMessage(other.getErrorMessage());
+          bitField0_ |= 0x00000004;
+          errorMessage_ = other.errorMessage_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         if (!hasUser()) {
           
@@ -8361,73 +10847,69 @@ public final class Trading {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              user_ = input.readBytes();
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-              com.kensai.protocol.Trading.CommandStatus value = com.kensai.protocol.Trading.CommandStatus.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
-              } else {
-                bitField0_ |= 0x00000002;
-                status_ = value;
-              }
-              break;
-            }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              errorMessage_ = input.readBytes();
-              break;
-            }
+        com.kensai.protocol.Trading.UnsubscribeCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.UnsubscribeCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // required string user = 1;
       private java.lang.Object user_ = "";
+      /**
+       * <code>required string user = 1;</code>
+       */
       public boolean hasUser() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public String getUser() {
+      /**
+       * <code>required string user = 1;</code>
+       */
+      public java.lang.String getUser() {
         java.lang.Object ref = user_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           user_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setUser(String value) {
+      /**
+       * <code>required string user = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserBytes() {
+        java.lang.Object ref = user_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          user_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string user = 1;</code>
+       */
+      public Builder setUser(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -8436,26 +10918,46 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>required string user = 1;</code>
+       */
       public Builder clearUser() {
         bitField0_ = (bitField0_ & ~0x00000001);
         user_ = getDefaultInstance().getUser();
         onChanged();
         return this;
       }
-      void setUser(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
+      /**
+       * <code>required string user = 1;</code>
+       */
+      public Builder setUserBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         user_ = value;
         onChanged();
+        return this;
       }
-      
+
       // optional .protocol.CommandStatus status = 2;
       private com.kensai.protocol.Trading.CommandStatus status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
+      /**
+       * <code>optional .protocol.CommandStatus status = 2;</code>
+       */
       public boolean hasStatus() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional .protocol.CommandStatus status = 2;</code>
+       */
       public com.kensai.protocol.Trading.CommandStatus getStatus() {
         return status_;
       }
+      /**
+       * <code>optional .protocol.CommandStatus status = 2;</code>
+       */
       public Builder setStatus(com.kensai.protocol.Trading.CommandStatus value) {
         if (value == null) {
           throw new NullPointerException();
@@ -8465,29 +10967,59 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional .protocol.CommandStatus status = 2;</code>
+       */
       public Builder clearStatus() {
         bitField0_ = (bitField0_ & ~0x00000002);
         status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
         onChanged();
         return this;
       }
-      
+
       // optional string errorMessage = 3;
       private java.lang.Object errorMessage_ = "";
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
       public boolean hasErrorMessage() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      public String getErrorMessage() {
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
+      public java.lang.String getErrorMessage() {
         java.lang.Object ref = errorMessage_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           errorMessage_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setErrorMessage(String value) {
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getErrorMessageBytes() {
+        java.lang.Object ref = errorMessage_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          errorMessage_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
+      public Builder setErrorMessage(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -8496,223 +11028,575 @@ public final class Trading {
         onChanged();
         return this;
       }
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
       public Builder clearErrorMessage() {
         bitField0_ = (bitField0_ & ~0x00000004);
         errorMessage_ = getDefaultInstance().getErrorMessage();
         onChanged();
         return this;
       }
-      void setErrorMessage(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000004;
+      /**
+       * <code>optional string errorMessage = 3;</code>
+       */
+      public Builder setErrorMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
         errorMessage_ = value;
         onChanged();
+        return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:protocol.UnsubscribeCommand)
     }
-    
+
     static {
       defaultInstance = new UnsubscribeCommand(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:protocol.UnsubscribeCommand)
   }
-  
+
   public interface MessagesOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // optional .protocol.SubscribeCommand subscribeCommand = 1;
+    /**
+     * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+     */
     boolean hasSubscribeCommand();
+    /**
+     * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+     */
     com.kensai.protocol.Trading.SubscribeCommand getSubscribeCommand();
+    /**
+     * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+     */
     com.kensai.protocol.Trading.SubscribeCommandOrBuilder getSubscribeCommandOrBuilder();
-    
+
     // optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;
+    /**
+     * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+     */
     boolean hasUnsubscribeCommand();
+    /**
+     * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+     */
     com.kensai.protocol.Trading.UnsubscribeCommand getUnsubscribeCommand();
+    /**
+     * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+     */
     com.kensai.protocol.Trading.UnsubscribeCommandOrBuilder getUnsubscribeCommandOrBuilder();
-    
+
     // optional .protocol.SummariesSnapshot summariesSnapshot = 3;
+    /**
+     * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+     */
     boolean hasSummariesSnapshot();
+    /**
+     * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+     */
     com.kensai.protocol.Trading.SummariesSnapshot getSummariesSnapshot();
+    /**
+     * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+     */
     com.kensai.protocol.Trading.SummariesSnapshotOrBuilder getSummariesSnapshotOrBuilder();
-    
+
     // optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;
+    /**
+     * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+     */
     boolean hasExecutionsSnapshot();
+    /**
+     * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+     */
     com.kensai.protocol.Trading.ExecutionsSnapshot getExecutionsSnapshot();
+    /**
+     * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+     */
     com.kensai.protocol.Trading.ExecutionsSnapshotOrBuilder getExecutionsSnapshotOrBuilder();
-    
+
     // optional .protocol.OrdersSnapshot ordersSnapshot = 5;
+    /**
+     * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+     */
     boolean hasOrdersSnapshot();
+    /**
+     * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+     */
     com.kensai.protocol.Trading.OrdersSnapshot getOrdersSnapshot();
+    /**
+     * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+     */
     com.kensai.protocol.Trading.OrdersSnapshotOrBuilder getOrdersSnapshotOrBuilder();
-    
+
     // optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;
+    /**
+     * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+     */
     boolean hasInstrumentsSnapshot();
+    /**
+     * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+     */
     com.kensai.protocol.Trading.InstrumentsSnapshot getInstrumentsSnapshot();
+    /**
+     * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+     */
     com.kensai.protocol.Trading.InstrumentsSnapshotOrBuilder getInstrumentsSnapshotOrBuilder();
-    
+
     // optional .protocol.Order order = 7;
+    /**
+     * <code>optional .protocol.Order order = 7;</code>
+     */
     boolean hasOrder();
+    /**
+     * <code>optional .protocol.Order order = 7;</code>
+     */
     com.kensai.protocol.Trading.Order getOrder();
+    /**
+     * <code>optional .protocol.Order order = 7;</code>
+     */
     com.kensai.protocol.Trading.OrderOrBuilder getOrderOrBuilder();
-    
+
     // optional .protocol.Execution execution = 8;
+    /**
+     * <code>optional .protocol.Execution execution = 8;</code>
+     */
     boolean hasExecution();
+    /**
+     * <code>optional .protocol.Execution execution = 8;</code>
+     */
     com.kensai.protocol.Trading.Execution getExecution();
+    /**
+     * <code>optional .protocol.Execution execution = 8;</code>
+     */
     com.kensai.protocol.Trading.ExecutionOrBuilder getExecutionOrBuilder();
-    
+
     // optional .protocol.Summary summary = 9;
+    /**
+     * <code>optional .protocol.Summary summary = 9;</code>
+     */
     boolean hasSummary();
+    /**
+     * <code>optional .protocol.Summary summary = 9;</code>
+     */
     com.kensai.protocol.Trading.Summary getSummary();
+    /**
+     * <code>optional .protocol.Summary summary = 9;</code>
+     */
     com.kensai.protocol.Trading.SummaryOrBuilder getSummaryOrBuilder();
   }
+  /**
+   * Protobuf type {@code protocol.Messages}
+   */
   public static final class Messages extends
       com.google.protobuf.GeneratedMessage
       implements MessagesOrBuilder {
     // Use Messages.newBuilder() to construct.
-    private Messages(Builder builder) {
+    private Messages(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Messages(boolean noInit) {}
-    
+    private Messages(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final Messages defaultInstance;
     public static Messages getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public Messages getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Messages(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.kensai.protocol.Trading.SubscribeCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = subscribeCommand_.toBuilder();
+              }
+              subscribeCommand_ = input.readMessage(com.kensai.protocol.Trading.SubscribeCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(subscribeCommand_);
+                subscribeCommand_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              com.kensai.protocol.Trading.UnsubscribeCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = unsubscribeCommand_.toBuilder();
+              }
+              unsubscribeCommand_ = input.readMessage(com.kensai.protocol.Trading.UnsubscribeCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(unsubscribeCommand_);
+                unsubscribeCommand_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              com.kensai.protocol.Trading.SummariesSnapshot.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = summariesSnapshot_.toBuilder();
+              }
+              summariesSnapshot_ = input.readMessage(com.kensai.protocol.Trading.SummariesSnapshot.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(summariesSnapshot_);
+                summariesSnapshot_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              com.kensai.protocol.Trading.ExecutionsSnapshot.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = executionsSnapshot_.toBuilder();
+              }
+              executionsSnapshot_ = input.readMessage(com.kensai.protocol.Trading.ExecutionsSnapshot.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(executionsSnapshot_);
+                executionsSnapshot_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+            case 42: {
+              com.kensai.protocol.Trading.OrdersSnapshot.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                subBuilder = ordersSnapshot_.toBuilder();
+              }
+              ordersSnapshot_ = input.readMessage(com.kensai.protocol.Trading.OrdersSnapshot.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ordersSnapshot_);
+                ordersSnapshot_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
+              break;
+            }
+            case 50: {
+              com.kensai.protocol.Trading.InstrumentsSnapshot.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = instrumentsSnapshot_.toBuilder();
+              }
+              instrumentsSnapshot_ = input.readMessage(com.kensai.protocol.Trading.InstrumentsSnapshot.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(instrumentsSnapshot_);
+                instrumentsSnapshot_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
+            case 58: {
+              com.kensai.protocol.Trading.Order.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                subBuilder = order_.toBuilder();
+              }
+              order_ = input.readMessage(com.kensai.protocol.Trading.Order.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(order_);
+                order_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000040;
+              break;
+            }
+            case 66: {
+              com.kensai.protocol.Trading.Execution.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                subBuilder = execution_.toBuilder();
+              }
+              execution_ = input.readMessage(com.kensai.protocol.Trading.Execution.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(execution_);
+                execution_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000080;
+              break;
+            }
+            case 74: {
+              com.kensai.protocol.Trading.Summary.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000100) == 0x00000100)) {
+                subBuilder = summary_.toBuilder();
+              }
+              summary_ = input.readMessage(com.kensai.protocol.Trading.Summary.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(summary_);
+                summary_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000100;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.kensai.protocol.Trading.internal_static_protocol_Messages_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.kensai.protocol.Trading.internal_static_protocol_Messages_fieldAccessorTable;
+      return com.kensai.protocol.Trading.internal_static_protocol_Messages_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.Messages.class, com.kensai.protocol.Trading.Messages.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<Messages> PARSER =
+        new com.google.protobuf.AbstractParser<Messages>() {
+      public Messages parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Messages(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Messages> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // optional .protocol.SubscribeCommand subscribeCommand = 1;
     public static final int SUBSCRIBECOMMAND_FIELD_NUMBER = 1;
     private com.kensai.protocol.Trading.SubscribeCommand subscribeCommand_;
+    /**
+     * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+     */
     public boolean hasSubscribeCommand() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
+    /**
+     * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+     */
     public com.kensai.protocol.Trading.SubscribeCommand getSubscribeCommand() {
       return subscribeCommand_;
     }
+    /**
+     * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+     */
     public com.kensai.protocol.Trading.SubscribeCommandOrBuilder getSubscribeCommandOrBuilder() {
       return subscribeCommand_;
     }
-    
+
     // optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;
     public static final int UNSUBSCRIBECOMMAND_FIELD_NUMBER = 2;
     private com.kensai.protocol.Trading.UnsubscribeCommand unsubscribeCommand_;
+    /**
+     * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+     */
     public boolean hasUnsubscribeCommand() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+     */
     public com.kensai.protocol.Trading.UnsubscribeCommand getUnsubscribeCommand() {
       return unsubscribeCommand_;
     }
+    /**
+     * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+     */
     public com.kensai.protocol.Trading.UnsubscribeCommandOrBuilder getUnsubscribeCommandOrBuilder() {
       return unsubscribeCommand_;
     }
-    
+
     // optional .protocol.SummariesSnapshot summariesSnapshot = 3;
     public static final int SUMMARIESSNAPSHOT_FIELD_NUMBER = 3;
     private com.kensai.protocol.Trading.SummariesSnapshot summariesSnapshot_;
+    /**
+     * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+     */
     public boolean hasSummariesSnapshot() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
+    /**
+     * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+     */
     public com.kensai.protocol.Trading.SummariesSnapshot getSummariesSnapshot() {
       return summariesSnapshot_;
     }
+    /**
+     * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+     */
     public com.kensai.protocol.Trading.SummariesSnapshotOrBuilder getSummariesSnapshotOrBuilder() {
       return summariesSnapshot_;
     }
-    
+
     // optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;
     public static final int EXECUTIONSSNAPSHOT_FIELD_NUMBER = 4;
     private com.kensai.protocol.Trading.ExecutionsSnapshot executionsSnapshot_;
+    /**
+     * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+     */
     public boolean hasExecutionsSnapshot() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
+    /**
+     * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+     */
     public com.kensai.protocol.Trading.ExecutionsSnapshot getExecutionsSnapshot() {
       return executionsSnapshot_;
     }
+    /**
+     * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+     */
     public com.kensai.protocol.Trading.ExecutionsSnapshotOrBuilder getExecutionsSnapshotOrBuilder() {
       return executionsSnapshot_;
     }
-    
+
     // optional .protocol.OrdersSnapshot ordersSnapshot = 5;
     public static final int ORDERSSNAPSHOT_FIELD_NUMBER = 5;
     private com.kensai.protocol.Trading.OrdersSnapshot ordersSnapshot_;
+    /**
+     * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+     */
     public boolean hasOrdersSnapshot() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
+    /**
+     * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+     */
     public com.kensai.protocol.Trading.OrdersSnapshot getOrdersSnapshot() {
       return ordersSnapshot_;
     }
+    /**
+     * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+     */
     public com.kensai.protocol.Trading.OrdersSnapshotOrBuilder getOrdersSnapshotOrBuilder() {
       return ordersSnapshot_;
     }
-    
+
     // optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;
     public static final int INSTRUMENTSSNAPSHOT_FIELD_NUMBER = 6;
     private com.kensai.protocol.Trading.InstrumentsSnapshot instrumentsSnapshot_;
+    /**
+     * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+     */
     public boolean hasInstrumentsSnapshot() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
+    /**
+     * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+     */
     public com.kensai.protocol.Trading.InstrumentsSnapshot getInstrumentsSnapshot() {
       return instrumentsSnapshot_;
     }
+    /**
+     * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+     */
     public com.kensai.protocol.Trading.InstrumentsSnapshotOrBuilder getInstrumentsSnapshotOrBuilder() {
       return instrumentsSnapshot_;
     }
-    
+
     // optional .protocol.Order order = 7;
     public static final int ORDER_FIELD_NUMBER = 7;
     private com.kensai.protocol.Trading.Order order_;
+    /**
+     * <code>optional .protocol.Order order = 7;</code>
+     */
     public boolean hasOrder() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
+    /**
+     * <code>optional .protocol.Order order = 7;</code>
+     */
     public com.kensai.protocol.Trading.Order getOrder() {
       return order_;
     }
+    /**
+     * <code>optional .protocol.Order order = 7;</code>
+     */
     public com.kensai.protocol.Trading.OrderOrBuilder getOrderOrBuilder() {
       return order_;
     }
-    
+
     // optional .protocol.Execution execution = 8;
     public static final int EXECUTION_FIELD_NUMBER = 8;
     private com.kensai.protocol.Trading.Execution execution_;
+    /**
+     * <code>optional .protocol.Execution execution = 8;</code>
+     */
     public boolean hasExecution() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
+    /**
+     * <code>optional .protocol.Execution execution = 8;</code>
+     */
     public com.kensai.protocol.Trading.Execution getExecution() {
       return execution_;
     }
+    /**
+     * <code>optional .protocol.Execution execution = 8;</code>
+     */
     public com.kensai.protocol.Trading.ExecutionOrBuilder getExecutionOrBuilder() {
       return execution_;
     }
-    
+
     // optional .protocol.Summary summary = 9;
     public static final int SUMMARY_FIELD_NUMBER = 9;
     private com.kensai.protocol.Trading.Summary summary_;
+    /**
+     * <code>optional .protocol.Summary summary = 9;</code>
+     */
     public boolean hasSummary() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
+    /**
+     * <code>optional .protocol.Summary summary = 9;</code>
+     */
     public com.kensai.protocol.Trading.Summary getSummary() {
       return summary_;
     }
+    /**
+     * <code>optional .protocol.Summary summary = 9;</code>
+     */
     public com.kensai.protocol.Trading.SummaryOrBuilder getSummaryOrBuilder() {
       return summary_;
     }
-    
+
     private void initFields() {
       subscribeCommand_ = com.kensai.protocol.Trading.SubscribeCommand.getDefaultInstance();
       unsubscribeCommand_ = com.kensai.protocol.Trading.UnsubscribeCommand.getDefaultInstance();
@@ -8728,7 +11612,7 @@ public final class Trading {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       if (hasSubscribeCommand()) {
         if (!getSubscribeCommand().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -8786,7 +11670,7 @@ public final class Trading {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -8819,12 +11703,12 @@ public final class Trading {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -8866,94 +11750,83 @@ public final class Trading {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static com.kensai.protocol.Trading.Messages parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.Messages parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Messages parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static com.kensai.protocol.Trading.Messages parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Messages parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.Messages parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Messages parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static com.kensai.protocol.Trading.Messages parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static com.kensai.protocol.Trading.Messages parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static com.kensai.protocol.Trading.Messages parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(com.kensai.protocol.Trading.Messages prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code protocol.Messages}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements com.kensai.protocol.Trading.MessagesOrBuilder {
@@ -8961,18 +11834,21 @@ public final class Trading {
           getDescriptor() {
         return com.kensai.protocol.Trading.internal_static_protocol_Messages_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.kensai.protocol.Trading.internal_static_protocol_Messages_fieldAccessorTable;
+        return com.kensai.protocol.Trading.internal_static_protocol_Messages_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.Messages.class, com.kensai.protocol.Trading.Messages.Builder.class);
       }
-      
+
       // Construct using com.kensai.protocol.Trading.Messages.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -8992,7 +11868,7 @@ public final class Trading {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         if (subscribeCommandBuilder_ == null) {
@@ -9051,20 +11927,20 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.kensai.protocol.Trading.Messages.getDescriptor();
+        return com.kensai.protocol.Trading.internal_static_protocol_Messages_descriptor;
       }
-      
+
       public com.kensai.protocol.Trading.Messages getDefaultInstanceForType() {
         return com.kensai.protocol.Trading.Messages.getDefaultInstance();
       }
-      
+
       public com.kensai.protocol.Trading.Messages build() {
         com.kensai.protocol.Trading.Messages result = buildPartial();
         if (!result.isInitialized()) {
@@ -9072,17 +11948,7 @@ public final class Trading {
         }
         return result;
       }
-      
-      private com.kensai.protocol.Trading.Messages buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.kensai.protocol.Trading.Messages result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public com.kensai.protocol.Trading.Messages buildPartial() {
         com.kensai.protocol.Trading.Messages result = new com.kensai.protocol.Trading.Messages(this);
         int from_bitField0_ = bitField0_;
@@ -9163,7 +12029,7 @@ public final class Trading {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.kensai.protocol.Trading.Messages) {
           return mergeFrom((com.kensai.protocol.Trading.Messages)other);
@@ -9172,7 +12038,7 @@ public final class Trading {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(com.kensai.protocol.Trading.Messages other) {
         if (other == com.kensai.protocol.Trading.Messages.getDefaultInstance()) return this;
         if (other.hasSubscribeCommand()) {
@@ -9205,7 +12071,7 @@ public final class Trading {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         if (hasSubscribeCommand()) {
           if (!getSubscribeCommand().isInitialized()) {
@@ -9263,124 +12129,39 @@ public final class Trading {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              com.kensai.protocol.Trading.SubscribeCommand.Builder subBuilder = com.kensai.protocol.Trading.SubscribeCommand.newBuilder();
-              if (hasSubscribeCommand()) {
-                subBuilder.mergeFrom(getSubscribeCommand());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setSubscribeCommand(subBuilder.buildPartial());
-              break;
-            }
-            case 18: {
-              com.kensai.protocol.Trading.UnsubscribeCommand.Builder subBuilder = com.kensai.protocol.Trading.UnsubscribeCommand.newBuilder();
-              if (hasUnsubscribeCommand()) {
-                subBuilder.mergeFrom(getUnsubscribeCommand());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setUnsubscribeCommand(subBuilder.buildPartial());
-              break;
-            }
-            case 26: {
-              com.kensai.protocol.Trading.SummariesSnapshot.Builder subBuilder = com.kensai.protocol.Trading.SummariesSnapshot.newBuilder();
-              if (hasSummariesSnapshot()) {
-                subBuilder.mergeFrom(getSummariesSnapshot());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setSummariesSnapshot(subBuilder.buildPartial());
-              break;
-            }
-            case 34: {
-              com.kensai.protocol.Trading.ExecutionsSnapshot.Builder subBuilder = com.kensai.protocol.Trading.ExecutionsSnapshot.newBuilder();
-              if (hasExecutionsSnapshot()) {
-                subBuilder.mergeFrom(getExecutionsSnapshot());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setExecutionsSnapshot(subBuilder.buildPartial());
-              break;
-            }
-            case 42: {
-              com.kensai.protocol.Trading.OrdersSnapshot.Builder subBuilder = com.kensai.protocol.Trading.OrdersSnapshot.newBuilder();
-              if (hasOrdersSnapshot()) {
-                subBuilder.mergeFrom(getOrdersSnapshot());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setOrdersSnapshot(subBuilder.buildPartial());
-              break;
-            }
-            case 50: {
-              com.kensai.protocol.Trading.InstrumentsSnapshot.Builder subBuilder = com.kensai.protocol.Trading.InstrumentsSnapshot.newBuilder();
-              if (hasInstrumentsSnapshot()) {
-                subBuilder.mergeFrom(getInstrumentsSnapshot());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setInstrumentsSnapshot(subBuilder.buildPartial());
-              break;
-            }
-            case 58: {
-              com.kensai.protocol.Trading.Order.Builder subBuilder = com.kensai.protocol.Trading.Order.newBuilder();
-              if (hasOrder()) {
-                subBuilder.mergeFrom(getOrder());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setOrder(subBuilder.buildPartial());
-              break;
-            }
-            case 66: {
-              com.kensai.protocol.Trading.Execution.Builder subBuilder = com.kensai.protocol.Trading.Execution.newBuilder();
-              if (hasExecution()) {
-                subBuilder.mergeFrom(getExecution());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setExecution(subBuilder.buildPartial());
-              break;
-            }
-            case 74: {
-              com.kensai.protocol.Trading.Summary.Builder subBuilder = com.kensai.protocol.Trading.Summary.newBuilder();
-              if (hasSummary()) {
-                subBuilder.mergeFrom(getSummary());
-              }
-              input.readMessage(subBuilder, extensionRegistry);
-              setSummary(subBuilder.buildPartial());
-              break;
-            }
+        com.kensai.protocol.Trading.Messages parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.Messages) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // optional .protocol.SubscribeCommand subscribeCommand = 1;
       private com.kensai.protocol.Trading.SubscribeCommand subscribeCommand_ = com.kensai.protocol.Trading.SubscribeCommand.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.SubscribeCommand, com.kensai.protocol.Trading.SubscribeCommand.Builder, com.kensai.protocol.Trading.SubscribeCommandOrBuilder> subscribeCommandBuilder_;
+      /**
+       * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+       */
       public boolean hasSubscribeCommand() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+       */
       public com.kensai.protocol.Trading.SubscribeCommand getSubscribeCommand() {
         if (subscribeCommandBuilder_ == null) {
           return subscribeCommand_;
@@ -9388,6 +12169,9 @@ public final class Trading {
           return subscribeCommandBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+       */
       public Builder setSubscribeCommand(com.kensai.protocol.Trading.SubscribeCommand value) {
         if (subscribeCommandBuilder_ == null) {
           if (value == null) {
@@ -9401,6 +12185,9 @@ public final class Trading {
         bitField0_ |= 0x00000001;
         return this;
       }
+      /**
+       * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+       */
       public Builder setSubscribeCommand(
           com.kensai.protocol.Trading.SubscribeCommand.Builder builderForValue) {
         if (subscribeCommandBuilder_ == null) {
@@ -9412,6 +12199,9 @@ public final class Trading {
         bitField0_ |= 0x00000001;
         return this;
       }
+      /**
+       * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+       */
       public Builder mergeSubscribeCommand(com.kensai.protocol.Trading.SubscribeCommand value) {
         if (subscribeCommandBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
@@ -9428,6 +12218,9 @@ public final class Trading {
         bitField0_ |= 0x00000001;
         return this;
       }
+      /**
+       * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+       */
       public Builder clearSubscribeCommand() {
         if (subscribeCommandBuilder_ == null) {
           subscribeCommand_ = com.kensai.protocol.Trading.SubscribeCommand.getDefaultInstance();
@@ -9438,11 +12231,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
+      /**
+       * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+       */
       public com.kensai.protocol.Trading.SubscribeCommand.Builder getSubscribeCommandBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
         return getSubscribeCommandFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+       */
       public com.kensai.protocol.Trading.SubscribeCommandOrBuilder getSubscribeCommandOrBuilder() {
         if (subscribeCommandBuilder_ != null) {
           return subscribeCommandBuilder_.getMessageOrBuilder();
@@ -9450,6 +12249,9 @@ public final class Trading {
           return subscribeCommand_;
         }
       }
+      /**
+       * <code>optional .protocol.SubscribeCommand subscribeCommand = 1;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.SubscribeCommand, com.kensai.protocol.Trading.SubscribeCommand.Builder, com.kensai.protocol.Trading.SubscribeCommandOrBuilder> 
           getSubscribeCommandFieldBuilder() {
@@ -9463,14 +12265,20 @@ public final class Trading {
         }
         return subscribeCommandBuilder_;
       }
-      
+
       // optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;
       private com.kensai.protocol.Trading.UnsubscribeCommand unsubscribeCommand_ = com.kensai.protocol.Trading.UnsubscribeCommand.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.UnsubscribeCommand, com.kensai.protocol.Trading.UnsubscribeCommand.Builder, com.kensai.protocol.Trading.UnsubscribeCommandOrBuilder> unsubscribeCommandBuilder_;
+      /**
+       * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+       */
       public boolean hasUnsubscribeCommand() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+       */
       public com.kensai.protocol.Trading.UnsubscribeCommand getUnsubscribeCommand() {
         if (unsubscribeCommandBuilder_ == null) {
           return unsubscribeCommand_;
@@ -9478,6 +12286,9 @@ public final class Trading {
           return unsubscribeCommandBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+       */
       public Builder setUnsubscribeCommand(com.kensai.protocol.Trading.UnsubscribeCommand value) {
         if (unsubscribeCommandBuilder_ == null) {
           if (value == null) {
@@ -9491,6 +12302,9 @@ public final class Trading {
         bitField0_ |= 0x00000002;
         return this;
       }
+      /**
+       * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+       */
       public Builder setUnsubscribeCommand(
           com.kensai.protocol.Trading.UnsubscribeCommand.Builder builderForValue) {
         if (unsubscribeCommandBuilder_ == null) {
@@ -9502,6 +12316,9 @@ public final class Trading {
         bitField0_ |= 0x00000002;
         return this;
       }
+      /**
+       * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+       */
       public Builder mergeUnsubscribeCommand(com.kensai.protocol.Trading.UnsubscribeCommand value) {
         if (unsubscribeCommandBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
@@ -9518,6 +12335,9 @@ public final class Trading {
         bitField0_ |= 0x00000002;
         return this;
       }
+      /**
+       * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+       */
       public Builder clearUnsubscribeCommand() {
         if (unsubscribeCommandBuilder_ == null) {
           unsubscribeCommand_ = com.kensai.protocol.Trading.UnsubscribeCommand.getDefaultInstance();
@@ -9528,11 +12348,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
+      /**
+       * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+       */
       public com.kensai.protocol.Trading.UnsubscribeCommand.Builder getUnsubscribeCommandBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getUnsubscribeCommandFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+       */
       public com.kensai.protocol.Trading.UnsubscribeCommandOrBuilder getUnsubscribeCommandOrBuilder() {
         if (unsubscribeCommandBuilder_ != null) {
           return unsubscribeCommandBuilder_.getMessageOrBuilder();
@@ -9540,6 +12366,9 @@ public final class Trading {
           return unsubscribeCommand_;
         }
       }
+      /**
+       * <code>optional .protocol.UnsubscribeCommand unsubscribeCommand = 2;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.UnsubscribeCommand, com.kensai.protocol.Trading.UnsubscribeCommand.Builder, com.kensai.protocol.Trading.UnsubscribeCommandOrBuilder> 
           getUnsubscribeCommandFieldBuilder() {
@@ -9553,14 +12382,20 @@ public final class Trading {
         }
         return unsubscribeCommandBuilder_;
       }
-      
+
       // optional .protocol.SummariesSnapshot summariesSnapshot = 3;
       private com.kensai.protocol.Trading.SummariesSnapshot summariesSnapshot_ = com.kensai.protocol.Trading.SummariesSnapshot.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.SummariesSnapshot, com.kensai.protocol.Trading.SummariesSnapshot.Builder, com.kensai.protocol.Trading.SummariesSnapshotOrBuilder> summariesSnapshotBuilder_;
+      /**
+       * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+       */
       public boolean hasSummariesSnapshot() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+       */
       public com.kensai.protocol.Trading.SummariesSnapshot getSummariesSnapshot() {
         if (summariesSnapshotBuilder_ == null) {
           return summariesSnapshot_;
@@ -9568,6 +12403,9 @@ public final class Trading {
           return summariesSnapshotBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+       */
       public Builder setSummariesSnapshot(com.kensai.protocol.Trading.SummariesSnapshot value) {
         if (summariesSnapshotBuilder_ == null) {
           if (value == null) {
@@ -9581,6 +12419,9 @@ public final class Trading {
         bitField0_ |= 0x00000004;
         return this;
       }
+      /**
+       * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+       */
       public Builder setSummariesSnapshot(
           com.kensai.protocol.Trading.SummariesSnapshot.Builder builderForValue) {
         if (summariesSnapshotBuilder_ == null) {
@@ -9592,6 +12433,9 @@ public final class Trading {
         bitField0_ |= 0x00000004;
         return this;
       }
+      /**
+       * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+       */
       public Builder mergeSummariesSnapshot(com.kensai.protocol.Trading.SummariesSnapshot value) {
         if (summariesSnapshotBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
@@ -9608,6 +12452,9 @@ public final class Trading {
         bitField0_ |= 0x00000004;
         return this;
       }
+      /**
+       * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+       */
       public Builder clearSummariesSnapshot() {
         if (summariesSnapshotBuilder_ == null) {
           summariesSnapshot_ = com.kensai.protocol.Trading.SummariesSnapshot.getDefaultInstance();
@@ -9618,11 +12465,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
+      /**
+       * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+       */
       public com.kensai.protocol.Trading.SummariesSnapshot.Builder getSummariesSnapshotBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getSummariesSnapshotFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+       */
       public com.kensai.protocol.Trading.SummariesSnapshotOrBuilder getSummariesSnapshotOrBuilder() {
         if (summariesSnapshotBuilder_ != null) {
           return summariesSnapshotBuilder_.getMessageOrBuilder();
@@ -9630,6 +12483,9 @@ public final class Trading {
           return summariesSnapshot_;
         }
       }
+      /**
+       * <code>optional .protocol.SummariesSnapshot summariesSnapshot = 3;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.SummariesSnapshot, com.kensai.protocol.Trading.SummariesSnapshot.Builder, com.kensai.protocol.Trading.SummariesSnapshotOrBuilder> 
           getSummariesSnapshotFieldBuilder() {
@@ -9643,14 +12499,20 @@ public final class Trading {
         }
         return summariesSnapshotBuilder_;
       }
-      
+
       // optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;
       private com.kensai.protocol.Trading.ExecutionsSnapshot executionsSnapshot_ = com.kensai.protocol.Trading.ExecutionsSnapshot.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.ExecutionsSnapshot, com.kensai.protocol.Trading.ExecutionsSnapshot.Builder, com.kensai.protocol.Trading.ExecutionsSnapshotOrBuilder> executionsSnapshotBuilder_;
+      /**
+       * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+       */
       public boolean hasExecutionsSnapshot() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
+      /**
+       * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+       */
       public com.kensai.protocol.Trading.ExecutionsSnapshot getExecutionsSnapshot() {
         if (executionsSnapshotBuilder_ == null) {
           return executionsSnapshot_;
@@ -9658,6 +12520,9 @@ public final class Trading {
           return executionsSnapshotBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+       */
       public Builder setExecutionsSnapshot(com.kensai.protocol.Trading.ExecutionsSnapshot value) {
         if (executionsSnapshotBuilder_ == null) {
           if (value == null) {
@@ -9671,6 +12536,9 @@ public final class Trading {
         bitField0_ |= 0x00000008;
         return this;
       }
+      /**
+       * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+       */
       public Builder setExecutionsSnapshot(
           com.kensai.protocol.Trading.ExecutionsSnapshot.Builder builderForValue) {
         if (executionsSnapshotBuilder_ == null) {
@@ -9682,6 +12550,9 @@ public final class Trading {
         bitField0_ |= 0x00000008;
         return this;
       }
+      /**
+       * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+       */
       public Builder mergeExecutionsSnapshot(com.kensai.protocol.Trading.ExecutionsSnapshot value) {
         if (executionsSnapshotBuilder_ == null) {
           if (((bitField0_ & 0x00000008) == 0x00000008) &&
@@ -9698,6 +12569,9 @@ public final class Trading {
         bitField0_ |= 0x00000008;
         return this;
       }
+      /**
+       * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+       */
       public Builder clearExecutionsSnapshot() {
         if (executionsSnapshotBuilder_ == null) {
           executionsSnapshot_ = com.kensai.protocol.Trading.ExecutionsSnapshot.getDefaultInstance();
@@ -9708,11 +12582,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
+      /**
+       * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+       */
       public com.kensai.protocol.Trading.ExecutionsSnapshot.Builder getExecutionsSnapshotBuilder() {
         bitField0_ |= 0x00000008;
         onChanged();
         return getExecutionsSnapshotFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+       */
       public com.kensai.protocol.Trading.ExecutionsSnapshotOrBuilder getExecutionsSnapshotOrBuilder() {
         if (executionsSnapshotBuilder_ != null) {
           return executionsSnapshotBuilder_.getMessageOrBuilder();
@@ -9720,6 +12600,9 @@ public final class Trading {
           return executionsSnapshot_;
         }
       }
+      /**
+       * <code>optional .protocol.ExecutionsSnapshot executionsSnapshot = 4;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.ExecutionsSnapshot, com.kensai.protocol.Trading.ExecutionsSnapshot.Builder, com.kensai.protocol.Trading.ExecutionsSnapshotOrBuilder> 
           getExecutionsSnapshotFieldBuilder() {
@@ -9733,14 +12616,20 @@ public final class Trading {
         }
         return executionsSnapshotBuilder_;
       }
-      
+
       // optional .protocol.OrdersSnapshot ordersSnapshot = 5;
       private com.kensai.protocol.Trading.OrdersSnapshot ordersSnapshot_ = com.kensai.protocol.Trading.OrdersSnapshot.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.OrdersSnapshot, com.kensai.protocol.Trading.OrdersSnapshot.Builder, com.kensai.protocol.Trading.OrdersSnapshotOrBuilder> ordersSnapshotBuilder_;
+      /**
+       * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+       */
       public boolean hasOrdersSnapshot() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
+      /**
+       * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+       */
       public com.kensai.protocol.Trading.OrdersSnapshot getOrdersSnapshot() {
         if (ordersSnapshotBuilder_ == null) {
           return ordersSnapshot_;
@@ -9748,6 +12637,9 @@ public final class Trading {
           return ordersSnapshotBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+       */
       public Builder setOrdersSnapshot(com.kensai.protocol.Trading.OrdersSnapshot value) {
         if (ordersSnapshotBuilder_ == null) {
           if (value == null) {
@@ -9761,6 +12653,9 @@ public final class Trading {
         bitField0_ |= 0x00000010;
         return this;
       }
+      /**
+       * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+       */
       public Builder setOrdersSnapshot(
           com.kensai.protocol.Trading.OrdersSnapshot.Builder builderForValue) {
         if (ordersSnapshotBuilder_ == null) {
@@ -9772,6 +12667,9 @@ public final class Trading {
         bitField0_ |= 0x00000010;
         return this;
       }
+      /**
+       * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+       */
       public Builder mergeOrdersSnapshot(com.kensai.protocol.Trading.OrdersSnapshot value) {
         if (ordersSnapshotBuilder_ == null) {
           if (((bitField0_ & 0x00000010) == 0x00000010) &&
@@ -9788,6 +12686,9 @@ public final class Trading {
         bitField0_ |= 0x00000010;
         return this;
       }
+      /**
+       * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+       */
       public Builder clearOrdersSnapshot() {
         if (ordersSnapshotBuilder_ == null) {
           ordersSnapshot_ = com.kensai.protocol.Trading.OrdersSnapshot.getDefaultInstance();
@@ -9798,11 +12699,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
+      /**
+       * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+       */
       public com.kensai.protocol.Trading.OrdersSnapshot.Builder getOrdersSnapshotBuilder() {
         bitField0_ |= 0x00000010;
         onChanged();
         return getOrdersSnapshotFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+       */
       public com.kensai.protocol.Trading.OrdersSnapshotOrBuilder getOrdersSnapshotOrBuilder() {
         if (ordersSnapshotBuilder_ != null) {
           return ordersSnapshotBuilder_.getMessageOrBuilder();
@@ -9810,6 +12717,9 @@ public final class Trading {
           return ordersSnapshot_;
         }
       }
+      /**
+       * <code>optional .protocol.OrdersSnapshot ordersSnapshot = 5;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.OrdersSnapshot, com.kensai.protocol.Trading.OrdersSnapshot.Builder, com.kensai.protocol.Trading.OrdersSnapshotOrBuilder> 
           getOrdersSnapshotFieldBuilder() {
@@ -9823,14 +12733,20 @@ public final class Trading {
         }
         return ordersSnapshotBuilder_;
       }
-      
+
       // optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;
       private com.kensai.protocol.Trading.InstrumentsSnapshot instrumentsSnapshot_ = com.kensai.protocol.Trading.InstrumentsSnapshot.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.InstrumentsSnapshot, com.kensai.protocol.Trading.InstrumentsSnapshot.Builder, com.kensai.protocol.Trading.InstrumentsSnapshotOrBuilder> instrumentsSnapshotBuilder_;
+      /**
+       * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+       */
       public boolean hasInstrumentsSnapshot() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
+      /**
+       * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+       */
       public com.kensai.protocol.Trading.InstrumentsSnapshot getInstrumentsSnapshot() {
         if (instrumentsSnapshotBuilder_ == null) {
           return instrumentsSnapshot_;
@@ -9838,6 +12754,9 @@ public final class Trading {
           return instrumentsSnapshotBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+       */
       public Builder setInstrumentsSnapshot(com.kensai.protocol.Trading.InstrumentsSnapshot value) {
         if (instrumentsSnapshotBuilder_ == null) {
           if (value == null) {
@@ -9851,6 +12770,9 @@ public final class Trading {
         bitField0_ |= 0x00000020;
         return this;
       }
+      /**
+       * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+       */
       public Builder setInstrumentsSnapshot(
           com.kensai.protocol.Trading.InstrumentsSnapshot.Builder builderForValue) {
         if (instrumentsSnapshotBuilder_ == null) {
@@ -9862,6 +12784,9 @@ public final class Trading {
         bitField0_ |= 0x00000020;
         return this;
       }
+      /**
+       * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+       */
       public Builder mergeInstrumentsSnapshot(com.kensai.protocol.Trading.InstrumentsSnapshot value) {
         if (instrumentsSnapshotBuilder_ == null) {
           if (((bitField0_ & 0x00000020) == 0x00000020) &&
@@ -9878,6 +12803,9 @@ public final class Trading {
         bitField0_ |= 0x00000020;
         return this;
       }
+      /**
+       * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+       */
       public Builder clearInstrumentsSnapshot() {
         if (instrumentsSnapshotBuilder_ == null) {
           instrumentsSnapshot_ = com.kensai.protocol.Trading.InstrumentsSnapshot.getDefaultInstance();
@@ -9888,11 +12816,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
+      /**
+       * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+       */
       public com.kensai.protocol.Trading.InstrumentsSnapshot.Builder getInstrumentsSnapshotBuilder() {
         bitField0_ |= 0x00000020;
         onChanged();
         return getInstrumentsSnapshotFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+       */
       public com.kensai.protocol.Trading.InstrumentsSnapshotOrBuilder getInstrumentsSnapshotOrBuilder() {
         if (instrumentsSnapshotBuilder_ != null) {
           return instrumentsSnapshotBuilder_.getMessageOrBuilder();
@@ -9900,6 +12834,9 @@ public final class Trading {
           return instrumentsSnapshot_;
         }
       }
+      /**
+       * <code>optional .protocol.InstrumentsSnapshot instrumentsSnapshot = 6;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.InstrumentsSnapshot, com.kensai.protocol.Trading.InstrumentsSnapshot.Builder, com.kensai.protocol.Trading.InstrumentsSnapshotOrBuilder> 
           getInstrumentsSnapshotFieldBuilder() {
@@ -9913,14 +12850,20 @@ public final class Trading {
         }
         return instrumentsSnapshotBuilder_;
       }
-      
+
       // optional .protocol.Order order = 7;
       private com.kensai.protocol.Trading.Order order_ = com.kensai.protocol.Trading.Order.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Order, com.kensai.protocol.Trading.Order.Builder, com.kensai.protocol.Trading.OrderOrBuilder> orderBuilder_;
+      /**
+       * <code>optional .protocol.Order order = 7;</code>
+       */
       public boolean hasOrder() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
+      /**
+       * <code>optional .protocol.Order order = 7;</code>
+       */
       public com.kensai.protocol.Trading.Order getOrder() {
         if (orderBuilder_ == null) {
           return order_;
@@ -9928,6 +12871,9 @@ public final class Trading {
           return orderBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .protocol.Order order = 7;</code>
+       */
       public Builder setOrder(com.kensai.protocol.Trading.Order value) {
         if (orderBuilder_ == null) {
           if (value == null) {
@@ -9941,6 +12887,9 @@ public final class Trading {
         bitField0_ |= 0x00000040;
         return this;
       }
+      /**
+       * <code>optional .protocol.Order order = 7;</code>
+       */
       public Builder setOrder(
           com.kensai.protocol.Trading.Order.Builder builderForValue) {
         if (orderBuilder_ == null) {
@@ -9952,6 +12901,9 @@ public final class Trading {
         bitField0_ |= 0x00000040;
         return this;
       }
+      /**
+       * <code>optional .protocol.Order order = 7;</code>
+       */
       public Builder mergeOrder(com.kensai.protocol.Trading.Order value) {
         if (orderBuilder_ == null) {
           if (((bitField0_ & 0x00000040) == 0x00000040) &&
@@ -9968,6 +12920,9 @@ public final class Trading {
         bitField0_ |= 0x00000040;
         return this;
       }
+      /**
+       * <code>optional .protocol.Order order = 7;</code>
+       */
       public Builder clearOrder() {
         if (orderBuilder_ == null) {
           order_ = com.kensai.protocol.Trading.Order.getDefaultInstance();
@@ -9978,11 +12933,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
+      /**
+       * <code>optional .protocol.Order order = 7;</code>
+       */
       public com.kensai.protocol.Trading.Order.Builder getOrderBuilder() {
         bitField0_ |= 0x00000040;
         onChanged();
         return getOrderFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .protocol.Order order = 7;</code>
+       */
       public com.kensai.protocol.Trading.OrderOrBuilder getOrderOrBuilder() {
         if (orderBuilder_ != null) {
           return orderBuilder_.getMessageOrBuilder();
@@ -9990,6 +12951,9 @@ public final class Trading {
           return order_;
         }
       }
+      /**
+       * <code>optional .protocol.Order order = 7;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Order, com.kensai.protocol.Trading.Order.Builder, com.kensai.protocol.Trading.OrderOrBuilder> 
           getOrderFieldBuilder() {
@@ -10003,14 +12967,20 @@ public final class Trading {
         }
         return orderBuilder_;
       }
-      
+
       // optional .protocol.Execution execution = 8;
       private com.kensai.protocol.Trading.Execution execution_ = com.kensai.protocol.Trading.Execution.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Execution, com.kensai.protocol.Trading.Execution.Builder, com.kensai.protocol.Trading.ExecutionOrBuilder> executionBuilder_;
+      /**
+       * <code>optional .protocol.Execution execution = 8;</code>
+       */
       public boolean hasExecution() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
+      /**
+       * <code>optional .protocol.Execution execution = 8;</code>
+       */
       public com.kensai.protocol.Trading.Execution getExecution() {
         if (executionBuilder_ == null) {
           return execution_;
@@ -10018,6 +12988,9 @@ public final class Trading {
           return executionBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .protocol.Execution execution = 8;</code>
+       */
       public Builder setExecution(com.kensai.protocol.Trading.Execution value) {
         if (executionBuilder_ == null) {
           if (value == null) {
@@ -10031,6 +13004,9 @@ public final class Trading {
         bitField0_ |= 0x00000080;
         return this;
       }
+      /**
+       * <code>optional .protocol.Execution execution = 8;</code>
+       */
       public Builder setExecution(
           com.kensai.protocol.Trading.Execution.Builder builderForValue) {
         if (executionBuilder_ == null) {
@@ -10042,6 +13018,9 @@ public final class Trading {
         bitField0_ |= 0x00000080;
         return this;
       }
+      /**
+       * <code>optional .protocol.Execution execution = 8;</code>
+       */
       public Builder mergeExecution(com.kensai.protocol.Trading.Execution value) {
         if (executionBuilder_ == null) {
           if (((bitField0_ & 0x00000080) == 0x00000080) &&
@@ -10058,6 +13037,9 @@ public final class Trading {
         bitField0_ |= 0x00000080;
         return this;
       }
+      /**
+       * <code>optional .protocol.Execution execution = 8;</code>
+       */
       public Builder clearExecution() {
         if (executionBuilder_ == null) {
           execution_ = com.kensai.protocol.Trading.Execution.getDefaultInstance();
@@ -10068,11 +13050,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
+      /**
+       * <code>optional .protocol.Execution execution = 8;</code>
+       */
       public com.kensai.protocol.Trading.Execution.Builder getExecutionBuilder() {
         bitField0_ |= 0x00000080;
         onChanged();
         return getExecutionFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .protocol.Execution execution = 8;</code>
+       */
       public com.kensai.protocol.Trading.ExecutionOrBuilder getExecutionOrBuilder() {
         if (executionBuilder_ != null) {
           return executionBuilder_.getMessageOrBuilder();
@@ -10080,6 +13068,9 @@ public final class Trading {
           return execution_;
         }
       }
+      /**
+       * <code>optional .protocol.Execution execution = 8;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Execution, com.kensai.protocol.Trading.Execution.Builder, com.kensai.protocol.Trading.ExecutionOrBuilder> 
           getExecutionFieldBuilder() {
@@ -10093,14 +13084,20 @@ public final class Trading {
         }
         return executionBuilder_;
       }
-      
+
       // optional .protocol.Summary summary = 9;
       private com.kensai.protocol.Trading.Summary summary_ = com.kensai.protocol.Trading.Summary.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Summary, com.kensai.protocol.Trading.Summary.Builder, com.kensai.protocol.Trading.SummaryOrBuilder> summaryBuilder_;
+      /**
+       * <code>optional .protocol.Summary summary = 9;</code>
+       */
       public boolean hasSummary() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
+      /**
+       * <code>optional .protocol.Summary summary = 9;</code>
+       */
       public com.kensai.protocol.Trading.Summary getSummary() {
         if (summaryBuilder_ == null) {
           return summary_;
@@ -10108,6 +13105,9 @@ public final class Trading {
           return summaryBuilder_.getMessage();
         }
       }
+      /**
+       * <code>optional .protocol.Summary summary = 9;</code>
+       */
       public Builder setSummary(com.kensai.protocol.Trading.Summary value) {
         if (summaryBuilder_ == null) {
           if (value == null) {
@@ -10121,6 +13121,9 @@ public final class Trading {
         bitField0_ |= 0x00000100;
         return this;
       }
+      /**
+       * <code>optional .protocol.Summary summary = 9;</code>
+       */
       public Builder setSummary(
           com.kensai.protocol.Trading.Summary.Builder builderForValue) {
         if (summaryBuilder_ == null) {
@@ -10132,6 +13135,9 @@ public final class Trading {
         bitField0_ |= 0x00000100;
         return this;
       }
+      /**
+       * <code>optional .protocol.Summary summary = 9;</code>
+       */
       public Builder mergeSummary(com.kensai.protocol.Trading.Summary value) {
         if (summaryBuilder_ == null) {
           if (((bitField0_ & 0x00000100) == 0x00000100) &&
@@ -10148,6 +13154,9 @@ public final class Trading {
         bitField0_ |= 0x00000100;
         return this;
       }
+      /**
+       * <code>optional .protocol.Summary summary = 9;</code>
+       */
       public Builder clearSummary() {
         if (summaryBuilder_ == null) {
           summary_ = com.kensai.protocol.Trading.Summary.getDefaultInstance();
@@ -10158,11 +13167,17 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
+      /**
+       * <code>optional .protocol.Summary summary = 9;</code>
+       */
       public com.kensai.protocol.Trading.Summary.Builder getSummaryBuilder() {
         bitField0_ |= 0x00000100;
         onChanged();
         return getSummaryFieldBuilder().getBuilder();
       }
+      /**
+       * <code>optional .protocol.Summary summary = 9;</code>
+       */
       public com.kensai.protocol.Trading.SummaryOrBuilder getSummaryOrBuilder() {
         if (summaryBuilder_ != null) {
           return summaryBuilder_.getMessageOrBuilder();
@@ -10170,6 +13185,9 @@ public final class Trading {
           return summary_;
         }
       }
+      /**
+       * <code>optional .protocol.Summary summary = 9;</code>
+       */
       private com.google.protobuf.SingleFieldBuilder<
           com.kensai.protocol.Trading.Summary, com.kensai.protocol.Trading.Summary.Builder, com.kensai.protocol.Trading.SummaryOrBuilder> 
           getSummaryFieldBuilder() {
@@ -10183,18 +13201,18 @@ public final class Trading {
         }
         return summaryBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:protocol.Messages)
     }
-    
+
     static {
       defaultInstance = new Messages(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:protocol.Messages)
   }
-  
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_protocol_Instrument_descriptor;
   private static
@@ -10255,7 +13273,7 @@ public final class Trading {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_protocol_Messages_fieldAccessorTable;
-  
+
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -10331,97 +13349,73 @@ public final class Trading {
           internal_static_protocol_Instrument_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Instrument_descriptor,
-              new java.lang.String[] { "Isin", "Name", "Market", "Description", "Type", },
-              com.kensai.protocol.Trading.Instrument.class,
-              com.kensai.protocol.Trading.Instrument.Builder.class);
+              new java.lang.String[] { "Isin", "Name", "Market", "Description", "Type", });
           internal_static_protocol_InstrumentsSnapshot_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_protocol_InstrumentsSnapshot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_InstrumentsSnapshot_descriptor,
-              new java.lang.String[] { "Instruments", },
-              com.kensai.protocol.Trading.InstrumentsSnapshot.class,
-              com.kensai.protocol.Trading.InstrumentsSnapshot.Builder.class);
+              new java.lang.String[] { "Instruments", });
           internal_static_protocol_Order_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_protocol_Order_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Order_descriptor,
-              new java.lang.String[] { "Id", "Side", "Instrument", "Action", "CommandStatus", "Price", "ExecPrice", "InitialQuantity", "ExecutedQuantity", "UserData", "User", "InsertTime", "LastUpdateTime", "OrderStatus", "ErrorMessage", },
-              com.kensai.protocol.Trading.Order.class,
-              com.kensai.protocol.Trading.Order.Builder.class);
+              new java.lang.String[] { "Id", "Side", "Instrument", "Action", "CommandStatus", "Price", "ExecPrice", "InitialQuantity", "ExecutedQuantity", "UserData", "User", "InsertTime", "LastUpdateTime", "OrderStatus", "ErrorMessage", });
           internal_static_protocol_OrdersSnapshot_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_protocol_OrdersSnapshot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_OrdersSnapshot_descriptor,
-              new java.lang.String[] { "Orders", },
-              com.kensai.protocol.Trading.OrdersSnapshot.class,
-              com.kensai.protocol.Trading.OrdersSnapshot.Builder.class);
+              new java.lang.String[] { "Orders", });
           internal_static_protocol_Execution_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_protocol_Execution_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Execution_descriptor,
-              new java.lang.String[] { "Id", "Price", "Quantity", "User", "Time", "Order", },
-              com.kensai.protocol.Trading.Execution.class,
-              com.kensai.protocol.Trading.Execution.Builder.class);
+              new java.lang.String[] { "Id", "Price", "Quantity", "User", "Time", "Order", });
           internal_static_protocol_ExecutionsSnapshot_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_protocol_ExecutionsSnapshot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_ExecutionsSnapshot_descriptor,
-              new java.lang.String[] { "Executions", },
-              com.kensai.protocol.Trading.ExecutionsSnapshot.class,
-              com.kensai.protocol.Trading.ExecutionsSnapshot.Builder.class);
+              new java.lang.String[] { "Executions", });
           internal_static_protocol_Depth_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_protocol_Depth_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Depth_descriptor,
-              new java.lang.String[] { "Depth", "Price", "Quantity", },
-              com.kensai.protocol.Trading.Depth.class,
-              com.kensai.protocol.Trading.Depth.Builder.class);
+              new java.lang.String[] { "Depth", "Price", "Quantity", });
           internal_static_protocol_Summary_descriptor =
             getDescriptor().getMessageTypes().get(7);
           internal_static_protocol_Summary_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Summary_descriptor,
-              new java.lang.String[] { "Instrument", "MarketStatus", "Open", "Close", "Last", "BuyDepths", "SellDepths", "Timestamp", },
-              com.kensai.protocol.Trading.Summary.class,
-              com.kensai.protocol.Trading.Summary.Builder.class);
+              new java.lang.String[] { "Instrument", "MarketStatus", "Open", "Close", "Last", "BuyDepths", "SellDepths", "Timestamp", });
           internal_static_protocol_SummariesSnapshot_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_protocol_SummariesSnapshot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_SummariesSnapshot_descriptor,
-              new java.lang.String[] { "Summaries", },
-              com.kensai.protocol.Trading.SummariesSnapshot.class,
-              com.kensai.protocol.Trading.SummariesSnapshot.Builder.class);
+              new java.lang.String[] { "Summaries", });
           internal_static_protocol_SubscribeCommand_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_protocol_SubscribeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_SubscribeCommand_descriptor,
-              new java.lang.String[] { "User", "Status", "ErrorMessage", },
-              com.kensai.protocol.Trading.SubscribeCommand.class,
-              com.kensai.protocol.Trading.SubscribeCommand.Builder.class);
+              new java.lang.String[] { "User", "Status", "ErrorMessage", });
           internal_static_protocol_UnsubscribeCommand_descriptor =
             getDescriptor().getMessageTypes().get(10);
           internal_static_protocol_UnsubscribeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_UnsubscribeCommand_descriptor,
-              new java.lang.String[] { "User", "Status", "ErrorMessage", },
-              com.kensai.protocol.Trading.UnsubscribeCommand.class,
-              com.kensai.protocol.Trading.UnsubscribeCommand.Builder.class);
+              new java.lang.String[] { "User", "Status", "ErrorMessage", });
           internal_static_protocol_Messages_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_protocol_Messages_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Messages_descriptor,
-              new java.lang.String[] { "SubscribeCommand", "UnsubscribeCommand", "SummariesSnapshot", "ExecutionsSnapshot", "OrdersSnapshot", "InstrumentsSnapshot", "Order", "Execution", "Summary", },
-              com.kensai.protocol.Trading.Messages.class,
-              com.kensai.protocol.Trading.Messages.Builder.class);
+              new java.lang.String[] { "SubscribeCommand", "UnsubscribeCommand", "SummariesSnapshot", "ExecutionsSnapshot", "OrdersSnapshot", "InstrumentsSnapshot", "Order", "Execution", "Summary", });
           return null;
         }
       };
@@ -10430,6 +13424,6 @@ public final class Trading {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-  
+
   // @@protoc_insertion_point(outer_class_scope)
 }
