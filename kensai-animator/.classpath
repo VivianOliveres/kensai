@@ -4,41 +4,54 @@
   <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-  <classpathentry kind="var" path="M2_REPO/junit/junit/4.10/junit-4.10.jar" sourcepath="M2_REPO/junit/junit/4.10/junit-4.10-sources.jar">
+  <classpathentry kind="var" path="M2_REPO/junit/junit/4.11/junit-4.11.jar" sourcepath="M2_REPO/junit/junit/4.11/junit-4.11-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/kensai/.m2/repository/junit/junit/4.10/junit-4.10-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/home/kensai/.m2/repository/junit/junit/4.11/junit-4.11-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar" sourcepath="M2_REPO/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/logging/log4j/log4j-api/2.0-beta3/log4j-api-2.0-beta3.jar" sourcepath="M2_REPO/org/apache/logging/log4j/log4j-api/2.0-beta3/log4j-api-2.0-beta3-sources.jar">
+  <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar" sourcepath="M2_REPO/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/kensai/.m2/repository/org/apache/logging/log4j/log4j-api/2.0-beta3/log4j-api-2.0-beta3-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/home/kensai/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/apache/logging/log4j/log4j-core/2.0-beta3/log4j-core-2.0-beta3.jar" sourcepath="M2_REPO/org/apache/logging/log4j/log4j-core/2.0-beta3/log4j-core-2.0-beta3-sources.jar">
-    <attributes>
-      <attribute value="jar:file:/home/kensai/.m2/repository/org/apache/logging/log4j/log4j-core/2.0-beta3/log4j-core-2.0-beta3-javadoc.jar!/" name="javadoc_location"/>
-    </attributes>
-  </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/assertj/assertj-core/1.0.0/assertj-core-1.0.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5.jar" sourcepath="M2_REPO/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5-sources.jar">
     <attributes>
       <attribute value="jar:file:/home/kensai/.m2/repository/org/mockito/mockito-all/1.9.5/mockito-all-1.9.5-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/13.0.1/guava-13.0.1.jar" sourcepath="M2_REPO/com/google/guava/guava/13.0.1/guava-13.0.1-sources.jar">
+  <classpathentry kind="var" path="M2_REPO/org/assertj/assertj-core/1.5.0/assertj-core-1.5.0.jar" sourcepath="M2_REPO/org/assertj/assertj-core/1.5.0/assertj-core-1.5.0-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/kensai/.m2/repository/com/google/guava/guava/13.0.1/guava-13.0.1-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/home/kensai/.m2/repository/org/assertj/assertj-core/1.5.0/assertj-core-1.5.0-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/joda-time/joda-time/2.1/joda-time-2.1.jar" sourcepath="M2_REPO/joda-time/joda-time/2.1/joda-time-2.1-sources.jar">
+  <classpathentry kind="var" path="M2_REPO/org/assertj/assertj-guava/1.1.0/assertj-guava-1.1.0.jar" sourcepath="M2_REPO/org/assertj/assertj-guava/1.1.0/assertj-guava-1.1.0-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/kensai/.m2/repository/joda-time/joda-time/2.1/joda-time-2.1-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/home/kensai/.m2/repository/org/assertj/assertj-guava/1.1.0/assertj-guava-1.1.0-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/com/google/protobuf/protobuf-java/2.4.1/protobuf-java-2.4.1.jar" sourcepath="M2_REPO/com/google/protobuf/protobuf-java/2.4.1/protobuf-java-2.4.1-sources.jar">
+  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/16.0.1/guava-16.0.1.jar" sourcepath="M2_REPO/com/google/guava/guava/16.0.1/guava-16.0.1-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/kensai/.m2/repository/com/google/protobuf/protobuf-java/2.4.1/protobuf-java-2.4.1-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/home/kensai/.m2/repository/com/google/guava/guava/16.0.1/guava-16.0.1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/assertj/assertj-joda-time/1.1.0/assertj-joda-time-1.1.0.jar" sourcepath="M2_REPO/org/assertj/assertj-joda-time/1.1.0/assertj-joda-time-1.1.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/home/kensai/.m2/repository/org/assertj/assertj-joda-time/1.1.0/assertj-joda-time-1.1.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/logging/log4j/log4j-api/2.0-rc1/log4j-api-2.0-rc1.jar" sourcepath="M2_REPO/org/apache/logging/log4j/log4j-api/2.0-rc1/log4j-api-2.0-rc1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/home/kensai/.m2/repository/org/apache/logging/log4j/log4j-api/2.0-rc1/log4j-api-2.0-rc1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/logging/log4j/log4j-core/2.0-rc1/log4j-core-2.0-rc1.jar" sourcepath="M2_REPO/org/apache/logging/log4j/log4j-core/2.0-rc1/log4j-core-2.0-rc1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/home/kensai/.m2/repository/org/apache/logging/log4j/log4j-core/2.0-rc1/log4j-core-2.0-rc1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/com/google/protobuf/protobuf-java/2.5.0/protobuf-java-2.5.0.jar" sourcepath="M2_REPO/com/google/protobuf/protobuf-java/2.5.0/protobuf-java-2.5.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/home/kensai/.m2/repository/com/google/protobuf/protobuf-java/2.5.0/protobuf-java-2.5.0-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/io/netty/netty/3.5.9.Final/netty-3.5.9.Final.jar" sourcepath="M2_REPO/io/netty/netty/3.5.9.Final/netty-3.5.9.Final-sources.jar">
@@ -46,5 +59,5 @@
       <attribute value="jar:file:/home/kensai/.m2/repository/io/netty/netty/3.5.9.Final/netty-3.5.9.Final-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/com/kensai/kensai-protocol/1.0.5/kensai-protocol-1.0.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/kensai/kensai-protocol/1.0.6-SNAPSHOT/kensai-protocol-1.0.6-SNAPSHOT.jar"/>
 </classpath>
