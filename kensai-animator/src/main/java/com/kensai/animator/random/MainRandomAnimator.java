@@ -11,6 +11,8 @@ import com.kensai.animator.sdk.Animator;
 public class MainRandomAnimator {
 	private static final Logger log = LogManager.getLogger(MainRandomAnimator.class);
 
+	private static final String DEFAULT_USER = "DefaultRandomAnimator";
+
 	private static final String DEFAULT_HOST = "localhost";
 	private static final int DEFAULT_PORT = 1664;
 
@@ -21,14 +23,16 @@ public class MainRandomAnimator {
 	private static final int DEFAULT_PERIOD = 750;
 
 	public static void main(String[] args) {
-		// Preconditions
+		// User
+		String user;
 		if (args == null || args.length == 0) {
-			log.error("Usage: user");
-			System.exit(0);
-		}
+			log.warn("No user -> use default [" + DEFAULT_USER + "]");
+			user = DEFAULT_USER;
 
-		// Retrieve user
-		String user = args[0].trim();
+		} else {
+			// Retrieve user
+			user = args[0].trim();
+		}
 
 		// Retrieve host and port
 		String host = DEFAULT_HOST;
