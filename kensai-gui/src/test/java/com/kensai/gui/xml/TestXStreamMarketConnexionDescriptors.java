@@ -46,7 +46,6 @@ public class TestXStreamMarketConnexionDescriptors {
 		// WHEN: serialize connexions into file
 		Writer osWriter = new OutputStreamWriter(new FileOutputStream(file));
 		PrettyPrintWriter ppWritter = new PrettyPrintWriter(osWriter);
-		// xstream.toXML(connexions, ppWritter);
 		xstream.marshal(connexions, ppWritter);
 
 		// AND: deserialize

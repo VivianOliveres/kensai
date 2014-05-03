@@ -1,0 +1,10 @@
+<MarketConnexionDescriptors>
+  <connexions>
+    <MarketConnexionDescriptor>
+      <connectionName>CAC</connectionName>
+      <host>localhost</host>
+      <port>1664</port>
+      <isConnectingAtStartup>true</isConnectingAtStartup>
+    </MarketConnexionDescriptor>
+  </connexions>
+</MarketConnexionDescriptors>

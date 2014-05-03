@@ -2,12 +2,13 @@ package com.kensai.gui.xml;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 
-public class MarketConnexionDescriptors {
+public class MarketConnexionDescriptors implements Iterable<MarketConnexionDescriptor> {
 
 	private List<MarketConnexionDescriptor> connexions = new ArrayList<>();
 
@@ -56,6 +57,11 @@ public class MarketConnexionDescriptors {
 	@Override
 	public String toString() {
 		return Objects.toStringHelper(this).add("super", super.toString()).add("connexions", connexions).toString();
+	}
+
+	@Override
+	public Iterator<MarketConnexionDescriptor> iterator() {
+		return connexions.iterator();
 	}
 
 }
