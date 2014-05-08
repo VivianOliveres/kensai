@@ -30,8 +30,11 @@ public class MainKensaiApplication extends Application {
 		// Create context
 		ApplicationContext context = createApplicationContext();
 
+		// Create GuiService
+		GuiService initializer = createGuiService(context);
+
 		// Init stage
-		Scene scene = createScene(context);
+		Scene scene = createScene(context, initializer);
 		scene.getStylesheets().add("style-dark.css");
 		stage.setScene(scene);
 		stage.setTitle("Kensai Assurance Vie");
@@ -52,17 +55,20 @@ public class MainKensaiApplication extends Application {
 
 		ConfigurationService confService = new ConfigurationService(marketConnexionConfigurationService);
 		ModelService modelService = new ModelService(marketConnexionConfigurationService.getConnexions());
-		GuiService guiService = new GuiService(modelService, taskService);
 
-		ApplicationContext context = new ApplicationContext(taskService, confService, modelService, guiService);
+		ApplicationContext context = new ApplicationContext(taskService, confService, modelService);
 		return context;
 	}
 
-	private Scene createScene(ApplicationContext context) {
+	private GuiService createGuiService(ApplicationContext context) {
+		return new GuiService(context);
+	}
+
+	private Scene createScene(ApplicationContext context, GuiService guiService) {
 		BorderPane root = new BorderPane();
 		root.setPadding(new Insets(10));
 
-		MarketConnectionsViewController marketConnectionsViewController = context.getGuiService().getMarketConnectionsViewController();
+		MarketConnectionsViewController marketConnectionsViewController = guiService.getMarketConnectionsViewController();
 		root.setLeft(marketConnectionsViewController.getView());
 
 		return new Scene(root);

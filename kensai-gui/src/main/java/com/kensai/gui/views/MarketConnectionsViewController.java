@@ -11,6 +11,7 @@ import javafx.scene.layout.FlowPane;
 
 import org.reactfx.EventStreams;
 
+import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.ModelService;
 import com.kensai.gui.services.model.market.MarketConnexionModel;
 import com.kensai.gui.services.task.TaskService;
@@ -18,16 +19,21 @@ import com.kensai.gui.services.task.TaskService;
 public class MarketConnectionsViewController {
 
 	private BorderPane root = new BorderPane();
-	private FlowPane flowPane = new FlowPane();
+	private FlowPane flowPane;
 
 	private ObservableList<Button> marketButtons = FXCollections.observableArrayList();
 
 	private ModelService modelService;
 	private TaskService taskService;
 
-	public MarketConnectionsViewController(ModelService modelService, TaskService taskService) {
-		this.modelService = modelService;
-		this.taskService = taskService;
+	public MarketConnectionsViewController(ApplicationContext context) {
+		this(context, new FlowPane());
+	}
+
+	public MarketConnectionsViewController(ApplicationContext context, FlowPane flowPane) {
+		this.modelService = context.getModelService();
+		this.taskService = context.getTaskService();
+		this.flowPane = flowPane;
 
 		initView();
 		initDatas();

@@ -7,20 +7,14 @@ import com.kensai.gui.services.task.TaskService;
 
 public class ApplicationContext {
 
-	private GuiService guiService;
 	private ConfigurationService confService;
 	private ModelService modelService;
 	private TaskService taskService;
 
-	public ApplicationContext(TaskService taskService, ConfigurationService confService, ModelService modelService, GuiService guiService) {
+	public ApplicationContext(TaskService taskService, ConfigurationService confService, ModelService modelService) {
 		this.taskService = taskService;
-		this.guiService = guiService;
 		this.confService = confService;
 		this.modelService = modelService;
-	}
-
-	public GuiService getGuiService() {
-		return guiService;
 	}
 
 	public ConfigurationService getConfigurationService() {
