@@ -5,10 +5,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Orientation;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.layout.TilePane;
+import javafx.scene.control.ListView;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +19,7 @@ public class MarketConnectionsViewControllerTest extends AbstractTestJavaFX {
 
 	private MarketConnexionModel CAC_CONNEXION = new MarketConnexionModel("CAC", "localhost", 1664, true);
 
-	private TilePane pane;
+	private ListView<MarketConnexionModel> connexionsList;
 	private ObservableList<MarketConnexionModel> connexions;
 	private ApplicationContext context;
 
@@ -36,13 +33,13 @@ public class MarketConnectionsViewControllerTest extends AbstractTestJavaFX {
 		connexions = FXCollections.observableArrayList();
 		when(modelService.getConnexions()).thenReturn(connexions);
 
-		pane = new TilePane(Orientation.VERTICAL);
-		controller = new MarketConnectionsViewController(context, pane);
+		connexionsList = new ListView<>();
+		controller = new MarketConnectionsViewController(context, connexionsList);
 	}
 
 	@Test
 	public void should_pane_be_empty_after_initialization() {
-		assertThat(pane.getChildren()).isEmpty();
+		assertThat(connexionsList.getItems()).isEmpty();
 	}
 
 	@Test
@@ -50,28 +47,24 @@ public class MarketConnectionsViewControllerTest extends AbstractTestJavaFX {
 		// WHEN: add this connexion to model service
 		connexions.add(CAC_CONNEXION);
 
-		// THEN: Pane is updated
-		assertThat(pane.getChildren()).isNotEmpty().hasSize(1);
+		// THEN: ListView is updated
+		assertThat(connexionsList.getItems()).isNotEmpty().hasSize(1);
 
-		// AND: node is a button
-		Node node = pane.getChildren().get(0);
-		assertThat(node).isInstanceOf(Button.class);
-
-		// AND: Button has same name than model's connexion name
-		Button button = (Button) node;
-		assertThat(button.getText()).isEqualTo(CAC_CONNEXION.getConnexionName());
+		// AND: Item in list is same than in ModelService
+		MarketConnexionModel item = connexionsList.getItems().get(0);
+		assertThat(item).isEqualTo(CAC_CONNEXION);
 	}
 
 	@Test
 	public void should_remove_connexion_in_pane_when_connexion_is_remove_from_modelService() {
 		connexions.add(CAC_CONNEXION);
-		assertThat(pane.getChildren()).isNotEmpty().hasSize(1);
+		assertThat(connexionsList.getItems()).isNotEmpty().hasSize(1);
 
 		// WHEN: remove this connexion from model
 		connexions.remove(CAC_CONNEXION);
 
-		// THEN: Pane is updated
-		assertThat(pane.getChildren()).isEmpty();
+		// THEN: ListView is updated
+		assertThat(connexionsList.getItems()).isEmpty();
 	}
 
 }

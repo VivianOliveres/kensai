@@ -51,6 +51,26 @@ public class MarketConnexionModel {
 		return connection.get();
 	}
 
+	public void setConnexionName(String name) {
+		this.connexionName.set(name);
+	}
+
+	public void setHost(String host) {
+		this.host.set(host);
+	}
+
+	public void setPort(int port) {
+		this.port.set(port);
+	}
+
+	public void setIsConnectingAtStartup(boolean isConnectingAtStartup) {
+		this.isConnectingAtStartup.set(isConnectingAtStartup);
+	}
+
+	public void setConnectionState(ConnectionState state) {
+		this.connection.set(state);
+	}
+
 	public StringProperty connectionNameProperty() {
 		return connexionName;
 	}
