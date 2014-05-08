@@ -9,9 +9,9 @@ import javafx.scene.image.Image;
 
 public enum ConnectionState {
 
-	DECONNECTED("market_icon_red_32x32.jpg"), 
-	CONNECTED("market_icon_green_32x32.jpg"), 
-	CONNECTING("market_icon_blue_32x32.jpg");
+	DECONNECTED("market_icon_red_32x32.png"),
+	CONNECTED("market_icon_green_32x32.png"), 
+	CONNECTING("market_icon_blue_32x32.png");
 
 	private final Image image;
 
