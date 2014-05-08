@@ -3,11 +3,11 @@ package com.kensai.gui.views;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener.Change;
 import javafx.collections.ObservableList;
+import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.TilePane;
 
 import org.reactfx.EventStreams;
 
@@ -19,7 +19,7 @@ import com.kensai.gui.services.task.TaskService;
 public class MarketConnectionsViewController {
 
 	private BorderPane root = new BorderPane();
-	private FlowPane flowPane;
+	private TilePane pane;
 
 	private ObservableList<Button> marketButtons = FXCollections.observableArrayList();
 
@@ -27,20 +27,19 @@ public class MarketConnectionsViewController {
 	private TaskService taskService;
 
 	public MarketConnectionsViewController(ApplicationContext context) {
-		this(context, new FlowPane());
+		this(context, new TilePane(Orientation.VERTICAL));
 	}
 
-	public MarketConnectionsViewController(ApplicationContext context, FlowPane flowPane) {
+	public MarketConnectionsViewController(ApplicationContext context, TilePane pane) {
 		this.modelService = context.getModelService();
 		this.taskService = context.getTaskService();
-		this.flowPane = flowPane;
+		this.pane = pane;
 
 		initView();
 		initDatas();
 	}
 
 	private void initView() {
-		ScrollPane pane = new ScrollPane(flowPane);
 		EventStreams.changesOf(marketButtons).subscribe(change -> doChangeOnMarketButtons(change));
 		root.setCenter(pane);
 	}
@@ -48,11 +47,11 @@ public class MarketConnectionsViewController {
 	private Void doChangeOnMarketButtons(Change<? extends Button> change) {
 		while (change.next()) {
 			for (Button button : change.getRemoved()) {
-				flowPane.getChildren().remove(button);
+				pane.getChildren().remove(button);
 			}
 			
 			for (Button button : change.getAddedSubList()) {
-				flowPane.getChildren().add(button);
+				pane.getChildren().add(button);
 			}
 		}
 
