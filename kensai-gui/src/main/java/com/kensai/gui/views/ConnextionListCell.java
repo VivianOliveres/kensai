@@ -14,6 +14,8 @@ public class ConnextionListCell extends ListCell<MarketConnexionModel> {
 	private ImageView view;
 	
 	private MarketConnexionModel connexion;
+	
+	private Subscription nameSubscription;
 	private Subscription streamSubscription;
 
 	public ConnextionListCell() {
@@ -32,6 +34,7 @@ public class ConnextionListCell extends ListCell<MarketConnexionModel> {
 		}
 
 		if (connexion != null) {
+			nameSubscription.unsubscribe();
 			streamSubscription.unsubscribe();
 		}
 
@@ -41,9 +44,13 @@ public class ConnextionListCell extends ListCell<MarketConnexionModel> {
 			return;
 		}
 
-
 		setText(item.getConnexionName());
 		setGraphic(view);
+
+		nameSubscription = EventStreams.changesOf(item.connectionNameProperty())
+												 .map(change -> change.getNewValue())
+												 .subscribe(state -> setText(item.getConnexionName()));
+
 		streamSubscription = EventStreams.changesOf(item.connectionStateProperty())
 													.map(change -> change.getNewValue())
 													.subscribe(state -> view.setImage(state.getImage()));

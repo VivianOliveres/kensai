@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 import org.reactfx.EventStreams;
@@ -55,14 +56,57 @@ public class MarketConnectionsViewController {
 	private Button createAddButton() {
 		ImageView addView = new ImageView(Images.ADD);
 		Button buttonAdd = new Button("", addView);
-		// TODO
+
+		// Add connection on click
+		EventStreams.eventsOf(buttonAdd, ActionEvent.ACTION)
+						.map(event -> new MarketConnexionModel())
+						.map(connection -> doOnClick(connection, "Add Market Connection"))
+						.filter(connection -> connection != null)
+						.subscribe(connection -> {
+							log.info("Add connection: " + connection);
+							modelService.getConnexions().add(connection);
+						});
+		
 		return buttonAdd;
+	}
+
+	private MarketConnexionModel doOnClick(MarketConnexionModel connection, String dialogTitle) {
+		MarketConnectionsEditController controller = new MarketConnectionsEditController(connection);
+
+		Dialog dialog = new Dialog(root, dialogTitle);
+		dialog.setResizable(false);
+		dialog.setIconifiable(false);
+		dialog.setContent(controller.getView());
+		dialog.getActions().addAll(controller.getAction(), Dialog.Actions.CANCEL);
+
+		Action answer = dialog.show();
+		if (answer.equals(Dialog.Actions.CANCEL)) {
+			return null;
+		}
+
+		return controller.getConnection();
 	}
 
 	private Button createEditButton() {
 		ImageView editView = new ImageView(Images.EDIT);
 		Button buttonEdit = new Button("", editView);
-		// TODO
+
+		// Edit connection on click
+		EventStreams.eventsOf(buttonEdit, ActionEvent.ACTION)
+						.filter(event -> connexionsList.getSelectionModel().getSelectedItem() != null)
+						.map(event -> connexionsList.getSelectionModel().getSelectedItem())
+						.map(connection -> new MarketConnexionModel(connection))
+						.map(connection -> doOnClick(connection, "Edit Market Connection"))
+						.filter(connection -> connection != null)
+						.subscribe(connection -> {
+							log.info("Edit connection: " + connection);
+							MarketConnexionModel toEditItem = connexionsList.getSelectionModel().getSelectedItem();
+							toEditItem.setConnexionName(connection.getConnexionName());
+							toEditItem.setHost(connection.getHost());
+							toEditItem.setPort(connection.getPort());
+							toEditItem.setIsConnectingAtStartup(connection.isConnectingAtStartup());
+						});
+
 		return buttonEdit;
 	}
 

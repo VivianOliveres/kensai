@@ -19,6 +19,18 @@ public class MarketConnexionModel {
 	private SimpleBooleanProperty isConnectingAtStartup = new SimpleBooleanProperty();
 	private SimpleObjectProperty<ConnectionState> connection = new SimpleObjectProperty<>();
 
+	public MarketConnexionModel() {
+		// New instance
+	}
+
+	public MarketConnexionModel(MarketConnexionModel copy) {
+		this.connexionName.setValue(copy.getConnexionName());
+		this.host.setValue(copy.getHost());
+		this.port.setValue(copy.getPort());
+		this.isConnectingAtStartup.setValue(copy.isConnectingAtStartup());
+		this.connection.setValue(copy.getConnectionState());
+	}
+
 	public MarketConnexionModel(MarketConnexionDescriptor desc) {
 		this(desc.getConnectionName(), desc.getHost(), desc.getPort(), desc.isConnectingAtStartup());
 	}
