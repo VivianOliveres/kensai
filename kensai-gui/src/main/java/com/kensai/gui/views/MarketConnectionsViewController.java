@@ -1,10 +1,19 @@
 package com.kensai.gui.views;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.ReadOnlyIntegerProperty;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.Dialogs;
+import org.reactfx.EventStreams;
 
 import com.kensai.gui.Images;
 import com.kensai.gui.services.ApplicationContext;
@@ -13,6 +22,7 @@ import com.kensai.gui.services.model.market.MarketConnexionModel;
 import com.kensai.gui.services.task.TaskService;
 
 public class MarketConnectionsViewController {
+	private static Logger log = LogManager.getLogger(MarketConnectionsViewController.class);
 
 	private BorderPane root = new BorderPane();
 	private ListView<MarketConnexionModel> connexionsList;
@@ -59,7 +69,26 @@ public class MarketConnectionsViewController {
 	private Button createRemoveButton() {
 		ImageView removeView = new ImageView(Images.REMOVE);
 		Button buttonRemove = new Button("", removeView);
-		// TODO
+
+		// Remove connection on click
+		EventStreams.eventsOf(buttonRemove, ActionEvent.ACTION)
+						.map(event -> connexionsList.getSelectionModel().getSelectedItem())
+						.map(selectedItem -> Dialogs.create()
+													       .owner( connexionsList)
+													       .title("Remove Market Connection")
+													       .message( "Do you want to remove connexion [" + selectedItem.getConnexionName() + "]")
+													       .showConfirm())
+						.filter(response -> Dialog.Actions.YES.equals(response))
+						.map(response -> connexionsList.getSelectionModel().getSelectedItem())
+						.subscribe(selectedItem -> {
+							log.info("Remove connection: " + selectedItem); 
+							modelService.getConnexions().remove(selectedItem);
+						});
+
+		// Disable button when nothing is selected
+		ReadOnlyIntegerProperty selectedIndexProperty = connexionsList.getSelectionModel().selectedIndexProperty();
+		buttonRemove.disableProperty().bind(Bindings.greaterThan(0, selectedIndexProperty));
+
 		return buttonRemove;
 	}
 
