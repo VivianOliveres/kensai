@@ -27,9 +27,9 @@ public class ConnextionListCell extends ListCell<MarketConnexionModel> {
 	}
 
 	@Override
-	public void updateItem(MarketConnexionModel item, boolean empty) {
-		super.updateItem(item, empty);
-		if (item == connexion) {
+	public void updateItem(MarketConnexionModel item, boolean isEmpty) {
+		super.updateItem(item, isEmpty);
+		if (item != null && item == connexion) {
 			return;
 		}
 

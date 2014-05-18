@@ -14,6 +14,7 @@ import com.kensai.gui.AbstractTestJavaFX;
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.ModelService;
 import com.kensai.gui.services.model.market.MarketConnexionModel;
+import com.kensai.gui.services.model.market.MarketConnexionsModel;
 
 public class MarketConnectionsViewControllerTest extends AbstractTestJavaFX {
 
@@ -31,7 +32,10 @@ public class MarketConnectionsViewControllerTest extends AbstractTestJavaFX {
 		context = new ApplicationContext(null, null, modelService);
 
 		connexions = FXCollections.observableArrayList();
-		when(modelService.getConnexions()).thenReturn(connexions);
+		MarketConnexionsModel connectionModel = mock(MarketConnexionsModel.class);
+		when(connectionModel.getConnexions()).thenReturn(connexions);
+
+		when(modelService.getConnexions()).thenReturn(connectionModel);
 
 		connexionsList = new ListView<>();
 		controller = new MarketConnectionsViewController(context, connexionsList);

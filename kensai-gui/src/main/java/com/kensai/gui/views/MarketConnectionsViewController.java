@@ -20,7 +20,7 @@ import com.kensai.gui.Images;
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.ModelService;
 import com.kensai.gui.services.model.market.MarketConnexionModel;
-import com.kensai.gui.services.task.TaskService;
+import com.kensai.gui.services.model.market.MarketConnexionsModel;
 
 public class MarketConnectionsViewController {
 	private static Logger log = LogManager.getLogger(MarketConnectionsViewController.class);
@@ -28,23 +28,21 @@ public class MarketConnectionsViewController {
 	private BorderPane root = new BorderPane();
 	private ListView<MarketConnexionModel> connexionsList;
 
-	private ModelService modelService;
-	private TaskService taskService;
+	private MarketConnexionsModel model;
 
 	public MarketConnectionsViewController(ApplicationContext context) {
 		this(context, new ListView<>());
 	}
 
 	public MarketConnectionsViewController(ApplicationContext context, ListView<MarketConnexionModel> connexionsList) {
-		this.modelService = context.getModelService();
-		this.taskService = context.getTaskService();
+		this.model = context.getModelService().getConnexions();
 		this.connexionsList = connexionsList;
 
 		initView();
 	}
 
 	private void initView() {
-		connexionsList.setItems(modelService.getConnexions());
+		connexionsList.setItems(model.getConnexions());
 		connexionsList.setCellFactory(list -> new ConnextionListCell());
 		root.setCenter(connexionsList);
 
@@ -64,7 +62,7 @@ public class MarketConnectionsViewController {
 						.filter(connection -> connection != null)
 						.subscribe(connection -> {
 							log.info("Add connection: " + connection);
-							modelService.getConnexions().add(connection);
+							model.getConnexions().add(connection);
 						});
 		
 		return buttonAdd;
@@ -126,7 +124,7 @@ public class MarketConnectionsViewController {
 						.map(response -> connexionsList.getSelectionModel().getSelectedItem())
 						.subscribe(selectedItem -> {
 							log.info("Remove connection: " + selectedItem); 
-							modelService.getConnexions().remove(selectedItem);
+							model.getConnexions().remove(selectedItem);
 						});
 
 		// Disable button when nothing is selected

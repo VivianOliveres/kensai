@@ -20,6 +20,10 @@ public class MarketConnexionDescriptors implements Iterable<MarketConnexionDescr
 		addAll(connexions);
 	}
 
+	public MarketConnexionDescriptors(List<MarketConnexionDescriptor> connexions) {
+		addAll(connexions);
+	}
+
 	public void add(MarketConnexionDescriptor connexion) {
 		connexions.add(connexion);
 	}

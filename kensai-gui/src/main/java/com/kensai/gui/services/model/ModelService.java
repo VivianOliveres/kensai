@@ -1,24 +1,16 @@
 package com.kensai.gui.services.model;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
-import com.kensai.gui.services.model.market.MarketConnexionModel;
-import com.kensai.gui.xml.MarketConnexionDescriptor;
-import com.kensai.gui.xml.MarketConnexionDescriptors;
+import com.kensai.gui.services.model.market.MarketConnexionsModel;
 
 public class ModelService {
 
-	private final ObservableList<MarketConnexionModel> connexions = FXCollections.observableArrayList();
+	private MarketConnexionsModel connexions;
 
-	public ModelService(MarketConnexionDescriptors connexions) {
-		for (MarketConnexionDescriptor desc : connexions) {
-			MarketConnexionModel connexion = new MarketConnexionModel(desc);
-			this.connexions.add(connexion);
-		}
+	public ModelService(MarketConnexionsModel connexions) {
+		this.connexions = connexions;
 	}
 
-	public ObservableList<MarketConnexionModel> getConnexions() {
+	public MarketConnexionsModel getConnexions() {
 		return connexions;
 	}
 

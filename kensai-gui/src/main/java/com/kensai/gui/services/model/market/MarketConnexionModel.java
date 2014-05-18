@@ -128,4 +128,8 @@ public class MarketConnexionModel {
 			.toString();
 	}
 	
+	public MarketConnexionDescriptor toDescriptor() {
+		return new MarketConnexionDescriptor(getConnexionName(), getHost(), getPort(), isConnectingAtStartup());
+	}
+
 }

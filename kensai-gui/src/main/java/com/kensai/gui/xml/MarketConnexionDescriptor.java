@@ -73,6 +73,5 @@ public class MarketConnexionDescriptor {
 			.add("isConnectingAtStartup", isConnectingAtStartup)
 			.toString();
 	}
-	
-	
+
 }
