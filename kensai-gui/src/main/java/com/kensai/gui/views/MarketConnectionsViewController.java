@@ -19,22 +19,22 @@ import org.reactfx.EventStreams;
 import com.kensai.gui.Images;
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.ModelService;
-import com.kensai.gui.services.model.market.MarketConnexionModel;
-import com.kensai.gui.services.model.market.MarketConnexionsModel;
+import com.kensai.gui.services.model.market.MarketConnectionModel;
+import com.kensai.gui.services.model.market.MarketConnectionsModel;
 
 public class MarketConnectionsViewController {
 	private static Logger log = LogManager.getLogger(MarketConnectionsViewController.class);
 
 	private BorderPane root = new BorderPane();
-	private ListView<MarketConnexionModel> connexionsList;
+	private ListView<MarketConnectionModel> connexionsList;
 
-	private MarketConnexionsModel model;
+	private MarketConnectionsModel model;
 
 	public MarketConnectionsViewController(ApplicationContext context) {
 		this(context, new ListView<>());
 	}
 
-	public MarketConnectionsViewController(ApplicationContext context, ListView<MarketConnexionModel> connexionsList) {
+	public MarketConnectionsViewController(ApplicationContext context, ListView<MarketConnectionModel> connexionsList) {
 		this.model = context.getModelService().getConnexions();
 		this.connexionsList = connexionsList;
 
@@ -57,7 +57,7 @@ public class MarketConnectionsViewController {
 
 		// Add connection on click
 		EventStreams.eventsOf(buttonAdd, ActionEvent.ACTION)
-						.map(event -> new MarketConnexionModel())
+						.map(event -> new MarketConnectionModel())
 						.map(connection -> doOnClick(connection, "Add Market Connection"))
 						.filter(connection -> connection != null)
 						.subscribe(connection -> {
@@ -68,7 +68,7 @@ public class MarketConnectionsViewController {
 		return buttonAdd;
 	}
 
-	private MarketConnexionModel doOnClick(MarketConnexionModel connection, String dialogTitle) {
+	private MarketConnectionModel doOnClick(MarketConnectionModel connection, String dialogTitle) {
 		MarketConnectionsEditController controller = new MarketConnectionsEditController(connection);
 
 		Dialog dialog = new Dialog(root, dialogTitle);
@@ -93,13 +93,13 @@ public class MarketConnectionsViewController {
 		EventStreams.eventsOf(buttonEdit, ActionEvent.ACTION)
 						.filter(event -> connexionsList.getSelectionModel().getSelectedItem() != null)
 						.map(event -> connexionsList.getSelectionModel().getSelectedItem())
-						.map(connection -> new MarketConnexionModel(connection))
+						.map(connection -> new MarketConnectionModel(connection))
 						.map(connection -> doOnClick(connection, "Edit Market Connection"))
 						.filter(connection -> connection != null)
 						.subscribe(connection -> {
 							log.info("Edit connection: " + connection);
-							MarketConnexionModel toEditItem = connexionsList.getSelectionModel().getSelectedItem();
-							toEditItem.setConnexionName(connection.getConnexionName());
+							MarketConnectionModel toEditItem = connexionsList.getSelectionModel().getSelectedItem();
+							toEditItem.setConnexionName(connection.getConnectionName());
 							toEditItem.setHost(connection.getHost());
 							toEditItem.setPort(connection.getPort());
 							toEditItem.setIsConnectingAtStartup(connection.isConnectingAtStartup());
@@ -118,7 +118,7 @@ public class MarketConnectionsViewController {
 						.map(selectedItem -> Dialogs.create()
 													       .owner( connexionsList)
 													       .title("Remove Market Connection")
-													       .message( "Do you want to remove connexion [" + selectedItem.getConnexionName() + "]")
+													       .message( "Do you want to remove connexion [" + selectedItem.getConnectionName() + "]")
 													       .showConfirm())
 						.filter(response -> Dialog.Actions.YES.equals(response))
 						.map(response -> connexionsList.getSelectionModel().getSelectedItem())

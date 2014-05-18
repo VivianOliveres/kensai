@@ -1,17 +1,17 @@
 package com.kensai.gui.xml;import com.google.common.base.Objects;
 
-public class MarketConnexionDescriptor {
+public class MarketConnectionDescriptor {
 
 	private String connectionName;
 	private String host;
 	private int port;
 	private boolean isConnectingAtStartup;
 
-	public MarketConnexionDescriptor() {
+	public MarketConnectionDescriptor() {
 		// No args constructor for deserializer
 	}
 	
-	public MarketConnexionDescriptor(String connectionName, String host, int port, boolean isConnectingAtStartup) {
+	public MarketConnectionDescriptor(String connectionName, String host, int port, boolean isConnectingAtStartup) {
 		this.connectionName = connectionName;
 		this.host = host;
 		this.port = port;
@@ -57,8 +57,8 @@ public class MarketConnexionDescriptor {
 	
 	@Override
 	public boolean equals(Object object){
-		if (object instanceof MarketConnexionDescriptor) {
-			MarketConnexionDescriptor that = (MarketConnexionDescriptor) object;
+		if (object instanceof MarketConnectionDescriptor) {
+			MarketConnectionDescriptor that = (MarketConnectionDescriptor) object;
 			return Objects.equal(this.connectionName, that.connectionName);
 		}
 		return false;

@@ -4,7 +4,7 @@ import org.assertj.core.api.AbstractAssert;
 // Assertions is needed if an assertion for Iterable is generated
 import org.assertj.core.api.Assertions;
 
-import com.kensai.gui.xml.MarketConnexionDescriptor;
+import com.kensai.gui.xml.MarketConnectionDescriptor;
 import com.kensai.gui.xml.MarketConnexionDescriptors;
 
 /**
@@ -36,7 +36,7 @@ public class MarketConnexionDescriptorsAssert extends AbstractAssert<MarketConne
    * @return this assertion object.
    * @throws AssertionError if the actual MarketConnexionDescriptors's connexions does not contain all given MarketConnexionDescriptor elements.
    */
-  public MarketConnexionDescriptorsAssert hasConnexions(MarketConnexionDescriptor... connexions) {
+  public MarketConnexionDescriptorsAssert hasConnexions(MarketConnectionDescriptor... connexions) {
     // check that actual MarketConnexionDescriptors we want to make assertions on is not null.
     isNotNull();
 

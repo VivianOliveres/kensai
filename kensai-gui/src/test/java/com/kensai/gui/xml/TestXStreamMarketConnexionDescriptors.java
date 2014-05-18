@@ -22,8 +22,8 @@ import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 public class TestXStreamMarketConnexionDescriptors {
 
-	private MarketConnexionDescriptor connexionSWX = new MarketConnexionDescriptor("SWX", "localhost", 1664, true);
-	private MarketConnexionDescriptor connexionMIB = new MarketConnexionDescriptor("MIB", "192.168.0.255", 4661, false);
+	private MarketConnectionDescriptor connexionSWX = new MarketConnectionDescriptor("SWX", "localhost", 1664, true);
+	private MarketConnectionDescriptor connexionMIB = new MarketConnectionDescriptor("MIB", "192.168.0.255", 4661, false);
 	private MarketConnexionDescriptors connexions = new MarketConnexionDescriptors(connexionSWX, connexionMIB);
 
 	@Rule
@@ -38,7 +38,7 @@ public class TestXStreamMarketConnexionDescriptors {
 
 		xstream = new XStream(new StaxDriver());
 		xstream.alias("MarketConnexionDescriptors", MarketConnexionDescriptors.class);
-		xstream.alias("MarketConnexionDescriptor", MarketConnexionDescriptor.class);
+		xstream.alias("MarketConnexionDescriptor", MarketConnectionDescriptor.class);
 	}
 
 	@Test
@@ -53,6 +53,6 @@ public class TestXStreamMarketConnexionDescriptors {
 		MarketConnexionDescriptors fromXml = (MarketConnexionDescriptors) xstream.fromXML(isReader);
 
 		// THEN: same object has been serialized/deserialized
-		assertThat(fromXml).isNotNull().hasConnexions(connexions.getConnexions().toArray(new MarketConnexionDescriptor[] {}));
+		assertThat(fromXml).isNotNull().hasConnexions(connexions.getConnexions().toArray(new MarketConnectionDescriptor[] {}));
 	}
 }

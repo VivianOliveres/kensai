@@ -1,6 +1,6 @@
 package com.kensai.gui.assertions;
 
-import com.kensai.gui.xml.MarketConnexionDescriptor;
+import com.kensai.gui.xml.MarketConnectionDescriptor;
 import com.kensai.gui.xml.MarketConnexionDescriptors;
 
 
@@ -16,7 +16,7 @@ public class Assertions {
    * @param actual the actual value.
    * @return the created assertion object.
    */
-  public static MarketConnexionDescriptorAssert assertThat(MarketConnexionDescriptor actual) {
+  public static MarketConnexionDescriptorAssert assertThat(MarketConnectionDescriptor actual) {
     return new MarketConnexionDescriptorAssert(actual);
   }
 

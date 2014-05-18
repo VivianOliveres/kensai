@@ -9,42 +9,42 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import com.google.common.base.Objects;
-import com.kensai.gui.xml.MarketConnexionDescriptor;
+import com.kensai.gui.xml.MarketConnectionDescriptor;
 
-public class MarketConnexionModel {
+public class MarketConnectionModel {
 
-	private SimpleStringProperty connexionName = new SimpleStringProperty();
+	private SimpleStringProperty connectionName = new SimpleStringProperty();
 	private SimpleStringProperty host = new SimpleStringProperty();
 	private SimpleIntegerProperty port = new SimpleIntegerProperty();
 	private SimpleBooleanProperty isConnectingAtStartup = new SimpleBooleanProperty();
 	private SimpleObjectProperty<ConnectionState> connection = new SimpleObjectProperty<>();
 
-	public MarketConnexionModel() {
+	public MarketConnectionModel() {
 		// New instance
 	}
 
-	public MarketConnexionModel(MarketConnexionModel copy) {
-		this.connexionName.setValue(copy.getConnexionName());
+	public MarketConnectionModel(MarketConnectionModel copy) {
+		this.connectionName.setValue(copy.getConnectionName());
 		this.host.setValue(copy.getHost());
 		this.port.setValue(copy.getPort());
 		this.isConnectingAtStartup.setValue(copy.isConnectingAtStartup());
 		this.connection.setValue(copy.getConnectionState());
 	}
 
-	public MarketConnexionModel(MarketConnexionDescriptor desc) {
+	public MarketConnectionModel(MarketConnectionDescriptor desc) {
 		this(desc.getConnectionName(), desc.getHost(), desc.getPort(), desc.isConnectingAtStartup());
 	}
 
-	public MarketConnexionModel(String connexionName, String host, int port, boolean isConnectingAtStartup) {
-		this.connexionName.setValue(connexionName);
+	public MarketConnectionModel(String connectionName, String host, int port, boolean isConnectingAtStartup) {
+		this.connectionName.setValue(connectionName);
 		this.host.setValue(host);
 		this.port.setValue(port);
 		this.isConnectingAtStartup.setValue(isConnectingAtStartup);
 		this.connection.setValue(ConnectionState.DECONNECTED);
 	}
 
-	public String getConnexionName() {
-		return connexionName.get();
+	public String getConnectionName() {
+		return connectionName.get();
 	}
 
 	public String getHost() {
@@ -64,7 +64,7 @@ public class MarketConnexionModel {
 	}
 
 	public void setConnexionName(String name) {
-		this.connexionName.set(name);
+		this.connectionName.set(name);
 	}
 
 	public void setHost(String host) {
@@ -84,7 +84,7 @@ public class MarketConnexionModel {
 	}
 
 	public StringProperty connectionNameProperty() {
-		return connexionName;
+		return connectionName;
 	}
 
 	public StringProperty hostProperty() {
@@ -105,14 +105,14 @@ public class MarketConnexionModel {
 
 	@Override
 	public int hashCode(){
-		return Objects.hashCode(connexionName);
+		return Objects.hashCode(connectionName);
 	}
 
 	@Override
 	public boolean equals(Object object){
-		if (object instanceof MarketConnexionModel) {
-			MarketConnexionModel that = (MarketConnexionModel) object;
-			return Objects.equal(this.connexionName, that.connexionName);
+		if (object instanceof MarketConnectionModel) {
+			MarketConnectionModel that = (MarketConnectionModel) object;
+			return Objects.equal(this.connectionName, that.connectionName);
 		}
 
 		return false;
@@ -121,15 +121,15 @@ public class MarketConnexionModel {
 	@Override
 	public String toString() {
 		return Objects.toStringHelper(this)
-			.add("connexionName", connexionName.get())
+			.add("connectionName", connectionName.get())
 			.add("host", host.get())
 			.add("port", port.get())
 			.add("isConnectingAtStartup", isConnectingAtStartup.get())
 			.toString();
 	}
 	
-	public MarketConnexionDescriptor toDescriptor() {
-		return new MarketConnexionDescriptor(getConnexionName(), getHost(), getPort(), isConnectingAtStartup());
+	public MarketConnectionDescriptor toDescriptor() {
+		return new MarketConnectionDescriptor(getConnectionName(), getHost(), getPort(), isConnectingAtStartup());
 	}
 
 }

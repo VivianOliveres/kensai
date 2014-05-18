@@ -13,15 +13,15 @@ import org.junit.Test;
 import com.kensai.gui.AbstractTestJavaFX;
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.ModelService;
-import com.kensai.gui.services.model.market.MarketConnexionModel;
-import com.kensai.gui.services.model.market.MarketConnexionsModel;
+import com.kensai.gui.services.model.market.MarketConnectionModel;
+import com.kensai.gui.services.model.market.MarketConnectionsModel;
 
 public class MarketConnectionsViewControllerTest extends AbstractTestJavaFX {
 
-	private MarketConnexionModel CAC_CONNEXION = new MarketConnexionModel("CAC", "localhost", 1664, true);
+	private MarketConnectionModel CAC_CONNEXION = new MarketConnectionModel("CAC", "localhost", 1664, true);
 
-	private ListView<MarketConnexionModel> connexionsList;
-	private ObservableList<MarketConnexionModel> connexions;
+	private ListView<MarketConnectionModel> connexionsList;
+	private ObservableList<MarketConnectionModel> connexions;
 	private ApplicationContext context;
 
 	private MarketConnectionsViewController controller;
@@ -32,7 +32,7 @@ public class MarketConnectionsViewControllerTest extends AbstractTestJavaFX {
 		context = new ApplicationContext(null, null, modelService);
 
 		connexions = FXCollections.observableArrayList();
-		MarketConnexionsModel connectionModel = mock(MarketConnexionsModel.class);
+		MarketConnectionsModel connectionModel = mock(MarketConnectionsModel.class);
 		when(connectionModel.getConnexions()).thenReturn(connexions);
 
 		when(modelService.getConnexions()).thenReturn(connectionModel);
@@ -55,7 +55,7 @@ public class MarketConnectionsViewControllerTest extends AbstractTestJavaFX {
 		assertThat(connexionsList.getItems()).isNotEmpty().hasSize(1);
 
 		// AND: Item in list is same than in ModelService
-		MarketConnexionModel item = connexionsList.getItems().get(0);
+		MarketConnectionModel item = connexionsList.getItems().get(0);
 		assertThat(item).isEqualTo(CAC_CONNEXION);
 	}
 

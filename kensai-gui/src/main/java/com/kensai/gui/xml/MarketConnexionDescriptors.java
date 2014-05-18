@@ -8,37 +8,37 @@ import java.util.List;
 import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 
-public class MarketConnexionDescriptors implements Iterable<MarketConnexionDescriptor> {
+public class MarketConnexionDescriptors implements Iterable<MarketConnectionDescriptor> {
 
-	private List<MarketConnexionDescriptor> connexions = new ArrayList<>();
+	private List<MarketConnectionDescriptor> connexions = new ArrayList<>();
 
 	public MarketConnexionDescriptors() {
 		// No args constructor for deserialization
 	}
 
-	public MarketConnexionDescriptors(MarketConnexionDescriptor... connexions) {
+	public MarketConnexionDescriptors(MarketConnectionDescriptor... connexions) {
 		addAll(connexions);
 	}
 
-	public MarketConnexionDescriptors(List<MarketConnexionDescriptor> connexions) {
+	public MarketConnexionDescriptors(List<MarketConnectionDescriptor> connexions) {
 		addAll(connexions);
 	}
 
-	public void add(MarketConnexionDescriptor connexion) {
+	public void add(MarketConnectionDescriptor connexion) {
 		connexions.add(connexion);
 	}
 
-	public void addAll(Collection<MarketConnexionDescriptor> connexions) {
+	public void addAll(Collection<MarketConnectionDescriptor> connexions) {
 		this.connexions.addAll(connexions);
 	}
 
-	public void addAll(MarketConnexionDescriptor... connexions) {
-		for (MarketConnexionDescriptor marketConnexionDescriptor : connexions) {
+	public void addAll(MarketConnectionDescriptor... connexions) {
+		for (MarketConnectionDescriptor marketConnexionDescriptor : connexions) {
 			this.connexions.add(marketConnexionDescriptor);
 		}
 	}
 
-	public List<MarketConnexionDescriptor> getConnexions() {
+	public List<MarketConnectionDescriptor> getConnexions() {
 		return Lists.newArrayList(connexions);
 	}
 
@@ -64,7 +64,7 @@ public class MarketConnexionDescriptors implements Iterable<MarketConnexionDescr
 	}
 
 	@Override
-	public Iterator<MarketConnexionDescriptor> iterator() {
+	public Iterator<MarketConnectionDescriptor> iterator() {
 		return connexions.iterator();
 	}
 

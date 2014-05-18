@@ -14,15 +14,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.kensai.gui.services.task.TaskService;
-import com.kensai.gui.xml.MarketConnexionDescriptor;
+import com.kensai.gui.xml.MarketConnectionDescriptor;
 import com.kensai.gui.xml.MarketConnexionDescriptors;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.StreamException;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 
-public class MarketConnexionConfigurationService {
-	private static Logger log = LogManager.getLogger(MarketConnexionConfigurationService.class);
+public class MarketConnectionConfigurationService {
+	private static Logger log = LogManager.getLogger(MarketConnectionConfigurationService.class);
 
 	private MarketConnexionDescriptors connexions;
 
@@ -31,11 +31,11 @@ public class MarketConnexionConfigurationService {
 
 	private XStream xstream = new XStream(new StaxDriver());
 
-	public MarketConnexionConfigurationService(TaskService taskService, Path configurationFile) {
+	public MarketConnectionConfigurationService(TaskService taskService, Path configurationFile) {
 		this(taskService, configurationFile.toFile());
 	}
 
-	public MarketConnexionConfigurationService(TaskService taskService, File configurationFile) {
+	public MarketConnectionConfigurationService(TaskService taskService, File configurationFile) {
 		this.taskService = taskService;
 		this.configurationFile = configurationFile;
 
@@ -45,7 +45,7 @@ public class MarketConnexionConfigurationService {
 
 	private void initXstrem() {
 		xstream.alias("MarketConnexionDescriptors", MarketConnexionDescriptors.class);
-		xstream.alias("MarketConnexionDescriptor", MarketConnexionDescriptor.class);
+		xstream.alias("MarketConnexionDescriptor", MarketConnectionDescriptor.class);
 	}
 
 	private void readConnexionsFromConfiguration() {

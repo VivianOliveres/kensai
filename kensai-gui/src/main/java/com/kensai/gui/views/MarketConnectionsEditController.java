@@ -15,12 +15,12 @@ import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.reactfx.EventStreams;
 
-import com.kensai.gui.services.model.market.MarketConnexionModel;
+import com.kensai.gui.services.model.market.MarketConnectionModel;
 
 public class MarketConnectionsEditController {
 	private static Logger log = LogManager.getLogger(MarketConnectionsEditController.class);
 
-	private MarketConnexionModel connection;
+	private MarketConnectionModel connection;
 
 	private Action action;
 
@@ -32,10 +32,10 @@ public class MarketConnectionsEditController {
 	private CheckBox isConnectingAtStartup = new CheckBox();
 
 	public MarketConnectionsEditController() {
-		this(new MarketConnexionModel());
+		this(new MarketConnectionModel());
 	}
 
-	public MarketConnectionsEditController(MarketConnexionModel connection) {
+	public MarketConnectionsEditController(MarketConnectionModel connection) {
 		this.connection = connection;
 		log.info("edit " + connection);
 
@@ -57,7 +57,7 @@ public class MarketConnectionsEditController {
 
 	private void initComponents() {
 		// Bind UI to model
-		connectionNameField.setText(connection.getConnexionName());
+		connectionNameField.setText(connection.getConnectionName());
 		connection.connectionNameProperty().bind(connectionNameField.textProperty());
 
 		hostField.setText(connection.getHost());
@@ -108,7 +108,7 @@ public class MarketConnectionsEditController {
 		return action;
 	}
 
-	public MarketConnexionModel getConnection() {
+	public MarketConnectionModel getConnection() {
 		return connection;
 	}
 

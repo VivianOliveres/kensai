@@ -7,13 +7,13 @@ import org.reactfx.EventStreams;
 import org.reactfx.Subscription;
 
 import com.kensai.gui.Images;
-import com.kensai.gui.services.model.market.MarketConnexionModel;
+import com.kensai.gui.services.model.market.MarketConnectionModel;
 
-public class ConnextionListCell extends ListCell<MarketConnexionModel> {
+public class ConnextionListCell extends ListCell<MarketConnectionModel> {
 
 	private ImageView view;
 	
-	private MarketConnexionModel connexion;
+	private MarketConnectionModel connexion;
 	
 	private Subscription nameSubscription;
 	private Subscription streamSubscription;
@@ -27,7 +27,7 @@ public class ConnextionListCell extends ListCell<MarketConnexionModel> {
 	}
 
 	@Override
-	public void updateItem(MarketConnexionModel item, boolean isEmpty) {
+	public void updateItem(MarketConnectionModel item, boolean isEmpty) {
 		super.updateItem(item, isEmpty);
 		if (item != null && item == connexion) {
 			return;
@@ -44,12 +44,12 @@ public class ConnextionListCell extends ListCell<MarketConnexionModel> {
 			return;
 		}
 
-		setText(item.getConnexionName());
+		setText(item.getConnectionName());
 		setGraphic(view);
 
 		nameSubscription = EventStreams.changesOf(item.connectionNameProperty())
 												 .map(change -> change.getNewValue())
-												 .subscribe(state -> setText(item.getConnexionName()));
+												 .subscribe(state -> setText(item.getConnectionName()));
 
 		streamSubscription = EventStreams.changesOf(item.connectionStateProperty())
 													.map(change -> change.getNewValue())

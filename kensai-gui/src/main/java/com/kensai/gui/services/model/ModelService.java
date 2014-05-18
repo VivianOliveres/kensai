@@ -1,16 +1,16 @@
 package com.kensai.gui.services.model;
 
-import com.kensai.gui.services.model.market.MarketConnexionsModel;
+import com.kensai.gui.services.model.market.MarketConnectionsModel;
 
 public class ModelService {
 
-	private MarketConnexionsModel connexions;
+	private MarketConnectionsModel connexions;
 
-	public ModelService(MarketConnexionsModel connexions) {
+	public ModelService(MarketConnectionsModel connexions) {
 		this.connexions = connexions;
 	}
 
-	public MarketConnexionsModel getConnexions() {
+	public MarketConnectionsModel getConnexions() {
 		return connexions;
 	}
 

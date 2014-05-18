@@ -14,20 +14,20 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.google.common.collect.Lists;
-import com.kensai.gui.services.configuration.market.MarketConnexionConfigurationService;
-import com.kensai.gui.xml.MarketConnexionDescriptor;
+import com.kensai.gui.services.configuration.market.MarketConnectionConfigurationService;
+import com.kensai.gui.xml.MarketConnectionDescriptor;
 import com.kensai.gui.xml.MarketConnexionDescriptors;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MarketConnexionsModelTest {
 
-	private static final MarketConnexionDescriptor SWX = new MarketConnexionDescriptor("SWX", "localhost", 1664, true);
-	private static final MarketConnexionDescriptor MIB = new MarketConnexionDescriptor("MIB", "192.168.0.255", 4661, false);
+	private static final MarketConnectionDescriptor SWX = new MarketConnectionDescriptor("SWX", "localhost", 1664, true);
+	private static final MarketConnectionDescriptor MIB = new MarketConnectionDescriptor("MIB", "192.168.0.255", 4661, false);
 
-	@Mock private MarketConnexionConfigurationService service;
-	private List<MarketConnexionDescriptor> connectionsDescriptors;
+	@Mock private MarketConnectionConfigurationService service;
+	private List<MarketConnectionDescriptor> connectionsDescriptors;
 
-	private MarketConnexionsModel connexions;
+	private MarketConnectionsModel connexions;
 
 	@Before
 	public void init() {
@@ -39,7 +39,7 @@ public class MarketConnexionsModelTest {
 	@Test
 	public void should_initialize_with_service_ConnexionsDescriptors() {
 		// WHEN: Create MarketConnexionsModel
-		connexions = new MarketConnexionsModel(service);
+		connexions = new MarketConnectionsModel(service);
 
 		// THEN: Should contains SWX and MIB only
 		assertThat(connexions.getConnexions()).hasSize(2);
@@ -48,10 +48,10 @@ public class MarketConnexionsModelTest {
 	@Test
 	public void should_update_service_when_connexions_model_is_updated() {
 		// GIVEN: Create MarketConnexionsModel
-		connexions = new MarketConnexionsModel(service);
+		connexions = new MarketConnectionsModel(service);
 
 		// WHEN: update model
-		MarketConnexionModel eurex = new MarketConnexionModel("EUREX", "localhost", 1234, true);
+		MarketConnectionModel eurex = new MarketConnectionModel("EUREX", "localhost", 1234, true);
 		connexions.getConnexions().add(eurex);
 
 		// THEN: Should contains SWX, MIB and eurex only

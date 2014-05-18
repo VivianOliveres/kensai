@@ -16,17 +16,17 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.kensai.gui.services.task.TaskService;
-import com.kensai.gui.xml.MarketConnexionDescriptor;
+import com.kensai.gui.xml.MarketConnectionDescriptor;
 import com.kensai.gui.xml.MarketConnexionDescriptors;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestMarketConnexionConfigurationService {
 	
-	private MarketConnexionDescriptor connexionSWX = new MarketConnexionDescriptor("SWX", "localhost", 1664, true);
-	private MarketConnexionDescriptor connexionMIB = new MarketConnexionDescriptor("MIB", "192.168.0.255", 4661, false);
+	private MarketConnectionDescriptor connexionSWX = new MarketConnectionDescriptor("SWX", "localhost", 1664, true);
+	private MarketConnectionDescriptor connexionMIB = new MarketConnectionDescriptor("MIB", "192.168.0.255", 4661, false);
 	private MarketConnexionDescriptors connexions = new MarketConnexionDescriptors(connexionSWX, connexionMIB);
 
-	private MarketConnexionConfigurationService service;
+	private MarketConnectionConfigurationService service;
 
 	@Mock private TaskService taskService;
 
@@ -36,7 +36,7 @@ public class TestMarketConnexionConfigurationService {
 	@Before
 	public void init() throws IOException {
 		configurationFile = configurationFolder.newFile("connections.xml");
-		service = new MarketConnexionConfigurationService(taskService, configurationFile);
+		service = new MarketConnectionConfigurationService(taskService, configurationFile);
 	}
 	
 	@Test
@@ -53,7 +53,7 @@ public class TestMarketConnexionConfigurationService {
 		service.save();
 		
 		//THEN: File should contains connexions
-		service = new MarketConnexionConfigurationService(taskService, configurationFile);
-		assertThat(service.getConnexions()).hasConnexions(connexions.getConnexions().toArray(new MarketConnexionDescriptor[] {}));
+		service = new MarketConnectionConfigurationService(taskService, configurationFile);
+		assertThat(service.getConnexions()).hasConnexions(connexions.getConnexions().toArray(new MarketConnectionDescriptor[] {}));
 	}
 }

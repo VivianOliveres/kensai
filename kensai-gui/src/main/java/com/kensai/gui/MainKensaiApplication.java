@@ -15,9 +15,9 @@ import org.apache.logging.log4j.Logger;
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.GuiService;
 import com.kensai.gui.services.configuration.ConfigurationService;
-import com.kensai.gui.services.configuration.market.MarketConnexionConfigurationService;
+import com.kensai.gui.services.configuration.market.MarketConnectionConfigurationService;
 import com.kensai.gui.services.model.ModelService;
-import com.kensai.gui.services.model.market.MarketConnexionsModel;
+import com.kensai.gui.services.model.market.MarketConnectionsModel;
 import com.kensai.gui.services.task.TaskService;
 import com.kensai.gui.views.MarketConnectionsViewController;
 
@@ -52,11 +52,11 @@ public class MainKensaiApplication extends Application {
 		if (!marketConfFile.exists()) {
 			throw new RuntimeException("Can not find ressource: " + resource);
 		}
-		MarketConnexionConfigurationService marketConnexionConfigurationService = new MarketConnexionConfigurationService(taskService, marketConfFile);
+		MarketConnectionConfigurationService marketConnexionConfigurationService = new MarketConnectionConfigurationService(taskService, marketConfFile);
 
 		ConfigurationService confService = new ConfigurationService(marketConnexionConfigurationService);
 
-		MarketConnexionsModel connexions = new MarketConnexionsModel(marketConnexionConfigurationService);
+		MarketConnectionsModel connexions = new MarketConnectionsModel(marketConnexionConfigurationService);
 		ModelService modelService = new ModelService(connexions);
 
 		ApplicationContext context = new ApplicationContext(taskService, confService, modelService);

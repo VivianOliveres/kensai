@@ -6,11 +6,5 @@
       <port>1664</port>
       <isConnectingAtStartup>true</isConnectingAtStartup>
     </MarketConnexionDescriptor>
-    <MarketConnexionDescriptor>
-      <connectionName>hyhyheeeee</connectionName>
-      <host>hyhyeee</host>
-      <port>0</port>
-      <isConnectingAtStartup>false</isConnectingAtStartup>
-    </MarketConnexionDescriptor>
   </connexions>
 </MarketConnexionDescriptors>
