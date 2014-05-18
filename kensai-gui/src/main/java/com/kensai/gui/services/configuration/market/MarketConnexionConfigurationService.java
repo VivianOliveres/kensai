@@ -52,6 +52,7 @@ public class MarketConnexionConfigurationService {
 		try {
 			Reader isReader = new InputStreamReader(new FileInputStream((configurationFile)));
 			connexions = (MarketConnexionDescriptors) xstream.fromXML(isReader);
+			log.info("Read " + connexions.size() + " connexions");
 		} catch (FileNotFoundException | StreamException e) {
 			log.error("Can not read Market configuration from [" + configurationFile.getAbsolutePath() + "]", e);
 			connexions = new MarketConnexionDescriptors();

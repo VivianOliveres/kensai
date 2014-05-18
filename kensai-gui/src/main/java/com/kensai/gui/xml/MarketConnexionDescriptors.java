@@ -64,4 +64,8 @@ public class MarketConnexionDescriptors implements Iterable<MarketConnexionDescr
 		return connexions.iterator();
 	}
 
+	public int size() {
+		return connexions.size();
+	}
+
 }
