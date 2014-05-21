@@ -41,7 +41,7 @@
 						<phase>generate-sources</phase>
 						<configuration>
 							<tasks>
-								<exec executable="/home/kensai/Téléchargements/protobuf-2.5.0-bin/bin/protoc">
+								<exec executable="${PROTOBUF_HOME}/bin/protoc">
 									<arg value="--proto_path=src/main/resources/" />
 
 									<arg value="--java_out=src/main/java" />
