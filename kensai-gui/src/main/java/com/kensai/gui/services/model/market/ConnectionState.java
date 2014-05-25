@@ -7,7 +7,7 @@ import com.kensai.gui.Images;
 public enum ConnectionState {
 
 
-	DECONNECTED(Images.MARKET_RED), CONNECTED(Images.MARKET_GREEN), CONNECTING(Images.MARKET_BLUE);
+	DISCONNECTED(Images.MARKET_RED), CONNECTED(Images.MARKET_GREEN), CONNECTING(Images.MARKET_BLUE);
 
 	private final Image image;
 

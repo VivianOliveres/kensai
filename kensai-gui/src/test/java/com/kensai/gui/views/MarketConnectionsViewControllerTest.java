@@ -29,7 +29,7 @@ public class MarketConnectionsViewControllerTest extends AbstractTestJavaFX {
 	@Before
 	public void init() {
 		ModelService modelService = mock(ModelService.class);
-		context = new ApplicationContext(null, null, modelService);
+		context = new ApplicationContext(null, null, modelService, null);
 
 		connexions = FXCollections.observableArrayList();
 		MarketConnectionsModel connectionModel = mock(MarketConnectionsModel.class);

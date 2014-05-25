@@ -40,7 +40,7 @@ public class MarketConnectionModel {
 		this.host.setValue(host);
 		this.port.setValue(port);
 		this.isConnectingAtStartup.setValue(isConnectingAtStartup);
-		this.connection.setValue(ConnectionState.DECONNECTED);
+		this.connection.setValue(ConnectionState.DISCONNECTED);
 	}
 
 	public String getConnectionName() {

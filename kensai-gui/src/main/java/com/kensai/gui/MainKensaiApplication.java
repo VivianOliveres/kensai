@@ -16,6 +16,7 @@ import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.GuiService;
 import com.kensai.gui.services.configuration.ConfigurationService;
 import com.kensai.gui.services.configuration.market.MarketConnectionConfigurationService;
+import com.kensai.gui.services.connectors.PipelineFactoryService;
 import com.kensai.gui.services.model.ModelService;
 import com.kensai.gui.services.model.market.MarketConnectionsModel;
 import com.kensai.gui.services.task.TaskService;
@@ -59,7 +60,9 @@ public class MainKensaiApplication extends Application {
 		MarketConnectionsModel connexions = new MarketConnectionsModel(marketConnexionConfigurationService);
 		ModelService modelService = new ModelService(connexions);
 
-		ApplicationContext context = new ApplicationContext(taskService, confService, modelService);
+		PipelineFactoryService PipelineFactoryService = new PipelineFactoryService();
+
+		ApplicationContext context = new ApplicationContext(taskService, confService, modelService, PipelineFactoryService);
 		return context;
 	}
 
