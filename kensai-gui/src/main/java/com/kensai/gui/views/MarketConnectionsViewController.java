@@ -18,7 +18,6 @@ import org.reactfx.EventStreams;
 
 import com.kensai.gui.Images;
 import com.kensai.gui.services.ApplicationContext;
-import com.kensai.gui.services.model.ModelService;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
 import com.kensai.gui.services.model.market.MarketConnectionsModel;
 
@@ -58,7 +57,7 @@ public class MarketConnectionsViewController {
 		// Add connection on click
 		EventStreams.eventsOf(buttonAdd, ActionEvent.ACTION)
 						.map(event -> new MarketConnectionModel())
-						.map(connection -> doOnClick(connection, "Add Market Connection"))
+						.map(connection -> doOnClickOnEditButton(connection, "Add Market Connection"))
 						.filter(connection -> connection != null)
 						.subscribe(connection -> {
 							log.info("Add connection: " + connection);
@@ -68,7 +67,7 @@ public class MarketConnectionsViewController {
 		return buttonAdd;
 	}
 
-	private MarketConnectionModel doOnClick(MarketConnectionModel connection, String dialogTitle) {
+	private MarketConnectionModel doOnClickOnEditButton(MarketConnectionModel connection, String dialogTitle) {
 		MarketConnectionsEditController controller = new MarketConnectionsEditController(connection);
 
 		Dialog dialog = new Dialog(root, dialogTitle);
@@ -94,7 +93,7 @@ public class MarketConnectionsViewController {
 						.filter(event -> connexionsList.getSelectionModel().getSelectedItem() != null)
 						.map(event -> connexionsList.getSelectionModel().getSelectedItem())
 						.map(connection -> new MarketConnectionModel(connection))
-						.map(connection -> doOnClick(connection, "Edit Market Connection"))
+						.map(connection -> doOnClickOnEditButton(connection, "Edit Market Connection"))
 						.filter(connection -> connection != null)
 						.subscribe(connection -> {
 							log.info("Edit connection: " + connection);
