@@ -63,6 +63,7 @@ public class MainKensaiApplication extends Application {
 		PipelineFactoryService PipelineFactoryService = new PipelineFactoryService();
 
 		ApplicationContext context = new ApplicationContext(taskService, confService, modelService, PipelineFactoryService);
+		modelService.initMarketConnectorService(context);
 		return context;
 	}
 

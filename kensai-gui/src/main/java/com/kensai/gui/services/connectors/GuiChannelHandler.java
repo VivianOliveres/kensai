@@ -22,7 +22,6 @@ public class GuiChannelHandler extends SimpleChannelHandler {
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, ExceptionEvent e) {
 		log.error("exceptionCaught from ChannelHandler -> exit", e.getCause());
-		System.exit(0);
 	}
 
 	@Override

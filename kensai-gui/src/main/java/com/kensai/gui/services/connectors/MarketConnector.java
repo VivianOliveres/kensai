@@ -9,8 +9,6 @@ import org.apache.logging.log4j.Logger;
 import org.jboss.netty.bootstrap.ClientBootstrap;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelFuture;
-import org.jboss.netty.channel.ChannelPipeline;
-import org.jboss.netty.channel.ChannelPipelineFactory;
 
 import com.google.common.base.Objects;
 import com.kensai.gui.services.ApplicationContext;
@@ -33,6 +31,7 @@ public class MarketConnector {
 	private MarketConnectionModel model;
 
 	private ClientBootstrap bootstrap;
+	private Channel connectedChannel;
 
 	public MarketConnector(MarketConnectionModel model, ApplicationContext context) {
 		this.model = model;
@@ -67,6 +66,7 @@ public class MarketConnector {
 
 		// Connect
 		ChannelFuture connectFuture = bootstrap.connect(socketAddress);
+		connectedChannel = connectFuture.getChannel();
 
 		// Wait until the connection is made successfully.
 		try {
@@ -106,18 +106,7 @@ public class MarketConnector {
 
 	protected Void doDisconnection(long timeout) {
 		log.info("Diconnecting to [" + getMarketName() + "] ...");
-		ChannelPipelineFactory pipelineFactory = bootstrap.getPipelineFactory();
-		ChannelPipeline pipeline;
-		try {
-			pipeline = pipelineFactory.getPipeline();
-		} catch (Exception e) {
-			log.error("Can not disconnect to [" + getMarketName() + "] - reason: Could not retrieve ChannelPipeline", e);
-			Platform.runLater(() -> model.setConnectionState(ConnectionState.CONNECTED));
-			return null;
-		}
-
-		Channel channel = pipeline.getChannel();
-		ChannelFuture closeConnectionFuture = channel.close();
+		ChannelFuture closeConnectionFuture = connectedChannel.close();
 
 		try {
 			closeConnectionFuture.await(timeout);
@@ -144,6 +133,10 @@ public class MarketConnector {
 		return model.getConnectionState();
 	}
 
+	public MarketConnectionModel getModel() {
+		return model;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(model);
@@ -164,11 +157,11 @@ public class MarketConnector {
 	}
 
 	public void channelConnected() {
-		model.setConnectionState(ConnectionState.CONNECTED);
+		Platform.runLater(() -> model.setConnectionState(ConnectionState.CONNECTED));
 	}
 
 	public void channelDisconnected() {
-		model.setConnectionState(ConnectionState.DISCONNECTED);
+		Platform.runLater(() -> model.setConnectionState(ConnectionState.DISCONNECTED));
 	}
 
 	public void onSubscribe(SubscribeCommand subscribeCommand) {

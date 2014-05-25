@@ -50,4 +50,9 @@ public class MarketConnectorService {
 		List<MarketConnector> copy = Lists.newArrayList(connectors);
 		return copy;
 	}
+
+	public MarketConnector getConnector(MarketConnectionModel model) {
+		// Select first matching model
+		return connectors.stream().filter(connector -> connector.getModel().equals(model)).findFirst().get();
+	}
 }

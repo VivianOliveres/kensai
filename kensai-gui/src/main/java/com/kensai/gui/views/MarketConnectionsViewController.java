@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
@@ -18,6 +20,7 @@ import org.reactfx.EventStreams;
 
 import com.kensai.gui.Images;
 import com.kensai.gui.services.ApplicationContext;
+import com.kensai.gui.services.model.market.ConnectionState;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
 import com.kensai.gui.services.model.market.MarketConnectionsModel;
 
@@ -28,12 +31,14 @@ public class MarketConnectionsViewController {
 	private ListView<MarketConnectionModel> connexionsList;
 
 	private MarketConnectionsModel model;
+	private ApplicationContext context;
 
 	public MarketConnectionsViewController(ApplicationContext context) {
 		this(context, new ListView<>());
 	}
 
 	public MarketConnectionsViewController(ApplicationContext context, ListView<MarketConnectionModel> connexionsList) {
+		this.context = context;
 		this.model = context.getModelService().getConnexions();
 		this.connexionsList = connexionsList;
 
@@ -43,11 +48,29 @@ public class MarketConnectionsViewController {
 	private void initView() {
 		connexionsList.setItems(model.getConnexions());
 		connexionsList.setCellFactory(list -> new ConnextionListCell());
+		initConnectionsView();
 		root.setCenter(connexionsList);
 
 		HBox buttonsBox = new HBox(5);
 		buttonsBox.getChildren().addAll(createAddButton(), createEditButton(), createRemoveButton());
 		root.setBottom(buttonsBox);
+	}
+
+	private void initConnectionsView() {
+		EventStreams.eventsOf(connexionsList, MouseEvent.MOUSE_CLICKED)
+						.filter(event -> event.getClickCount() == 2)
+						.filter(event -> event.getButton().equals(MouseButton.PRIMARY))
+						.map(event -> connexionsList.getSelectionModel().getSelectedItem())
+						.map(connection -> context.getModelService().getConnectorService().getConnector(connection))
+						.subscribe(connector -> {
+							if(connector.getConnectionState() == ConnectionState.DISCONNECTED) {
+								log.info("Connecting to " + connector.getMarketName());
+								connector.connect();
+							} else if(connector.getConnectionState() == ConnectionState.CONNECTED) {
+								log.info("Disconnecting to " + connector.getMarketName());
+								connector.disconnect();
+							}
+						});
 	}
 
 	private Button createAddButton() {

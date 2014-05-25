@@ -10,13 +10,12 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 import java.net.InetSocketAddress;
+import java.net.SocketAddress;
 import java.util.concurrent.ExecutionException;
 
 import org.jboss.netty.bootstrap.ClientBootstrap;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelFuture;
-import org.jboss.netty.channel.ChannelPipeline;
-import org.jboss.netty.channel.ChannelPipelineFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -160,38 +159,22 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 	}
 
 	@Test
-	public void should_doDisconnection_fails_when_cannot_retrieve_pipeline_from_bootstrap() throws Exception {
-		// GIVEN: model is connected
-		swx.setConnectionState(ConnectionState.CONNECTING);
-
-		// AND: bootstrap has no pipeline
-		ChannelPipelineFactory pipelineFactory = mock(ChannelPipelineFactory.class);
-		given(pipelineFactory.getPipeline()).willThrow(Exception.class);
-		given(bootstrap.getPipelineFactory()).willReturn(pipelineFactory);
-
-		// WHEN: doDisconnection
-		connector.doDisconnection(1);
-
-		// THEN: model is not updated
-		runAndWait(() -> assertThat(swx.getConnectionState()).isEqualTo(ConnectionState.CONNECTED));
-	}
-
-	@Test
 	public void should_doDisconnection_fails_when_disconnection_fails_with_timeout() throws Exception {
 		// GIVEN: model is connected
-		swx.setConnectionState(ConnectionState.CONNECTING);
+		ChannelFuture connectionChannelFuture = mock(ChannelFuture.class);
 
-		// AND: ChannelFuture fails with timeout
-		ChannelFuture channelFuture = mock(ChannelFuture.class);
-		given(channelFuture.await(anyLong())).willThrow(InterruptedException.class);
+		ChannelFuture disconnectionChannelFuture = mock(ChannelFuture.class);
+		given(disconnectionChannelFuture.await(anyLong())).willThrow(InterruptedException.class);
 
 		Channel channel = mock(Channel.class);
-		given(channel.close()).willReturn(channelFuture);
-		ChannelPipeline pipeline = mock(ChannelPipeline.class);
-		given(pipeline.getChannel()).willReturn(channel);
-		ChannelPipelineFactory pipelineFactory = mock(ChannelPipelineFactory.class);
-		given(pipelineFactory.getPipeline()).willReturn(pipeline);
-		given(bootstrap.getPipelineFactory()).willReturn(pipelineFactory);
+		given(channel.close()).willReturn(disconnectionChannelFuture);
+		given(connectionChannelFuture.getChannel()).willReturn(channel);
+
+		given(bootstrap.connect(any(SocketAddress.class))).willReturn(connectionChannelFuture);
+
+		connector.doConnection(socketAddress, 1);
+
+		swx.setConnectionState(ConnectionState.CONNECTED);
 
 		// WHEN: doDisconnection
 		connector.doDisconnection(1);
@@ -200,25 +183,32 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 		runAndWait(() -> assertThat(swx.getConnectionState()).isEqualTo(ConnectionState.CONNECTED));
 
 		// AND: has stop channelFuture
-		verify(channelFuture).cancel();
+		verify(disconnectionChannelFuture).cancel();
 	}
 
 	@Test
 	public void should_doDisconnection_fails_when_disconnection_fails() throws Exception {
 		// GIVEN: model is connected
-		swx.setConnectionState(ConnectionState.CONNECTING);
+		ChannelFuture connectionChannelFuture = mock(ChannelFuture.class);
 
-		// AND: ChannelFuture fails
-		ChannelFuture channelFuture = mock(ChannelFuture.class);
-		given(channelFuture.isSuccess()).willReturn(false);
+		ChannelFuture disconnectionChannelFuture = mock(ChannelFuture.class);
+		given(disconnectionChannelFuture.isSuccess()).willReturn(false);
 
 		Channel channel = mock(Channel.class);
-		given(channel.close()).willReturn(channelFuture);
-		ChannelPipeline pipeline = mock(ChannelPipeline.class);
-		given(pipeline.getChannel()).willReturn(channel);
-		ChannelPipelineFactory pipelineFactory = mock(ChannelPipelineFactory.class);
-		given(pipelineFactory.getPipeline()).willReturn(pipeline);
-		given(bootstrap.getPipelineFactory()).willReturn(pipelineFactory);
+		given(channel.close()).willReturn(disconnectionChannelFuture);
+		given(connectionChannelFuture.getChannel()).willReturn(channel);
+
+		given(bootstrap.connect(any(SocketAddress.class))).willReturn(connectionChannelFuture);
+
+		connector.doConnection(socketAddress, 1);
+
+		swx.setConnectionState(ConnectionState.CONNECTED);
+
+		// WHEN: doDisconnection
+		connector.doDisconnection(1);
+
+		// THEN: model is not updated
+		runAndWait(() -> assertThat(swx.getConnectionState()).isEqualTo(ConnectionState.CONNECTED));
 
 		// WHEN: doDisconnection
 		connector.doDisconnection(1);
@@ -230,24 +220,49 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 	@Test
 	public void should_doDisconnection_success_when_channelFuture_success() throws Exception {
 		// GIVEN: model is connected
-		swx.setConnectionState(ConnectionState.CONNECTING);
+		ChannelFuture connectionChannelFuture = mock(ChannelFuture.class);
 
-		// AND: ChannelFuture success
-		ChannelFuture channelFuture = mock(ChannelFuture.class);
-		given(channelFuture.isSuccess()).willReturn(true);
+		ChannelFuture disconnectionChannelFuture = mock(ChannelFuture.class);
+		given(disconnectionChannelFuture.isSuccess()).willReturn(true);
 
 		Channel channel = mock(Channel.class);
-		given(channel.close()).willReturn(channelFuture);
-		ChannelPipeline pipeline = mock(ChannelPipeline.class);
-		given(pipeline.getChannel()).willReturn(channel);
-		ChannelPipelineFactory pipelineFactory = mock(ChannelPipelineFactory.class);
-		given(pipelineFactory.getPipeline()).willReturn(pipeline);
-		given(bootstrap.getPipelineFactory()).willReturn(pipelineFactory);
+		given(channel.close()).willReturn(disconnectionChannelFuture);
+		given(connectionChannelFuture.getChannel()).willReturn(channel);
+
+		given(bootstrap.connect(any(SocketAddress.class))).willReturn(connectionChannelFuture);
+
+		connector.doConnection(socketAddress, 1);
+
+		swx.setConnectionState(ConnectionState.CONNECTED);
 
 		// WHEN: doDisconnection
 		connector.doDisconnection(1);
 
 		// THEN: model is updated
+		runAndWait(() -> assertThat(swx.getConnectionState()).isEqualTo(ConnectionState.DISCONNECTED));
+	}
+
+	@Test
+	public void should_update_model_ConnectionState_in_JavaFX_thread_when_connection_is_up() throws InterruptedException, ExecutionException {
+		// GIVEN: connection is DISCONNECTED
+		swx.setConnectionState(ConnectionState.DISCONNECTED);
+
+		// WHEN: Connection is up
+		connector.channelConnected();
+
+		// THEN: connection state has been updated in JavaFX thread
+		runAndWait(() -> assertThat(swx.getConnectionState()).isEqualTo(ConnectionState.CONNECTED));
+	}
+
+	@Test
+	public void should_update_model_ConnectionState_in_JavaFX_thread_when_connection_is_down() throws InterruptedException, ExecutionException {
+		// GIVEN: connection is CONNECTED
+		swx.setConnectionState(ConnectionState.CONNECTED);
+
+		// WHEN: Connection is down
+		connector.channelDisconnected();
+
+		// THEN: connection state has been updated in JavaFX thread
 		runAndWait(() -> assertThat(swx.getConnectionState()).isEqualTo(ConnectionState.DISCONNECTED));
 	}
 }
