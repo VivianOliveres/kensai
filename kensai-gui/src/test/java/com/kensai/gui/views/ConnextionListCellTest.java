@@ -20,7 +20,7 @@ public class ConnextionListCellTest extends AbstractTestJavaFX {
 
 	@Before
 	public void init() {
-		view = new ImageView(Images.MARKET_RED);
+		view = new ImageView(Images.MARKET_RED_32);
 		cell = new ConnextionListCell(view);
 	}
 

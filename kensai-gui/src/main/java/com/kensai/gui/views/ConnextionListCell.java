@@ -19,7 +19,7 @@ public class ConnextionListCell extends ListCell<MarketConnectionModel> {
 	private Subscription streamSubscription;
 
 	public ConnextionListCell() {
-		this(new ImageView(Images.MARKET_RED));
+		this(new ImageView(Images.MARKET_RED_32));
 	}
 
 	public ConnextionListCell(ImageView view) {
