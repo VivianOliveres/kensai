@@ -1,7 +1,5 @@
 package com.kensai.gui.views;
 
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -57,6 +55,7 @@ public class MarketConnectionsViewController {
 	}
 
 	private void initConnectionsView() {
+		// Double clic will connect or disconnect to market
 		EventStreams.eventsOf(connexionsList, MouseEvent.MOUSE_CLICKED)
 						.filter(event -> event.getClickCount() == 2)
 						.filter(event -> event.getButton().equals(MouseButton.PRIMARY))
@@ -149,9 +148,22 @@ public class MarketConnectionsViewController {
 							model.getConnexions().remove(selectedItem);
 						});
 
-		// Disable button when nothing is selected
-		ReadOnlyIntegerProperty selectedIndexProperty = connexionsList.getSelectionModel().selectedIndexProperty();
-		buttonRemove.disableProperty().bind(Bindings.greaterThan(0, selectedIndexProperty));
+		// Disable button when nothing is selected and when selected item is Connected/Connecting
+		buttonRemove.setDisable(true);
+		EventStreams.changesOf(connexionsList.getSelectionModel().selectedItemProperty())
+						.map(change -> change.getNewValue())
+						.subscribe(connection -> {
+							if(connection == null) {
+								buttonRemove.setDisable(true);
+								return;
+							}
+
+							if(connection.getConnectionState() == ConnectionState.DISCONNECTED) {
+								buttonRemove.setDisable(false);
+							}else {
+								buttonRemove.setDisable(true);
+							}
+						});
 
 		return buttonRemove;
 	}
