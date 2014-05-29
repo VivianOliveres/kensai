@@ -41,41 +41,50 @@ public class GuiChannelHandler extends SimpleChannelHandler {
 	@Override
 	public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
 		super.messageReceived(ctx, e);
-		log.info("messageReceived: [{}]", e.getMessage());
+		log.debug("messageReceived: [{}]", e.getMessage());
 		Messages message = (Messages) e.getMessage();
 		if (message.hasSubscribeCommand()) {
+			log.info("messageReceived: SubscribeCommand");
 			conector.onSubscribe(message.getSubscribeCommand());
 		}
 
 		if (message.hasUnsubscribeCommand()) {
+			log.info("messageReceived: UnsubscribeCommand");
 			conector.onUnsubscribe(message.getUnsubscribeCommand());
 		}
 
 		if (message.hasSummariesSnapshot()) {
+			log.info("messageReceived: SummariesSnapshot");
 			conector.onSnapshot(message.getSummariesSnapshot());
 		}
 
 		if (message.hasExecutionsSnapshot()) {
+			log.info("messageReceived: ExecutionsSnapshot");
 			conector.onSnapshot(message.getExecutionsSnapshot());
 		}
 
 		if (message.hasOrdersSnapshot()) {
+			log.info("messageReceived: OrdersSnapshot");
 			conector.onSnapshot(message.getOrdersSnapshot());
 		}
 
 		if (message.hasInstrumentsSnapshot()) {
+			log.info("messageReceived: InstrumentsSnapshot");
 			conector.onSnapshot(message.getInstrumentsSnapshot());
 		}
 
 		if (message.hasOrder()) {
+			log.info("messageReceived: Order");
 			conector.onOrder(message.getOrder());
 		}
 
 		if (message.hasExecution()) {
+			log.info("messageReceived: Execution");
 			conector.onExecution(message.getExecution());
 		}
 
 		if (message.hasSummary()) {
+			log.info("messageReceived: Summary");
 			conector.onSummary(message.getSummary());
 		}
 	}

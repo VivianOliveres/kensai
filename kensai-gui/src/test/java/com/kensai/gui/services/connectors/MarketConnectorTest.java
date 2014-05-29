@@ -24,6 +24,8 @@ import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.market.ConnectionState;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
 import com.kensai.gui.services.task.TaskService;
+import com.kensai.protocol.Trading.SubscribeCommand;
+import com.kensai.protocol.Trading.UnsubscribeCommand;
 
 public class MarketConnectorTest extends AbstractTestJavaFX {
 
@@ -32,6 +34,7 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 
 	private MarketConnector connector;
 
+	private MarketConnectorMessageSender sender = mock(MarketConnectorMessageSender.class);
 	private ClientBootstrap bootstrap = mock(ClientBootstrap.class);
 	private TaskService taskService = mock(TaskService.class);
 
@@ -40,7 +43,7 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 		ApplicationContext context = mock(ApplicationContext.class);
 		given(context.getTaskService()).willReturn(taskService);
 
-		connector = new MarketConnector(swx, context, bootstrap);
+		connector = new MarketConnector(swx, context, bootstrap, sender);
 	}
 
 	@Test
@@ -83,6 +86,30 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 
 		// AND: connection is done in background
 		verify(taskService).runInBackground(any(Runnable.class));
+	}
+
+	@Test
+	public void should_send_subscribe_msg_when_doConnection_success() {
+		// GIVEN: model is connecting
+		swx.setConnectionState(ConnectionState.CONNECTING);
+
+		// AND: : connection will success
+		ChannelFuture channelFuture = mock(ChannelFuture.class);
+		given(channelFuture.isSuccess()).willReturn(true);
+
+		Channel connectedChannel = mock(Channel.class);
+		given(channelFuture.getChannel()).willReturn(connectedChannel);
+
+		given(bootstrap.connect(eq(socketAddress))).willReturn(channelFuture);
+
+		// WHEN: connect
+		connector.doConnection(socketAddress, 1);
+
+		// THEN: Should delegate connection to bootstrap
+		verify(bootstrap).connect(eq(socketAddress));
+
+		// AND: Should send subscribe message
+		verify(sender).send(eq(connectedChannel), any(SubscribeCommand.class));
 	}
 
 	@Test
@@ -264,5 +291,30 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 
 		// THEN: connection state has been updated in JavaFX thread
 		runAndWait(() -> assertThat(swx.getConnectionState()).isEqualTo(ConnectionState.DISCONNECTED));
+	}
+
+	@Test
+	public void should_send_unsubscribe_msg_when_doDisconnection_success() {
+		// GIVEN: model is connected
+		ChannelFuture connectionChannelFuture = mock(ChannelFuture.class);
+
+		ChannelFuture disconnectionChannelFuture = mock(ChannelFuture.class);
+		given(disconnectionChannelFuture.isSuccess()).willReturn(true);
+
+		Channel channel = mock(Channel.class);
+		given(channel.close()).willReturn(disconnectionChannelFuture);
+		given(connectionChannelFuture.getChannel()).willReturn(channel);
+
+		given(bootstrap.connect(any(SocketAddress.class))).willReturn(connectionChannelFuture);
+
+		connector.doConnection(socketAddress, 1);
+
+		swx.setConnectionState(ConnectionState.CONNECTED);
+
+		// WHEN: doDisconnection
+		connector.doDisconnection(1);
+
+		// AND: Should send unsubscribe message
+		verify(sender).send(eq(channel), any(UnsubscribeCommand.class));
 	}
 }

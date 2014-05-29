@@ -27,8 +27,12 @@ import com.kensai.protocol.Trading.UnsubscribeCommand;
 public class MarketConnector {
 	private static final Logger log = LogManager.getLogger(MarketConnector.class);
 
+	public static final String DEFAULT_USER = "GUI_USER";
+
 	private ApplicationContext context;
 	private MarketConnectionModel model;
+
+	private MarketConnectorMessageSender sender;
 
 	private ClientBootstrap bootstrap;
 	private Channel connectedChannel;
@@ -36,21 +40,21 @@ public class MarketConnector {
 	public MarketConnector(MarketConnectionModel model, ApplicationContext context) {
 		this.model = model;
 		this.context = context;
+		this.bootstrap = ClientBoostrapFactory.create(context, this);
+		this.sender = new MarketConnectorMessageSender();
 	}
 
-	public MarketConnector(MarketConnectionModel model, ApplicationContext context, ClientBootstrap bootstrap) {
-		this(model, context);
+	public MarketConnector(MarketConnectionModel model, ApplicationContext context, ClientBootstrap bootstrap, MarketConnectorMessageSender sender) {
+		this.model = model;
+		this.context = context;
 		this.bootstrap = bootstrap;
+		this.sender = sender;
 	}
 
 	public void connect() {
 		if (model.getConnectionState() != ConnectionState.DISCONNECTED) {
 			log.warn("Can not connect to [" + getMarketName() + "] which is not DISCONNECTED: current state [" + model.getConnectionState() + "]");
 			return;
-		}
-
-		if (bootstrap == null) {
-			bootstrap = ClientBoostrapFactory.create(context, this);
 		}
 
 		// Update GUI
@@ -82,6 +86,10 @@ public class MarketConnector {
 			log.info("Connected to " + getMarketName());
 			Platform.runLater(() -> model.setConnectionState(ConnectionState.CONNECTED));
 
+			// send subscribe to market
+			SubscribeCommand cmd = SubscribeCommand.newBuilder().setUser(DEFAULT_USER).build();
+			sender.send(connectedChannel, cmd);
+
 		} else {
 			log.error("Can not connect to " + getMarketName(), connectFuture.getCause());
 			Platform.runLater(() -> model.setConnectionState(ConnectionState.DISCONNECTED));
@@ -106,6 +114,11 @@ public class MarketConnector {
 
 	protected Void doDisconnection(long timeout) {
 		log.info("Diconnecting to [" + getMarketName() + "] ...");
+		// Send unsubscribe
+		UnsubscribeCommand cmd = UnsubscribeCommand.newBuilder().setUser(DEFAULT_USER).build();
+		sender.send(connectedChannel, cmd);
+
+		// Close channel
 		ChannelFuture closeConnectionFuture = connectedChannel.close();
 
 		try {
