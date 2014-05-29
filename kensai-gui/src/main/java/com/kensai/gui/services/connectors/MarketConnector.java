@@ -12,6 +12,7 @@ import org.jboss.netty.channel.ChannelFuture;
 
 import com.google.common.base.Objects;
 import com.kensai.gui.services.ApplicationContext;
+import com.kensai.gui.services.model.instruments.InstrumentsModel;
 import com.kensai.gui.services.model.market.ConnectionState;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
 import com.kensai.protocol.Trading.Execution;
@@ -185,20 +186,25 @@ public class MarketConnector {
 		// TODO Auto-generated method stub
 	}
 
-	public void onSnapshot(SummariesSnapshot summariesSnapshot) {
+	public void onSnapshot(SummariesSnapshot snapshot) {
 		// TODO Auto-generated method stub
 	}
 
-	public void onSnapshot(ExecutionsSnapshot executionsSnapshot) {
+	public void onSnapshot(ExecutionsSnapshot snapshot) {
 		// TODO Auto-generated method stub
 	}
 
-	public void onSnapshot(OrdersSnapshot ordersSnapshot) {
+	public void onSnapshot(OrdersSnapshot snapshot) {
 		// TODO Auto-generated method stub
 	}
 
-	public void onSnapshot(InstrumentsSnapshot instrumentsSnapshot) {
-		// TODO Auto-generated method stub
+	public void onSnapshot(InstrumentsSnapshot snapshot) {
+		Platform.runLater(() -> doOnSnapshot(snapshot));
+	}
+
+	protected void doOnSnapshot(InstrumentsSnapshot snapshot) {
+		InstrumentsModel instruments = context.getModelService().getInstruments();
+		snapshot.getInstrumentsList().forEach(instrument -> instruments.add(instrument, model.getConnectionName()));
 	}
 
 	public void onOrder(Order order) {

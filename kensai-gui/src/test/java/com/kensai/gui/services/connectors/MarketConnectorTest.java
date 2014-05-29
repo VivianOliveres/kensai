@@ -21,9 +21,14 @@ import org.junit.Test;
 
 import com.kensai.gui.AbstractTestJavaFX;
 import com.kensai.gui.services.ApplicationContext;
+import com.kensai.gui.services.model.ModelService;
+import com.kensai.gui.services.model.instruments.InstrumentsModel;
 import com.kensai.gui.services.model.market.ConnectionState;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
 import com.kensai.gui.services.task.TaskService;
+import com.kensai.protocol.Trading.Instrument;
+import com.kensai.protocol.Trading.InstrumentType;
+import com.kensai.protocol.Trading.InstrumentsSnapshot;
 import com.kensai.protocol.Trading.SubscribeCommand;
 import com.kensai.protocol.Trading.UnsubscribeCommand;
 
@@ -37,11 +42,16 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 	private MarketConnectorMessageSender sender = mock(MarketConnectorMessageSender.class);
 	private ClientBootstrap bootstrap = mock(ClientBootstrap.class);
 	private TaskService taskService = mock(TaskService.class);
+	private InstrumentsModel instrumentsModel = mock(InstrumentsModel.class);
 
 	@Before
 	public void init() {
 		ApplicationContext context = mock(ApplicationContext.class);
 		given(context.getTaskService()).willReturn(taskService);
+
+		ModelService modelService = mock(ModelService.class);
+		given(modelService.getInstruments()).willReturn(instrumentsModel);
+		given(context.getModelService()).willReturn(modelService);
 
 		connector = new MarketConnector(swx, context, bootstrap, sender);
 	}
@@ -316,5 +326,28 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 
 		// AND: Should send unsubscribe message
 		verify(sender).send(eq(channel), any(UnsubscribeCommand.class));
+	}
+
+	@Test
+	public void should_update_InstrumentsModel_when_receive_onSnapshot_instruments() {
+		// GIVEN: InstrumentsSnapshot with 2 instruments
+		Instrument instrument1 = Instrument.newBuilder().setIsin("isin")
+																		.setName("name")
+																		.setDescription("description")
+																		.setType(InstrumentType.STOCK)
+																		.build();
+		Instrument instrument2 = Instrument.newBuilder().setIsin("isin2")
+																		.setName("name2")
+																		.setDescription("description2")
+																		.setType(InstrumentType.STOCK)
+																		.build();
+		InstrumentsSnapshot snapshot = InstrumentsSnapshot.newBuilder().addInstruments(instrument1).addInstruments(instrument2).build();
+
+		// WHEN: connector receive snapshot
+		connector.doOnSnapshot(snapshot);
+
+		// THEN: update InstrumentsModel
+		verify(instrumentsModel).add(instrument1, swx.getConnectionName());
+		verify(instrumentsModel).add(instrument2, swx.getConnectionName());
 	}
 }
