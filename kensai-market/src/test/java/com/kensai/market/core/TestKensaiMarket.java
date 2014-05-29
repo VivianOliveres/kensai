@@ -83,7 +83,7 @@ public class TestKensaiMarket {
 
 	@SuppressWarnings("unchecked")
 	@Test
-	public void shouldReceiveSubscribeSendNackWhenUserIsAlreadySubscribed() {
+	public void shouldReceiveSubscribeSendNackWhenUserIsAlreadySubscribedAndSendSnapshot() {
 		// GIVEN: User is already subscribed
 		when(sender.contains(eq(user))).thenReturn(true);
 
@@ -96,14 +96,14 @@ public class TestKensaiMarket {
 		// THEN: NAK is sent
 		verify(sender).sendNack(eq(cmd), eq(channel), anyString());
 
-		// AND: user is not add
-		verify(sender, never()).addUser(eq(user), eq(channel));
+		// AND: user is updated
+		verify(sender).addUser(eq(user), eq(channel));
 
-		// AND: snapshot are not sent
-		verify(sender, never()).sendInstrumentsSnapshot(eq(user), anyList());
-		verify(sender, never()).sendOrdersSnapshot(eq(user), anyList());
-		verify(sender, never()).sendExecutionsSnapshot(eq(user), anyList());
-		verify(sender, never()).sendSummariesSnapshot(eq(user), anyList());
+		// AND: snapshot are sent
+		verify(sender).sendInstrumentsSnapshot(eq(user), anyList());
+		verify(sender).sendOrdersSnapshot(eq(user), anyList());
+		verify(sender).sendExecutionsSnapshot(eq(user), anyList());
+		verify(sender).sendSummariesSnapshot(eq(user), anyList());
 	}
 
 	@Test

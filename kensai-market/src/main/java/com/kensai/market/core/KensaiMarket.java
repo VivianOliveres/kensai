@@ -41,12 +41,12 @@ public class KensaiMarket {
 		String user = cmd.getUser();
 		if (sender.contains(user)) {
 			sender.sendNack(cmd, channel, "User [" + user + "] already subscribed");
-			return;
+		} else {
+			sender.sendAck(cmd, channel);
 		}
 
-		// Save user and send ACK
+		// Save user
 		sender.addUser(user, channel);
-		sender.sendAck(cmd, channel);
 
 		// Send snapshots
 		sender.sendInstrumentsSnapshot(user, getInstruments());
