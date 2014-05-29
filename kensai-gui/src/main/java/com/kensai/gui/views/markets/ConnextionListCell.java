@@ -1,4 +1,4 @@
-package com.kensai.gui.views;
+package com.kensai.gui.views.markets;
 
 import javafx.scene.control.ListCell;
 import javafx.scene.image.ImageView;

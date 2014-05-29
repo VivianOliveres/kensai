@@ -1,4 +1,4 @@
-package com.kensai.gui.views;
+package com.kensai.gui.views.markets;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;

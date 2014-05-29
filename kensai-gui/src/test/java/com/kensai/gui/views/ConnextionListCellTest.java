@@ -10,6 +10,7 @@ import com.kensai.gui.AbstractTestJavaFX;
 import com.kensai.gui.Images;
 import com.kensai.gui.services.model.market.ConnectionState;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
+import com.kensai.gui.views.markets.ConnextionListCell;
 
 public class ConnextionListCellTest extends AbstractTestJavaFX {
 

@@ -15,6 +15,7 @@ import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.ModelService;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
 import com.kensai.gui.services.model.market.MarketConnectionsModel;
+import com.kensai.gui.views.markets.MarketConnectionsViewController;
 
 public class MarketConnectionsViewControllerTest extends AbstractTestJavaFX {
 
