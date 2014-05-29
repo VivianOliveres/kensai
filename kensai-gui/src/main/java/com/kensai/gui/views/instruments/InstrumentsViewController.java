@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.instruments.InstrumentModel;
+import com.kensai.protocol.Trading.MarketStatus;
 
 public class InstrumentsViewController {
 
@@ -45,6 +46,38 @@ public class InstrumentsViewController {
 		TableColumn<InstrumentModel, String> columnType = new TableColumn<>("Type");
 		columnType.setCellValueFactory((cell) -> cell.getValue().typeProperty());
 		table.getColumns().add(columnType);
+
+		TableColumn<InstrumentModel, MarketStatus> columnMarketStatus = new TableColumn<>("Status");
+		columnMarketStatus.setCellValueFactory((cell) -> cell.getValue().getSummary().marketStatusProperty());
+		table.getColumns().add(columnMarketStatus);
+
+		TableColumn<InstrumentModel, Number> columnOpen = new TableColumn<>("Open");
+		columnOpen.setCellValueFactory((cell) -> cell.getValue().getSummary().openProperty());
+		table.getColumns().add(columnOpen);
+
+		TableColumn<InstrumentModel, Number> columnLast = new TableColumn<>("Last");
+		columnLast.setCellValueFactory((cell) -> cell.getValue().getSummary().lastProperty());
+		table.getColumns().add(columnLast);
+
+		TableColumn<InstrumentModel, Number> columnClose = new TableColumn<>("Close");
+		columnClose.setCellValueFactory((cell) -> cell.getValue().getSummary().closeProperty());
+		table.getColumns().add(columnClose);
+
+		TableColumn<InstrumentModel, Number> columnBuyQty = new TableColumn<>("BuyQty");
+		columnBuyQty.setCellValueFactory((cell) -> cell.getValue().getSummary().buyQtyProperty());
+		table.getColumns().add(columnBuyQty);
+
+		TableColumn<InstrumentModel, Number> columnBuyPrice = new TableColumn<>("Buy");
+		columnBuyPrice.setCellValueFactory((cell) -> cell.getValue().getSummary().buyPriceProperty());
+		table.getColumns().add(columnBuyPrice);
+
+		TableColumn<InstrumentModel, Number> columnSellPrice = new TableColumn<>("Sell");
+		columnSellPrice.setCellValueFactory((cell) -> cell.getValue().getSummary().sellPriceProperty());
+		table.getColumns().add(columnSellPrice);
+
+		TableColumn<InstrumentModel, Number> columnSellQty = new TableColumn<>("SellQty");
+		columnSellQty.setCellValueFactory((cell) -> cell.getValue().getSummary().sellQtyProperty());
+		table.getColumns().add(columnSellQty);
 
 		// Init rows in table
 		ObservableList<InstrumentModel> rows = context.getModelService().getInstruments().getInstruments();
