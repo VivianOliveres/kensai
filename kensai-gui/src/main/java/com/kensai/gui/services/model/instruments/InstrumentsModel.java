@@ -50,4 +50,17 @@ public class InstrumentsModel implements Iterable<InstrumentModel> {
 		return instruments.iterator();
 	}
 
+	public SummaryModel getSummary(Instrument instrument, String marketConnectionName) {
+		InstrumentModel instrumentModel;
+		if (contains(instrument)) {
+			instrumentModel = instruments.filtered(model -> model.equals(instrument)).get(0);
+
+		} else {
+			instrumentModel = new InstrumentModel(instrument, marketConnectionName);
+			instruments.add(instrumentModel);
+		}
+
+		return instrumentModel.getSummary();
+	}
+
 }

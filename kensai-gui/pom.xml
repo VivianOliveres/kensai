@@ -30,7 +30,7 @@
 				<version>1.2.0</version>
 				<configuration>
 					<packages>
-						<param>com.kensai.gui</param>
+						<param>com.kensai.gui.services.model.instruments</param>
 					</packages>
 				</configuration>
 			</plugin>

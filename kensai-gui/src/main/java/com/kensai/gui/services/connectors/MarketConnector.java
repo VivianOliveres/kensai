@@ -187,7 +187,12 @@ public class MarketConnector {
 	}
 
 	public void onSnapshot(SummariesSnapshot snapshot) {
-		// TODO Auto-generated method stub
+		Platform.runLater(() -> doOnSnapshot(snapshot));
+	}
+
+	protected void doOnSnapshot(SummariesSnapshot snapshot) {
+		InstrumentsModel instruments = context.getModelService().getInstruments();
+		snapshot.getSummariesList().forEach(summary -> instruments.getSummary(summary.getInstrument(), model.getConnectionName()).update(summary));
 	}
 
 	public void onSnapshot(ExecutionsSnapshot snapshot) {

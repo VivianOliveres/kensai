@@ -133,4 +133,45 @@ public class InstrumentsModelTest {
 		// THEN: Should contains only second InstrumentModel
 		assertThat(instruments.getInstruments()).hasSize(1);
 	}
+
+	@Test
+	public void should_get_return_correct_SummaryModel() {
+		// GIVEN: InstrumentModel in InstrumentsModel
+		String marketConnectionName = "marketConnectionName";
+		Instrument instrument1 = Instrument.newBuilder().setIsin("isin")
+																		.setName("name")
+																		.setDescription("description")
+																		.setType(InstrumentType.STOCK)
+																		.build();
+		instruments.add(instrument1, marketConnectionName);
+
+		// WHEN: get
+		SummaryModel summary = instruments.getSummary(instrument1, marketConnectionName);
+
+		// THEN: Return a valid summary
+		assertThat(summary).isNotNull();
+	}
+	
+
+	@Test
+	public void should_get_return_correct_SummaryModel_and_create_instrument() {
+		// GIVEN: InstrumentModel not in InstrumentsModel
+		String marketConnectionName = "marketConnectionName";
+		Instrument instrument1 = Instrument.newBuilder().setIsin("isin")
+																		.setName("name")
+																		.setDescription("description")
+																		.setType(InstrumentType.STOCK)
+																		.build();
+		// AND: not in InstrumentsModel
+		assertThat(instruments.contains(instrument1)).isFalse();
+
+		// WHEN: get
+		SummaryModel summary = instruments.getSummary(instrument1, marketConnectionName);
+
+		// THEN: Return a valid summary
+		assertThat(summary).isNotNull();
+
+		// AND: instrument is in InstrumentsModel
+		assertThat(instruments.contains(instrument1)).isTrue();
+	}
 }

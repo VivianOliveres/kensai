@@ -7,12 +7,14 @@ import com.kensai.protocol.Trading.Instrument;
 
 public class InstrumentModel {
 
-	private SimpleStringProperty isin = new SimpleStringProperty();
-	private SimpleStringProperty name = new SimpleStringProperty();
-	private SimpleStringProperty market = new SimpleStringProperty();
-	private SimpleStringProperty description = new SimpleStringProperty();
-	private SimpleStringProperty type = new SimpleStringProperty();
-	private SimpleStringProperty connectionName = new SimpleStringProperty();
+	private final SimpleStringProperty isin = new SimpleStringProperty();
+	private final SimpleStringProperty name = new SimpleStringProperty();
+	private final SimpleStringProperty market = new SimpleStringProperty();
+	private final SimpleStringProperty description = new SimpleStringProperty();
+	private final SimpleStringProperty type = new SimpleStringProperty();
+	private final SimpleStringProperty connectionName = new SimpleStringProperty();
+
+	private final SummaryModel summary;
 
 	public InstrumentModel(Instrument copy, String marketConnectionName) {
 		this(copy.getIsin(), copy.getName(), copy.getMarket(), copy.getDescription(), copy.getType().toString(), marketConnectionName);
@@ -25,6 +27,8 @@ public class InstrumentModel {
 		this.description.set(description);
 		this.type.set(type);
 		this.connectionName.set(marketConnectionName);
+
+		summary = new SummaryModel(this);
 	}
 
 	public SimpleStringProperty isinProperty() {
@@ -128,6 +132,10 @@ public class InstrumentModel {
 			.add("name", name.get())
 			.add("connectionName", connectionName.get())
 			.toString();
+	}
+
+	public SummaryModel getSummary() {
+		return summary;
 	}
 
 }
