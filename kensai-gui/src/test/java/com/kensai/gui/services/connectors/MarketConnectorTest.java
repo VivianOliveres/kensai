@@ -38,6 +38,7 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 
 	private ApplicationContext context = mock(ApplicationContext.class);
 	private MarketConnectorMessageSender sender = mock(MarketConnectorMessageSender.class);
+	private MarketConnectorMessageHandler msgHandler = mock(MarketConnectorMessageHandler.class);
 	private ClientBootstrap bootstrap = mock(ClientBootstrap.class);
 	private TaskService taskService = mock(TaskService.class);
 	private InstrumentsModel instrumentsModel = mock(InstrumentsModel.class);
@@ -50,7 +51,7 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 		given(modelService.getInstruments()).willReturn(instrumentsModel);
 		given(context.getModelService()).willReturn(modelService);
 
-		connector = new MarketConnector(swx, context, bootstrap, sender);
+		connector = new MarketConnector(swx, context, bootstrap, sender, msgHandler);
 	}
 
 	@Test
@@ -331,7 +332,7 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 		swx = new MarketConnectionModel("SWX", "localhost", 1664, true);
 
 		// WHEN: connector based on MarketConnectionModel
-		connector = new MarketConnector(swx, context, bootstrap, sender);
+		connector = new MarketConnector(swx, context, bootstrap, sender, msgHandler);
 
 		// THEN: should update GUI to connecting
 		assertThat(connector.getConnectionState()).isEqualTo(ConnectionState.CONNECTING);

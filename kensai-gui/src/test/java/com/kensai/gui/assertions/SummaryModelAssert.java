@@ -18,9 +18,9 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * Creates a new </code>{@link SummaryModelAssert}</code> to make assertions on actual SummaryModel.
    * @param actual the SummaryModel we want to make assertions on.
    */
-  public SummaryModelAssert(SummaryModel actual) {
-    super(actual, SummaryModelAssert.class);
-  }
+	public SummaryModelAssert(SummaryModel actual) {
+		super(actual, SummaryModelAssert.class);
+	}
 
   /**
    * An entry point for SummaryModelAssert to follow AssertJ standard <code>assertThat()</code> statements.<br>
@@ -29,7 +29,7 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * @return a new </code>{@link SummaryModelAssert}</code>
    */
   public static SummaryModelAssert assertThat(SummaryModel actual) {
-    return new SummaryModelAssert(actual);
+		return new SummaryModelAssert(actual);
   }
 
   /**
@@ -39,20 +39,20 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * @throws AssertionError - if the actual SummaryModel's buyPrice is not equal to the given one.
    */
   public SummaryModelAssert hasBuyPrice(double buyPrice) {
-    // check that actual SummaryModel we want to make assertions on is not null.
-    isNotNull();
+		// check that actual SummaryModel we want to make assertions on is not null.
+		isNotNull();
 
-    // overrides the default error message with a more explicit one
-    String assertjErrorMessage = "\nExpected buyPrice of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
-    
-    // check
-    double actualBuyPrice = actual.getBuyPrice();
-    if (actualBuyPrice != buyPrice) {
-      failWithMessage(assertjErrorMessage, actual, buyPrice, actualBuyPrice);
-    }
+		// overrides the default error message with a more explicit one
+		String assertjErrorMessage = "\nExpected buyPrice of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
-    // return the current assertion for method chaining
-    return this;
+		// check
+		double actualBuyPrice = actual.getBuyPrice();
+		if (actualBuyPrice != buyPrice) {
+			failWithMessage(assertjErrorMessage, actual, buyPrice, actualBuyPrice);
+		}
+
+		// return the current assertion for method chaining
+		return this;
   }
 
   /**
@@ -62,20 +62,20 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * @throws AssertionError - if the actual SummaryModel's buyQty is not equal to the given one.
    */
   public SummaryModelAssert hasBuyQty(long buyQty) {
-    // check that actual SummaryModel we want to make assertions on is not null.
-    isNotNull();
+		// check that actual SummaryModel we want to make assertions on is not null.
+		isNotNull();
 
-    // overrides the default error message with a more explicit one
-    String assertjErrorMessage = "\nExpected buyQty of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
-    
-    // check
-    long actualBuyQty = actual.getBuyQty();
-    if (actualBuyQty != buyQty) {
-      failWithMessage(assertjErrorMessage, actual, buyQty, actualBuyQty);
-    }
+		// overrides the default error message with a more explicit one
+		String assertjErrorMessage = "\nExpected buyQty of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
-    // return the current assertion for method chaining
-    return this;
+		// check
+		long actualBuyQty = actual.getBuyQty();
+		if (actualBuyQty != buyQty) {
+			failWithMessage(assertjErrorMessage, actual, buyQty, actualBuyQty);
+		}
+
+		// return the current assertion for method chaining
+		return this;
   }
 
   /**
@@ -85,20 +85,20 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * @throws AssertionError - if the actual SummaryModel's close is not equal to the given one.
    */
   public SummaryModelAssert hasClose(double close) {
-    // check that actual SummaryModel we want to make assertions on is not null.
-    isNotNull();
+		// check that actual SummaryModel we want to make assertions on is not null.
+		isNotNull();
 
-    // overrides the default error message with a more explicit one
-    String assertjErrorMessage = "\nExpected close of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
-    
-    // check
-    double actualClose = actual.getClose();
-    if (actualClose != close) {
-      failWithMessage(assertjErrorMessage, actual, close, actualClose);
-    }
+		// overrides the default error message with a more explicit one
+		String assertjErrorMessage = "\nExpected close of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
-    // return the current assertion for method chaining
-    return this;
+		// check
+		double actualClose = actual.getClose();
+		if (actualClose != close) {
+			failWithMessage(assertjErrorMessage, actual, close, actualClose);
+		}
+
+		// return the current assertion for method chaining
+		return this;
   }
 
   /**
@@ -108,20 +108,20 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * @throws AssertionError - if the actual SummaryModel's instrument is not equal to the given one.
    */
   public SummaryModelAssert hasInstrument(InstrumentModel instrument) {
-    // check that actual SummaryModel we want to make assertions on is not null.
-    isNotNull();
+		// check that actual SummaryModel we want to make assertions on is not null.
+		isNotNull();
 
-    // overrides the default error message with a more explicit one
-    String assertjErrorMessage = "\nExpected instrument of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
-    
-    // null safe check
-    InstrumentModel actualInstrument = actual.getInstrument();
-    if (!org.assertj.core.util.Objects.areEqual(actualInstrument, instrument)) {
-      failWithMessage(assertjErrorMessage, actual, instrument, actualInstrument);
-    }
+		// overrides the default error message with a more explicit one
+		String assertjErrorMessage = "\nExpected instrument of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
-    // return the current assertion for method chaining
-    return this;
+		// null safe check
+		InstrumentModel actualInstrument = actual.getInstrument();
+		if (!org.assertj.core.util.Objects.areEqual(actualInstrument, instrument)) {
+			failWithMessage(assertjErrorMessage, actual, instrument, actualInstrument);
+		}
+
+		// return the current assertion for method chaining
+		return this;
   }
 
   /**
@@ -131,20 +131,20 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * @throws AssertionError - if the actual SummaryModel's last is not equal to the given one.
    */
   public SummaryModelAssert hasLast(double last) {
-    // check that actual SummaryModel we want to make assertions on is not null.
-    isNotNull();
+		// check that actual SummaryModel we want to make assertions on is not null.
+		isNotNull();
 
-    // overrides the default error message with a more explicit one
-    String assertjErrorMessage = "\nExpected last of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
-    
-    // check
-    double actualLast = actual.getLast();
-    if (actualLast != last) {
-      failWithMessage(assertjErrorMessage, actual, last, actualLast);
-    }
+		// overrides the default error message with a more explicit one
+		String assertjErrorMessage = "\nExpected last of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
-    // return the current assertion for method chaining
-    return this;
+		// check
+		double actualLast = actual.getLast();
+		if (actualLast != last) {
+			failWithMessage(assertjErrorMessage, actual, last, actualLast);
+		}
+
+		// return the current assertion for method chaining
+		return this;
   }
 
   /**
@@ -154,20 +154,20 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * @throws AssertionError - if the actual SummaryModel's marketStatus is not equal to the given one.
    */
   public SummaryModelAssert hasMarketStatus(Trading.MarketStatus marketStatus) {
-    // check that actual SummaryModel we want to make assertions on is not null.
-    isNotNull();
+		// check that actual SummaryModel we want to make assertions on is not null.
+		isNotNull();
 
-    // overrides the default error message with a more explicit one
-    String assertjErrorMessage = "\nExpected marketStatus of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
-    
-    // null safe check
-    Trading.MarketStatus actualMarketStatus = actual.getMarketStatus();
-    if (!org.assertj.core.util.Objects.areEqual(actualMarketStatus, marketStatus)) {
-      failWithMessage(assertjErrorMessage, actual, marketStatus, actualMarketStatus);
-    }
+		// overrides the default error message with a more explicit one
+		String assertjErrorMessage = "\nExpected marketStatus of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
-    // return the current assertion for method chaining
-    return this;
+		// null safe check
+		Trading.MarketStatus actualMarketStatus = actual.getMarketStatus();
+		if (!org.assertj.core.util.Objects.areEqual(actualMarketStatus, marketStatus)) {
+			failWithMessage(assertjErrorMessage, actual, marketStatus, actualMarketStatus);
+		}
+
+		// return the current assertion for method chaining
+		return this;
   }
 
   /**
@@ -177,20 +177,20 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * @throws AssertionError - if the actual SummaryModel's open is not equal to the given one.
    */
   public SummaryModelAssert hasOpen(double open) {
-    // check that actual SummaryModel we want to make assertions on is not null.
-    isNotNull();
+		// check that actual SummaryModel we want to make assertions on is not null.
+		isNotNull();
 
-    // overrides the default error message with a more explicit one
-    String assertjErrorMessage = "\nExpected open of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
-    
-    // check
-    double actualOpen = actual.getOpen();
-    if (actualOpen != open) {
-      failWithMessage(assertjErrorMessage, actual, open, actualOpen);
-    }
+		// overrides the default error message with a more explicit one
+		String assertjErrorMessage = "\nExpected open of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
-    // return the current assertion for method chaining
-    return this;
+		// check
+		double actualOpen = actual.getOpen();
+		if (actualOpen != open) {
+			failWithMessage(assertjErrorMessage, actual, open, actualOpen);
+		}
+
+		// return the current assertion for method chaining
+		return this;
   }
 
   /**
@@ -200,20 +200,20 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * @throws AssertionError - if the actual SummaryModel's sellPrice is not equal to the given one.
    */
   public SummaryModelAssert hasSellPrice(double sellPrice) {
-    // check that actual SummaryModel we want to make assertions on is not null.
-    isNotNull();
+		// check that actual SummaryModel we want to make assertions on is not null.
+		isNotNull();
 
-    // overrides the default error message with a more explicit one
-    String assertjErrorMessage = "\nExpected sellPrice of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
-    
-    // check
-    double actualSellPrice = actual.getSellPrice();
-    if (actualSellPrice != sellPrice) {
-      failWithMessage(assertjErrorMessage, actual, sellPrice, actualSellPrice);
-    }
+		// overrides the default error message with a more explicit one
+		String assertjErrorMessage = "\nExpected sellPrice of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
-    // return the current assertion for method chaining
-    return this;
+		// check
+		double actualSellPrice = actual.getSellPrice();
+		if (actualSellPrice != sellPrice) {
+			failWithMessage(assertjErrorMessage, actual, sellPrice, actualSellPrice);
+		}
+
+		// return the current assertion for method chaining
+		return this;
   }
 
   /**
@@ -223,20 +223,20 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * @throws AssertionError - if the actual SummaryModel's sellQty is not equal to the given one.
    */
   public SummaryModelAssert hasSellQty(long sellQty) {
-    // check that actual SummaryModel we want to make assertions on is not null.
-    isNotNull();
+		// check that actual SummaryModel we want to make assertions on is not null.
+		isNotNull();
 
-    // overrides the default error message with a more explicit one
-    String assertjErrorMessage = "\nExpected sellQty of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
-    
-    // check
-    long actualSellQty = actual.getSellQty();
-    if (actualSellQty != sellQty) {
-      failWithMessage(assertjErrorMessage, actual, sellQty, actualSellQty);
-    }
+		// overrides the default error message with a more explicit one
+		String assertjErrorMessage = "\nExpected sellQty of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
-    // return the current assertion for method chaining
-    return this;
+		// check
+		long actualSellQty = actual.getSellQty();
+		if (actualSellQty != sellQty) {
+			failWithMessage(assertjErrorMessage, actual, sellQty, actualSellQty);
+		}
+
+		// return the current assertion for method chaining
+		return this;
   }
 
   /**
@@ -246,32 +246,30 @@ public class SummaryModelAssert extends AbstractAssert<SummaryModelAssert, Summa
    * @throws AssertionError - if the actual SummaryModel's timestamp is not equal to the given one.
    */
   public SummaryModelAssert hasTimestamp(long timestamp) {
-    // check that actual SummaryModel we want to make assertions on is not null.
-    isNotNull();
+		// check that actual SummaryModel we want to make assertions on is not null.
+		isNotNull();
 
-    // overrides the default error message with a more explicit one
-    String assertjErrorMessage = "\nExpected timestamp of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
-    
-    // check
-    long actualTimestamp = actual.getTimestamp();
-    if (actualTimestamp != timestamp) {
-      failWithMessage(assertjErrorMessage, actual, timestamp, actualTimestamp);
-    }
+		// overrides the default error message with a more explicit one
+		String assertjErrorMessage = "\nExpected timestamp of:\n  <%s>\nto be:\n  <%s>\nbut was:\n  <%s>";
 
-    // return the current assertion for method chaining
-    return this;
+		// check
+		long actualTimestamp = actual.getTimestamp();
+		if (actualTimestamp != timestamp) {
+			failWithMessage(assertjErrorMessage, actual, timestamp, actualTimestamp);
+		}
+
+		// return the current assertion for method chaining
+		return this;
   }
-  
+
   public SummaryModelAssert isEqualTo(Summary snapshot) {
-	  assertThat(actual).hasBuyPrice(snapshot.getBuyDepths(0).getPrice())
-							  .hasBuyQty(snapshot.getBuyDepths(0).getQuantity())
-							  .hasClose(snapshot.getClose())
-							  .hasLast(snapshot.getLast())
-							  .hasMarketStatus(snapshot.getMarketStatus())
-							  .hasOpen(snapshot.getOpen())
-							  .hasSellPrice(snapshot.getSellDepths(0).getPrice())
-							  .hasSellQty(snapshot.getSellDepths(0).getQuantity())
-							  .hasTimestamp(snapshot.getTimestamp());
+		Assertions.assertThat(snapshot.getBuyDepthsList()).isEqualTo(snapshot.getBuyDepthsList());
+		Assertions.assertThat(snapshot.getSellDepthsList()).isEqualTo(snapshot.getSellDepthsList());
+		assertThat(actual).hasClose(snapshot.getClose())
+							   .hasLast(snapshot.getLast())
+							   .hasMarketStatus(snapshot.getMarketStatus())
+							   .hasOpen(snapshot.getOpen())
+							   .hasTimestamp(snapshot.getTimestamp());
 
 	  return this;
   }

@@ -41,12 +41,13 @@ public class MarketConnector {
 		init();
 	}
 
-	public MarketConnector(MarketConnectionModel model, ApplicationContext context, ClientBootstrap bootstrap, MarketConnectorMessageSender sender) {
+	public MarketConnector(MarketConnectionModel model, ApplicationContext context, ClientBootstrap bootstrap, MarketConnectorMessageSender sender,
+		MarketConnectorMessageHandler msgHandler) {
 		this.model = model;
 		this.context = context;
 		this.bootstrap = bootstrap;
 		this.sender = sender;
-		this.msgHandler = new MarketConnectorMessageHandler(context, model);
+		this.msgHandler = msgHandler;
 
 		init();
 	}

@@ -6,6 +6,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,12 +30,14 @@ public class MarketConnectorServiceTest {
 	private ApplicationContext context = mock(ApplicationContext.class);
 	private ExecutorService coreExecutor = mock(ExecutorService.class);
 	private ExecutorService ioExecutor = mock(ExecutorService.class);
+	private ScheduledExecutorService scheduledExecutor = mock(ScheduledExecutorService.class);
 
 	@Before
 	public void init() {
 		TaskService taskService = mock(TaskService.class);
 		given(taskService.getNettyCoreExecutor()).willReturn(coreExecutor);
 		given(taskService.getNettyIOExecutor()).willReturn(ioExecutor);
+		given(taskService.getScheduledExecutor()).willReturn(scheduledExecutor);
 		given(context.getTaskService()).willReturn(taskService);
 
 		GuiChannelPipelineFactory pipelineFactory = mock(GuiChannelPipelineFactory.class);
