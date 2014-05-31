@@ -45,47 +45,47 @@ public class GuiChannelHandler extends SimpleChannelHandler {
 		Messages message = (Messages) e.getMessage();
 		if (message.hasSubscribeCommand()) {
 			log.info("messageReceived: SubscribeCommand");
-			conector.onSubscribe(message.getSubscribeCommand());
+			conector.getMessageHandler().onSubscribe(message.getSubscribeCommand());
 		}
 
 		if (message.hasUnsubscribeCommand()) {
 			log.info("messageReceived: UnsubscribeCommand");
-			conector.onUnsubscribe(message.getUnsubscribeCommand());
+			conector.getMessageHandler().onUnsubscribe(message.getUnsubscribeCommand());
 		}
 
 		if (message.hasSummariesSnapshot()) {
 			log.info("messageReceived: SummariesSnapshot");
-			conector.onSnapshot(message.getSummariesSnapshot());
+			conector.getMessageHandler().onSnapshot(message.getSummariesSnapshot());
 		}
 
 		if (message.hasExecutionsSnapshot()) {
 			log.info("messageReceived: ExecutionsSnapshot");
-			conector.onSnapshot(message.getExecutionsSnapshot());
+			conector.getMessageHandler().onSnapshot(message.getExecutionsSnapshot());
 		}
 
 		if (message.hasOrdersSnapshot()) {
 			log.info("messageReceived: OrdersSnapshot");
-			conector.onSnapshot(message.getOrdersSnapshot());
+			conector.getMessageHandler().onSnapshot(message.getOrdersSnapshot());
 		}
 
 		if (message.hasInstrumentsSnapshot()) {
 			log.info("messageReceived: InstrumentsSnapshot");
-			conector.onSnapshot(message.getInstrumentsSnapshot());
+			conector.getMessageHandler().onSnapshot(message.getInstrumentsSnapshot());
 		}
 
 		if (message.hasOrder()) {
 			log.info("messageReceived: Order");
-			conector.onOrder(message.getOrder());
+			conector.getMessageHandler().onOrder(message.getOrder());
 		}
 
 		if (message.hasExecution()) {
 			log.info("messageReceived: Execution");
-			conector.onExecution(message.getExecution());
+			conector.getMessageHandler().onExecution(message.getExecution());
 		}
 
 		if (message.hasSummary()) {
 			log.info("messageReceived: Summary");
-			conector.onSummary(message.getSummary());
+			conector.getMessageHandler().onSummary(message.getSummary());
 		}
 	}
 }
