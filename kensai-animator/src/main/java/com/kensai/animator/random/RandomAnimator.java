@@ -121,7 +121,7 @@ public class RandomAnimator extends AbstractSubscriberAnimator {
 
 				// Initialize with orders
 				int qty = generateQty(summary);
-				double price = generatePrice(summary);
+				double price = summary.getLast();
 				sendOrder(qty, price, BuySell.BUY, summary.getInstrument());
 				sendOrder(qty, round(price + 0.1), BuySell.SELL, summary.getInstrument());
 			}
