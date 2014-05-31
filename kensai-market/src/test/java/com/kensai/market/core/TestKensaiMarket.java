@@ -400,4 +400,64 @@ public class TestKensaiMarket {
 		verify(depth, times(2)).getInstrument();
 		verifyNoMoreInteractions(depth);
 	}
+
+	@Test
+	public void should_send_nack_when_order_has_negative_price() {
+		// GIVEN: Order with negative price
+		Order order = OrderFactory.create(-1.0, 123, BuySell.BUY).build();
+
+		// WHEN: receive order
+		market.receivedOrder(order, channel);
+
+		// THEN: Send nack
+		verify(sender).sendNack(eq(order), eq(channel), anyString());
+
+		// AND: do not send summary for this
+		verify(sender, never()).send(any(Summary.class));
+	}
+
+	@Test
+	public void should_send_nack_when_order_has_zero_price() {
+		// GIVEN: Order with negative price
+		Order order = OrderFactory.create(0.0, 123, BuySell.BUY).build();
+
+		// WHEN: receive order
+		market.receivedOrder(order, channel);
+
+		// THEN: Send nack
+		verify(sender).sendNack(eq(order), eq(channel), anyString());
+
+		// AND: do not send summary for this
+		verify(sender, never()).send(any(Summary.class));
+	}
+
+	@Test
+	public void should_send_nack_when_order_has_negative_qty() {
+		// GIVEN: Order with negative qty
+		Order order = OrderFactory.create(123.0, -123, BuySell.BUY).build();
+
+		// WHEN: receive order
+		market.receivedOrder(order, channel);
+
+		// THEN: Send nack
+		verify(sender).sendNack(eq(order), eq(channel), anyString());
+
+		// AND: do not send summary for this
+		verify(sender, never()).send(any(Summary.class));
+	}
+
+	@Test
+	public void should_send_nack_when_order_has_zero_qty() {
+		// GIVEN: Order with zero qty
+		Order order = OrderFactory.create(123.0, 0, BuySell.BUY).build();
+
+		// WHEN: receive order
+		market.receivedOrder(order, channel);
+
+		// THEN: Send nack
+		verify(sender).sendNack(eq(order), eq(channel), anyString());
+
+		// AND: do not send summary for this
+		verify(sender, never()).send(any(Summary.class));
+	}
 }

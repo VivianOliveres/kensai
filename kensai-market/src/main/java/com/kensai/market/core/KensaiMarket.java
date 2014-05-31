@@ -122,6 +122,19 @@ public class KensaiMarket {
 			return;
 		}
 
+		// Precondition: order price and quantity are positive
+		if (order.getPrice() <= 0) {
+			String errorMesg = "Orders with zero or negative prices are invalid";
+			log.info(errorMesg);
+			sender.sendNack(order, channel, errorMesg);
+			return;
+		} else if (order.getInitialQuantity() <= 0) {
+			String errorMesg = "Orders with zero or negative quantity are invalid";
+			log.info(errorMesg);
+			sender.sendNack(order, channel, errorMesg);
+			return;
+		}
+
 		// Check user credentials
 		String user = order.getUser();
 		if (!sender.contains(user)) {
