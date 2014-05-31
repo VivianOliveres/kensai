@@ -22,7 +22,6 @@ import com.kensai.protocol.Trading.Summary;
 import com.kensai.protocol.Trading.UnsubscribeCommand;
 
 public class KensaiMessageSender {
-
 	private static final Logger log = LogManager.getLogger(KensaiMessageSender.class);
 
 	private Map<String, Channel> users = Maps.newHashMap();

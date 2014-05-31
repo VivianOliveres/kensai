@@ -56,7 +56,6 @@ public class TestKensaiMarket {
 		market = new KensaiMarket(sender, newArrayList(depth));
 	}
 
-	@SuppressWarnings("unchecked")
 	@Test
 	public void shouldReceiveSubscribeSendAckWhenUserDoesNotExist() {
 		// GIVEN: User has not been added
@@ -81,7 +80,6 @@ public class TestKensaiMarket {
 		verify(sender).sendSummariesSnapshot(eq(user), anyList());
 	}
 
-	@SuppressWarnings("unchecked")
 	@Test
 	public void shouldReceiveSubscribeSendNackWhenUserIsAlreadySubscribedAndSendSnapshot() {
 		// GIVEN: User is already subscribed
