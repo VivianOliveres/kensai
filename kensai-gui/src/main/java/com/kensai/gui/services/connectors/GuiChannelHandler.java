@@ -54,37 +54,37 @@ public class GuiChannelHandler extends SimpleChannelHandler {
 		}
 
 		if (message.hasSummariesSnapshot()) {
-			log.info("messageReceived: SummariesSnapshot");
+			log.info("messageReceived: SummariesSnapshot on [{}] summaries", message.getSummariesSnapshot().getSummariesCount());
 			conector.getMessageHandler().onSnapshot(message.getSummariesSnapshot());
 		}
 
 		if (message.hasExecutionsSnapshot()) {
-			log.info("messageReceived: ExecutionsSnapshot");
+			log.info("messageReceived: ExecutionsSnapshot on [{}] executions", message.getExecutionsSnapshot().getExecutionsCount());
 			conector.getMessageHandler().onSnapshot(message.getExecutionsSnapshot());
 		}
 
 		if (message.hasOrdersSnapshot()) {
-			log.info("messageReceived: OrdersSnapshot");
+			log.info("messageReceived: OrdersSnapshot on [{}] order", message.getOrdersSnapshot().getOrdersCount());
 			conector.getMessageHandler().onSnapshot(message.getOrdersSnapshot());
 		}
 
 		if (message.hasInstrumentsSnapshot()) {
-			log.info("messageReceived: InstrumentsSnapshot");
+			log.info("messageReceived: InstrumentsSnapshot on [{}] instruments", message.getInstrumentsSnapshot().getInstrumentsCount());
 			conector.getMessageHandler().onSnapshot(message.getInstrumentsSnapshot());
 		}
 
 		if (message.hasOrder()) {
-			log.info("messageReceived: Order");
+			log.info("messageReceived: Order on [{}]", message.getOrder().getInstrument().getName());
 			conector.getMessageHandler().onOrder(message.getOrder());
 		}
 
 		if (message.hasExecution()) {
-			log.info("messageReceived: Execution");
+			log.info("messageReceived: Execution on [{}]", message.getExecution().getOrder().getInstrument().getName());
 			conector.getMessageHandler().onExecution(message.getExecution());
 		}
 
 		if (message.hasSummary()) {
-			log.info("messageReceived: Summary");
+			log.debug("messageReceived: Summary on [{}]", message.getSummary().getInstrument().getName());
 			conector.getMessageHandler().onSummary(message.getSummary());
 		}
 	}

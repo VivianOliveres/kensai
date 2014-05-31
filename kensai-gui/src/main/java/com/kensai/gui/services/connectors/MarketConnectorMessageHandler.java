@@ -42,7 +42,7 @@ public class MarketConnectorMessageHandler {
 	protected Void doUpdateGui() {
 		// Update each summary
 		KeySetView<Instrument, Summary> keySet = summariesUpdates.keySet();
-		log.info("doUpdateGui for " + keySet.size());
+		log.debug("doUpdateGui for " + keySet.size() + " instruments");
 		keySet.stream().map(instrument -> summariesUpdates.remove(instrument))
 							.forEach(summary -> doUpdateSummay(summary));
 
