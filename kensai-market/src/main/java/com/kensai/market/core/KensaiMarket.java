@@ -210,7 +210,7 @@ public class KensaiMarket {
 		Instrument instrument = result.getResultedOrder().getInstrument();
 		InstrumentDepth depth = getDepth(instrument);
 		Summary summary = depth.toSummary();
-		sender.send(summary, channel);
+		sender.send(summary);
 	}
 
 	private void doUpdateOrder(Order order, Channel channel) {

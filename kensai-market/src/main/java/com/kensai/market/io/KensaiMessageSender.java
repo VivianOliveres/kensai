@@ -161,9 +161,9 @@ public class KensaiMessageSender {
 		channel.write(msg);
 	}
 
-	public void send(Summary summary, Channel channel) {
+	public void send(Summary summary) {
 		Messages msg = Messages.newBuilder().setSummary(summary).build();
-		channel.write(msg);
+		users.values().forEach(channel -> channel.write(msg));
 	}
 
 }

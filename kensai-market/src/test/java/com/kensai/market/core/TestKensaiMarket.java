@@ -220,7 +220,7 @@ public class TestKensaiMarket {
 		verify(sender).send(eq(insertedOrder), eq(channel));
 
 		// AND: notify that summary has changed
-		verify(sender).send(eq(insertedSummary), eq(channel));
+		verify(sender).send(eq(insertedSummary));
 
 		// AND: notify for executions and executions order
 		verify(sender).send(eq(execOrders.get(0)), eq(channel));
@@ -302,7 +302,7 @@ public class TestKensaiMarket {
 		verify(sender).send(eq(updatedOrder), eq(channel));
 
 		// AND: notify that summary has changed
-		verify(sender).send(eq(insertedSummary), eq(channel));
+		verify(sender).send(eq(insertedSummary));
 
 		// AND: notify for executions and executions order
 		verify(sender).send(eq(execOrders.get(0)), eq(channel));
@@ -385,7 +385,7 @@ public class TestKensaiMarket {
 		verify(sender).send(eq(updatedOrder), eq(channel));
 
 		// AND: notify that summary has changed
-		verify(sender).send(eq(insertedSummary), eq(channel));
+		verify(sender).send(eq(insertedSummary));
 
 		// AND: notify for executions and executions order
 		verify(sender).send(eq(execOrders.get(0)), eq(channel));
