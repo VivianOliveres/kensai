@@ -4,9 +4,6 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.google.common.base.Objects;
 import com.kensai.protocol.Trading;
 import com.kensai.protocol.Trading.Depth;
@@ -14,7 +11,6 @@ import com.kensai.protocol.Trading.MarketStatus;
 import com.kensai.protocol.Trading.Summary;
 
 public class SummaryModel {
-	private static final Logger log = LogManager.getLogger(SummaryModel.class);
 
 	private final InstrumentModel instrument;
 
@@ -201,7 +197,6 @@ public class SummaryModel {
 
 		} else if (summary.getBuyDepthsCount() > 0) {
 			Depth buyDepth = summary.getBuyDepths(0);
-			log.info("update(" + instrument.getName() + ") - buyPrice == " + buyDepth.getPrice());
 			if (buyDepth.getPrice() != buyPrice.get()) {
 				buyPrice.set(buyDepth.getPrice());
 			}
@@ -217,7 +212,6 @@ public class SummaryModel {
 
 		} else if (summary.getSellDepthsCount() > 0) {
 			Depth sellDepth = summary.getSellDepths(0);
-			log.info("update(" + instrument.getName() + ") - sellPrice == " + sellDepth.getPrice());
 			if (sellDepth.getPrice() != sellPrice.get()) {
 				sellPrice.set(sellDepth.getPrice());
 			}
