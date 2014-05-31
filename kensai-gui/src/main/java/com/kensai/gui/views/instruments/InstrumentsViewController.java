@@ -24,6 +24,7 @@ public class InstrumentsViewController {
 	}
 
 	private void initTable() {
+		table.setId("instruments-table");
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
 		TableColumn<InstrumentModel, String> columnIsin = new TableColumn<>("Isin");
