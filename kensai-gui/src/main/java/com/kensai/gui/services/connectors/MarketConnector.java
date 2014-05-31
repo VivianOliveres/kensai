@@ -43,6 +43,8 @@ public class MarketConnector {
 		this.context = context;
 		this.bootstrap = ClientBoostrapFactory.create(context, this);
 		this.sender = new MarketConnectorMessageSender();
+
+		init();
 	}
 
 	public MarketConnector(MarketConnectionModel model, ApplicationContext context, ClientBootstrap bootstrap, MarketConnectorMessageSender sender) {
@@ -50,6 +52,14 @@ public class MarketConnector {
 		this.context = context;
 		this.bootstrap = bootstrap;
 		this.sender = sender;
+
+		init();
+	}
+
+	private void init() {
+		if (model.isConnectingAtStartup()) {
+			connect();
+		}
 	}
 
 	public void connect() {

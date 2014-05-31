@@ -39,11 +39,12 @@ import com.kensai.protocol.Trading.UnsubscribeCommand;
 
 public class MarketConnectorTest extends AbstractTestJavaFX {
 
-	private MarketConnectionModel swx = new MarketConnectionModel("SWX", "localhost", 1664, true);
+	private MarketConnectionModel swx = new MarketConnectionModel("SWX", "localhost", 1664, false);
 	private InetSocketAddress socketAddress = new InetSocketAddress("localhost", 1664);
 
 	private MarketConnector connector;
 
+	private ApplicationContext context = mock(ApplicationContext.class);
 	private MarketConnectorMessageSender sender = mock(MarketConnectorMessageSender.class);
 	private ClientBootstrap bootstrap = mock(ClientBootstrap.class);
 	private TaskService taskService = mock(TaskService.class);
@@ -51,7 +52,6 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 
 	@Before
 	public void init() {
-		ApplicationContext context = mock(ApplicationContext.class);
 		given(context.getTaskService()).willReturn(taskService);
 
 		ModelService modelService = mock(ModelService.class);
@@ -387,5 +387,20 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 
 		// THEN: update InstrumentsModel
 		com.kensai.gui.assertions.Assertions.assertThat(instrumentModel.getSummary()).isEqualTo(snapshot);
+	}
+
+	@Test
+	public void should_connect_at_startup() {
+		// GIVEN: MarketConnectionModel which connect at startup
+		swx = new MarketConnectionModel("SWX", "localhost", 1664, true);
+
+		// WHEN: connector based on MarketConnectionModel
+		connector = new MarketConnector(swx, context, bootstrap, sender);
+
+		// THEN: should update GUI to connecting
+		assertThat(connector.getConnectionState()).isEqualTo(ConnectionState.CONNECTING);
+
+		// AND: connection is done in background
+		verify(taskService).runInBackground(any(Runnable.class));
 	}
 }
