@@ -23,7 +23,7 @@
   </appenders>
 
   <loggers>
-    <root level="debug">
+    <root level="info">
       <appender-ref ref="all-appenders" />
     </root>
   </loggers>
