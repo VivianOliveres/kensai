@@ -53,7 +53,7 @@ public class KensaiMarketServer {
 		Path path = Paths.get(url.toURI());
 		List<InstrumentDepth> depths;
 		try {
-			depths = new InstrumentDepthsLoader(path).load();
+			depths = new InstrumentDepthsLoader().load(path);
 
 		} catch (Exception e) {
 			log.error("Can not load instruments", e);

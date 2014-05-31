@@ -4,6 +4,10 @@ import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.google.common.base.Objects;
 import com.kensai.market.IdGenerator;
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.CommandStatus;
@@ -16,6 +20,7 @@ import com.kensai.protocol.Trading.Summary;
 import com.kensai.protocol.Trading.Summary.Builder;
 
 public class InstrumentDepth {
+	private static final Logger log = LogManager.getLogger(InstrumentDepth.class);
 
 	private final Instrument instrument;
 
@@ -34,14 +39,15 @@ public class InstrumentDepth {
 	private long lastUpdate;
 	private MarketStatus marketStatus = MarketStatus.OPEN;
 
-	public InstrumentDepth(Instrument instrument, double open, double close) {
+	public InstrumentDepth(Instrument instrument, double open, double close, double last) {
 		this.instrument = instrument;
 		this.open = open;
 		this.close = close;
+		this.last = last;
 	}
 
 	public InstrumentDepth(Summary summary) {
-		this(summary.getInstrument(), summary.getOpen(), summary.getClose());
+		this(summary.getInstrument(), summary.getOpen(), summary.getClose(), summary.getLast());
 	}
 
 	public Instrument getInstrument() {
@@ -71,13 +77,21 @@ public class InstrumentDepth {
 		// Buy side
 		for (int i = 0; i < buyDepths.size(); i++) {
 			DepthRow depth = buyDepths.get(i);
-			builder.addBuyDepths(depth.toDepthBuilder().setDepth(i));
+			com.kensai.protocol.Trading.Depth.Builder depthBuilder = depth.toDepthBuilder().setDepth(i);
+			if (depthBuilder.getQuantity() > 0) {
+				log.error("toSummaryBuilder - buyDepth[" + i + "] qty[" + depthBuilder.getQuantity() + "] price[" + depthBuilder.getPrice() + "]");
+			}
+			builder.addBuyDepths(depthBuilder);
 		}
 
 		// Sell side
 		for (int i = 0; i < sellDepths.size(); i++) {
 			DepthRow depth = sellDepths.get(i);
-			builder.addSellDepths(depth.toDepthBuilder().setDepth(i));
+			com.kensai.protocol.Trading.Depth.Builder depthBuilder = depth.toDepthBuilder().setDepth(i);
+			if (depthBuilder.getQuantity() > 0) {
+				log.error("toSummaryBuilder - sellDepth[" + i + "] qty[" + depthBuilder.getQuantity() + "] price[" + depthBuilder.getPrice() + "]");
+			}
+			builder.addSellDepths(depthBuilder);
 		}
 
 		return builder;
@@ -389,4 +403,14 @@ public class InstrumentDepth {
 
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return Objects.toStringHelper(this)
+			.add("instrument", instrument.getName())
+			.add("last", last)
+			.add("lastUpdate", lastUpdate)
+			.toString();
+	}
+
 }

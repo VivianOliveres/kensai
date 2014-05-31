@@ -210,6 +210,14 @@ public class KensaiMarket {
 		Instrument instrument = result.getResultedOrder().getInstrument();
 		InstrumentDepth depth = getDepth(instrument);
 		Summary summary = depth.toSummary();
+		if (summary.getBuyDepthsCount() > 0 && summary.getBuyDepths(0).getQuantity() > 0 && summary.getBuyDepths(0).getPrice() <= 0) {
+			log.error("BuyDepth invalid");
+			System.exit(0);
+		}
+		if (summary.getSellDepthsCount() > 0 && summary.getSellDepths(0).getQuantity() > 0 && summary.getSellDepths(0).getPrice() <= 0) {
+			log.error("SellDepth invalid");
+			System.exit(0);
+		}
 		sender.send(summary);
 	}
 

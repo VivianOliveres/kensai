@@ -20,6 +20,7 @@ public class TestInstrumentDepth {
 	private Instrument instr = OrderFactory.INSTRUMENT;
 	private double open = 15;
 	private double close = 20;
+	private double last = 19;
 
 	private String user = OrderFactory.USER;
 
@@ -27,7 +28,7 @@ public class TestInstrumentDepth {
 
 	@Before
 	public void init() {
-		depth = new InstrumentDepth(instr, open, close);
+		depth = new InstrumentDepth(instr, open, close, last);
 	}
 
 	@Test
@@ -705,7 +706,7 @@ public class TestInstrumentDepth {
 		int initialQty = 999;
 		double price = 123.123;
 		Order initialOrder = OrderFactory.create(price, initialQty, BuySell.SELL).build();
-		Order initialOrderInserted = depth.insert(initialOrder).getResultedOrder();
+		depth.insert(initialOrder).getResultedOrder();
 
 		// AND: a buy order with same price and small quantity has to be inserted
 		int qty = 5;
@@ -762,7 +763,7 @@ public class TestInstrumentDepth {
 		int initialQty = 999;
 		double price = 123.123;
 		Order initialOrder = OrderFactory.create(price, initialQty, BuySell.BUY).build();
-		Order initialOrderInserted = depth.insert(initialOrder).getResultedOrder();
+		depth.insert(initialOrder).getResultedOrder();
 
 		// AND: a sell order with same price and small quantity has to be inserted
 		int qty = 5;

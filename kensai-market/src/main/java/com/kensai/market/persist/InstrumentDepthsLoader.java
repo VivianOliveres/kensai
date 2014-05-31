@@ -20,14 +20,9 @@ import com.kensai.protocol.Trading.MarketStatus;
 import com.kensai.protocol.Trading.Summary;
 
 public class InstrumentDepthsLoader {
-
 	public static final Logger log = LogManager.getLogger(InstrumentDepthsLoader.class);
 
-	private final Path path;
-
-	public InstrumentDepthsLoader(Path path) throws IllegalArgumentException {
-		this.path = path;
-
+	public List<InstrumentDepth> load(Path path) throws IOException {
 		// Check path validity
 		if (path == null) {
 			throw new IllegalArgumentException("Null path are forbidden");
@@ -38,9 +33,7 @@ public class InstrumentDepthsLoader {
 		} else if (!Files.isRegularFile(path)) {
 			throw new IllegalArgumentException("Only regular file (like non directory) can be read: [" + path.toString() + "]");
 		}
-	}
 
-	public List<InstrumentDepth> load() throws IOException {
 		List<InstrumentDepth> instruments = newArrayList();
 		List<String> allLines = Files.readAllLines(path, Charset.defaultCharset());
 		if (allLines == null || allLines.isEmpty()) {
@@ -66,7 +59,7 @@ public class InstrumentDepthsLoader {
 		return instruments;
 	}
 
-	private InstrumentDepth parseLine(String line) {
+	protected InstrumentDepth parseLine(String line) {
 		// Split values and trim
 		Iterable<String> splitted = Splitter.on(";").trimResults().split(line);
 
