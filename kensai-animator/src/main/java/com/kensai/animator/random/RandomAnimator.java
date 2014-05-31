@@ -82,7 +82,7 @@ public class RandomAnimator extends AbstractSubscriberAnimator {
 		double lowPrice = summary.getBuyDepths(summary.getBuyDepthsCount() - 1).getPrice() - 0.5;
 		double highPrice = summary.getSellDepths(summary.getSellDepthsCount() - 1).getPrice() + 0.5;
 		double factor = random.nextDouble();
-		return lowPrice + round(factor * highPrice);
+		return round(lowPrice + factor * highPrice);
 	}
 
 	private double round(double value) {
@@ -118,6 +118,12 @@ public class RandomAnimator extends AbstractSubscriberAnimator {
 			instruments.clear();
 			for (Summary summary : snapshot.getSummariesList()) {
 				instruments.put(summary.getInstrument(), summary);
+
+				// Initialize with orders
+				int qty = generateQty(summary);
+				double price = generatePrice(summary);
+				sendOrder(qty, price, BuySell.BUY, summary.getInstrument());
+				sendOrder(qty, round(price + 0.1), BuySell.SELL, summary.getInstrument());
 			}
 		}
 	}
