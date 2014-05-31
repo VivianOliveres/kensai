@@ -1,5 +1,6 @@
 package com.kensai.gui.services.connectors;
 
+import static com.kensai.gui.assertions.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
@@ -96,6 +97,6 @@ public class MarketConnectorMessageHandlerTest {
 		handler.doOnSnapshot(summaries);
 
 		// THEN: update InstrumentsModel
-		com.kensai.gui.assertions.Assertions.assertThat(instrumentModel.getSummary()).isEqualTo(snapshot);
+		assertThat(instrumentModel.getSummary()).isEqualTo(snapshot);
 	}
 }

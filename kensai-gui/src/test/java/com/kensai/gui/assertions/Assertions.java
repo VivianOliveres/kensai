@@ -10,7 +10,7 @@ import com.kensai.gui.xml.MarketConnexionDescriptors;
  * Entry point for assertion of different data types. Each method in this class is a static factory for the
  * type-specific assertion objects.
  */
-public class Assertions {
+public class Assertions extends org.assertj.core.api.Assertions {
 
   /**
    * Creates a new instance of <code>{@link MarketConnexionDescriptorAssert}</code>.
