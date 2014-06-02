@@ -5,16 +5,30 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
 
 import org.junit.BeforeClass;
 
 public class AbstractTestJavaFX {
 
+	private static volatile boolean IS_STARTED = false;
+
 	@BeforeClass
 	public static void initJavaFX() {
-		new JFXPanel();
+		if (IS_STARTED) {
+			return;
+		}
+
+		Thread t = new Thread("JavaFX Init Thread") {
+			@Override
+			public void run() {
+				Application.launch(AsNoApp.class, new String[0]);
+			}
+		};
+		t.setDaemon(true);
+		t.start();
+		IS_STARTED = true;
 	}
 
 	public static void runAndWait(final Runnable run) throws InterruptedException, ExecutionException {
