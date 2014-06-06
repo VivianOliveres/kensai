@@ -22,6 +22,7 @@ import com.kensai.gui.services.model.market.MarketConnectionsModel;
 import com.kensai.gui.services.task.TaskService;
 import com.kensai.gui.views.instruments.InstrumentsViewController;
 import com.kensai.gui.views.markets.MarketConnectionsViewController;
+import com.kensai.gui.views.orders.OrdersViewController;
 
 public class MainKensaiApplication extends Application {
 	private static Logger log = LogManager.getLogger(MainKensaiApplication.class);
@@ -81,6 +82,9 @@ public class MainKensaiApplication extends Application {
 
 		InstrumentsViewController instrumentsViewController = guiService.getInstrumentsViewController();
 		root.setCenter(instrumentsViewController.getView());
+
+		OrdersViewController ordersViewController = guiService.getOrdersViewController();
+		root.setBottom(ordersViewController.getView());
 
 		return new Scene(root);
 	}

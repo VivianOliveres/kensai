@@ -1,6 +1,8 @@
 package com.kensai.gui.services.connectors;
 
 import static com.kensai.gui.assertions.Assertions.assertThat;
+import static com.kensai.protocol.Trading.OrderAction.INSERT;
+import static com.kensai.protocol.Trading.OrderStatus.ON_MARKET;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
@@ -20,11 +22,15 @@ import com.kensai.gui.services.model.instruments.InstrumentModel;
 import com.kensai.gui.services.model.instruments.InstrumentsModel;
 import com.kensai.gui.services.model.instruments.SummaryModel;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
+import com.kensai.gui.services.model.orders.OrdersModel;
 import com.kensai.gui.services.task.TaskService;
+import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.Instrument;
 import com.kensai.protocol.Trading.InstrumentType;
 import com.kensai.protocol.Trading.InstrumentsSnapshot;
 import com.kensai.protocol.Trading.MarketStatus;
+import com.kensai.protocol.Trading.Order;
+import com.kensai.protocol.Trading.OrdersSnapshot;
 import com.kensai.protocol.Trading.SummariesSnapshot;
 import com.kensai.protocol.Trading.Summary;
 
@@ -40,12 +46,13 @@ public class MarketConnectorMessageHandlerTest {
 	private ApplicationContext context = mock(ApplicationContext.class);
 	private InstrumentsModel instrumentsModel = mock(InstrumentsModel.class);
 	private SummaryModel summaryModel = mock(SummaryModel.class);
+	private OrdersModel ordersModel = mock(OrdersModel.class);
 	
-	//#Name;Raw;Isin;Last;Close;High;Low;Open
-	//Sanofi;SAN;FR0000120578;68.16; 68.08; 68.26; 67.94;68.08
 	private static final Instrument SANOFI = Instrument.newBuilder().setIsin("FR0000120578").setName("Sanofi").setDescription("SAN").setType(InstrumentType.STOCK).build();
 	private static final Summary SANOFI_SNAPSHOT_1 = Summary.newBuilder().setInstrument(SANOFI).setClose(68.08).setLast(68.16).setMarketStatus(MarketStatus.OPEN).setOpen(68.08).setTimestamp(System.currentTimeMillis()).build();
 	private static final Summary SANOFI_SNAPSHOT_2 = Summary.newBuilder().setInstrument(SANOFI).setClose(69.09).setLast(69.17).setMarketStatus(MarketStatus.OPEN).setOpen(69.09).setTimestamp(System.currentTimeMillis() + 1).build();
+
+	private static final Order SANOFI_ORDER = Order.newBuilder().setId(123).setSide(BuySell.BUY).setInstrument(SANOFI).setAction(INSERT).setOrderStatus(ON_MARKET).setPrice(456.789).setExecPrice(456.789).setInitialQuantity(159).setExecutedQuantity(15).setUserData("blabla").setUser("toto").setInsertTime(System.currentTimeMillis()).setLastUpdateTime(System.currentTimeMillis()).build();
 
 	@Before
 	public void init() {
@@ -57,6 +64,7 @@ public class MarketConnectorMessageHandlerTest {
 
 		ModelService modelService = mock(ModelService.class);
 		given(modelService.getInstruments()).willReturn(instrumentsModel);
+		given(modelService.getOrders()).willReturn(ordersModel);
 		given(context.getModelService()).willReturn(modelService);
 
 		handler = new MarketConnectorMessageHandler(context, swx);
@@ -97,6 +105,9 @@ public class MarketConnectorMessageHandlerTest {
 		// WHEN: connector receive snapshot
 		handler.doOnSnapshot(summaries);
 
+		// AND: doUpdateGUI
+		handler.doUpdateGui();
+
 		// THEN: update InstrumentsModel
 		assertThat(instrumentModel.getSummary()).isEqualTo(SANOFI_SNAPSHOT_1);
 	}
@@ -125,5 +136,32 @@ public class MarketConnectorMessageHandlerTest {
 		// THEN: update summaryModel
 		verify(summaryModel, never()).update(SANOFI_SNAPSHOT_1);
 		verify(summaryModel).update(SANOFI_SNAPSHOT_2);
+	}
+
+	@Test
+	public void should_update_OrdersModel_when_receive_onSnapshot_Order() {
+		// GIVEN: OrdersSnapshot
+		OrdersSnapshot orders = OrdersSnapshot.newBuilder().addOrders(SANOFI_ORDER).build();
+
+		// WHEN: connector receive snapshot
+		handler.onSnapshot(orders);
+
+		// AND: doUpdateGUI
+		handler.doUpdateGui();
+
+		// THEN: update OrdersModel
+		verify(ordersModel).add(eq(SANOFI_ORDER), any(InstrumentModel.class));
+	}
+
+	@Test
+	public void should_add_orders_when_receiving_order() {
+		// GIVEN: New order has been received
+		handler.onOrder(SANOFI_ORDER);
+
+		// WHEN: doUpdateGui
+		handler.doUpdateGui();
+
+		// THEN: update OrdersModel
+		verify(ordersModel).add(eq(SANOFI_ORDER), any(InstrumentModel.class));
 	}
 }

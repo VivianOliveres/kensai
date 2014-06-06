@@ -2,6 +2,7 @@ package com.kensai.gui.services.connectors;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentHashMap.KeySetView;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
 import javafx.application.Platform;
@@ -10,9 +11,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.kensai.gui.services.ApplicationContext;
+import com.kensai.gui.services.model.instruments.InstrumentModel;
 import com.kensai.gui.services.model.instruments.InstrumentsModel;
 import com.kensai.gui.services.model.instruments.SummaryModel;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
+import com.kensai.gui.services.model.orders.OrdersModel;
 import com.kensai.protocol.Trading.Execution;
 import com.kensai.protocol.Trading.ExecutionsSnapshot;
 import com.kensai.protocol.Trading.Instrument;
@@ -31,6 +34,7 @@ public class MarketConnectorMessageHandler {
 	private MarketConnectionModel model;
 
 	private ConcurrentHashMap<Instrument, Summary> summariesUpdates = new ConcurrentHashMap<>();
+	private ConcurrentLinkedQueue<Order> ordersUpdates = new ConcurrentLinkedQueue<>();
 
 	public MarketConnectorMessageHandler(ApplicationContext context, MarketConnectionModel model) {
 		this.context = context;
@@ -46,6 +50,13 @@ public class MarketConnectorMessageHandler {
 		keySet.stream().map(instrument -> summariesUpdates.remove(instrument))
 							.forEach(summary -> doUpdateSummay(summary));
 
+		// Update each order
+		log.debug("doUpdateGui for " + ordersUpdates.size() + " orders");
+		while (!ordersUpdates.isEmpty()) {
+			Order order = ordersUpdates.remove();
+			doUpdateOrder(order);
+		}
+
 		return null;
 	}
 
@@ -53,6 +64,14 @@ public class MarketConnectorMessageHandler {
 		SummaryModel summaryModel = context.getModelService().getInstruments().getSummary(summary.getInstrument(), model.getConnectionName());
 		summaryModel.update(summary);
 		return null;
+	}
+
+	private void doUpdateOrder(Order order) {
+		InstrumentsModel instruments = context.getModelService().getInstruments();
+		InstrumentModel instrument = instruments.getInstrument(order.getInstrument());
+
+		OrdersModel orders = context.getModelService().getOrders();
+		orders.add(order, instrument);
 	}
 
 	public void onSubscribe(SubscribeCommand subscribeCommand) {
@@ -69,9 +88,12 @@ public class MarketConnectorMessageHandler {
 		Platform.runLater(() -> doOnSnapshot(snapshot));
 	}
 
+	public void onSummary(Summary summary) {
+		summariesUpdates.put(summary.getInstrument(), summary);
+	}
+
 	protected void doOnSnapshot(SummariesSnapshot snapshot) {
-		InstrumentsModel instruments = context.getModelService().getInstruments();
-		snapshot.getSummariesList().forEach(summary -> instruments.getSummary(summary.getInstrument(), model.getConnectionName()).update(summary));
+		snapshot.getSummariesList().forEach(summary -> onSummary(summary));
 	}
 
 	public void onSnapshot(ExecutionsSnapshot snapshot) {
@@ -79,7 +101,11 @@ public class MarketConnectorMessageHandler {
 	}
 
 	public void onSnapshot(OrdersSnapshot snapshot) {
-		// TODO Auto-generated method stub
+		snapshot.getOrdersList().forEach(order -> onOrder(order));
+	}
+
+	public void onOrder(Order order) {
+		ordersUpdates.add(order);
 	}
 
 	public void onSnapshot(InstrumentsSnapshot snapshot) {
@@ -91,16 +117,7 @@ public class MarketConnectorMessageHandler {
 		snapshot.getInstrumentsList().forEach(instrument -> instruments.add(instrument, model.getConnectionName()));
 	}
 
-	public void onOrder(Order order) {
-		// TODO Auto-generated method stub
-	}
-
 	public void onExecution(Execution execution) {
 		// TODO Auto-generated method stub
 	}
-
-	public void onSummary(Summary summary) {
-		summariesUpdates.put(summary.getInstrument(), summary);
-	}
-
 }
