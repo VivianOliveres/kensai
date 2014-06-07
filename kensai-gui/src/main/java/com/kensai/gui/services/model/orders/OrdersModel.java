@@ -26,7 +26,14 @@ public class OrdersModel implements Iterable<OrderModel> {
 	}
 
 	public void add(Order order, InstrumentModel insrument) {
-		if (!contains(order)) {
+		if (contains(order)) {
+			getOrders(insrument).stream()
+									  .filter(model -> model.equals(order))
+									  .findFirst()
+									  .get()
+									  .update(order);
+
+		} else {
 			orders.add(new OrderModel(order, insrument));
 		}
 	}
