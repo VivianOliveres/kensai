@@ -57,4 +57,14 @@ public abstract class AbstractAnimator implements Animator {
 		// No implementation by default
 	}
 
+	protected double round(double price) {
+		double floor = Math.floor(price);
+		double rest = price - floor;
+		if (rest < 0.5) {
+			return floor;
+
+		} else {
+			return floor + 0.5;
+		}
+	}
 }

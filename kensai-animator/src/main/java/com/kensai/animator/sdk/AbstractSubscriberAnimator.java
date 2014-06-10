@@ -62,8 +62,7 @@ public class AbstractSubscriberAnimator extends AbstractAnimator {
 			log.info("Successfully connected to market!");
 
 		} else {
-			log.error("Can not subscribe to market. Schedule a retry...");
-			requestSubscribe();
+			log.error("Receive NAK when subscribing");
 		}
 	}
 

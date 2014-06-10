@@ -19,32 +19,36 @@ public class AnimatorClient {
 
 	private static final Logger log = LogManager.getLogger(AnimatorClient.class);
 
+	private static final UncaughtExceptionHandler exceptionHandler = new UncaughtExceptionHandler() {
+
+		@Override
+		public void uncaughtException(Thread t, Throwable e) {
+			log.error("Uncaught exception in thread [{}]", t == null ? null : t.getName(), e);
+		}
+	};
+
+	private static final ThreadFactory coreThreadFactory = new ThreadFactoryBuilder().setDaemon(false).setNameFormat("AnimatorCore")
+		.setUncaughtExceptionHandler(exceptionHandler).build();
+
 	private final String host;
 	private final int port;
 	private final Animator animator;
 
+	private ExecutorService coreExecutor;
+
 	public AnimatorClient(String host, int port, Animator animator) {
+		this(host, port, animator, Executors.newSingleThreadExecutor(coreThreadFactory));
+	}
+
+	public AnimatorClient(String host, int port, Animator animator, ExecutorService coreExecutor) {
 		this.host = host;
 		this.port = port;
 		this.animator = animator;
+		this.coreExecutor = coreExecutor;
 	}
 
 	public void run() {
-		UncaughtExceptionHandler exceptionHandler = new UncaughtExceptionHandler() {
-
-			@Override
-			public void uncaughtException(Thread t, Throwable e) {
-				log.error("Uncaught exception in thread [{}]", t == null ? null : t.getName(), e);
-			}
-		};
-
-		// Set DefaultUncaughtExceptionHandler for all threads
-		Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
-
 		// Create ChannelFactory which uses only one thread for ChannelHandler
-		ThreadFactory coreThreadFactory = new ThreadFactoryBuilder().setDaemon(false).setNameFormat("AnimatorCore")
-			.setUncaughtExceptionHandler(exceptionHandler).build();
-		ExecutorService coreExecutor = Executors.newSingleThreadExecutor(coreThreadFactory);
 		ClientBootstrap bootstrap = new ClientBootstrap(new NioClientSocketChannelFactory(Executors.newCachedThreadPool(), coreExecutor));
 
 		// Configure the event pipeline factory.

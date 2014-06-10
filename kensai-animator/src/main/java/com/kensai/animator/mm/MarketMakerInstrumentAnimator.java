@@ -105,10 +105,17 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 	}
 
 	private void sendOrder(int initialQty, double price, BuySell side, String userData) {
-		log.info("send order [instr[{}] qty[{}] price[{}] side[{}] userData[{}] user[{}]]", new Object[] { instrument.getName(), qty, price, side,
-				userData, user });
-		Order order = Order.newBuilder().setInstrument(instrument).setAction(OrderAction.INSERT).setInitialQuantity(initialQty).setPrice(price)
-			.setUser(user).setSide(side).setUserData(userData).build();
+		double roundedPrice = round(price);
+		log.info("send order [instr[{}] qty[{}] price[{}] side[{}] userData[{}] user[{}]]",  instrument.getName(), qty, roundedPrice, side, userData, user);
+		Order order = Order.newBuilder()
+								 .setInstrument(instrument)
+								 .setAction(OrderAction.INSERT)
+								 .setInitialQuantity(initialQty)
+								 .setPrice(roundedPrice)
+								 .setUser(user)
+								 .setSide(side)
+								 .setUserData(userData)
+								 .build();
 		sender.send(order);
 	}
 

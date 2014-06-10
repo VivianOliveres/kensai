@@ -85,17 +85,6 @@ public class RandomAnimator extends AbstractSubscriberAnimator {
 		return round(lowPrice + factor * highPrice);
 	}
 
-	private double round(double value) {
-		double floor = Math.floor(value);
-		double rest = value - floor;
-		if (rest < 0.5) {
-			return floor;
-
-		} else {
-			return floor + 0.5;
-		}
-	}
-
 	private void sendOrder(int qty, double price, BuySell side, Instrument instrument) {
 		String userData = UserDataGenerator.generate();
 		log.info("send order [instr[{}] side[{}] qty[{}] price[{}] userData[{}] user[{}]]", new Object[] { instrument.getName(), side, qty, price,
