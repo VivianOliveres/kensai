@@ -34,13 +34,13 @@ public class OrdersModel implements Iterable<OrderModel> {
 									  .update(order);
 
 		} else {
-			orders.add(new OrderModel(order, insrument));
+			orders.add(0, new OrderModel(order, insrument));
 		}
 	}
 
 	public void add(OrderModel order) {
 		if (!contains(order)) {
-			orders.add(order);
+			orders.add(0, order);
 		}
 	}
 

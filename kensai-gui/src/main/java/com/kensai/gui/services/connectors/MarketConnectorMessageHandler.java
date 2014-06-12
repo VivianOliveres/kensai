@@ -51,7 +51,7 @@ public class MarketConnectorMessageHandler {
 							.forEach(summary -> doUpdateSummay(summary));
 
 		// Update each order
-		log.debug("doUpdateGui for " + ordersUpdates.size() + " orders");
+		log.info("doUpdateGui for " + ordersUpdates.size() + " orders");
 		while (!ordersUpdates.isEmpty()) {
 			Order order = ordersUpdates.remove();
 			doUpdateOrder(order);

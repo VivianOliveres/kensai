@@ -20,7 +20,7 @@ import com.kensai.protocol.Trading.UnsubscribeCommand;
 public class MarketConnector {
 	private static final Logger log = LogManager.getLogger(MarketConnector.class);
 
-	public static final String DEFAULT_USER = "DefaultMarketMaker";
+	public static final String DEFAULT_USER = "DefaultUpdaterAnimator";
 
 	private ApplicationContext context;
 	private MarketConnectionModel model;
