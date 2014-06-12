@@ -5,11 +5,10 @@
 
 	<groupId>com.kensai</groupId>
 	<artifactId>kensai-protocol</artifactId>
-	<version>1.0.6-SNAPSHOT</version>
+	<version>1.1.0-SNAPSHOT</version>
 
 	<name>Kensai Protocol</name>
-	<description>Messaging API to make communicate clients and server (based on
-		protobuf)</description>
+	<description>Messaging API to make communicate clients and server (based on protobuf)</description>
 
 	<build>
 		<plugins>
@@ -41,7 +40,7 @@
 						<phase>generate-sources</phase>
 						<configuration>
 							<tasks>
-								<exec executable="${PROTOBUF_HOME}/bin/protoc">
+								<exec executable="protoc">
 									<arg value="--proto_path=src/main/resources/" />
 
 									<arg value="--java_out=src/main/java" />

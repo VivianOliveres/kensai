@@ -464,6 +464,97 @@ public final class Trading {
   }
 
   /**
+   * Protobuf enum {@code protocol.Role}
+   */
+  public enum Role
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ADMIN = 0;</code>
+     */
+    ADMIN(0, 0),
+    /**
+     * <code>FORBIDDEN = 1;</code>
+     */
+    FORBIDDEN(1, 1),
+    /**
+     * <code>GROUPS = 2;</code>
+     */
+    GROUPS(2, 2),
+    ;
+
+    /**
+     * <code>ADMIN = 0;</code>
+     */
+    public static final int ADMIN_VALUE = 0;
+    /**
+     * <code>FORBIDDEN = 1;</code>
+     */
+    public static final int FORBIDDEN_VALUE = 1;
+    /**
+     * <code>GROUPS = 2;</code>
+     */
+    public static final int GROUPS_VALUE = 2;
+
+
+    public final int getNumber() { return value; }
+
+    public static Role valueOf(int value) {
+      switch (value) {
+        case 0: return ADMIN;
+        case 1: return FORBIDDEN;
+        case 2: return GROUPS;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<Role>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<Role>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<Role>() {
+            public Role findValueByNumber(int number) {
+              return Role.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.kensai.protocol.Trading.getDescriptor().getEnumTypes().get(5);
+    }
+
+    private static final Role[] VALUES = values();
+
+    public static Role valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private Role(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:protocol.Role)
+  }
+
+  /**
    * Protobuf enum {@code protocol.MarketStatus}
    */
   public enum MarketStatus
@@ -538,7 +629,7 @@ public final class Trading {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.kensai.protocol.Trading.getDescriptor().getEnumTypes().get(5);
+      return com.kensai.protocol.Trading.getDescriptor().getEnumTypes().get(6);
     }
 
     private static final MarketStatus[] VALUES = values();
@@ -2286,6 +2377,1325 @@ public final class Trading {
     // @@protoc_insertion_point(class_scope:protocol.InstrumentsSnapshot)
   }
 
+  public interface UserOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string name = 1;
+    /**
+     * <code>required string name = 1;</code>
+     */
+    boolean hasName();
+    /**
+     * <code>required string name = 1;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>required string name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    // repeated string groups = 2;
+    /**
+     * <code>repeated string groups = 2;</code>
+     */
+    java.util.List<java.lang.String>
+    getGroupsList();
+    /**
+     * <code>repeated string groups = 2;</code>
+     */
+    int getGroupsCount();
+    /**
+     * <code>repeated string groups = 2;</code>
+     */
+    java.lang.String getGroups(int index);
+    /**
+     * <code>repeated string groups = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getGroupsBytes(int index);
+
+    // required bool isListeningSummary = 3;
+    /**
+     * <code>required bool isListeningSummary = 3;</code>
+     */
+    boolean hasIsListeningSummary();
+    /**
+     * <code>required bool isListeningSummary = 3;</code>
+     */
+    boolean getIsListeningSummary();
+
+    // required .protocol.Role OrderListeningRole = 4;
+    /**
+     * <code>required .protocol.Role OrderListeningRole = 4;</code>
+     */
+    boolean hasOrderListeningRole();
+    /**
+     * <code>required .protocol.Role OrderListeningRole = 4;</code>
+     */
+    com.kensai.protocol.Trading.Role getOrderListeningRole();
+
+    // repeated string listeningGroupsOrder = 5;
+    /**
+     * <code>repeated string listeningGroupsOrder = 5;</code>
+     */
+    java.util.List<java.lang.String>
+    getListeningGroupsOrderList();
+    /**
+     * <code>repeated string listeningGroupsOrder = 5;</code>
+     */
+    int getListeningGroupsOrderCount();
+    /**
+     * <code>repeated string listeningGroupsOrder = 5;</code>
+     */
+    java.lang.String getListeningGroupsOrder(int index);
+    /**
+     * <code>repeated string listeningGroupsOrder = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getListeningGroupsOrderBytes(int index);
+
+    // required .protocol.Role ExecListeningRole = 6;
+    /**
+     * <code>required .protocol.Role ExecListeningRole = 6;</code>
+     */
+    boolean hasExecListeningRole();
+    /**
+     * <code>required .protocol.Role ExecListeningRole = 6;</code>
+     */
+    com.kensai.protocol.Trading.Role getExecListeningRole();
+
+    // repeated string listeningGroupsExec = 7;
+    /**
+     * <code>repeated string listeningGroupsExec = 7;</code>
+     */
+    java.util.List<java.lang.String>
+    getListeningGroupsExecList();
+    /**
+     * <code>repeated string listeningGroupsExec = 7;</code>
+     */
+    int getListeningGroupsExecCount();
+    /**
+     * <code>repeated string listeningGroupsExec = 7;</code>
+     */
+    java.lang.String getListeningGroupsExec(int index);
+    /**
+     * <code>repeated string listeningGroupsExec = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getListeningGroupsExecBytes(int index);
+  }
+  /**
+   * Protobuf type {@code protocol.User}
+   */
+  public static final class User extends
+      com.google.protobuf.GeneratedMessage
+      implements UserOrBuilder {
+    // Use User.newBuilder() to construct.
+    private User(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private User(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final User defaultInstance;
+    public static User getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public User getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private User(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              name_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                groups_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              groups_.add(input.readBytes());
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000002;
+              isListeningSummary_ = input.readBool();
+              break;
+            }
+            case 32: {
+              int rawValue = input.readEnum();
+              com.kensai.protocol.Trading.Role value = com.kensai.protocol.Trading.Role.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(4, rawValue);
+              } else {
+                bitField0_ |= 0x00000004;
+                orderListeningRole_ = value;
+              }
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                listeningGroupsOrder_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              listeningGroupsOrder_.add(input.readBytes());
+              break;
+            }
+            case 48: {
+              int rawValue = input.readEnum();
+              com.kensai.protocol.Trading.Role value = com.kensai.protocol.Trading.Role.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(6, rawValue);
+              } else {
+                bitField0_ |= 0x00000008;
+                execListeningRole_ = value;
+              }
+              break;
+            }
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                listeningGroupsExec_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              listeningGroupsExec_.add(input.readBytes());
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          groups_ = new com.google.protobuf.UnmodifiableLazyStringList(groups_);
+        }
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          listeningGroupsOrder_ = new com.google.protobuf.UnmodifiableLazyStringList(listeningGroupsOrder_);
+        }
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          listeningGroupsExec_ = new com.google.protobuf.UnmodifiableLazyStringList(listeningGroupsExec_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.kensai.protocol.Trading.internal_static_protocol_User_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.kensai.protocol.Trading.internal_static_protocol_User_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.kensai.protocol.Trading.User.class, com.kensai.protocol.Trading.User.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<User> PARSER =
+        new com.google.protobuf.AbstractParser<User>() {
+      public User parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new User(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<User> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string name = 1;
+    public static final int NAME_FIELD_NUMBER = 1;
+    private java.lang.Object name_;
+    /**
+     * <code>required string name = 1;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string name = 1;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string name = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // repeated string groups = 2;
+    public static final int GROUPS_FIELD_NUMBER = 2;
+    private com.google.protobuf.LazyStringList groups_;
+    /**
+     * <code>repeated string groups = 2;</code>
+     */
+    public java.util.List<java.lang.String>
+        getGroupsList() {
+      return groups_;
+    }
+    /**
+     * <code>repeated string groups = 2;</code>
+     */
+    public int getGroupsCount() {
+      return groups_.size();
+    }
+    /**
+     * <code>repeated string groups = 2;</code>
+     */
+    public java.lang.String getGroups(int index) {
+      return groups_.get(index);
+    }
+    /**
+     * <code>repeated string groups = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getGroupsBytes(int index) {
+      return groups_.getByteString(index);
+    }
+
+    // required bool isListeningSummary = 3;
+    public static final int ISLISTENINGSUMMARY_FIELD_NUMBER = 3;
+    private boolean isListeningSummary_;
+    /**
+     * <code>required bool isListeningSummary = 3;</code>
+     */
+    public boolean hasIsListeningSummary() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required bool isListeningSummary = 3;</code>
+     */
+    public boolean getIsListeningSummary() {
+      return isListeningSummary_;
+    }
+
+    // required .protocol.Role OrderListeningRole = 4;
+    public static final int ORDERLISTENINGROLE_FIELD_NUMBER = 4;
+    private com.kensai.protocol.Trading.Role orderListeningRole_;
+    /**
+     * <code>required .protocol.Role OrderListeningRole = 4;</code>
+     */
+    public boolean hasOrderListeningRole() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required .protocol.Role OrderListeningRole = 4;</code>
+     */
+    public com.kensai.protocol.Trading.Role getOrderListeningRole() {
+      return orderListeningRole_;
+    }
+
+    // repeated string listeningGroupsOrder = 5;
+    public static final int LISTENINGGROUPSORDER_FIELD_NUMBER = 5;
+    private com.google.protobuf.LazyStringList listeningGroupsOrder_;
+    /**
+     * <code>repeated string listeningGroupsOrder = 5;</code>
+     */
+    public java.util.List<java.lang.String>
+        getListeningGroupsOrderList() {
+      return listeningGroupsOrder_;
+    }
+    /**
+     * <code>repeated string listeningGroupsOrder = 5;</code>
+     */
+    public int getListeningGroupsOrderCount() {
+      return listeningGroupsOrder_.size();
+    }
+    /**
+     * <code>repeated string listeningGroupsOrder = 5;</code>
+     */
+    public java.lang.String getListeningGroupsOrder(int index) {
+      return listeningGroupsOrder_.get(index);
+    }
+    /**
+     * <code>repeated string listeningGroupsOrder = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getListeningGroupsOrderBytes(int index) {
+      return listeningGroupsOrder_.getByteString(index);
+    }
+
+    // required .protocol.Role ExecListeningRole = 6;
+    public static final int EXECLISTENINGROLE_FIELD_NUMBER = 6;
+    private com.kensai.protocol.Trading.Role execListeningRole_;
+    /**
+     * <code>required .protocol.Role ExecListeningRole = 6;</code>
+     */
+    public boolean hasExecListeningRole() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required .protocol.Role ExecListeningRole = 6;</code>
+     */
+    public com.kensai.protocol.Trading.Role getExecListeningRole() {
+      return execListeningRole_;
+    }
+
+    // repeated string listeningGroupsExec = 7;
+    public static final int LISTENINGGROUPSEXEC_FIELD_NUMBER = 7;
+    private com.google.protobuf.LazyStringList listeningGroupsExec_;
+    /**
+     * <code>repeated string listeningGroupsExec = 7;</code>
+     */
+    public java.util.List<java.lang.String>
+        getListeningGroupsExecList() {
+      return listeningGroupsExec_;
+    }
+    /**
+     * <code>repeated string listeningGroupsExec = 7;</code>
+     */
+    public int getListeningGroupsExecCount() {
+      return listeningGroupsExec_.size();
+    }
+    /**
+     * <code>repeated string listeningGroupsExec = 7;</code>
+     */
+    public java.lang.String getListeningGroupsExec(int index) {
+      return listeningGroupsExec_.get(index);
+    }
+    /**
+     * <code>repeated string listeningGroupsExec = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getListeningGroupsExecBytes(int index) {
+      return listeningGroupsExec_.getByteString(index);
+    }
+
+    private void initFields() {
+      name_ = "";
+      groups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      isListeningSummary_ = false;
+      orderListeningRole_ = com.kensai.protocol.Trading.Role.ADMIN;
+      listeningGroupsOrder_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      execListeningRole_ = com.kensai.protocol.Trading.Role.ADMIN;
+      listeningGroupsExec_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasIsListeningSummary()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOrderListeningRole()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasExecListeningRole()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getNameBytes());
+      }
+      for (int i = 0; i < groups_.size(); i++) {
+        output.writeBytes(2, groups_.getByteString(i));
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(3, isListeningSummary_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeEnum(4, orderListeningRole_.getNumber());
+      }
+      for (int i = 0; i < listeningGroupsOrder_.size(); i++) {
+        output.writeBytes(5, listeningGroupsOrder_.getByteString(i));
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeEnum(6, execListeningRole_.getNumber());
+      }
+      for (int i = 0; i < listeningGroupsExec_.size(); i++) {
+        output.writeBytes(7, listeningGroupsExec_.getByteString(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getNameBytes());
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < groups_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(groups_.getByteString(i));
+        }
+        size += dataSize;
+        size += 1 * getGroupsList().size();
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, isListeningSummary_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, orderListeningRole_.getNumber());
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < listeningGroupsOrder_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(listeningGroupsOrder_.getByteString(i));
+        }
+        size += dataSize;
+        size += 1 * getListeningGroupsOrderList().size();
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(6, execListeningRole_.getNumber());
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < listeningGroupsExec_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(listeningGroupsExec_.getByteString(i));
+        }
+        size += dataSize;
+        size += 1 * getListeningGroupsExecList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.kensai.protocol.Trading.User parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kensai.protocol.Trading.User parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.User parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.kensai.protocol.Trading.User parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.User parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.kensai.protocol.Trading.User parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.User parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.kensai.protocol.Trading.User parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.kensai.protocol.Trading.User parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.kensai.protocol.Trading.User parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.kensai.protocol.Trading.User prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protocol.User}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.kensai.protocol.Trading.UserOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.kensai.protocol.Trading.internal_static_protocol_User_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.kensai.protocol.Trading.internal_static_protocol_User_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.kensai.protocol.Trading.User.class, com.kensai.protocol.Trading.User.Builder.class);
+      }
+
+      // Construct using com.kensai.protocol.Trading.User.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        groups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        isListeningSummary_ = false;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        orderListeningRole_ = com.kensai.protocol.Trading.Role.ADMIN;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        listeningGroupsOrder_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        execListeningRole_ = com.kensai.protocol.Trading.Role.ADMIN;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        listeningGroupsExec_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.kensai.protocol.Trading.internal_static_protocol_User_descriptor;
+      }
+
+      public com.kensai.protocol.Trading.User getDefaultInstanceForType() {
+        return com.kensai.protocol.Trading.User.getDefaultInstance();
+      }
+
+      public com.kensai.protocol.Trading.User build() {
+        com.kensai.protocol.Trading.User result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.kensai.protocol.Trading.User buildPartial() {
+        com.kensai.protocol.Trading.User result = new com.kensai.protocol.Trading.User(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.name_ = name_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          groups_ = new com.google.protobuf.UnmodifiableLazyStringList(
+              groups_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.groups_ = groups_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.isListeningSummary_ = isListeningSummary_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.orderListeningRole_ = orderListeningRole_;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          listeningGroupsOrder_ = new com.google.protobuf.UnmodifiableLazyStringList(
+              listeningGroupsOrder_);
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.listeningGroupsOrder_ = listeningGroupsOrder_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.execListeningRole_ = execListeningRole_;
+        if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          listeningGroupsExec_ = new com.google.protobuf.UnmodifiableLazyStringList(
+              listeningGroupsExec_);
+          bitField0_ = (bitField0_ & ~0x00000040);
+        }
+        result.listeningGroupsExec_ = listeningGroupsExec_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.kensai.protocol.Trading.User) {
+          return mergeFrom((com.kensai.protocol.Trading.User)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.kensai.protocol.Trading.User other) {
+        if (other == com.kensai.protocol.Trading.User.getDefaultInstance()) return this;
+        if (other.hasName()) {
+          bitField0_ |= 0x00000001;
+          name_ = other.name_;
+          onChanged();
+        }
+        if (!other.groups_.isEmpty()) {
+          if (groups_.isEmpty()) {
+            groups_ = other.groups_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureGroupsIsMutable();
+            groups_.addAll(other.groups_);
+          }
+          onChanged();
+        }
+        if (other.hasIsListeningSummary()) {
+          setIsListeningSummary(other.getIsListeningSummary());
+        }
+        if (other.hasOrderListeningRole()) {
+          setOrderListeningRole(other.getOrderListeningRole());
+        }
+        if (!other.listeningGroupsOrder_.isEmpty()) {
+          if (listeningGroupsOrder_.isEmpty()) {
+            listeningGroupsOrder_ = other.listeningGroupsOrder_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureListeningGroupsOrderIsMutable();
+            listeningGroupsOrder_.addAll(other.listeningGroupsOrder_);
+          }
+          onChanged();
+        }
+        if (other.hasExecListeningRole()) {
+          setExecListeningRole(other.getExecListeningRole());
+        }
+        if (!other.listeningGroupsExec_.isEmpty()) {
+          if (listeningGroupsExec_.isEmpty()) {
+            listeningGroupsExec_ = other.listeningGroupsExec_;
+            bitField0_ = (bitField0_ & ~0x00000040);
+          } else {
+            ensureListeningGroupsExecIsMutable();
+            listeningGroupsExec_.addAll(other.listeningGroupsExec_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasName()) {
+          
+          return false;
+        }
+        if (!hasIsListeningSummary()) {
+          
+          return false;
+        }
+        if (!hasOrderListeningRole()) {
+          
+          return false;
+        }
+        if (!hasExecListeningRole()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.kensai.protocol.Trading.User parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.kensai.protocol.Trading.User) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string name = 1;
+      private java.lang.Object name_ = "";
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string name = 1;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      // repeated string groups = 2;
+      private com.google.protobuf.LazyStringList groups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureGroupsIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          groups_ = new com.google.protobuf.LazyStringArrayList(groups_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <code>repeated string groups = 2;</code>
+       */
+      public java.util.List<java.lang.String>
+          getGroupsList() {
+        return java.util.Collections.unmodifiableList(groups_);
+      }
+      /**
+       * <code>repeated string groups = 2;</code>
+       */
+      public int getGroupsCount() {
+        return groups_.size();
+      }
+      /**
+       * <code>repeated string groups = 2;</code>
+       */
+      public java.lang.String getGroups(int index) {
+        return groups_.get(index);
+      }
+      /**
+       * <code>repeated string groups = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getGroupsBytes(int index) {
+        return groups_.getByteString(index);
+      }
+      /**
+       * <code>repeated string groups = 2;</code>
+       */
+      public Builder setGroups(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureGroupsIsMutable();
+        groups_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string groups = 2;</code>
+       */
+      public Builder addGroups(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureGroupsIsMutable();
+        groups_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string groups = 2;</code>
+       */
+      public Builder addAllGroups(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureGroupsIsMutable();
+        super.addAll(values, groups_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string groups = 2;</code>
+       */
+      public Builder clearGroups() {
+        groups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string groups = 2;</code>
+       */
+      public Builder addGroupsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureGroupsIsMutable();
+        groups_.add(value);
+        onChanged();
+        return this;
+      }
+
+      // required bool isListeningSummary = 3;
+      private boolean isListeningSummary_ ;
+      /**
+       * <code>required bool isListeningSummary = 3;</code>
+       */
+      public boolean hasIsListeningSummary() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required bool isListeningSummary = 3;</code>
+       */
+      public boolean getIsListeningSummary() {
+        return isListeningSummary_;
+      }
+      /**
+       * <code>required bool isListeningSummary = 3;</code>
+       */
+      public Builder setIsListeningSummary(boolean value) {
+        bitField0_ |= 0x00000004;
+        isListeningSummary_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool isListeningSummary = 3;</code>
+       */
+      public Builder clearIsListeningSummary() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        isListeningSummary_ = false;
+        onChanged();
+        return this;
+      }
+
+      // required .protocol.Role OrderListeningRole = 4;
+      private com.kensai.protocol.Trading.Role orderListeningRole_ = com.kensai.protocol.Trading.Role.ADMIN;
+      /**
+       * <code>required .protocol.Role OrderListeningRole = 4;</code>
+       */
+      public boolean hasOrderListeningRole() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required .protocol.Role OrderListeningRole = 4;</code>
+       */
+      public com.kensai.protocol.Trading.Role getOrderListeningRole() {
+        return orderListeningRole_;
+      }
+      /**
+       * <code>required .protocol.Role OrderListeningRole = 4;</code>
+       */
+      public Builder setOrderListeningRole(com.kensai.protocol.Trading.Role value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000008;
+        orderListeningRole_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .protocol.Role OrderListeningRole = 4;</code>
+       */
+      public Builder clearOrderListeningRole() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        orderListeningRole_ = com.kensai.protocol.Trading.Role.ADMIN;
+        onChanged();
+        return this;
+      }
+
+      // repeated string listeningGroupsOrder = 5;
+      private com.google.protobuf.LazyStringList listeningGroupsOrder_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureListeningGroupsOrderIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          listeningGroupsOrder_ = new com.google.protobuf.LazyStringArrayList(listeningGroupsOrder_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+      /**
+       * <code>repeated string listeningGroupsOrder = 5;</code>
+       */
+      public java.util.List<java.lang.String>
+          getListeningGroupsOrderList() {
+        return java.util.Collections.unmodifiableList(listeningGroupsOrder_);
+      }
+      /**
+       * <code>repeated string listeningGroupsOrder = 5;</code>
+       */
+      public int getListeningGroupsOrderCount() {
+        return listeningGroupsOrder_.size();
+      }
+      /**
+       * <code>repeated string listeningGroupsOrder = 5;</code>
+       */
+      public java.lang.String getListeningGroupsOrder(int index) {
+        return listeningGroupsOrder_.get(index);
+      }
+      /**
+       * <code>repeated string listeningGroupsOrder = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getListeningGroupsOrderBytes(int index) {
+        return listeningGroupsOrder_.getByteString(index);
+      }
+      /**
+       * <code>repeated string listeningGroupsOrder = 5;</code>
+       */
+      public Builder setListeningGroupsOrder(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureListeningGroupsOrderIsMutable();
+        listeningGroupsOrder_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string listeningGroupsOrder = 5;</code>
+       */
+      public Builder addListeningGroupsOrder(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureListeningGroupsOrderIsMutable();
+        listeningGroupsOrder_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string listeningGroupsOrder = 5;</code>
+       */
+      public Builder addAllListeningGroupsOrder(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureListeningGroupsOrderIsMutable();
+        super.addAll(values, listeningGroupsOrder_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string listeningGroupsOrder = 5;</code>
+       */
+      public Builder clearListeningGroupsOrder() {
+        listeningGroupsOrder_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string listeningGroupsOrder = 5;</code>
+       */
+      public Builder addListeningGroupsOrderBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureListeningGroupsOrderIsMutable();
+        listeningGroupsOrder_.add(value);
+        onChanged();
+        return this;
+      }
+
+      // required .protocol.Role ExecListeningRole = 6;
+      private com.kensai.protocol.Trading.Role execListeningRole_ = com.kensai.protocol.Trading.Role.ADMIN;
+      /**
+       * <code>required .protocol.Role ExecListeningRole = 6;</code>
+       */
+      public boolean hasExecListeningRole() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required .protocol.Role ExecListeningRole = 6;</code>
+       */
+      public com.kensai.protocol.Trading.Role getExecListeningRole() {
+        return execListeningRole_;
+      }
+      /**
+       * <code>required .protocol.Role ExecListeningRole = 6;</code>
+       */
+      public Builder setExecListeningRole(com.kensai.protocol.Trading.Role value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000020;
+        execListeningRole_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .protocol.Role ExecListeningRole = 6;</code>
+       */
+      public Builder clearExecListeningRole() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        execListeningRole_ = com.kensai.protocol.Trading.Role.ADMIN;
+        onChanged();
+        return this;
+      }
+
+      // repeated string listeningGroupsExec = 7;
+      private com.google.protobuf.LazyStringList listeningGroupsExec_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureListeningGroupsExecIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          listeningGroupsExec_ = new com.google.protobuf.LazyStringArrayList(listeningGroupsExec_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+      /**
+       * <code>repeated string listeningGroupsExec = 7;</code>
+       */
+      public java.util.List<java.lang.String>
+          getListeningGroupsExecList() {
+        return java.util.Collections.unmodifiableList(listeningGroupsExec_);
+      }
+      /**
+       * <code>repeated string listeningGroupsExec = 7;</code>
+       */
+      public int getListeningGroupsExecCount() {
+        return listeningGroupsExec_.size();
+      }
+      /**
+       * <code>repeated string listeningGroupsExec = 7;</code>
+       */
+      public java.lang.String getListeningGroupsExec(int index) {
+        return listeningGroupsExec_.get(index);
+      }
+      /**
+       * <code>repeated string listeningGroupsExec = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getListeningGroupsExecBytes(int index) {
+        return listeningGroupsExec_.getByteString(index);
+      }
+      /**
+       * <code>repeated string listeningGroupsExec = 7;</code>
+       */
+      public Builder setListeningGroupsExec(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureListeningGroupsExecIsMutable();
+        listeningGroupsExec_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string listeningGroupsExec = 7;</code>
+       */
+      public Builder addListeningGroupsExec(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureListeningGroupsExecIsMutable();
+        listeningGroupsExec_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string listeningGroupsExec = 7;</code>
+       */
+      public Builder addAllListeningGroupsExec(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureListeningGroupsExecIsMutable();
+        super.addAll(values, listeningGroupsExec_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string listeningGroupsExec = 7;</code>
+       */
+      public Builder clearListeningGroupsExec() {
+        listeningGroupsExec_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string listeningGroupsExec = 7;</code>
+       */
+      public Builder addListeningGroupsExecBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureListeningGroupsExecIsMutable();
+        listeningGroupsExec_.add(value);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:protocol.User)
+    }
+
+    static {
+      defaultInstance = new User(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:protocol.User)
+  }
+
   public interface OrderOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -2398,20 +3808,19 @@ public final class Trading {
     com.google.protobuf.ByteString
         getUserDataBytes();
 
-    // required string user = 11;
+    // required .protocol.User user = 11;
     /**
-     * <code>required string user = 11;</code>
+     * <code>required .protocol.User user = 11;</code>
      */
     boolean hasUser();
     /**
-     * <code>required string user = 11;</code>
+     * <code>required .protocol.User user = 11;</code>
      */
-    java.lang.String getUser();
+    com.kensai.protocol.Trading.User getUser();
     /**
-     * <code>required string user = 11;</code>
+     * <code>required .protocol.User user = 11;</code>
      */
-    com.google.protobuf.ByteString
-        getUserBytes();
+    com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder();
 
     // optional int64 insertTime = 12;
     /**
@@ -2586,8 +3995,16 @@ public final class Trading {
               break;
             }
             case 90: {
+              com.kensai.protocol.Trading.User.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000400) == 0x00000400)) {
+                subBuilder = user_.toBuilder();
+              }
+              user_ = input.readMessage(com.kensai.protocol.Trading.User.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000400;
-              user_ = input.readBytes();
               break;
             }
             case 96: {
@@ -2849,47 +4266,26 @@ public final class Trading {
       }
     }
 
-    // required string user = 11;
+    // required .protocol.User user = 11;
     public static final int USER_FIELD_NUMBER = 11;
-    private java.lang.Object user_;
+    private com.kensai.protocol.Trading.User user_;
     /**
-     * <code>required string user = 11;</code>
+     * <code>required .protocol.User user = 11;</code>
      */
     public boolean hasUser() {
       return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
-     * <code>required string user = 11;</code>
+     * <code>required .protocol.User user = 11;</code>
      */
-    public java.lang.String getUser() {
-      java.lang.Object ref = user_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          user_ = s;
-        }
-        return s;
-      }
+    public com.kensai.protocol.Trading.User getUser() {
+      return user_;
     }
     /**
-     * <code>required string user = 11;</code>
+     * <code>required .protocol.User user = 11;</code>
      */
-    public com.google.protobuf.ByteString
-        getUserBytes() {
-      java.lang.Object ref = user_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        user_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder() {
+      return user_;
     }
 
     // optional int64 insertTime = 12;
@@ -2994,7 +4390,7 @@ public final class Trading {
       initialQuantity_ = 0;
       executedQuantity_ = 0;
       userData_ = "";
-      user_ = "";
+      user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
       insertTime_ = 0L;
       lastUpdateTime_ = 0L;
       orderStatus_ = com.kensai.protocol.Trading.OrderStatus.ON_MARKET;
@@ -3026,6 +4422,10 @@ public final class Trading {
         return false;
       }
       if (!getInstrument().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getUser().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3067,7 +4467,7 @@ public final class Trading {
         output.writeBytes(10, getUserDataBytes());
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeBytes(11, getUserBytes());
+        output.writeMessage(11, user_);
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeInt64(12, insertTime_);
@@ -3132,7 +4532,7 @@ public final class Trading {
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(11, getUserBytes());
+          .computeMessageSize(11, user_);
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3259,6 +4659,7 @@ public final class Trading {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getInstrumentFieldBuilder();
+          getUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -3291,7 +4692,11 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000100);
         userData_ = "";
         bitField0_ = (bitField0_ & ~0x00000200);
-        user_ = "";
+        if (userBuilder_ == null) {
+          user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+        } else {
+          userBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000400);
         insertTime_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000800);
@@ -3376,7 +4781,11 @@ public final class Trading {
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000400;
         }
-        result.user_ = user_;
+        if (userBuilder_ == null) {
+          result.user_ = user_;
+        } else {
+          result.user_ = userBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
           to_bitField0_ |= 0x00000800;
         }
@@ -3442,9 +4851,7 @@ public final class Trading {
           onChanged();
         }
         if (other.hasUser()) {
-          bitField0_ |= 0x00000400;
-          user_ = other.user_;
-          onChanged();
+          mergeUser(other.getUser());
         }
         if (other.hasInsertTime()) {
           setInsertTime(other.getInsertTime());
@@ -3486,6 +4893,10 @@ public final class Trading {
           return false;
         }
         if (!getInstrument().isInitialized()) {
+          
+          return false;
+        }
+        if (!getUser().isInitialized()) {
           
           return false;
         }
@@ -3975,78 +5386,121 @@ public final class Trading {
         return this;
       }
 
-      // required string user = 11;
-      private java.lang.Object user_ = "";
+      // required .protocol.User user = 11;
+      private com.kensai.protocol.Trading.User user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder> userBuilder_;
       /**
-       * <code>required string user = 11;</code>
+       * <code>required .protocol.User user = 11;</code>
        */
       public boolean hasUser() {
         return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
-       * <code>required string user = 11;</code>
+       * <code>required .protocol.User user = 11;</code>
        */
-      public java.lang.String getUser() {
-        java.lang.Object ref = user_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          user_ = s;
-          return s;
+      public com.kensai.protocol.Trading.User getUser() {
+        if (userBuilder_ == null) {
+          return user_;
         } else {
-          return (java.lang.String) ref;
+          return userBuilder_.getMessage();
         }
       }
       /**
-       * <code>required string user = 11;</code>
+       * <code>required .protocol.User user = 11;</code>
        */
-      public com.google.protobuf.ByteString
-          getUserBytes() {
-        java.lang.Object ref = user_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          user_ = b;
-          return b;
+      public Builder setUser(com.kensai.protocol.Trading.User value) {
+        if (userBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          user_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          userBuilder_.setMessage(value);
         }
+        bitField0_ |= 0x00000400;
+        return this;
       }
       /**
-       * <code>required string user = 11;</code>
+       * <code>required .protocol.User user = 11;</code>
        */
       public Builder setUser(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000400;
-        user_ = value;
-        onChanged();
+          com.kensai.protocol.Trading.User.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
+          onChanged();
+        } else {
+          userBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
-       * <code>required string user = 11;</code>
+       * <code>required .protocol.User user = 11;</code>
+       */
+      public Builder mergeUser(com.kensai.protocol.Trading.User value) {
+        if (userBuilder_ == null) {
+          if (((bitField0_ & 0x00000400) == 0x00000400) &&
+              user_ != com.kensai.protocol.Trading.User.getDefaultInstance()) {
+            user_ =
+              com.kensai.protocol.Trading.User.newBuilder(user_).mergeFrom(value).buildPartial();
+          } else {
+            user_ = value;
+          }
+          onChanged();
+        } else {
+          userBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>required .protocol.User user = 11;</code>
        */
       public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+          onChanged();
+        } else {
+          userBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000400);
-        user_ = getDefaultInstance().getUser();
-        onChanged();
         return this;
       }
       /**
-       * <code>required string user = 11;</code>
+       * <code>required .protocol.User user = 11;</code>
        */
-      public Builder setUserBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000400;
-        user_ = value;
+      public com.kensai.protocol.Trading.User.Builder getUserBuilder() {
+        bitField0_ |= 0x00000400;
         onChanged();
-        return this;
+        return getUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .protocol.User user = 11;</code>
+       */
+      public com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
+        } else {
+          return user_;
+        }
+      }
+      /**
+       * <code>required .protocol.User user = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder>(
+                  user_,
+                  getParentForChildren(),
+                  isClean());
+          user_ = null;
+        }
+        return userBuilder_;
       }
 
       // optional int64 insertTime = 12;
@@ -4955,20 +6409,19 @@ public final class Trading {
      */
     int getQuantity();
 
-    // required string user = 7;
+    // required .protocol.User user = 7;
     /**
-     * <code>required string user = 7;</code>
+     * <code>required .protocol.User user = 7;</code>
      */
     boolean hasUser();
     /**
-     * <code>required string user = 7;</code>
+     * <code>required .protocol.User user = 7;</code>
      */
-    java.lang.String getUser();
+    com.kensai.protocol.Trading.User getUser();
     /**
-     * <code>required string user = 7;</code>
+     * <code>required .protocol.User user = 7;</code>
      */
-    com.google.protobuf.ByteString
-        getUserBytes();
+    com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder();
 
     // optional int64 time = 8;
     /**
@@ -5061,8 +6514,16 @@ public final class Trading {
               break;
             }
             case 58: {
+              com.kensai.protocol.Trading.User.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = user_.toBuilder();
+              }
+              user_ = input.readMessage(com.kensai.protocol.Trading.User.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000008;
-              user_ = input.readBytes();
               break;
             }
             case 64: {
@@ -5171,47 +6632,26 @@ public final class Trading {
       return quantity_;
     }
 
-    // required string user = 7;
+    // required .protocol.User user = 7;
     public static final int USER_FIELD_NUMBER = 7;
-    private java.lang.Object user_;
+    private com.kensai.protocol.Trading.User user_;
     /**
-     * <code>required string user = 7;</code>
+     * <code>required .protocol.User user = 7;</code>
      */
     public boolean hasUser() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required string user = 7;</code>
+     * <code>required .protocol.User user = 7;</code>
      */
-    public java.lang.String getUser() {
-      java.lang.Object ref = user_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          user_ = s;
-        }
-        return s;
-      }
+    public com.kensai.protocol.Trading.User getUser() {
+      return user_;
     }
     /**
-     * <code>required string user = 7;</code>
+     * <code>required .protocol.User user = 7;</code>
      */
-    public com.google.protobuf.ByteString
-        getUserBytes() {
-      java.lang.Object ref = user_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        user_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder() {
+      return user_;
     }
 
     // optional int64 time = 8;
@@ -5256,7 +6696,7 @@ public final class Trading {
       id_ = 0L;
       price_ = 0D;
       quantity_ = 0;
-      user_ = "";
+      user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
       time_ = 0L;
       order_ = com.kensai.protocol.Trading.Order.getDefaultInstance();
     }
@@ -5285,6 +6725,10 @@ public final class Trading {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!getUser().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!getOrder().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
@@ -5306,7 +6750,7 @@ public final class Trading {
         output.writeInt32(6, quantity_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(7, getUserBytes());
+        output.writeMessage(7, user_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt64(8, time_);
@@ -5337,7 +6781,7 @@ public final class Trading {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, getUserBytes());
+          .computeMessageSize(7, user_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
@@ -5455,6 +6899,7 @@ public final class Trading {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getUserFieldBuilder();
           getOrderFieldBuilder();
         }
       }
@@ -5470,7 +6915,11 @@ public final class Trading {
         bitField0_ = (bitField0_ & ~0x00000002);
         quantity_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        user_ = "";
+        if (userBuilder_ == null) {
+          user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+        } else {
+          userBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000008);
         time_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -5523,7 +6972,11 @@ public final class Trading {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.user_ = user_;
+        if (userBuilder_ == null) {
+          result.user_ = user_;
+        } else {
+          result.user_ = userBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
@@ -5562,9 +7015,7 @@ public final class Trading {
           setQuantity(other.getQuantity());
         }
         if (other.hasUser()) {
-          bitField0_ |= 0x00000008;
-          user_ = other.user_;
-          onChanged();
+          mergeUser(other.getUser());
         }
         if (other.hasTime()) {
           setTime(other.getTime());
@@ -5594,6 +7045,10 @@ public final class Trading {
           return false;
         }
         if (!hasOrder()) {
+          
+          return false;
+        }
+        if (!getUser().isInitialized()) {
           
           return false;
         }
@@ -5722,78 +7177,121 @@ public final class Trading {
         return this;
       }
 
-      // required string user = 7;
-      private java.lang.Object user_ = "";
+      // required .protocol.User user = 7;
+      private com.kensai.protocol.Trading.User user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder> userBuilder_;
       /**
-       * <code>required string user = 7;</code>
+       * <code>required .protocol.User user = 7;</code>
        */
       public boolean hasUser() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required string user = 7;</code>
+       * <code>required .protocol.User user = 7;</code>
        */
-      public java.lang.String getUser() {
-        java.lang.Object ref = user_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          user_ = s;
-          return s;
+      public com.kensai.protocol.Trading.User getUser() {
+        if (userBuilder_ == null) {
+          return user_;
         } else {
-          return (java.lang.String) ref;
+          return userBuilder_.getMessage();
         }
       }
       /**
-       * <code>required string user = 7;</code>
+       * <code>required .protocol.User user = 7;</code>
        */
-      public com.google.protobuf.ByteString
-          getUserBytes() {
-        java.lang.Object ref = user_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          user_ = b;
-          return b;
+      public Builder setUser(com.kensai.protocol.Trading.User value) {
+        if (userBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          user_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          userBuilder_.setMessage(value);
         }
+        bitField0_ |= 0x00000008;
+        return this;
       }
       /**
-       * <code>required string user = 7;</code>
+       * <code>required .protocol.User user = 7;</code>
        */
       public Builder setUser(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        user_ = value;
-        onChanged();
+          com.kensai.protocol.Trading.User.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
+          onChanged();
+        } else {
+          userBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
-       * <code>required string user = 7;</code>
+       * <code>required .protocol.User user = 7;</code>
+       */
+      public Builder mergeUser(com.kensai.protocol.Trading.User value) {
+        if (userBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              user_ != com.kensai.protocol.Trading.User.getDefaultInstance()) {
+            user_ =
+              com.kensai.protocol.Trading.User.newBuilder(user_).mergeFrom(value).buildPartial();
+          } else {
+            user_ = value;
+          }
+          onChanged();
+        } else {
+          userBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>required .protocol.User user = 7;</code>
        */
       public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+          onChanged();
+        } else {
+          userBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000008);
-        user_ = getDefaultInstance().getUser();
-        onChanged();
         return this;
       }
       /**
-       * <code>required string user = 7;</code>
+       * <code>required .protocol.User user = 7;</code>
        */
-      public Builder setUserBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        user_ = value;
+      public com.kensai.protocol.Trading.User.Builder getUserBuilder() {
+        bitField0_ |= 0x00000008;
         onChanged();
-        return this;
+        return getUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .protocol.User user = 7;</code>
+       */
+      public com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
+        } else {
+          return user_;
+        }
+      }
+      /**
+       * <code>required .protocol.User user = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder>(
+                  user_,
+                  getParentForChildren(),
+                  isClean());
+          user_ = null;
+        }
+        return userBuilder_;
       }
 
       // optional int64 time = 8;
@@ -9615,20 +11113,19 @@ public final class Trading {
   public interface SubscribeCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required string user = 1;
+    // required .protocol.User user = 1;
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
     boolean hasUser();
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
-    java.lang.String getUser();
+    com.kensai.protocol.Trading.User getUser();
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
-    com.google.protobuf.ByteString
-        getUserBytes();
+    com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder();
 
     // optional .protocol.CommandStatus status = 2;
     /**
@@ -9707,8 +11204,16 @@ public final class Trading {
               break;
             }
             case 10: {
+              com.kensai.protocol.Trading.User.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = user_.toBuilder();
+              }
+              user_ = input.readMessage(com.kensai.protocol.Trading.User.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000001;
-              user_ = input.readBytes();
               break;
             }
             case 16: {
@@ -9767,47 +11272,26 @@ public final class Trading {
     }
 
     private int bitField0_;
-    // required string user = 1;
+    // required .protocol.User user = 1;
     public static final int USER_FIELD_NUMBER = 1;
-    private java.lang.Object user_;
+    private com.kensai.protocol.Trading.User user_;
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
     public boolean hasUser() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
-    public java.lang.String getUser() {
-      java.lang.Object ref = user_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          user_ = s;
-        }
-        return s;
-      }
+    public com.kensai.protocol.Trading.User getUser() {
+      return user_;
     }
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getUserBytes() {
-      java.lang.Object ref = user_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        user_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder() {
+      return user_;
     }
 
     // optional .protocol.CommandStatus status = 2;
@@ -9870,7 +11354,7 @@ public final class Trading {
     }
 
     private void initFields() {
-      user_ = "";
+      user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
       status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
       errorMessage_ = "";
     }
@@ -9883,6 +11367,10 @@ public final class Trading {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!getUser().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -9891,7 +11379,7 @@ public final class Trading {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getUserBytes());
+        output.writeMessage(1, user_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeEnum(2, status_.getNumber());
@@ -9910,7 +11398,7 @@ public final class Trading {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getUserBytes());
+          .computeMessageSize(1, user_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -10028,6 +11516,7 @@ public final class Trading {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -10036,7 +11525,11 @@ public final class Trading {
 
       public Builder clear() {
         super.clear();
-        user_ = "";
+        if (userBuilder_ == null) {
+          user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+        } else {
+          userBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000001);
         status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -10073,7 +11566,11 @@ public final class Trading {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.user_ = user_;
+        if (userBuilder_ == null) {
+          result.user_ = user_;
+        } else {
+          result.user_ = userBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -10099,9 +11596,7 @@ public final class Trading {
       public Builder mergeFrom(com.kensai.protocol.Trading.SubscribeCommand other) {
         if (other == com.kensai.protocol.Trading.SubscribeCommand.getDefaultInstance()) return this;
         if (other.hasUser()) {
-          bitField0_ |= 0x00000001;
-          user_ = other.user_;
-          onChanged();
+          mergeUser(other.getUser());
         }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
@@ -10117,6 +11612,10 @@ public final class Trading {
 
       public final boolean isInitialized() {
         if (!hasUser()) {
+          
+          return false;
+        }
+        if (!getUser().isInitialized()) {
           
           return false;
         }
@@ -10142,78 +11641,121 @@ public final class Trading {
       }
       private int bitField0_;
 
-      // required string user = 1;
-      private java.lang.Object user_ = "";
+      // required .protocol.User user = 1;
+      private com.kensai.protocol.Trading.User user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder> userBuilder_;
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
        */
       public boolean hasUser() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
        */
-      public java.lang.String getUser() {
-        java.lang.Object ref = user_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          user_ = s;
-          return s;
+      public com.kensai.protocol.Trading.User getUser() {
+        if (userBuilder_ == null) {
+          return user_;
         } else {
-          return (java.lang.String) ref;
+          return userBuilder_.getMessage();
         }
       }
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getUserBytes() {
-        java.lang.Object ref = user_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          user_ = b;
-          return b;
+      public Builder setUser(com.kensai.protocol.Trading.User value) {
+        if (userBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          user_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          userBuilder_.setMessage(value);
         }
+        bitField0_ |= 0x00000001;
+        return this;
       }
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
        */
       public Builder setUser(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        user_ = value;
-        onChanged();
+          com.kensai.protocol.Trading.User.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
+          onChanged();
+        } else {
+          userBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
+       */
+      public Builder mergeUser(com.kensai.protocol.Trading.User value) {
+        if (userBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              user_ != com.kensai.protocol.Trading.User.getDefaultInstance()) {
+            user_ =
+              com.kensai.protocol.Trading.User.newBuilder(user_).mergeFrom(value).buildPartial();
+          } else {
+            user_ = value;
+          }
+          onChanged();
+        } else {
+          userBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .protocol.User user = 1;</code>
        */
       public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+          onChanged();
+        } else {
+          userBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000001);
-        user_ = getDefaultInstance().getUser();
-        onChanged();
         return this;
       }
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
        */
-      public Builder setUserBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        user_ = value;
+      public com.kensai.protocol.Trading.User.Builder getUserBuilder() {
+        bitField0_ |= 0x00000001;
         onChanged();
-        return this;
+        return getUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .protocol.User user = 1;</code>
+       */
+      public com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
+        } else {
+          return user_;
+        }
+      }
+      /**
+       * <code>required .protocol.User user = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder>(
+                  user_,
+                  getParentForChildren(),
+                  isClean());
+          user_ = null;
+        }
+        return userBuilder_;
       }
 
       // optional .protocol.CommandStatus status = 2;
@@ -10340,20 +11882,19 @@ public final class Trading {
   public interface UnsubscribeCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required string user = 1;
+    // required .protocol.User user = 1;
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
     boolean hasUser();
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
-    java.lang.String getUser();
+    com.kensai.protocol.Trading.User getUser();
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
-    com.google.protobuf.ByteString
-        getUserBytes();
+    com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder();
 
     // optional .protocol.CommandStatus status = 2;
     /**
@@ -10432,8 +11973,16 @@ public final class Trading {
               break;
             }
             case 10: {
+              com.kensai.protocol.Trading.User.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = user_.toBuilder();
+              }
+              user_ = input.readMessage(com.kensai.protocol.Trading.User.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000001;
-              user_ = input.readBytes();
               break;
             }
             case 16: {
@@ -10492,47 +12041,26 @@ public final class Trading {
     }
 
     private int bitField0_;
-    // required string user = 1;
+    // required .protocol.User user = 1;
     public static final int USER_FIELD_NUMBER = 1;
-    private java.lang.Object user_;
+    private com.kensai.protocol.Trading.User user_;
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
     public boolean hasUser() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
-    public java.lang.String getUser() {
-      java.lang.Object ref = user_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          user_ = s;
-        }
-        return s;
-      }
+    public com.kensai.protocol.Trading.User getUser() {
+      return user_;
     }
     /**
-     * <code>required string user = 1;</code>
+     * <code>required .protocol.User user = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getUserBytes() {
-      java.lang.Object ref = user_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        user_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder() {
+      return user_;
     }
 
     // optional .protocol.CommandStatus status = 2;
@@ -10595,7 +12123,7 @@ public final class Trading {
     }
 
     private void initFields() {
-      user_ = "";
+      user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
       status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
       errorMessage_ = "";
     }
@@ -10608,6 +12136,10 @@ public final class Trading {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!getUser().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -10616,7 +12148,7 @@ public final class Trading {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getUserBytes());
+        output.writeMessage(1, user_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeEnum(2, status_.getNumber());
@@ -10635,7 +12167,7 @@ public final class Trading {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getUserBytes());
+          .computeMessageSize(1, user_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -10753,6 +12285,7 @@ public final class Trading {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -10761,7 +12294,11 @@ public final class Trading {
 
       public Builder clear() {
         super.clear();
-        user_ = "";
+        if (userBuilder_ == null) {
+          user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+        } else {
+          userBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000001);
         status_ = com.kensai.protocol.Trading.CommandStatus.ACK;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -10798,7 +12335,11 @@ public final class Trading {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.user_ = user_;
+        if (userBuilder_ == null) {
+          result.user_ = user_;
+        } else {
+          result.user_ = userBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -10824,9 +12365,7 @@ public final class Trading {
       public Builder mergeFrom(com.kensai.protocol.Trading.UnsubscribeCommand other) {
         if (other == com.kensai.protocol.Trading.UnsubscribeCommand.getDefaultInstance()) return this;
         if (other.hasUser()) {
-          bitField0_ |= 0x00000001;
-          user_ = other.user_;
-          onChanged();
+          mergeUser(other.getUser());
         }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
@@ -10842,6 +12381,10 @@ public final class Trading {
 
       public final boolean isInitialized() {
         if (!hasUser()) {
+          
+          return false;
+        }
+        if (!getUser().isInitialized()) {
           
           return false;
         }
@@ -10867,78 +12410,121 @@ public final class Trading {
       }
       private int bitField0_;
 
-      // required string user = 1;
-      private java.lang.Object user_ = "";
+      // required .protocol.User user = 1;
+      private com.kensai.protocol.Trading.User user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder> userBuilder_;
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
        */
       public boolean hasUser() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
        */
-      public java.lang.String getUser() {
-        java.lang.Object ref = user_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          user_ = s;
-          return s;
+      public com.kensai.protocol.Trading.User getUser() {
+        if (userBuilder_ == null) {
+          return user_;
         } else {
-          return (java.lang.String) ref;
+          return userBuilder_.getMessage();
         }
       }
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getUserBytes() {
-        java.lang.Object ref = user_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          user_ = b;
-          return b;
+      public Builder setUser(com.kensai.protocol.Trading.User value) {
+        if (userBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          user_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          userBuilder_.setMessage(value);
         }
+        bitField0_ |= 0x00000001;
+        return this;
       }
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
        */
       public Builder setUser(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        user_ = value;
-        onChanged();
+          com.kensai.protocol.Trading.User.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
+          onChanged();
+        } else {
+          userBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
+       */
+      public Builder mergeUser(com.kensai.protocol.Trading.User value) {
+        if (userBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              user_ != com.kensai.protocol.Trading.User.getDefaultInstance()) {
+            user_ =
+              com.kensai.protocol.Trading.User.newBuilder(user_).mergeFrom(value).buildPartial();
+          } else {
+            user_ = value;
+          }
+          onChanged();
+        } else {
+          userBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .protocol.User user = 1;</code>
        */
       public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = com.kensai.protocol.Trading.User.getDefaultInstance();
+          onChanged();
+        } else {
+          userBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000001);
-        user_ = getDefaultInstance().getUser();
-        onChanged();
         return this;
       }
       /**
-       * <code>required string user = 1;</code>
+       * <code>required .protocol.User user = 1;</code>
        */
-      public Builder setUserBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        user_ = value;
+      public com.kensai.protocol.Trading.User.Builder getUserBuilder() {
+        bitField0_ |= 0x00000001;
         onChanged();
-        return this;
+        return getUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .protocol.User user = 1;</code>
+       */
+      public com.kensai.protocol.Trading.UserOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
+        } else {
+          return user_;
+        }
+      }
+      /**
+       * <code>required .protocol.User user = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.kensai.protocol.Trading.User, com.kensai.protocol.Trading.User.Builder, com.kensai.protocol.Trading.UserOrBuilder>(
+                  user_,
+                  getParentForChildren(),
+                  isClean());
+          user_ = null;
+        }
+        return userBuilder_;
       }
 
       // optional .protocol.CommandStatus status = 2;
@@ -13224,6 +14810,11 @@ public final class Trading {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_protocol_InstrumentsSnapshot_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_protocol_User_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_protocol_User_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_protocol_Order_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -13287,57 +14878,65 @@ public final class Trading {
       "\001(\t\022\023\n\013description\030\004 \001(\t\022&\n\004type\030\005 \001(\0162\030" +
       ".protocol.InstrumentType\"@\n\023InstrumentsS" +
       "napshot\022)\n\013instruments\030\001 \003(\0132\024.protocol." +
-      "Instrument\"\230\003\n\005Order\022\n\n\002id\030\001 \001(\003\022\037\n\004side" +
-      "\030\002 \002(\0162\021.protocol.BuySell\022(\n\ninstrument\030" +
-      "\003 \002(\0132\024.protocol.Instrument\022%\n\006action\030\004 " +
-      "\002(\0162\025.protocol.OrderAction\022.\n\rcommandSta" +
-      "tus\030\005 \001(\0162\027.protocol.CommandStatus\022\r\n\005pr",
-      "ice\030\006 \001(\001\022\021\n\texecPrice\030\007 \001(\001\022\027\n\017initialQ" +
-      "uantity\030\010 \001(\005\022\030\n\020executedQuantity\030\t \001(\005\022" +
-      "\020\n\010userData\030\n \002(\t\022\014\n\004user\030\013 \002(\t\022\022\n\ninser" +
-      "tTime\030\014 \001(\003\022\026\n\016lastUpdateTime\030\r \001(\003\022*\n\013o" +
-      "rderStatus\030\016 \001(\0162\025.protocol.OrderStatus\022" +
-      "\024\n\014errorMessage\030\017 \001(\t\"1\n\016OrdersSnapshot\022" +
-      "\037\n\006orders\030\001 \003(\0132\017.protocol.Order\"t\n\tExec" +
-      "ution\022\n\n\002id\030\001 \002(\003\022\r\n\005price\030\005 \002(\001\022\020\n\010quan" +
-      "tity\030\006 \002(\005\022\014\n\004user\030\007 \002(\t\022\014\n\004time\030\010 \001(\003\022\036" +
-      "\n\005order\030\t \002(\0132\017.protocol.Order\"=\n\022Execut",
-      "ionsSnapshot\022\'\n\nexecutions\030\001 \003(\0132\023.proto" +
-      "col.Execution\"7\n\005Depth\022\r\n\005depth\030\001 \002(\005\022\r\n" +
-      "\005price\030\002 \002(\001\022\020\n\010quantity\030\003 \002(\005\"\350\001\n\007Summa" +
-      "ry\022(\n\ninstrument\030\001 \002(\0132\024.protocol.Instru" +
-      "ment\022,\n\014marketStatus\030\002 \002(\0162\026.protocol.Ma" +
-      "rketStatus\022\014\n\004open\030\003 \001(\001\022\r\n\005close\030\004 \001(\001\022" +
-      "\014\n\004last\030\005 \001(\001\022\"\n\tbuyDepths\030\006 \003(\0132\017.proto" +
-      "col.Depth\022#\n\nsellDepths\030\007 \003(\0132\017.protocol" +
-      ".Depth\022\021\n\ttimestamp\030\010 \002(\003\"9\n\021SummariesSn" +
-      "apshot\022$\n\tsummaries\030\001 \003(\0132\021.protocol.Sum",
-      "mary\"_\n\020SubscribeCommand\022\014\n\004user\030\001 \002(\t\022\'" +
-      "\n\006status\030\002 \001(\0162\027.protocol.CommandStatus\022" +
-      "\024\n\014errorMessage\030\003 \001(\t\"a\n\022UnsubscribeComm" +
-      "and\022\014\n\004user\030\001 \002(\t\022\'\n\006status\030\002 \001(\0162\027.prot" +
-      "ocol.CommandStatus\022\024\n\014errorMessage\030\003 \001(\t" +
-      "\"\306\003\n\010Messages\0224\n\020subscribeCommand\030\001 \001(\0132" +
-      "\032.protocol.SubscribeCommand\0228\n\022unsubscri" +
-      "beCommand\030\002 \001(\0132\034.protocol.UnsubscribeCo" +
-      "mmand\0226\n\021summariesSnapshot\030\003 \001(\0132\033.proto" +
-      "col.SummariesSnapshot\0228\n\022executionsSnaps",
-      "hot\030\004 \001(\0132\034.protocol.ExecutionsSnapshot\022" +
-      "0\n\016ordersSnapshot\030\005 \001(\0132\030.protocol.Order" +
-      "sSnapshot\022:\n\023instrumentsSnapshot\030\006 \001(\0132\035" +
-      ".protocol.InstrumentsSnapshot\022\036\n\005order\030\007" +
-      " \001(\0132\017.protocol.Order\022&\n\texecution\030\010 \001(\013" +
-      "2\023.protocol.Execution\022\"\n\007summary\030\t \001(\0132\021" +
-      ".protocol.Summary*@\n\016InstrumentType\022\t\n\005S" +
-      "TOCK\020\000\022\n\n\006FUTURE\020\001\022\n\n\006OPTION\020\002\022\013\n\007WARRAN" +
-      "T\020\003*1\n\013OrderAction\022\n\n\006INSERT\020\000\022\n\n\006UPDATE" +
-      "\020\001\022\n\n\006DELETE\020\002*\"\n\rCommandStatus\022\007\n\003ACK\020\000",
-      "\022\010\n\004NACK\020\001*&\n\007BuySell\022\007\n\003BUY\020\000\022\010\n\004SELL\020\001" +
-      "\022\010\n\004BOTH\020\002*9\n\013OrderStatus\022\r\n\tON_MARKET\020\000" +
-      "\022\016\n\nTERMINATED\020\001\022\013\n\007DELETED\020\002*>\n\014MarketS" +
-      "tatus\022\010\n\004OPEN\020\000\022\t\n\005CLOSE\020\001\022\013\n\007PREOPEN\020\002\022" +
-      "\014\n\010PRECLOSE\020\003B\036\n\023com.kensai.protocolB\007Tr" +
-      "ading"
+      "Instrument\"\322\001\n\004User\022\014\n\004name\030\001 \002(\t\022\016\n\006gro" +
+      "ups\030\002 \003(\t\022\032\n\022isListeningSummary\030\003 \002(\010\022*\n" +
+      "\022OrderListeningRole\030\004 \002(\0162\016.protocol.Rol" +
+      "e\022\034\n\024listeningGroupsOrder\030\005 \003(\t\022)\n\021ExecL" +
+      "isteningRole\030\006 \002(\0162\016.protocol.Role\022\033\n\023li",
+      "steningGroupsExec\030\007 \003(\t\"\250\003\n\005Order\022\n\n\002id\030" +
+      "\001 \001(\003\022\037\n\004side\030\002 \002(\0162\021.protocol.BuySell\022(" +
+      "\n\ninstrument\030\003 \002(\0132\024.protocol.Instrument" +
+      "\022%\n\006action\030\004 \002(\0162\025.protocol.OrderAction\022" +
+      ".\n\rcommandStatus\030\005 \001(\0162\027.protocol.Comman" +
+      "dStatus\022\r\n\005price\030\006 \001(\001\022\021\n\texecPrice\030\007 \001(" +
+      "\001\022\027\n\017initialQuantity\030\010 \001(\005\022\030\n\020executedQu" +
+      "antity\030\t \001(\005\022\020\n\010userData\030\n \002(\t\022\034\n\004user\030\013" +
+      " \002(\0132\016.protocol.User\022\022\n\ninsertTime\030\014 \001(\003" +
+      "\022\026\n\016lastUpdateTime\030\r \001(\003\022*\n\013orderStatus\030",
+      "\016 \001(\0162\025.protocol.OrderStatus\022\024\n\014errorMes" +
+      "sage\030\017 \001(\t\"1\n\016OrdersSnapshot\022\037\n\006orders\030\001" +
+      " \003(\0132\017.protocol.Order\"\204\001\n\tExecution\022\n\n\002i" +
+      "d\030\001 \002(\003\022\r\n\005price\030\005 \002(\001\022\020\n\010quantity\030\006 \002(\005" +
+      "\022\034\n\004user\030\007 \002(\0132\016.protocol.User\022\014\n\004time\030\010" +
+      " \001(\003\022\036\n\005order\030\t \002(\0132\017.protocol.Order\"=\n\022" +
+      "ExecutionsSnapshot\022\'\n\nexecutions\030\001 \003(\0132\023" +
+      ".protocol.Execution\"7\n\005Depth\022\r\n\005depth\030\001 " +
+      "\002(\005\022\r\n\005price\030\002 \002(\001\022\020\n\010quantity\030\003 \002(\005\"\350\001\n" +
+      "\007Summary\022(\n\ninstrument\030\001 \002(\0132\024.protocol.",
+      "Instrument\022,\n\014marketStatus\030\002 \002(\0162\026.proto" +
+      "col.MarketStatus\022\014\n\004open\030\003 \001(\001\022\r\n\005close\030" +
+      "\004 \001(\001\022\014\n\004last\030\005 \001(\001\022\"\n\tbuyDepths\030\006 \003(\0132\017" +
+      ".protocol.Depth\022#\n\nsellDepths\030\007 \003(\0132\017.pr" +
+      "otocol.Depth\022\021\n\ttimestamp\030\010 \002(\003\"9\n\021Summa" +
+      "riesSnapshot\022$\n\tsummaries\030\001 \003(\0132\021.protoc" +
+      "ol.Summary\"o\n\020SubscribeCommand\022\034\n\004user\030\001" +
+      " \002(\0132\016.protocol.User\022\'\n\006status\030\002 \001(\0162\027.p" +
+      "rotocol.CommandStatus\022\024\n\014errorMessage\030\003 " +
+      "\001(\t\"q\n\022UnsubscribeCommand\022\034\n\004user\030\001 \002(\0132",
+      "\016.protocol.User\022\'\n\006status\030\002 \001(\0162\027.protoc" +
+      "ol.CommandStatus\022\024\n\014errorMessage\030\003 \001(\t\"\306" +
+      "\003\n\010Messages\0224\n\020subscribeCommand\030\001 \001(\0132\032." +
+      "protocol.SubscribeCommand\0228\n\022unsubscribe" +
+      "Command\030\002 \001(\0132\034.protocol.UnsubscribeComm" +
+      "and\0226\n\021summariesSnapshot\030\003 \001(\0132\033.protoco" +
+      "l.SummariesSnapshot\0228\n\022executionsSnapsho" +
+      "t\030\004 \001(\0132\034.protocol.ExecutionsSnapshot\0220\n" +
+      "\016ordersSnapshot\030\005 \001(\0132\030.protocol.OrdersS" +
+      "napshot\022:\n\023instrumentsSnapshot\030\006 \001(\0132\035.p",
+      "rotocol.InstrumentsSnapshot\022\036\n\005order\030\007 \001" +
+      "(\0132\017.protocol.Order\022&\n\texecution\030\010 \001(\0132\023" +
+      ".protocol.Execution\022\"\n\007summary\030\t \001(\0132\021.p" +
+      "rotocol.Summary*@\n\016InstrumentType\022\t\n\005STO" +
+      "CK\020\000\022\n\n\006FUTURE\020\001\022\n\n\006OPTION\020\002\022\013\n\007WARRANT\020" +
+      "\003*1\n\013OrderAction\022\n\n\006INSERT\020\000\022\n\n\006UPDATE\020\001" +
+      "\022\n\n\006DELETE\020\002*\"\n\rCommandStatus\022\007\n\003ACK\020\000\022\010" +
+      "\n\004NACK\020\001*&\n\007BuySell\022\007\n\003BUY\020\000\022\010\n\004SELL\020\001\022\010" +
+      "\n\004BOTH\020\002*9\n\013OrderStatus\022\r\n\tON_MARKET\020\000\022\016" +
+      "\n\nTERMINATED\020\001\022\013\n\007DELETED\020\002*,\n\004Role\022\t\n\005A",
+      "DMIN\020\000\022\r\n\tFORBIDDEN\020\001\022\n\n\006GROUPS\020\002*>\n\014Mar" +
+      "ketStatus\022\010\n\004OPEN\020\000\022\t\n\005CLOSE\020\001\022\013\n\007PREOPE" +
+      "N\020\002\022\014\n\010PRECLOSE\020\003B\036\n\023com.kensai.protocol" +
+      "B\007Trading"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13356,62 +14955,68 @@ public final class Trading {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_InstrumentsSnapshot_descriptor,
               new java.lang.String[] { "Instruments", });
-          internal_static_protocol_Order_descriptor =
+          internal_static_protocol_User_descriptor =
             getDescriptor().getMessageTypes().get(2);
+          internal_static_protocol_User_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_protocol_User_descriptor,
+              new java.lang.String[] { "Name", "Groups", "IsListeningSummary", "OrderListeningRole", "ListeningGroupsOrder", "ExecListeningRole", "ListeningGroupsExec", });
+          internal_static_protocol_Order_descriptor =
+            getDescriptor().getMessageTypes().get(3);
           internal_static_protocol_Order_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Order_descriptor,
               new java.lang.String[] { "Id", "Side", "Instrument", "Action", "CommandStatus", "Price", "ExecPrice", "InitialQuantity", "ExecutedQuantity", "UserData", "User", "InsertTime", "LastUpdateTime", "OrderStatus", "ErrorMessage", });
           internal_static_protocol_OrdersSnapshot_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_protocol_OrdersSnapshot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_OrdersSnapshot_descriptor,
               new java.lang.String[] { "Orders", });
           internal_static_protocol_Execution_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_protocol_Execution_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Execution_descriptor,
               new java.lang.String[] { "Id", "Price", "Quantity", "User", "Time", "Order", });
           internal_static_protocol_ExecutionsSnapshot_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_protocol_ExecutionsSnapshot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_ExecutionsSnapshot_descriptor,
               new java.lang.String[] { "Executions", });
           internal_static_protocol_Depth_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_protocol_Depth_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Depth_descriptor,
               new java.lang.String[] { "Depth", "Price", "Quantity", });
           internal_static_protocol_Summary_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_protocol_Summary_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Summary_descriptor,
               new java.lang.String[] { "Instrument", "MarketStatus", "Open", "Close", "Last", "BuyDepths", "SellDepths", "Timestamp", });
           internal_static_protocol_SummariesSnapshot_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_protocol_SummariesSnapshot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_SummariesSnapshot_descriptor,
               new java.lang.String[] { "Summaries", });
           internal_static_protocol_SubscribeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_protocol_SubscribeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_SubscribeCommand_descriptor,
               new java.lang.String[] { "User", "Status", "ErrorMessage", });
           internal_static_protocol_UnsubscribeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_protocol_UnsubscribeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_UnsubscribeCommand_descriptor,
               new java.lang.String[] { "User", "Status", "ErrorMessage", });
           internal_static_protocol_Messages_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_protocol_Messages_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_protocol_Messages_descriptor,
