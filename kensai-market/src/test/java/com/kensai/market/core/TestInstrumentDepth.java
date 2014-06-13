@@ -6,6 +6,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.kensai.market.factories.DatasUtil;
 import com.kensai.market.factories.OrderFactory;
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.CommandStatus;
@@ -17,12 +18,10 @@ import com.kensai.protocol.Trading.Summary;
 
 public class TestInstrumentDepth {
 
-	private Instrument instr = OrderFactory.INSTRUMENT;
+	private Instrument instr = DatasUtil.INSTRUMENT;
 	private double open = 15;
 	private double close = 20;
 	private double last = 19;
-
-	private String user = OrderFactory.USER;
 
 	private InstrumentDepth depth;
 
@@ -120,9 +119,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(resultedOrder);
-		assertThat(depth.getAllOrders(user)).containsOnly(resultedOrder);
 		assertThat(depth.getAllActiveOrders()).containsOnly(resultedOrder);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder);
 	}
 
 	@Test
@@ -157,9 +154,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(resultedOrder);
-		assertThat(depth.getAllOrders(user)).containsOnly(resultedOrder);
 		assertThat(depth.getAllActiveOrders()).containsOnly(resultedOrder);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder);
 	}
 
 	// //////////////////////////////////////////
@@ -200,9 +195,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(resultedOrder, oppositeOrderInserted);
-		assertThat(depth.getAllOrders(user)).containsOnly(resultedOrder, oppositeOrderInserted);
 		assertThat(depth.getAllActiveOrders()).containsOnly(resultedOrder, oppositeOrderInserted);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, oppositeOrderInserted);
 	}
 
 	@Test
@@ -241,9 +234,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(resultedOrder, oppositeOrderOrderInserted);
-		assertThat(depth.getAllOrders(user)).containsOnly(resultedOrder, oppositeOrderOrderInserted);
 		assertThat(depth.getAllActiveOrders()).containsOnly(resultedOrder, oppositeOrderOrderInserted);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, oppositeOrderOrderInserted);
 	}
 
 	// //////////////////////////////////////////
@@ -284,9 +275,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 		assertThat(depth.getAllActiveOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is two buy depth
 		Summary summary = depth.toSummary();
@@ -339,9 +328,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 		assertThat(depth.getAllActiveOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is two buy depth
 		Summary summary = depth.toSummary();
@@ -394,9 +381,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 		assertThat(depth.getAllActiveOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is only one buy depth
 		Summary summary = depth.toSummary();
@@ -450,9 +435,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(topOrderInserted, bottomOrderInserted, resultedOrder);
-		assertThat(depth.getAllOrders(user)).containsOnly(topOrderInserted, bottomOrderInserted, resultedOrder);
 		assertThat(depth.getAllActiveOrders()).containsOnly(topOrderInserted, bottomOrderInserted, resultedOrder);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(topOrderInserted, bottomOrderInserted, resultedOrder);
 
 		// AND: there is only 3 buy depth
 		Summary summary = depth.toSummary();
@@ -509,9 +492,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 		assertThat(depth.getAllActiveOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is two buy depth
 		Summary summary = depth.toSummary();
@@ -564,9 +545,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 		assertThat(depth.getAllActiveOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is two buy depth
 		Summary summary = depth.toSummary();
@@ -619,9 +598,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 		assertThat(depth.getAllActiveOrders()).containsOnly(resultedOrder, initialOrderInserted);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(resultedOrder, initialOrderInserted);
 
 		// AND: there is only one buy depth
 		Summary summary = depth.toSummary();
@@ -675,9 +652,7 @@ public class TestInstrumentDepth {
 		// AND: resulted order is into depth and there is no other order
 		assertThat(depth.getAllExecutions()).isEmpty();
 		assertThat(depth.getAllOrders()).containsOnly(topOrderInserted, bottomOrderInserted, resultedOrder);
-		assertThat(depth.getAllOrders(user)).containsOnly(topOrderInserted, bottomOrderInserted, resultedOrder);
 		assertThat(depth.getAllActiveOrders()).containsOnly(topOrderInserted, bottomOrderInserted, resultedOrder);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(topOrderInserted, bottomOrderInserted, resultedOrder);
 
 		// AND: there is only 3 sell depth
 		Summary summary = depth.toSummary();
@@ -742,9 +717,7 @@ public class TestInstrumentDepth {
 		Order executedOrder = result.getExecutedOrders().get(0);
 		assertThat(depth.getAllExecutions()).isNotEmpty().hasSize(2).containsOnly(result.getExecutions().get(0), result.getExecutions().get(1));
 		assertThat(depth.getAllOrders()).containsOnly(executedOrder, resultedOrder);
-		assertThat(depth.getAllOrders(user)).containsOnly(executedOrder, resultedOrder);
 		assertThat(depth.getAllActiveOrders()).containsOnly(executedOrder);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(executedOrder);
 
 		// AND: there is only 1 sell depth
 		Summary summary = depth.toSummary();
@@ -799,9 +772,7 @@ public class TestInstrumentDepth {
 		Order executedOrder = result.getExecutedOrders().get(0);
 		assertThat(depth.getAllExecutions()).isNotEmpty().hasSize(2).containsOnly(result.getExecutions().get(0), result.getExecutions().get(1));
 		assertThat(depth.getAllOrders()).containsOnly(executedOrder, resultedOrder);
-		assertThat(depth.getAllOrders(user)).containsOnly(executedOrder, resultedOrder);
 		assertThat(depth.getAllActiveOrders()).containsOnly(executedOrder);
-		assertThat(depth.getAllActiveOrders(user)).containsOnly(executedOrder);
 
 		// AND: there is only 1 buy depth
 		Summary summary = depth.toSummary();
@@ -876,10 +847,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllExecutions()).isNotEmpty().hasSize(6);
 		assertThat(depth.getAllOrders()).hasSize(5).contains(orderSell4Inserted).contains(resultedOrder)
 			.contains(result.getExecutedOrders().toArray(new Order[] {}));
-		assertThat(depth.getAllOrders(user)).hasSize(5).contains(orderSell4Inserted).contains(resultedOrder)
-			.contains(result.getExecutedOrders().toArray(new Order[] {}));
 		assertThat(depth.getAllActiveOrders()).hasSize(2);
-		assertThat(depth.getAllActiveOrders(user)).hasSize(2);
 
 		// AND: there is only 1 buy and 1 sell depth
 		Summary summary = depth.toSummary();
@@ -956,10 +924,7 @@ public class TestInstrumentDepth {
 		assertThat(depth.getAllExecutions()).isNotEmpty().hasSize(6);
 		assertThat(depth.getAllOrders()).hasSize(5).contains(orderBuy4Inserted).contains(resultedOrder)
 			.contains(result.getExecutedOrders().toArray(new Order[] {}));
-		assertThat(depth.getAllOrders(user)).hasSize(5).contains(orderBuy4Inserted).contains(resultedOrder)
-			.contains(result.getExecutedOrders().toArray(new Order[] {}));
 		assertThat(depth.getAllActiveOrders()).hasSize(2);
-		assertThat(depth.getAllActiveOrders(user)).hasSize(2);
 
 		// AND: there is only 1 buy and 1 sell depth
 		Summary summary = depth.toSummary();

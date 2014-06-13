@@ -3,6 +3,7 @@ package com.kensai.market.core;
 import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,6 +17,7 @@ import com.kensai.protocol.Trading.Order;
 import com.kensai.protocol.Trading.SubscribeCommand;
 import com.kensai.protocol.Trading.Summary;
 import com.kensai.protocol.Trading.UnsubscribeCommand;
+import com.kensai.protocol.Trading.User;
 
 public class KensaiMarket {
 
@@ -38,21 +40,16 @@ public class KensaiMarket {
 		}
 
 		// If user is already subscribed, send NACK
-		String user = cmd.getUser();
-		if (sender.contains(user)) {
-			sender.sendNack(cmd, channel, "User [" + user + "] already subscribed");
-		} else {
-			sender.sendAck(cmd, channel);
-		}
+		User user = cmd.getUser();
 
-		// Save user
-		sender.addUser(user, channel);
+		// Save user and send ACK/NAK
+		sender.addUser(user, channel, cmd);
 
 		// Send snapshots
 		sender.sendInstrumentsSnapshot(user, getInstruments());
 		sender.sendSummariesSnapshot(user, getSummariesSnapshot());
-		sender.sendOrdersSnapshot(user, getOrdersSnapshot(user));
-		sender.sendExecutionsSnapshot(user, getExecutionsSnapshot(user));
+		sender.sendOrdersSnapshot(user, getOrdersSnapshot());
+		sender.sendExecutionsSnapshot(user, getExecutionsSnapshot());
 	}
 
 	public List<Summary> getSummariesSnapshot() {
@@ -70,30 +67,15 @@ public class KensaiMarket {
 	}
 
 	public List<Instrument> getInstruments() {
-		List<Instrument> instruments = newArrayList();
-		for (InstrumentDepth depth : depths) {
-			instruments.add(depth.getInstrument());
-		}
-
-		return instruments;
+		return depths.stream().map(depth -> depth.getInstrument()).collect(Collectors.toList());
 	}
 
-	public List<Order> getOrdersSnapshot(String user) {
-		List<Order> orders = newArrayList();
-		for (InstrumentDepth depth : depths) {
-			orders.addAll(depth.getAllOrders(user));
-		}
-
-		return orders;
+	public List<Order> getOrdersSnapshot() {
+		return depths.stream().flatMap(depth -> depth.getAllOrders().stream()).collect(Collectors.toList());
 	}
 
-	public List<Execution> getExecutionsSnapshot(String user) {
-		List<Execution> executions = newArrayList();
-		for (InstrumentDepth depth : depths) {
-			executions.addAll(depth.getAllExecutions(user));
-		}
-
-		return executions;
+	public List<Execution> getExecutionsSnapshot() {
+		return depths.stream().flatMap(depth -> depth.getAllExecutions().stream()).collect(Collectors.toList());
 	}
 
 	public void receivedUnsubscribed(UnsubscribeCommand cmd, Channel channel) {
@@ -103,16 +85,8 @@ public class KensaiMarket {
 			return;
 		}
 
-		// If user already subscribed, send NACK
-		String user = cmd.getUser();
-		if (!sender.contains(user)) {
-			sender.sendNack(cmd, channel, "Invalid or unknow user [" + user + "]");
-			return;
-		}
-
-		// Remove user and send ACK
-		sender.removeUser(user);
-		sender.sendAck(cmd, channel);
+		// Remove user and send ACK/NACK
+		sender.removeUser(cmd.getUser(), cmd, channel);
 	}
 
 	public void receivedOrder(Order order, Channel channel) {
@@ -136,7 +110,7 @@ public class KensaiMarket {
 		}
 
 		// Check user credentials
-		String user = order.getUser();
+		User user = order.getUser();
 		if (!sender.contains(user)) {
 			String errorMesg = "User [" + user + "] does not have credentials to manage orders";
 			log.info(errorMesg);
@@ -203,20 +177,18 @@ public class KensaiMarket {
 
 	private void manageResult(InsertionResult result, Channel channel) {
 		// Send resulted order
-		sender.send(result.getResultedOrder(), channel);
+		sender.send(result.getResultedOrder());
 
 		// Send executed orders
 		if (result.hasExecutedOrders()) {
 			for (Order execOrder : result.getExecutedOrders()) {
-				sender.send(execOrder, channel);
+				sender.send(execOrder);
 			}
 		}
 
 		// Send executions
 		if (result.hasExecutions()) {
-			for (Execution exec : result.getExecutions()) {
-				sender.send(exec, channel);
-			}
+			result.getExecutions().forEach(exec -> sender.send(exec));
 		}
 
 		// Send summary update

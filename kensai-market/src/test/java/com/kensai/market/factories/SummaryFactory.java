@@ -12,7 +12,7 @@ public final class SummaryFactory {
 
 	public static final MarketStatus STATUS = MarketStatus.OPEN;
 
-	public static final Instrument INSTRUMENT = OrderFactory.INSTRUMENT;
+	public static final Instrument INSTRUMENT = DatasUtil.INSTRUMENT;
 
 	private SummaryFactory() {
 		// Can not be instanciated

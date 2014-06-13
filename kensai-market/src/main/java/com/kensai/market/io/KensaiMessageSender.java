@@ -1,13 +1,15 @@
 package com.kensai.market.io;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jboss.netty.channel.Channel;
 
-import com.google.common.collect.Maps;
+import com.kensai.market.core.UserCredentials;
 import com.kensai.protocol.Trading.CommandStatus;
 import com.kensai.protocol.Trading.Execution;
 import com.kensai.protocol.Trading.ExecutionsSnapshot;
@@ -20,26 +22,68 @@ import com.kensai.protocol.Trading.SubscribeCommand;
 import com.kensai.protocol.Trading.SummariesSnapshot;
 import com.kensai.protocol.Trading.Summary;
 import com.kensai.protocol.Trading.UnsubscribeCommand;
+import com.kensai.protocol.Trading.User;
 
 public class KensaiMessageSender {
 	private static final Logger log = LogManager.getLogger(KensaiMessageSender.class);
 
-	private Map<String, Channel> users = Maps.newHashMap();
+	private List<UserCredentials> users = new ArrayList<>();
 
-	public void addUser(String user, Channel channel) {
-		users.put(user, channel);
-	}
+	public void addUser(UserCredentials uc, SubscribeCommand cmd) {
+		if (users.contains(uc)) {
+			sendNack(cmd, uc.getChannel(), "User [" + uc.getName() + "] already subscribed");
 
-	public void removeUser(String user) {
-		users.remove(user);
-	}
-
-	public boolean contains(String user) {
-		if (user == null) {
-			return false;
+		} else {
+			users.add(uc);
+			sendAck(cmd, uc.getChannel());
 		}
+	}
 
-		return users.containsKey(user);
+	public void addUser(User user, Channel channel, SubscribeCommand cmd) {
+		addUser(new UserCredentials(user, channel), cmd);
+	}
+
+	public void removeUser(UserCredentials uc, UnsubscribeCommand cmd) {
+		if (users.contains(uc)) {
+			users.remove(uc);
+			sendAck(cmd, uc.getChannel());
+
+		} else {
+			sendNack(cmd, uc.getChannel(), "Can not unsubscribe User [" + uc.getName() + "] - Reason: user does not exist");
+		}
+	}
+
+	public void removeUser(User user, UnsubscribeCommand cmd, Channel channel) {
+		removeUser(new UserCredentials(user, channel), cmd);
+	}
+
+	public boolean contains(UserCredentials user) {
+		return contains(user.getUser());
+	}
+
+	public boolean contains(User user) {
+		Optional<UserCredentials> optional = users.stream().filter(bean -> bean.getUser().equals(user)).findFirst();
+		return optional.isPresent();
+	}
+
+	public UserCredentials getUser(User user) {
+		Optional<UserCredentials> optional = users.stream().filter(bean -> bean.getUser().equals(user)).findFirst();
+		if (optional.isPresent()) {
+			return optional.get();
+
+		} else {
+			return null;
+		}
+	}
+
+	public UserCredentials getUser(UserCredentials user) {
+		Optional<UserCredentials> optional = users.stream().filter(bean -> bean.equals(user)).findFirst();
+		if (optional.isPresent()) {
+			return optional.get();
+
+		} else {
+			return null;
+		}
 	}
 
 	public void sendNack(Order order, Channel channel, String errorMsg) {
@@ -72,16 +116,6 @@ public class KensaiMessageSender {
 		channel.write(msg);
 	}
 
-	public void sendAck(Order order, Channel channel) {
-		sendAck(Order.newBuilder(order), channel);
-	}
-
-	public void sendAck(Order.Builder builder, Channel channel) {
-		Order response = builder.setLastUpdateTime(System.currentTimeMillis()).setCommandStatus(CommandStatus.ACK).build();
-		Messages msg = Messages.newBuilder().setOrder(response).build();
-		channel.write(msg);
-	}
-
 	public void sendAck(SubscribeCommand cmd, Channel channel) {
 		sendAck(SubscribeCommand.newBuilder(cmd), channel);
 	}
@@ -93,7 +127,7 @@ public class KensaiMessageSender {
 	}
 
 	public void sendAck(UnsubscribeCommand cmd, Channel channel) {
-		sendAck(UnsubscribeCommand.newBuilder(), channel);
+		sendAck(UnsubscribeCommand.newBuilder(cmd), channel);
 	}
 
 	public void sendAck(UnsubscribeCommand.Builder builder, Channel channel) {
@@ -102,67 +136,73 @@ public class KensaiMessageSender {
 		channel.write(msg);
 	}
 
-	public void sendInstrumentsSnapshot(String user, List<Instrument> instruments) {
-		if (!users.containsKey(user)) {
+	public void sendInstrumentsSnapshot(User user, List<Instrument> instruments) {
+		if (!contains(user)) {
 			log.error("Can not send ExecutionsSnapshot - cause: unknow user [{}]", user);
 			return;
 		}
 
-		Channel channel = users.get(user);
 		InstrumentsSnapshot snapshot = InstrumentsSnapshot.newBuilder().addAllInstruments(instruments).build();
 		Messages msg = Messages.newBuilder().setInstrumentsSnapshot(snapshot).build();
-		channel.write(msg);
+		getUser(user).getChannel().write(msg);
 	}
 
-	public void sendSummariesSnapshot(String user, List<Summary> summaries) {
-		if (!users.containsKey(user)) {
-			log.error("Can not send ExecutionsSnapshot - cause: unknow user [{}]", user);
+	public void sendSummariesSnapshot(User user, List<Summary> summaries) {
+		if (!contains(user)) {
+			log.error("Can not send SummariesSnapshot - cause: unknow user [{}]", user);
 			return;
 		}
 
-		Channel channel = users.get(user);
-		SummariesSnapshot snapshot = SummariesSnapshot.newBuilder().addAllSummaries(summaries).build();
+		SummariesSnapshot.Builder builder = SummariesSnapshot.newBuilder();
+		UserCredentials uc = getUser(user);
+		if (uc.isListeningSummary()) {
+			builder.addAllSummaries(summaries);
+		}
+
+		SummariesSnapshot snapshot = builder.build();
 		Messages msg = Messages.newBuilder().setSummariesSnapshot(snapshot).build();
-		channel.write(msg);
+		uc.getChannel().write(msg);
 	}
 
-	public void sendOrdersSnapshot(String user, List<Order> orders) {
-		if (!users.containsKey(user)) {
-			log.error("Can not send ExecutionsSnapshot - cause: unknow user [{}]", user);
+	public void sendOrdersSnapshot(User user, List<Order> orders) {
+		if (!contains(user)) {
+			log.error("Can not send OrdersSnapshot - cause: unknow user [{}]", user);
 			return;
 		}
 
-		Channel channel = users.get(user);
-		OrdersSnapshot snapshot = OrdersSnapshot.newBuilder().addAllOrders(orders).build();
+		UserCredentials uc = getUser(user);
+		List<Order> ordersForUser = orders.stream().filter(order -> uc.isListeningOrderFrom(order)).collect(Collectors.toList());
+		OrdersSnapshot snapshot = OrdersSnapshot.newBuilder().addAllOrders(ordersForUser).build();
 		Messages msg = Messages.newBuilder().setOrdersSnapshot(snapshot).build();
-		channel.write(msg);
+		uc.getChannel().write(msg);
 	}
 
-	public void sendExecutionsSnapshot(String user, List<Execution> executions) {
-		if (!users.containsKey(user)) {
+	public void sendExecutionsSnapshot(User user, List<Execution> executions) {
+		if (!contains(user)) {
 			log.error("Can not send ExecutionsSnapshot - cause: unknow user [{}]", user);
 			return;
 		}
 
-		Channel channel = users.get(user);
-		ExecutionsSnapshot snapshot = ExecutionsSnapshot.newBuilder().addAllExecutions(executions).build();
+		UserCredentials uc = getUser(user);
+		List<Execution> executionsForUser = executions.stream().filter(exec -> uc.isListeningExecFrom(exec)).collect(Collectors.toList());
+		ExecutionsSnapshot snapshot = ExecutionsSnapshot.newBuilder().addAllExecutions(executionsForUser).build();
 		Messages msg = Messages.newBuilder().setExecutionsSnapshot(snapshot).build();
-		channel.write(msg);
+		uc.getChannel().write(msg);
 	}
 
-	public void send(Order order, Channel channel) {
+	public void send(Order order) {
 		Messages msg = Messages.newBuilder().setOrder(order).build();
-		channel.write(msg);
+		users.stream().filter(user -> user.isListeningOrderFrom(order.getUser())).forEach(user -> user.getChannel().write(msg));
 	}
 
-	public void send(Execution exec, Channel channel) {
+	public void send(Execution exec) {
 		Messages msg = Messages.newBuilder().setExecution(exec).build();
-		channel.write(msg);
+		users.stream().filter(user -> user.isListeningExecFrom(exec.getUser())).forEach(user -> user.getChannel().write(msg));
 	}
 
 	public void send(Summary summary) {
 		Messages msg = Messages.newBuilder().setSummary(summary).build();
-		users.values().forEach(channel -> channel.write(msg));
+		users.stream().filter(user -> user.isListeningSummary()).forEach(user -> user.getChannel().write(msg));
 	}
 
 }

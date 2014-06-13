@@ -354,43 +354,8 @@ public class InstrumentDepth {
 		return orders;
 	}
 
-	public List<Order> getAllActiveOrders(String user) {
-		List<Order> orders = getAllActiveOrders();
-		List<Order> ordersToReturn = newArrayList();
-		for (Order order : orders) {
-			if (order.getUser().equals(user)) {
-				ordersToReturn.add(order);
-			}
-		}
-
-		return ordersToReturn;
-	}
-
-	public List<Order> getAllOrders(String user) {
-		List<Order> ordersToReturn = newArrayList();
-		List<Order> allOrders = getAllOrders();
-		for (Order order : allOrders) {
-			if (order.getUser().equals(user)) {
-				ordersToReturn.add(order);
-			}
-		}
-
-		return ordersToReturn;
-	}
-
 	public List<Execution> getAllExecutions() {
 		return newArrayList(allExecutions);
-	}
-
-	public List<Execution> getAllExecutions(String user) {
-		List<Execution> executions = newArrayList();
-		for (Execution execution : allExecutions) {
-			if (execution.getOrder().getUser().equals(user)) {
-				executions.add(execution);
-			}
-		}
-
-		return executions;
 	}
 
 	public boolean hasOrder(long orderId) {

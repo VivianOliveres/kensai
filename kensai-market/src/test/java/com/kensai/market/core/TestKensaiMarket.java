@@ -1,6 +1,8 @@
 package com.kensai.market.core;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static com.kensai.market.factories.DatasUtil.UNKNOW_USER;
+import static com.kensai.market.factories.DatasUtil.USER;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyList;
 import static org.mockito.Matchers.anyString;
@@ -19,6 +21,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.kensai.market.IdGenerator;
+import com.kensai.market.factories.DatasUtil;
 import com.kensai.market.factories.ExecutionFactory;
 import com.kensai.market.factories.OrderFactory;
 import com.kensai.market.factories.SummaryFactory;
@@ -35,9 +38,7 @@ import com.kensai.protocol.Trading.UnsubscribeCommand;
 
 public class TestKensaiMarket {
 
-	private String user = OrderFactory.USER;
-
-	private Instrument instr = OrderFactory.INSTRUMENT;
+	private Instrument instr = DatasUtil.INSTRUMENT;
 	private InstrumentDepth depth;
 
 	private Channel channel;
@@ -57,99 +58,39 @@ public class TestKensaiMarket {
 	}
 
 	@Test
-	public void shouldReceiveSubscribeSendAckWhenUserDoesNotExist() {
+	public void should_receive_subscribe_add_user_and_send_snapshots() {
 		// GIVEN: User has not been added
-		when(sender.contains(eq(user))).thenReturn(false);
+		when(sender.contains(eq(USER))).thenReturn(false);
 
 		// AND: subscribe command
-		SubscribeCommand cmd = SubscribeCommand.newBuilder().setUser(user).build();
+		SubscribeCommand cmd = SubscribeCommand.newBuilder().setUser(USER).build();
 
 		// WHEN: receivedSubscribe
 		market.receivedSubscribe(cmd, channel);
 
 		// THEN: User is add
-		verify(sender).addUser(eq(user), eq(channel));
-
-		// AND: ACK is sent
-		verify(sender).sendAck(eq(cmd), eq(channel));
+		verify(sender).addUser(eq(USER), eq(channel), eq(cmd));
 
 		// AND: snapshots are sent
-		verify(sender).sendInstrumentsSnapshot(eq(user), anyList());
-		verify(sender).sendOrdersSnapshot(eq(user), anyList());
-		verify(sender).sendExecutionsSnapshot(eq(user), anyList());
-		verify(sender).sendSummariesSnapshot(eq(user), anyList());
-	}
-
-	@Test
-	public void shouldReceiveSubscribeSendNackWhenUserIsAlreadySubscribedAndSendSnapshot() {
-		// GIVEN: User is already subscribed
-		when(sender.contains(eq(user))).thenReturn(true);
-
-		// AND: subscribe command with same user
-		SubscribeCommand cmd = SubscribeCommand.newBuilder().setUser(user).build();
-
-		// WHEN: receivedSubscribe
-		market.receivedSubscribe(cmd, channel);
-
-		// THEN: NAK is sent
-		verify(sender).sendNack(eq(cmd), eq(channel), anyString());
-
-		// AND: user is updated
-		verify(sender).addUser(eq(user), eq(channel));
-
-		// AND: snapshot are sent
-		verify(sender).sendInstrumentsSnapshot(eq(user), anyList());
-		verify(sender).sendOrdersSnapshot(eq(user), anyList());
-		verify(sender).sendExecutionsSnapshot(eq(user), anyList());
-		verify(sender).sendSummariesSnapshot(eq(user), anyList());
-	}
-
-	@Test
-	public void shouldReceiveSubscribeDoNothingWhenCommandIsNull() {
-		// WHEN: receivedSubscribe on null command
-		market.receivedSubscribe(null, channel);
-
-		// THEN: sender do nothing
-		verify(sender, never()).sendAck(any(SubscribeCommand.class), eq(channel));
-	}
-
-	@Test
-	public void shouldReceiveUnsubscribeSendNackWhenUserDoesNotExist() {
-		// GIVEN: User has not been added
-		when(sender.contains(eq(user))).thenReturn(false);
-
-		// AND: unsubscribe command
-		UnsubscribeCommand cmd = UnsubscribeCommand.newBuilder().setUser(user).build();
-
-		// WHEN: receivedUnsubscribed
-		market.receivedUnsubscribed(cmd, channel);
-
-		// THEN: User is not add
-		verify(sender, never()).addUser(eq(user), eq(channel));
-
-		// AND: NAK is sent
-		verify(sender).sendNack(eq(cmd), eq(channel), anyString());
+		verify(sender).sendInstrumentsSnapshot(eq(USER), anyList());
+		verify(sender).sendOrdersSnapshot(eq(USER), anyList());
+		verify(sender).sendExecutionsSnapshot(eq(USER), anyList());
+		verify(sender).sendSummariesSnapshot(eq(USER), anyList());
 	}
 
 	@Test
 	public void shouldReceiveUnsubscribeSendAckWhenUserIsAlreadySubscribed() {
 		// GIVEN: User is already subscribed
-		when(sender.contains(eq(user))).thenReturn(true);
+		when(sender.contains(eq(USER))).thenReturn(true);
 
 		// AND: unsubscribe command with same user
-		UnsubscribeCommand cmd = UnsubscribeCommand.newBuilder().setUser(user).build();
+		UnsubscribeCommand cmd = UnsubscribeCommand.newBuilder().setUser(USER).build();
 
 		// WHEN: receivedUnsubscribed
 		market.receivedUnsubscribed(cmd, channel);
 
-		// THEN: user has been check
-		verify(sender).contains(eq(user));
-
-		// AND: ACK is sent
-		verify(sender).sendAck(eq(cmd), eq(channel));
-
-		// AND: user is removed
-		verify(sender).removeUser(eq(user));
+		// THEN: user is removed
+		verify(sender).removeUser(eq(USER), eq(cmd), eq(channel));
 
 		// AND: user is not add
 		verifyNoMoreInteractions(sender);
@@ -176,14 +117,13 @@ public class TestKensaiMarket {
 	@Test
 	public void shouldInsertSendNackWhenUserIsUnknow() {
 		// GIVEN: an order with an unknown user
-		String unknownUser = user + " is unknow";
-		Order order = OrderFactory.create(123.456, 789, BuySell.BUY).setUser(unknownUser).build();
+		Order order = OrderFactory.create(123.456, 789, BuySell.BUY).setUser(UNKNOW_USER).build();
 
 		// WHEN: receivedOrder
 		market.receivedOrder(order, channel);
 
 		// THEN: sender check this user and send NAK
-		verify(sender).contains(eq(unknownUser));
+		verify(sender).contains(eq(UNKNOW_USER));
 		verify(sender).sendNack(eq(order), eq(channel), anyString());
 
 		// AND: Nothing else is more
@@ -193,7 +133,7 @@ public class TestKensaiMarket {
 	@Test
 	public void shouldInsertUpdateDepthAndNotifyForModifications() {
 		// GIVEN: user is registered
-		when(sender.contains(eq(user))).thenReturn(true);
+		when(sender.contains(eq(USER))).thenReturn(true);
 
 		// AND: an order
 		Order order = OrderFactory.create(123.456, 789, BuySell.BUY).build();
@@ -212,18 +152,18 @@ public class TestKensaiMarket {
 		market.receivedOrder(order, channel);
 
 		// THEN: sender check this user, send ACK and send summary for this instrument
-		verify(sender).contains(eq(user));
+		verify(sender).contains(eq(USER));
 
 		// AND: send ACK for inserted order
-		verify(sender).send(eq(insertedOrder), eq(channel));
+		verify(sender).send(eq(insertedOrder));
 
 		// AND: notify that summary has changed
 		verify(sender).send(eq(insertedSummary));
 
 		// AND: notify for executions and executions order
-		verify(sender).send(eq(execOrders.get(0)), eq(channel));
-		verify(sender).send(eq(executions.get(0)), eq(channel));
-		verify(sender).send(eq(executions.get(1)), eq(channel));
+		verify(sender).send(eq(execOrders.get(0)));
+		verify(sender).send(eq(executions.get(0)));
+		verify(sender).send(eq(executions.get(1)));
 
 		// AND: do nothing
 		verifyNoMoreInteractions(sender);
@@ -238,14 +178,13 @@ public class TestKensaiMarket {
 	@Test
 	public void shouldUpdateSendNackWhenUserIsUnknow() {
 		// GIVEN: an order with an unknown user
-		String unknownUser = user + " is unknow";
-		Order order = OrderFactory.create(123.456, 789, BuySell.BUY).setUser(unknownUser).setAction(OrderAction.UPDATE).build();
+		Order order = OrderFactory.create(123.456, 789, BuySell.BUY).setUser(UNKNOW_USER).setAction(OrderAction.UPDATE).build();
 
 		// WHEN: receivedOrder
 		market.receivedOrder(order, channel);
 
 		// THEN: sender check this user and send NAK
-		verify(sender).contains(eq(unknownUser));
+		verify(sender).contains(eq(UNKNOW_USER));
 		verify(sender).sendNack(eq(order), eq(channel), anyString());
 
 		// AND: Nothing else is more
@@ -261,7 +200,7 @@ public class TestKensaiMarket {
 		market.receivedOrder(order, channel);
 
 		// THEN: sender check this user and send NAK
-		verify(sender).contains(eq(user));
+		verify(sender).contains(eq(USER));
 		verify(sender).sendNack(eq(order), eq(channel), anyString());
 
 		// AND: Nothing else is more
@@ -271,7 +210,7 @@ public class TestKensaiMarket {
 	@Test
 	public void shouldUpdateUpdateDepthAndNotifyForModifications() {
 		// GIVEN: user is registered
-		when(sender.contains(eq(user))).thenReturn(true);
+		when(sender.contains(eq(USER))).thenReturn(true);
 
 		// AND: an order
 		long orderId = IdGenerator.generateId();
@@ -294,18 +233,18 @@ public class TestKensaiMarket {
 		market.receivedOrder(order, channel);
 
 		// THEN: sender check this user, send ACK and send summary for this instrument
-		verify(sender).contains(eq(user));
+		verify(sender).contains(eq(USER));
 
 		// AND: send ACK for updated order
-		verify(sender).send(eq(updatedOrder), eq(channel));
+		verify(sender).send(eq(updatedOrder));
 
 		// AND: notify that summary has changed
 		verify(sender).send(eq(insertedSummary));
 
 		// AND: notify for executions and executions order
-		verify(sender).send(eq(execOrders.get(0)), eq(channel));
-		verify(sender).send(eq(executions.get(0)), eq(channel));
-		verify(sender).send(eq(executions.get(1)), eq(channel));
+		verify(sender).send(eq(execOrders.get(0)));
+		verify(sender).send(eq(executions.get(0)));
+		verify(sender).send(eq(executions.get(1)));
 
 		// AND: do nothing
 		verifyNoMoreInteractions(sender);
@@ -321,14 +260,13 @@ public class TestKensaiMarket {
 	@Test
 	public void shouldDeleteSendNackWhenUserIsUnknow() {
 		// GIVEN: an order with an unknown user
-		String unknownUser = user + " is unknow";
-		Order order = OrderFactory.create(123.456, 789, BuySell.BUY).setUser(unknownUser).setAction(OrderAction.DELETE).build();
+		Order order = OrderFactory.create(123.456, 789, BuySell.BUY).setUser(UNKNOW_USER).setAction(OrderAction.DELETE).build();
 
 		// WHEN: receivedOrder
 		market.receivedOrder(order, channel);
 
 		// THEN: sender check this user and send NAK
-		verify(sender).contains(eq(unknownUser));
+		verify(sender).contains(eq(UNKNOW_USER));
 		verify(sender).sendNack(eq(order), eq(channel), anyString());
 
 		// AND: Nothing else is more
@@ -344,7 +282,7 @@ public class TestKensaiMarket {
 		market.receivedOrder(order, channel);
 
 		// THEN: sender check this user and send NAK
-		verify(sender).contains(eq(user));
+		verify(sender).contains(eq(USER));
 		verify(sender).sendNack(eq(order), eq(channel), anyString());
 
 		// AND: Nothing else is more
@@ -354,7 +292,7 @@ public class TestKensaiMarket {
 	@Test
 	public void shouldDeleteUpdateDepthAndNotifyForModifications() {
 		// GIVEN: user is registered
-		when(sender.contains(eq(user))).thenReturn(true);
+		when(sender.contains(eq(USER))).thenReturn(true);
 
 		// AND: an order
 		long orderId = IdGenerator.generateId();
@@ -377,18 +315,18 @@ public class TestKensaiMarket {
 		market.receivedOrder(order, channel);
 
 		// THEN: sender check this user, send ACK and send summary for this instrument
-		verify(sender).contains(eq(user));
+		verify(sender).contains(eq(USER));
 
 		// AND: send ACK for updated order
-		verify(sender).send(eq(updatedOrder), eq(channel));
+		verify(sender).send(eq(updatedOrder));
 
 		// AND: notify that summary has changed
 		verify(sender).send(eq(insertedSummary));
 
 		// AND: notify for executions and executions order
-		verify(sender).send(eq(execOrders.get(0)), eq(channel));
-		verify(sender).send(eq(executions.get(0)), eq(channel));
-		verify(sender).send(eq(executions.get(1)), eq(channel));
+		verify(sender).send(eq(execOrders.get(0)));
+		verify(sender).send(eq(executions.get(0)));
+		verify(sender).send(eq(executions.get(1)));
 
 		// AND: do nothing
 		verifyNoMoreInteractions(sender);

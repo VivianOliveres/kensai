@@ -1,12 +1,12 @@
 package com.kensai.market.factories;
 
+import static com.kensai.market.factories.DatasUtil.USER;
+
 import com.kensai.market.IdGenerator;
 import com.kensai.protocol.Trading.Execution;
 import com.kensai.protocol.Trading.Order;
 
 public final class ExecutionFactory {
-
-	private static String USER = OrderFactory.USER;
 
 	private ExecutionFactory() {
 		// Can not be instanciated
