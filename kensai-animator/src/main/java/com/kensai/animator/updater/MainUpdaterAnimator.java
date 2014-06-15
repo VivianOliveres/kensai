@@ -1,5 +1,7 @@
 package com.kensai.animator.updater;
 
+import static com.kensai.protocol.Trading.Role.ADMIN;
+
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.Random;
 
@@ -8,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.kensai.animator.core.AnimatorClient;
 import com.kensai.animator.sdk.Animator;
+import com.kensai.protocol.Trading.User;
 
 public class MainUpdaterAnimator {
 	private static final Logger log = LogManager.getLogger(MainUpdaterAnimator.class);
@@ -25,15 +28,18 @@ public class MainUpdaterAnimator {
 
 	public static void main(String[] args) {
 		// User
-		String user;
+		String userName;
 		if (args == null || args.length == 0) {
 			log.warn("No user -> use default [" + DEFAULT_USER + "]");
-			user = DEFAULT_USER;
+			userName = DEFAULT_USER;
 
 		} else {
 			// Retrieve user
-			user = args[0].trim();
+			userName = args[0].trim();
 		}
+
+		User user = User.newBuilder().setName(userName).addGroups("Animator").addGroups("Updater").setIsListeningSummary(true)
+			.setExecListeningRole(ADMIN).setOrderListeningRole(ADMIN).build();
 
 		// Retrieve host and port
 		String host = DEFAULT_HOST;

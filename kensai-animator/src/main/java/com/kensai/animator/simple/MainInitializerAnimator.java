@@ -1,13 +1,16 @@
 package com.kensai.animator.simple;
 
+import static com.kensai.protocol.Trading.Role.ADMIN;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.kensai.animator.core.AnimatorClient;
 import com.kensai.animator.random.MainRandomAnimator;
 import com.kensai.animator.sdk.Animator;
+import com.kensai.protocol.Trading.User;
 
-public class MainSimpleAnimator {
+public class MainInitializerAnimator {
 	private static final Logger log = LogManager.getLogger(MainRandomAnimator.class);
 
 	private static final String DEFAULT_USER = "DefaultSimpleAnimator";
@@ -17,15 +20,18 @@ public class MainSimpleAnimator {
 
 	public static void main(String[] args) {
 		// User
-		String user;
+		String userName;
 		if (args == null || args.length == 0) {
 			log.warn("No user -> use default [" + DEFAULT_USER + "]");
-			user = DEFAULT_USER;
+			userName = DEFAULT_USER;
 
 		} else {
 			// Retrieve user
-			user = args[0].trim();
+			userName = args[0].trim();
 		}
+
+		User user = User.newBuilder().setName(userName).addGroups("Animator").addGroups("Init").setIsListeningSummary(true).setExecListeningRole(ADMIN)
+			.setOrderListeningRole(ADMIN).build();
 
 		// Retrieve host and port
 		String host = DEFAULT_HOST;
@@ -36,7 +42,7 @@ public class MainSimpleAnimator {
 		}
 
 		// Create Random Animator
-		Animator animator = new SimpleAnimator(user);
+		Animator animator = new InitializerAnimator(user);
 
 		// Launch client
 		AnimatorClient client = new AnimatorClient(host, port, animator);

@@ -1,5 +1,7 @@
 package com.kensai.animator.random;
 
+import static com.kensai.protocol.Trading.Role.FORBIDDEN;
+
 import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
@@ -7,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.kensai.animator.core.AnimatorClient;
 import com.kensai.animator.sdk.Animator;
+import com.kensai.protocol.Trading.User;
 
 public class MainRandomAnimator {
 	private static final Logger log = LogManager.getLogger(MainRandomAnimator.class);
@@ -24,15 +27,18 @@ public class MainRandomAnimator {
 
 	public static void main(String[] args) {
 		// User
-		String user;
+		String userName;
 		if (args == null || args.length == 0) {
 			log.warn("No user -> use default [" + DEFAULT_USER + "]");
-			user = DEFAULT_USER;
+			userName = DEFAULT_USER;
 
 		} else {
 			// Retrieve user
-			user = args[0].trim();
+			userName = args[0].trim();
 		}
+
+		User user = User.newBuilder().setName(userName).addGroups("Animator").addGroups("Random").setIsListeningSummary(true)
+			.setExecListeningRole(FORBIDDEN).setOrderListeningRole(FORBIDDEN).build();
 
 		// Retrieve host and port
 		String host = DEFAULT_HOST;

@@ -12,14 +12,15 @@ import com.kensai.protocol.Trading.Order;
 import com.kensai.protocol.Trading.OrderAction;
 import com.kensai.protocol.Trading.SummariesSnapshot;
 import com.kensai.protocol.Trading.Summary;
+import com.kensai.protocol.Trading.User;
 
-public class SimpleAnimator extends AbstractSubscriberAnimator {
+public class InitializerAnimator extends AbstractSubscriberAnimator {
 
-	private static final Logger log = LogManager.getLogger(SimpleAnimator.class);
+	private static final Logger log = LogManager.getLogger(InitializerAnimator.class);
 
-	private final String user;
+	private final User user;
 
-	public SimpleAnimator(String user) {
+	public InitializerAnimator(User user) {
 		super(user);
 		this.user = user;
 	}

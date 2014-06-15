@@ -1,10 +1,13 @@
 package com.kensai.animator.mm;
 
+import static com.kensai.protocol.Trading.Role.ADMIN;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.kensai.animator.core.AnimatorClient;
 import com.kensai.animator.sdk.Animator;
+import com.kensai.protocol.Trading.User;
 
 public class MainMarketMakerAnimator {
 	private static final Logger log = LogManager.getLogger(MainMarketMakerAnimator.class);
@@ -19,15 +22,19 @@ public class MainMarketMakerAnimator {
 
 	public static void main(String[] args) {
 		// User
-		String user;
+		String userName;
 		if (args == null || args.length == 0) {
 			log.warn("No user -> use default [" + DEFAULT_USER + "]");
-			user = DEFAULT_USER;
+			userName = DEFAULT_USER;
 
 		} else {
 			// Retrieve user
-			user = args[0].trim();
+			userName = args[0].trim();
 		}
+
+		User user = User.newBuilder().setName(userName).addGroups("Animator").addGroups("MarketMaker").setIsListeningSummary(true)
+			.setExecListeningRole(ADMIN)
+			.setOrderListeningRole(ADMIN).build();
 
 		// Retrieve host and port
 		String host = DEFAULT_HOST;

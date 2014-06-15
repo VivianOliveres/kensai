@@ -12,17 +12,18 @@ import com.kensai.animator.sdk.AbstractSubscriberAnimator;
 import com.kensai.protocol.Trading.Instrument;
 import com.kensai.protocol.Trading.SummariesSnapshot;
 import com.kensai.protocol.Trading.Summary;
+import com.kensai.protocol.Trading.User;
 
 public class MarketMakerAnimator extends AbstractSubscriberAnimator {
 	private static final Logger log = LogManager.getLogger(MarketMakerAnimator.class);
 
-	private final String user;
+	private final User user;
 	private final int qty;
 	private final double delta;
 
 	private Map<Instrument, MarketMakerInstrumentAnimator> animators = newHashMap();
 
-	public MarketMakerAnimator(String user, int qty, double delta) {
+	public MarketMakerAnimator(User user, int qty, double delta) {
 		super(user);
 		this.user = user;
 		this.qty = qty;

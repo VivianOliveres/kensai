@@ -14,13 +14,14 @@ import com.kensai.protocol.Trading.Order;
 import com.kensai.protocol.Trading.OrderAction;
 import com.kensai.protocol.Trading.SummariesSnapshot;
 import com.kensai.protocol.Trading.Summary;
+import com.kensai.protocol.Trading.User;
 
 public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 	private static final Logger log = LogManager.getLogger(MarketMakerInstrumentAnimator.class);
 
 	private final Random random = new Random();
 
-	private final String user;
+	private final User user;
 	private final int qty;
 	private final double delta;
 
@@ -28,7 +29,7 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 
 	private final Instrument instrument;
 
-	public MarketMakerInstrumentAnimator(String user, int qty, double delta, Instrument instrument, MessageSender sender) {
+	public MarketMakerInstrumentAnimator(User user, int qty, double delta, Instrument instrument, MessageSender sender) {
 		this.user = user;
 		this.qty = qty;
 		this.delta = delta;

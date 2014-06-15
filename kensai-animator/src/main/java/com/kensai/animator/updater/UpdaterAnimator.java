@@ -21,6 +21,7 @@ import com.kensai.protocol.Trading.OrderAction;
 import com.kensai.protocol.Trading.OrderStatus;
 import com.kensai.protocol.Trading.SummariesSnapshot;
 import com.kensai.protocol.Trading.Summary;
+import com.kensai.protocol.Trading.User;
 
 public class UpdaterAnimator extends AbstractSubscriberAnimator {
 
@@ -28,7 +29,7 @@ public class UpdaterAnimator extends AbstractSubscriberAnimator {
 
 	private final Random random = new Random();
 
-	private final String user;
+	private final User user;
 	private final int minQty;
 	private final int maxQty;
 
@@ -37,7 +38,7 @@ public class UpdaterAnimator extends AbstractSubscriberAnimator {
 
 	private final Timer timer;
 
-	public UpdaterAnimator(String user, int minQty, int maxQty, int delay, int period) {
+	public UpdaterAnimator(User user, int minQty, int maxQty, int delay, int period) {
 		super(user);
 		this.user = user;
 		this.minQty = minQty;

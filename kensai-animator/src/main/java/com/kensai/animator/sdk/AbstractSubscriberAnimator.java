@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import com.kensai.animator.core.MessageSender;
 import com.kensai.protocol.Trading.CommandStatus;
 import com.kensai.protocol.Trading.SubscribeCommand;
+import com.kensai.protocol.Trading.User;
 
 public class AbstractSubscriberAnimator extends AbstractAnimator {
 	private static final Logger log = LogManager.getLogger(AbstractSubscriberAnimator.class);
@@ -19,13 +20,13 @@ public class AbstractSubscriberAnimator extends AbstractAnimator {
 
 	private MessageSender sender;
 
-	private final String user;
+	private final User user;
 
-	public AbstractSubscriberAnimator(String user) {
+	public AbstractSubscriberAnimator(User user) {
 		this.user = user;
 	}
 
-	public String getUser() {
+	public User getUser() {
 		return user;
 	}
 
