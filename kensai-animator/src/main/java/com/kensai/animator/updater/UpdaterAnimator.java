@@ -45,7 +45,7 @@ public class UpdaterAnimator extends AbstractSubscriberAnimator {
 		this.maxQty = maxQty;
 
 		TimerTask task = createTask();
-		timer = new Timer("Updater[" + user + "]", true);
+		timer = new Timer("Updater[" + user.getName() + "]", true);
 		timer.schedule(task, delay, period);
 	}
 
@@ -54,9 +54,7 @@ public class UpdaterAnimator extends AbstractSubscriberAnimator {
 
 			@Override
 			public void run() {
-				log.info("doTimerTask");
 				doUpdateTimerTask();
-				log.info("doTimerTask - end");
 			}
 		};
 	}
@@ -64,7 +62,7 @@ public class UpdaterAnimator extends AbstractSubscriberAnimator {
 	private synchronized void doUpdateTimerTask() {
 		log.info("doUpdateTimerTask");
 		if (orders.isEmpty() || summaries.isEmpty()) {
-			log.info("doUpdateTimerTask - orders.iSempty[{}] summaries.isEmpty[{}]", orders.isEmpty(), summaries.isEmpty());
+			log.info("doUpdateTimerTask - orders.isEempty[{}] summaries.isEmpty[{}]", orders.isEmpty(), summaries.isEmpty());
 			return;
 		}
 

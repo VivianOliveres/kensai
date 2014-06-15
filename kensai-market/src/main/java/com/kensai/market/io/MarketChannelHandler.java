@@ -11,6 +11,8 @@ import org.jboss.netty.channel.SimpleChannelHandler;
 import com.kensai.market.core.KensaiMarket;
 import com.kensai.protocol.Trading.Messages;
 import com.kensai.protocol.Trading.Order;
+import com.kensai.protocol.Trading.SubscribeCommand;
+import com.kensai.protocol.Trading.UnsubscribeCommand;
 
 public class MarketChannelHandler extends SimpleChannelHandler {
 
@@ -26,18 +28,23 @@ public class MarketChannelHandler extends SimpleChannelHandler {
 	public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) {
 		Channel channel = e.getChannel();
 		Messages msg = (Messages) e.getMessage();
-		log.info("Channel has received new message [{}]", msg);
+		log.debug("Channel has received new message [{}]", msg);
 
 		// Precondition: check message validity
 		if (msg.hasSubscribeCommand()) {
-			core.receivedSubscribe(msg.getSubscribeCommand(), channel);
+			SubscribeCommand cmd = msg.getSubscribeCommand();
+			log.info("Channel has received SubscribeCommand from [{}]", cmd.getUser().getName());
+			core.receivedSubscribe(cmd, channel);
 
 		} else if (msg.hasUnsubscribeCommand()) {
-			core.receivedUnsubscribed(msg.getUnsubscribeCommand(), channel);
+			UnsubscribeCommand cmd = msg.getUnsubscribeCommand();
+			log.info("Channel has received UnsubscribeCommand from [{}]", cmd.getUser().getName());
+			core.receivedUnsubscribed(cmd, channel);
 		}
 
 		if (msg.hasOrder()) {
 			Order order = msg.getOrder();
+			log.info("Channel has received Order from [{}]", order.getUser().getName());
 			core.receivedOrder(order, channel);
 		}
 	}

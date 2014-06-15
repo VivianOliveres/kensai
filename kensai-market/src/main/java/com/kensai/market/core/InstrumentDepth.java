@@ -4,9 +4,6 @@ import static com.google.common.collect.Lists.newArrayList;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.google.common.base.Objects;
 import com.kensai.market.IdGenerator;
 import com.kensai.protocol.Trading.BuySell;
@@ -20,7 +17,6 @@ import com.kensai.protocol.Trading.Summary;
 import com.kensai.protocol.Trading.Summary.Builder;
 
 public class InstrumentDepth {
-	private static final Logger log = LogManager.getLogger(InstrumentDepth.class);
 
 	private final Instrument instrument;
 
@@ -78,9 +74,6 @@ public class InstrumentDepth {
 		for (int i = 0; i < buyDepths.size(); i++) {
 			DepthRow depth = buyDepths.get(i);
 			com.kensai.protocol.Trading.Depth.Builder depthBuilder = depth.toDepthBuilder().setDepth(i);
-			if (depthBuilder.getQuantity() > 0) {
-				log.error("toSummaryBuilder - buyDepth[" + i + "] qty[" + depthBuilder.getQuantity() + "] price[" + depthBuilder.getPrice() + "]");
-			}
 			builder.addBuyDepths(depthBuilder);
 		}
 
@@ -88,9 +81,6 @@ public class InstrumentDepth {
 		for (int i = 0; i < sellDepths.size(); i++) {
 			DepthRow depth = sellDepths.get(i);
 			com.kensai.protocol.Trading.Depth.Builder depthBuilder = depth.toDepthBuilder().setDepth(i);
-			if (depthBuilder.getQuantity() > 0) {
-				log.error("toSummaryBuilder - sellDepth[" + i + "] qty[" + depthBuilder.getQuantity() + "] price[" + depthBuilder.getPrice() + "]");
-			}
 			builder.addSellDepths(depthBuilder);
 		}
 
