@@ -1,5 +1,6 @@
 package com.kensai.gui.services.model.orders;
 
+import static com.kensai.gui.services.connectors.MarketConnector.DEFAULT_USER;
 import static com.kensai.protocol.Trading.InstrumentType.STOCK;
 import static com.kensai.protocol.Trading.OrderAction.INSERT;
 import static com.kensai.protocol.Trading.OrderStatus.ON_MARKET;
@@ -49,7 +50,7 @@ public class OrdersModelTest {
 		Instrument instrument = Instrument.newBuilder().setIsin("isin").setName("name").setDescription("description").setType(STOCK).build();
 		InstrumentModel instrumentModel = new InstrumentModel(instrument, "CAC");
 		Order order = Order.newBuilder().setId(123).setSide(BuySell.BUY).setInstrument(instrument).setAction(INSERT).setOrderStatus(ON_MARKET)
-			.setPrice(456.789).setExecPrice(456.789).setInitialQuantity(159).setExecutedQuantity(15).setUserData("blabla").setUser("toto")
+			.setPrice(456.789).setExecPrice(456.789).setInitialQuantity(159).setExecutedQuantity(15).setUserData("blabla").setUser(DEFAULT_USER)
 			.setInsertTime(System.currentTimeMillis()).setLastUpdateTime(System.currentTimeMillis()).build();
 
 		// WHEN: add an order

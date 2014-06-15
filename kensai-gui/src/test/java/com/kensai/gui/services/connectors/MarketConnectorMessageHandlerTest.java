@@ -1,6 +1,8 @@
 package com.kensai.gui.services.connectors;
 
 import static com.kensai.gui.assertions.Assertions.assertThat;
+import static com.kensai.gui.services.connectors.MarketConnector.DEFAULT_USER;
+import static com.kensai.protocol.Trading.BuySell.BUY;
 import static com.kensai.protocol.Trading.OrderAction.INSERT;
 import static com.kensai.protocol.Trading.OrderStatus.ON_MARKET;
 import static org.mockito.BDDMockito.given;
@@ -52,7 +54,21 @@ public class MarketConnectorMessageHandlerTest {
 	private static final Summary SANOFI_SNAPSHOT_1 = Summary.newBuilder().setInstrument(SANOFI).setClose(68.08).setLast(68.16).setMarketStatus(MarketStatus.OPEN).setOpen(68.08).setTimestamp(System.currentTimeMillis()).build();
 	private static final Summary SANOFI_SNAPSHOT_2 = Summary.newBuilder().setInstrument(SANOFI).setClose(69.09).setLast(69.17).setMarketStatus(MarketStatus.OPEN).setOpen(69.09).setTimestamp(System.currentTimeMillis() + 1).build();
 
-	private static final Order SANOFI_ORDER = Order.newBuilder().setId(123).setSide(BuySell.BUY).setInstrument(SANOFI).setAction(INSERT).setOrderStatus(ON_MARKET).setPrice(456.789).setExecPrice(456.789).setInitialQuantity(159).setExecutedQuantity(15).setUserData("blabla").setUser("toto").setInsertTime(System.currentTimeMillis()).setLastUpdateTime(System.currentTimeMillis()).build();
+	private static final Order SANOFI_ORDER = Order.newBuilder()
+																  .setId(123)
+																  .setSide(BUY)
+																  .setInstrument(SANOFI)
+																  .setAction(INSERT)
+																  .setOrderStatus(ON_MARKET)
+																  .setPrice(456.789)
+																  .setExecPrice(456.789)
+																  .setInitialQuantity(159)
+																  .setExecutedQuantity(15)
+																  .setUserData("blabla")
+																  .setUser(DEFAULT_USER)
+																  .setInsertTime(System.currentTimeMillis())
+																  .setLastUpdateTime(System.currentTimeMillis())
+																  .build();
 
 	@Before
 	public void init() {

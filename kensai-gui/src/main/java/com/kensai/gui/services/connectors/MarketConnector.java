@@ -1,5 +1,7 @@
 package com.kensai.gui.services.connectors;
 
+import static com.kensai.protocol.Trading.Role.ADMIN;
+
 import java.net.InetSocketAddress;
 
 import javafx.application.Platform;
@@ -16,11 +18,13 @@ import com.kensai.gui.services.model.market.ConnectionState;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
 import com.kensai.protocol.Trading.SubscribeCommand;
 import com.kensai.protocol.Trading.UnsubscribeCommand;
+import com.kensai.protocol.Trading.User;
 
 public class MarketConnector {
 	private static final Logger log = LogManager.getLogger(MarketConnector.class);
 
-	public static final String DEFAULT_USER = "DefaultUpdaterAnimator";
+	public static final User DEFAULT_USER = User.newBuilder().setName("GUI").addGroups("Animator").addGroups("GUI").setIsListeningSummary(true)
+		.setExecListeningRole(ADMIN).setOrderListeningRole(ADMIN).build();
 
 	private ApplicationContext context;
 	private MarketConnectionModel model;
