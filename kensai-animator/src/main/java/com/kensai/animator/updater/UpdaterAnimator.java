@@ -89,6 +89,11 @@ public class UpdaterAnimator extends AbstractSubscriberAnimator {
 				builder.setPrice(price);
 			}
 
+			// Do nothing if price <= 0
+			if (builder.getPrice() <= 0) {
+				continue;
+			}
+
 			// Send order
 			sendOrder(builder.build());
 		}
