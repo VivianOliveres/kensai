@@ -31,12 +31,16 @@ public class KensaiMessageSender {
 
 	public void addUser(UserCredentials uc, SubscribeCommand cmd) {
 		if (users.contains(uc)) {
+			// Send NACK (for information)
 			sendNack(cmd, uc.getWritter(), "User [" + uc.getName() + "] already subscribed");
+			users.remove(uc);
 
 		} else {
-			users.add(uc);
 			sendAck(cmd, uc.getWritter());
 		}
+
+		// Add user whatever (with its good Channel)
+		users.add(uc);
 	}
 
 	public void addUser(User user, Channel channel, SubscribeCommand cmd) {
