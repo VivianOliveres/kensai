@@ -6,6 +6,7 @@ import org.jboss.netty.channel.Channel;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
+import com.kensai.market.io.ChannelWritter;
 import com.kensai.protocol.Trading.Execution;
 import com.kensai.protocol.Trading.Order;
 import com.kensai.protocol.Trading.Role;
@@ -14,11 +15,16 @@ import com.kensai.protocol.Trading.User;
 public class UserCredentials {
 
 	private final User user;
-	private final Channel channel;
+	private final ChannelWritter writter;
 
 	public UserCredentials(User user, Channel channel) {
 		this.user = user;
-		this.channel = channel;
+		this.writter = new ChannelWritter(channel);
+	}
+
+	public UserCredentials(User user, ChannelWritter writter) {
+		this.user = user;
+		this.writter = writter;
 	}
 
 	@Override
@@ -41,8 +47,8 @@ public class UserCredentials {
 		return false;
 	}
 
-	public Channel getChannel() {
-		return channel;
+	public ChannelWritter getWritter() {
+		return writter;
 	}
 
 	public User getUser() {

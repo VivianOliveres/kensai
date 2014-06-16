@@ -52,16 +52,16 @@ public class KensaiMessageSenderTest {
 	private KensaiMessageSender sender;
 
 	private UserCredentials uc1;
-	@Mock private Channel channel1;
+	@Mock private ChannelWritter channel1;
 
 	private UserCredentials uc2;
-	@Mock private Channel channel2;
+	@Mock private ChannelWritter channel2;
 
 	private UserCredentials uc4;
-	@Mock private Channel channel4;
+	@Mock private ChannelWritter channel4;
 
 	private UserCredentials uc5;
-	@Mock private Channel channel5;
+	@Mock private ChannelWritter channel5;
 
 	@Before
 	public void init() {
