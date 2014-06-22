@@ -89,7 +89,7 @@ public class RandomAnimator extends AbstractSubscriberAnimator {
 	private void sendOrder(int qty, double price, BuySell side, Instrument instrument) {
 		String userData = UserDataGenerator.generate();
 		log.info("send order [instr[{}] side[{}] qty[{}] price[{}] userData[{}] user[{}]]", new Object[] { instrument.getName(), side, qty, price,
-				userData, user });
+				userData, user.getName() });
 		Order order = Order.newBuilder().setAction(OrderAction.INSERT).setInitialQuantity(qty).setInstrument(instrument).setPrice(price).setSide(side)
 			.setUserData(userData).setUser(user).build();
 		getMessageSender().send(order);
@@ -99,7 +99,7 @@ public class RandomAnimator extends AbstractSubscriberAnimator {
 	public void onSnapshot(SummariesSnapshot snapshot) {
 		// Check preconditions
 		if (snapshot == null || snapshot.getSummariesCount() <= 0) {
-			log.warn("Receive an invalid summary snapshot: {}", snapshot);
+			log.error("Receive an invalid summary snapshot: {}", snapshot);
 			return;
 		}
 
