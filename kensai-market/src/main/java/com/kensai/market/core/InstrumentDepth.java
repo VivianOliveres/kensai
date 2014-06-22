@@ -104,7 +104,7 @@ public class InstrumentDepth {
 		checkOrder(order);
 
 		// Prepare order to insert
-		Order orderToInsert = Order.newBuilder(order).setId(IdGenerator.generateId()).build();
+		Order orderToInsert = Order.newBuilder(order).setId(IdGenerator.generateId()).setInsertTime(System.currentTimeMillis()).build();
 
 		// Do stuff
 		InsertionResult result = doInsert(orderToInsert);

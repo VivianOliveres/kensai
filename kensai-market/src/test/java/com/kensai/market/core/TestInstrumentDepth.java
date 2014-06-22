@@ -941,4 +941,21 @@ public class TestInstrumentDepth {
 		assertThat(summary.getBuyDepths(0).getQuantity()).isEqualTo(qtyBuy4);
 	}
 
+	@Test
+	public void should_insert_order_update_insertTime() {
+		// WHEN: insert an order
+		long now = System.currentTimeMillis();
+		int qty = 3;
+		double price = 440.0;
+		Order order = OrderFactory.create(price, qty, BuySell.BUY).build();
+		InsertionResult result = depth.insert(order);
+
+		// THEN: an order is insezrted
+		Order resultedOrder = result.getResultedOrder();
+		assertThat(resultedOrder).isNotNull();
+
+		// AND: its insert time is updated
+		long insertTime = resultedOrder.getInsertTime();
+		assertThat(insertTime).isGreaterThan(0).isGreaterThanOrEqualTo(now);
+	}
 }
