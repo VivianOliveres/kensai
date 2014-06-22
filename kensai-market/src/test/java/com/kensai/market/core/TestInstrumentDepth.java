@@ -13,6 +13,7 @@ import com.kensai.protocol.Trading.CommandStatus;
 import com.kensai.protocol.Trading.Instrument;
 import com.kensai.protocol.Trading.InstrumentType;
 import com.kensai.protocol.Trading.Order;
+import com.kensai.protocol.Trading.OrderAction;
 import com.kensai.protocol.Trading.OrderStatus;
 import com.kensai.protocol.Trading.Summary;
 
@@ -950,12 +951,76 @@ public class TestInstrumentDepth {
 		Order order = OrderFactory.create(price, qty, BuySell.BUY).build();
 		InsertionResult result = depth.insert(order);
 
-		// THEN: an order is insezrted
+		// THEN: an order is inserted
 		Order resultedOrder = result.getResultedOrder();
 		assertThat(resultedOrder).isNotNull();
 
 		// AND: its insert time is updated
 		long insertTime = resultedOrder.getInsertTime();
 		assertThat(insertTime).isGreaterThan(0).isGreaterThanOrEqualTo(now);
+	}
+
+	@Test
+	public void should_insert_order_update_lastUpdateTime() {
+		// WHEN: insert an order
+		long now = System.currentTimeMillis();
+		int qty = 3;
+		double price = 440.0;
+		Order order = OrderFactory.create(price, qty, BuySell.BUY).build();
+		InsertionResult result = depth.insert(order);
+
+		// THEN: an order is inserted
+		Order resultedOrder = result.getResultedOrder();
+		assertThat(resultedOrder).isNotNull();
+
+		// AND: its insert time is updated
+		long lastUpdateTime = resultedOrder.getLastUpdateTime();
+		assertThat(lastUpdateTime).isGreaterThan(0).isGreaterThanOrEqualTo(now);
+	}
+
+	@Test
+	public void should_update_order_update_lastUpdateTime() {
+		// GIVEN: insert an order
+		long insertTime = System.currentTimeMillis();
+		int qty = 3;
+		double price = 440.0;
+		Order order = OrderFactory.create(price, qty, BuySell.BUY).build();
+		InsertionResult result = depth.insert(order);
+		Order insertedOrder = result.getResultedOrder();
+
+		// WHEN: Update this order
+		int updatedQty = qty + 1;
+		Order orderToUpdate = Order.newBuilder(insertedOrder).setAction(OrderAction.UPDATE).setInitialQuantity(updatedQty).build();
+		InsertionResult updateResult = depth.update(orderToUpdate);
+
+		// THEN: updated order should have qupdatedQty
+		Order updatedOrder = updateResult.getResultedOrder();
+		assertThat(updatedOrder.getInitialQuantity()).isEqualTo(updatedQty);
+
+		// AND: LastUpdateTime is updated
+		assertThat(updatedOrder.getLastUpdateTime()).isGreaterThanOrEqualTo(insertTime);
+	}
+
+	@Test
+	public void should_delete_order_update_lastUpdateTime() {
+		// GIVEN: insert an order
+		long insertTime = System.currentTimeMillis();
+		int qty = 3;
+		double price = 440.0;
+		Order order = OrderFactory.create(price, qty, BuySell.BUY).build();
+		InsertionResult result = depth.insert(order);
+		Order insertedOrder = result.getResultedOrder();
+
+		// WHEN: Delete this order
+		Order orderToDelete = Order.newBuilder(insertedOrder).setAction(OrderAction.DELETE).build();
+		InsertionResult deleteResult = depth.update(orderToDelete);
+
+		// THEN: order is deleted
+		Order deletedOrder = deleteResult.getResultedOrder();
+		assertThat(deletedOrder.getAction()).isEqualTo(OrderAction.DELETE);
+		assertThat(deletedOrder.getCommandStatus()).isEqualTo(CommandStatus.ACK);
+
+		// AND: LastUpdateTime is updated
+		assertThat(deletedOrder.getLastUpdateTime()).isGreaterThanOrEqualTo(insertTime);
 	}
 }

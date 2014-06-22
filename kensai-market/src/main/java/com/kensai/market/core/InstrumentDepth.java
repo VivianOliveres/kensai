@@ -104,7 +104,8 @@ public class InstrumentDepth {
 		checkOrder(order);
 
 		// Prepare order to insert
-		Order orderToInsert = Order.newBuilder(order).setId(IdGenerator.generateId()).setInsertTime(System.currentTimeMillis()).build();
+		long now = System.currentTimeMillis();
+		Order orderToInsert = Order.newBuilder(order).setId(IdGenerator.generateId()).setInsertTime(now).setLastUpdateTime(now).build();
 
 		// Do stuff
 		InsertionResult result = doInsert(orderToInsert);
@@ -241,8 +242,11 @@ public class InstrumentDepth {
 		// Check preconditions
 		checkOrder(order);
 
+		// Initialize update time
+		Order orderToUpdate = Order.newBuilder(order).setLastUpdateTime(System.currentTimeMillis()).build();
+
 		// Do stuff
-		InsertionResult result = doUpdate(order);
+		InsertionResult result = doUpdate(orderToUpdate);
 
 		// Update general fields
 		updateGeneralFields(result);
