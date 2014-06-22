@@ -41,7 +41,7 @@ public class MainKensaiApplication extends Application {
 		Scene scene = createScene(context, initializer);
 		scene.getStylesheets().add("style-dark.css");
 		stage.setScene(scene);
-		stage.setTitle("Kensai Assurance Vie");
+		stage.setTitle("Kensai GUI");
 		stage.show();
 		log.info("Application started");
 	}
