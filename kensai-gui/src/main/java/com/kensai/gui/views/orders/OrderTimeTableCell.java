@@ -9,7 +9,7 @@ import com.kensai.gui.services.model.orders.OrderModel;
 
 public class OrderTimeTableCell extends TableCell<OrderModel, LocalDateTime> {
 
-	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
 	@Override
 	public void updateItem(LocalDateTime item, boolean empty) {

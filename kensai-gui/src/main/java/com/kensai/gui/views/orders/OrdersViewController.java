@@ -65,6 +65,7 @@ public class OrdersViewController {
 
 		TableColumn<OrderModel, LocalDateTime> columnLastUpdateTime = new TableColumn<>("LastUpdate");
 		columnLastUpdateTime.setCellValueFactory((cell) -> cell.getValue().lastUpdateTimeProperty());
+		columnLastUpdateTime.setCellFactory(tableCell -> new OrderTimeTableCell());
 		table.getColumns().add(columnLastUpdateTime);
 
 		TableColumn<OrderModel, OrderStatus> columnStatus = new TableColumn<>("Status");

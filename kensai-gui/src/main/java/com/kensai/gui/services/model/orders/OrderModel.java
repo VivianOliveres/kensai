@@ -1,7 +1,8 @@
 package com.kensai.gui.services.model.orders;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+import java.time.ZoneId;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -37,8 +38,8 @@ public class OrderModel {
 		this.priceExecution.set(order.getExecPrice());
 		this.quantityInitial.set(order.getInitialQuantity());
 		this.quantityExecuted.set(order.getExecutedQuantity());
-		this.insertTime.set(LocalDateTime.ofEpochSecond(order.getInsertTime(), 0, ZoneOffset.UTC));
-		this.lastUpdateTime.set(LocalDateTime.ofEpochSecond(order.getLastUpdateTime(), 0, ZoneOffset.UTC));
+		this.insertTime.set(convertTime(order.getInsertTime()));
+		this.lastUpdateTime.set(convertTime(order.getLastUpdateTime()));
 		this.status.set(order.getOrderStatus());
 		this.errorMessage.set(order.getErrorMessage());
 	}
@@ -55,6 +56,11 @@ public class OrderModel {
 		this.lastUpdateTime.set(LocalDateTime.now());
 		this.status.set(OrderStatus.ON_MARKET);
 		this.errorMessage.set("");
+	}
+
+	private LocalDateTime convertTime(long milli) {
+		Instant instant = Instant.ofEpochMilli(milli);
+		return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
 	}
 
 	public SimpleLongProperty idProperty() {
@@ -214,8 +220,8 @@ public class OrderModel {
 		this.priceExecution.set(order.getExecPrice());
 		this.quantityInitial.set(order.getInitialQuantity());
 		this.quantityExecuted.set(order.getExecutedQuantity());
-		this.lastUpdateTime.set(LocalDateTime.ofEpochSecond(order.getLastUpdateTime(), 0, ZoneOffset.UTC));
 		this.status.set(order.getOrderStatus());
 		this.errorMessage.set(order.getErrorMessage());
+		this.lastUpdateTime.set(convertTime(order.getLastUpdateTime()));
 	}
 }
