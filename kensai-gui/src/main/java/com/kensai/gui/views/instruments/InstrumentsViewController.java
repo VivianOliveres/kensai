@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.instruments.InstrumentModel;
+import com.kensai.gui.views.util.FlashingTableCell;
 import com.kensai.protocol.Trading.MarketStatus;
 
 public class InstrumentsViewController {
@@ -50,34 +51,42 @@ public class InstrumentsViewController {
 
 		TableColumn<InstrumentModel, MarketStatus> columnMarketStatus = new TableColumn<>("Status");
 		columnMarketStatus.setCellValueFactory((cell) -> cell.getValue().getSummary().marketStatusProperty());
+		columnMarketStatus.setCellFactory(column -> new FlashingTableCell<>());
 		table.getColumns().add(columnMarketStatus);
 
 		TableColumn<InstrumentModel, Number> columnOpen = new TableColumn<>("Open");
 		columnOpen.setCellValueFactory((cell) -> cell.getValue().getSummary().openProperty());
+		columnOpen.setCellFactory(column -> new FlashingTableCell<>());
 		table.getColumns().add(columnOpen);
 
 		TableColumn<InstrumentModel, Number> columnLast = new TableColumn<>("Last");
 		columnLast.setCellValueFactory((cell) -> cell.getValue().getSummary().lastProperty());
+		columnLast.setCellFactory(column -> new FlashingTableCell<>());
 		table.getColumns().add(columnLast);
 
 		TableColumn<InstrumentModel, Number> columnClose = new TableColumn<>("Close");
 		columnClose.setCellValueFactory((cell) -> cell.getValue().getSummary().closeProperty());
+		columnClose.setCellFactory(column -> new FlashingTableCell<>());
 		table.getColumns().add(columnClose);
 
 		TableColumn<InstrumentModel, Number> columnBuyQty = new TableColumn<>("BuyQty");
 		columnBuyQty.setCellValueFactory((cell) -> cell.getValue().getSummary().buyQtyProperty());
+		columnBuyQty.setCellFactory(column -> new FlashingTableCell<>());
 		table.getColumns().add(columnBuyQty);
 
 		TableColumn<InstrumentModel, Number> columnBuyPrice = new TableColumn<>("Buy");
 		columnBuyPrice.setCellValueFactory((cell) -> cell.getValue().getSummary().buyPriceProperty());
+		columnBuyPrice.setCellFactory(column -> new FlashingTableCell<>());
 		table.getColumns().add(columnBuyPrice);
 
 		TableColumn<InstrumentModel, Number> columnSellPrice = new TableColumn<>("Sell");
 		columnSellPrice.setCellValueFactory((cell) -> cell.getValue().getSummary().sellPriceProperty());
+		columnSellPrice.setCellFactory(column -> new FlashingTableCell<>());
 		table.getColumns().add(columnSellPrice);
 
 		TableColumn<InstrumentModel, Number> columnSellQty = new TableColumn<>("SellQty");
 		columnSellQty.setCellValueFactory((cell) -> cell.getValue().getSummary().sellQtyProperty());
+		columnSellQty.setCellFactory(column -> new FlashingTableCell<>());
 		table.getColumns().add(columnSellQty);
 
 		// Init rows in table
