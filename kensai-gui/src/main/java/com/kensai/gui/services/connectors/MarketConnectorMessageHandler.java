@@ -1,9 +1,10 @@
 package com.kensai.gui.services.connectors;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentHashMap.KeySetView;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.TimeUnit;
 
 import javafx.application.Platform;
 
@@ -40,7 +41,7 @@ public class MarketConnectorMessageHandler {
 		this.context = context;
 		this.model = model;
 
-		context.getTaskService().getScheduledExecutor().scheduleAtFixedRate(() -> Platform.runLater(() -> doUpdateGui()), 750, 750, TimeUnit.MILLISECONDS);
+		context.getTaskService().getScheduledExecutor().scheduleAtFixedRate(() -> Platform.runLater(() -> doUpdateGui()), 1000, 1000, MILLISECONDS);
 	}
 
 	protected Void doUpdateGui() {

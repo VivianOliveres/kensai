@@ -26,7 +26,6 @@ import com.kensai.gui.services.model.instruments.SummaryModel;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
 import com.kensai.gui.services.model.orders.OrdersModel;
 import com.kensai.gui.services.task.TaskService;
-import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.Instrument;
 import com.kensai.protocol.Trading.InstrumentType;
 import com.kensai.protocol.Trading.InstrumentsSnapshot;
@@ -88,7 +87,7 @@ public class MarketConnectorMessageHandlerTest {
 
 	@Test
 	public void should_refresh_gui_every_750_ms() {
-		verify(scheduledExecutor).scheduleAtFixedRate(any(Runnable.class), eq(750L), eq(750L), eq(TimeUnit.MILLISECONDS));
+		verify(scheduledExecutor).scheduleAtFixedRate(any(Runnable.class), eq(1000L), eq(1000L), eq(TimeUnit.MILLISECONDS));
 	}
 
 	@Test
