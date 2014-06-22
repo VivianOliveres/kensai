@@ -42,7 +42,7 @@ public class RandomAnimator extends AbstractSubscriberAnimator {
 		this.maxQty = maxQty;
 
 		TimerTask task = createTask();
-		timer = new Timer("Random[" + user + "]", true);
+		timer = new Timer("Random[" + user.getName() + "]", true);
 		timer.schedule(task, delay, period);
 	}
 

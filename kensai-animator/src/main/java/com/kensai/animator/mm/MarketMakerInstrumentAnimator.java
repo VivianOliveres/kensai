@@ -72,7 +72,6 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 			double price = isBuyOrder ? sellPrice - delta : buyPrice + delta;
 			sendOrder(qty, price, isBuyOrder ? BuySell.BUY : BuySell.SELL, UserDataGenerator.generate());
 			return;
-
 		}
 
 		// Check BuyQty
@@ -92,6 +91,7 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 
 	private void initializeDepth(boolean isBuyDepthEmpty, boolean isSellDepthEmpty, Summary summary) {
 		if (isBuyDepthEmpty && isSellDepthEmpty) {
+			// Send random order -> at reception of summary, it will send another order
 			BuySell side = random.nextBoolean() ? BuySell.BUY : BuySell.SELL;
 			sendOrder(qty, summary.getLast(), side, UserDataGenerator.generate());
 
