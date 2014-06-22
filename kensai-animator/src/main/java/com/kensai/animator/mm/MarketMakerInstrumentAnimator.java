@@ -52,7 +52,7 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 	public void onSummary(Summary summary) {
 		// Precondition
 		if (summary == null) {
-			log.warn("Receive an invalid summary [{}]", summary);
+			log.error("Receive an invalid summary [{}]", summary);
 			return;
 		}
 
@@ -107,7 +107,7 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 
 	private void sendOrder(int initialQty, double price, BuySell side, String userData) {
 		double roundedPrice = round(price);
-		log.info("send order [instr[{}] qty[{}] price[{}] side[{}] userData[{}] user[{}]]",  instrument.getName(), qty, roundedPrice, side, userData, user);
+		log.info("send order [instr[{}] qty[{}] price[{}] side[{}] userData[{}] user[{}]]",  instrument.getName(), qty, roundedPrice, side, userData, user.getName());
 		Order order = Order.newBuilder()
 								 .setInstrument(instrument)
 								 .setAction(OrderAction.INSERT)
