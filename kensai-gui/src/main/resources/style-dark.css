@@ -2,8 +2,29 @@
     -fx-base: rgb(50, 50, 50);
     -fx-background: rgb(50, 50, 50);
     -fx-control-inner-background:  rgb(50, 50, 50);
+    
+    /* Background of .table-row-cell:odd */
+    -fx-control-inner-background-alt: derive(-fx-control-inner-background,-10%);
+    
+    /* Table line selected */
+    -fx-accent: #71308D;
 }
 
-#instruments-table .table-cell {
+.table-cell {
     -fx-alignment: CENTER;
+}
+
+.table-row-cell {
+    -fx-background: -fx-control-inner-background;
+    -fx-background-color: -fx-table-cell-border-color, -fx-background;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0;
+    -fx-text-fill: -fx-text-background-color;
+}
+.table-row-cell:odd {
+    -fx-background: -fx-control-inner-background-alt;
+}
+
+.table-row-cell:selected {
+   -fx-background-color: -fx-accent; 
 }
