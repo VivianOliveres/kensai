@@ -74,12 +74,12 @@ public class GuiChannelHandler extends SimpleChannelHandler {
 		}
 
 		if (message.hasOrder()) {
-			log.info("messageReceived: Order on [{}]", message.getOrder().getInstrument().getName());
+			log.debug("messageReceived: Order on [{}]", message.getOrder().getInstrument().getName());
 			conector.getMessageHandler().onOrder(message.getOrder());
 		}
 
 		if (message.hasExecution()) {
-			log.info("messageReceived: Execution on [{}]", message.getExecution().getOrder().getInstrument().getName());
+			log.debug("messageReceived: Execution on [{}]", message.getExecution().getOrder().getInstrument().getName());
 			conector.getMessageHandler().onExecution(message.getExecution());
 		}
 
