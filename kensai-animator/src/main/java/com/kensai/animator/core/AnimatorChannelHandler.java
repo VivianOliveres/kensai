@@ -71,8 +71,8 @@ public class AnimatorChannelHandler extends SimpleChannelHandler {
 
 		if (message.hasOrder()) {
 			Order order = message.getOrder();
-			log.info("order received: [{}] instr[{}] userData[{}] price[{}] qty[{}/{}]", order.getId(), order.getInstrument().getName(),
-				order.getUserData(), order.getPrice(), order.getExecutedQuantity(), order.getInitialQuantity());
+			log.info("order received: [{}] instr[{}] side[{}] userData[{}] price[{}] qty[{}/{}]", order.getId(), order.getInstrument().getName(),
+				order.getSide(), order.getUserData(), order.getPrice(), order.getExecutedQuantity(), order.getInitialQuantity());
 			animator.onOrder(order);
 		}
 

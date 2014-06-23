@@ -44,7 +44,9 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 		}
 
 		for (Summary summary : snapshot.getSummariesList()) {
-			onSummary(summary);
+			if (summary.getInstrument().equals(instrument)) {
+				onSummary(summary);
+			}
 		}
 	}
 
@@ -67,9 +69,11 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 		// Check prices
 		double buyPrice = summary.getBuyDepths(0).getPrice();
 		double sellPrice = summary.getSellDepths(0).getPrice();
-		if (sellPrice - buyPrice < delta) {
+		log.info("sellPrice[{}] buyPrice[{}] delta[{}]", sellPrice, buyPrice, delta);
+		if (sellPrice - buyPrice > delta) {
+			log.debug(summary.toString());
 			boolean isBuyOrder = random.nextBoolean();
-			double price = isBuyOrder ? sellPrice - delta : buyPrice + delta;
+			double price = isBuyOrder ? sellPrice - delta - 0.1 : buyPrice + delta + 0.1;
 			sendOrder(qty, price, isBuyOrder ? BuySell.BUY : BuySell.SELL, UserDataGenerator.generate());
 			return;
 		}
@@ -78,6 +82,8 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 		int buyQty = summary.getBuyDepths(0).getQuantity();
 		if (buyQty < qty) {
 			int addedQty = qty - buyQty;
+			log.info("buyQty[{}] < qty[{}] -> send order", buyQty, qty);
+			log.debug(summary.getBuyDepthsList().toString());
 			sendOrder(addedQty, buyPrice, BuySell.BUY, UserDataGenerator.generate());
 		}
 
@@ -85,6 +91,8 @@ public class MarketMakerInstrumentAnimator extends AbstractAnimator {
 		int sellQty = summary.getSellDepths(0).getQuantity();
 		if (sellQty < qty) {
 			int addedQty = qty - sellQty;
+			log.info("sellQty[{}] < qty[{}] -> send order", sellQty, qty);
+			log.debug(summary.getSellDepthsList().toString());
 			sendOrder(addedQty, sellPrice, BuySell.SELL, UserDataGenerator.generate());
 		}
 	}

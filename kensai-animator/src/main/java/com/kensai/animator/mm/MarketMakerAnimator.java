@@ -41,6 +41,8 @@ public class MarketMakerAnimator extends AbstractSubscriberAnimator {
 		// Create InstrumentAnimator
 		for (Summary summary : snapshot.getSummariesList()) {
 			Instrument instrument = summary.getInstrument();
+			// TODO: for debug purpose (only one instrument)
+			// if (animators.containsKey(instrument) || !animators.isEmpty()) {
 			if (animators.containsKey(instrument)) {
 				continue;
 			}
@@ -63,9 +65,7 @@ public class MarketMakerAnimator extends AbstractSubscriberAnimator {
 			animator = animators.get(instrument);
 
 		} else {
-			animator = new MarketMakerInstrumentAnimator(user, qty, delta, instrument, getMessageSender());
-			animator.setMessageSender(getMessageSender());
-			animators.put(instrument, animator);
+			return;
 		}
 
 		// Redirect call on it
