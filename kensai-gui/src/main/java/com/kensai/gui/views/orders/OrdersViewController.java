@@ -9,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.orders.OrderModel;
+import com.kensai.gui.services.model.orders.OrdersModel;
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.OrderStatus;
 
@@ -18,12 +19,18 @@ public class OrdersViewController {
 	private TableView<OrderModel> table = new TableView<>();
 
 	private ApplicationContext context;
+	private OrdersModel model;
 
-	public OrdersViewController(ApplicationContext context) {
-		this.context = context;
+	public OrdersViewController(OrdersModel model) {
+		this.model = model;
 
 		initTable();
 		initView();
+	}
+
+	public OrdersViewController(ApplicationContext context) {
+		this(context.getModelService().getOrders());
+		this.context = context;
 	}
 
 	private void initTable() {
@@ -77,7 +84,7 @@ public class OrdersViewController {
 		table.getColumns().add(columnErrorMessage);
 
 		// Init rows in table
-		ObservableList<OrderModel> rows = context.getModelService().getOrders().getOrders();
+		ObservableList<OrderModel> rows = model.getOrders();
 		table.setItems(rows);
 	}
 
