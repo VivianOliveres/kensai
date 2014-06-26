@@ -3,58 +3,57 @@ package com.kensai.gui.services.model.orders;
 import java.util.Iterator;
 import java.util.List;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import com.kensai.gui.services.model.instruments.InstrumentModel;
 import com.kensai.protocol.Trading.Order;
 
 public class OrdersModel implements Iterable<OrderModel> {
+	public static final int DEFAULT_SIZE = 500;
 
-	private final ObservableList<OrderModel> orders = FXCollections.observableArrayList();
+	private final OrdersModelLimiter limiter;
+
+	public OrdersModel() {
+		this(new OrdersModelLimiter(DEFAULT_SIZE));
+	}
+
+	public OrdersModel(OrdersModelLimiter limiter) {
+		this.limiter = limiter;
+	}
 
 	public ObservableList<OrderModel> getOrders() {
-		return orders;
+		return limiter.getOrders();
 	}
 
 	public boolean contains(Order order) {
-		return orders.stream().filter(model -> model.equals(order)).findFirst().isPresent();
+		return limiter.getOrders().stream().filter(model -> model.equals(order)).findFirst().isPresent();
 	}
 
 	public boolean contains(OrderModel order) {
-		return orders.contains(order);
+		return limiter.getOrders().contains(order);
 	}
 
 	public void add(Order order, InstrumentModel insrument) {
-		if (contains(order)) {
-			getOrders(insrument).stream()
-									  .filter(model -> model.equals(order))
-									  .findFirst()
-									  .get()
-									  .update(order);
-
-		} else {
-			orders.add(0, new OrderModel(order, insrument));
-		}
+		limiter.add(order, insrument);
 	}
 
 	public void add(OrderModel order) {
 		if (!contains(order)) {
-			orders.add(0, order);
+			limiter.add(order);
 		}
 	}
 
 	public List<OrderModel> getOrders(InstrumentModel instrument) {
-		return orders.filtered(model -> model.getInstrument().equals(instrument));
+		return limiter.getOrders(instrument);
 	}
 
 	@Override
 	public Iterator<OrderModel> iterator() {
-		return orders.iterator();
+		return limiter.getOrders().iterator();
 	}
 
 	public int size() {
-		return orders.size();
+		return limiter.getOrders().size();
 	}
 
 }

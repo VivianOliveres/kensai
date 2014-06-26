@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 import com.google.common.base.Objects;
 import com.kensai.protocol.Trading.Instrument;
+import com.kensai.protocol.Trading.InstrumentType;
 
 public class InstrumentModel {
 
@@ -138,4 +139,13 @@ public class InstrumentModel {
 		return summary;
 	}
 
+	public Instrument toInstrument() {
+		return Instrument.newBuilder()
+							  .setIsin(getIsin())
+							  .setName(getName())
+							  .setMarket(getMarket())
+							  .setDescription(getDescription())
+							  .setType(InstrumentType.valueOf(getType()))
+							  .build();
+	}
 }

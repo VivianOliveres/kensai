@@ -3,6 +3,7 @@ package com.kensai.gui.services.model.orders;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -14,6 +15,7 @@ import com.google.common.base.Objects;
 import com.kensai.gui.services.model.instruments.InstrumentModel;
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.Order;
+import com.kensai.protocol.Trading.OrderAction;
 import com.kensai.protocol.Trading.OrderStatus;
 
 public class OrderModel {
@@ -28,7 +30,9 @@ public class OrderModel {
 	private final SimpleObjectProperty<LocalDateTime> insertTime = new SimpleObjectProperty<>();
 	private final SimpleObjectProperty<LocalDateTime> lastUpdateTime = new SimpleObjectProperty<>();
 	private final SimpleObjectProperty<OrderStatus> status = new SimpleObjectProperty<>();
+	private final SimpleStringProperty userData = new SimpleStringProperty();
 	private final SimpleStringProperty errorMessage = new SimpleStringProperty();
+	private final SimpleObjectProperty<OrderAction> orderAction = new SimpleObjectProperty<>();
 
 	public OrderModel(Order order, InstrumentModel instrument) {
 		this.id.set(order.getId());
@@ -41,7 +45,9 @@ public class OrderModel {
 		this.insertTime.set(convertTime(order.getInsertTime()));
 		this.lastUpdateTime.set(convertTime(order.getLastUpdateTime()));
 		this.status.set(order.getOrderStatus());
+		this.userData.set(order.getUserData());
 		this.errorMessage.set(order.getErrorMessage());
+		this.orderAction.set(order.getAction());
 	}
 
 	public OrderModel(InstrumentModel instrument, long id, BuySell side, double price, int qty) {
@@ -55,12 +61,19 @@ public class OrderModel {
 		this.insertTime.set(LocalDateTime.now());
 		this.lastUpdateTime.set(LocalDateTime.now());
 		this.status.set(OrderStatus.ON_MARKET);
+		this.userData.set("");
 		this.errorMessage.set("");
+		this.orderAction.set(OrderAction.INSERT);
 	}
 
 	private LocalDateTime convertTime(long milli) {
 		Instant instant = Instant.ofEpochMilli(milli);
 		return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+	}
+
+	private long convertTime(LocalDateTime date) {
+		Instant instant = date.toInstant(ZoneOffset.UTC);
+		return instant.toEpochMilli();
 	}
 
 	public SimpleLongProperty idProperty() {
@@ -178,6 +191,30 @@ public class OrderModel {
 		this.errorMessage.set(errorMessage);
 	}
 
+	public SimpleStringProperty userDataProperty() {
+		return userData;
+	}
+
+	public String getUserData() {
+		return userData.get();
+	}
+
+	public void setUserData(String userData) {
+		this.userData.set(userData);
+	}
+
+	public SimpleObjectProperty<OrderAction> orderActionProperty() {
+		return orderAction;
+	}
+
+	public OrderAction getOrderAction() {
+		return orderAction.get();
+	}
+
+	public void setUserData(OrderAction orderAction) {
+		this.orderAction.set(orderAction);
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(id.get());
@@ -223,5 +260,23 @@ public class OrderModel {
 		this.status.set(order.getOrderStatus());
 		this.errorMessage.set(order.getErrorMessage());
 		this.lastUpdateTime.set(convertTime(order.getLastUpdateTime()));
+	}
+
+	public Order.Builder toOrder() {
+		// User should be add
+		return Order.newBuilder()
+						.setInstrument(getInstrument().toInstrument())
+						.setId(getId())
+						.setSide(getSide())
+						.setPrice(getPrice())
+						.setExecPrice(getPriceExecution())
+						.setInitialQuantity(getQuantityInitial())
+						.setExecutedQuantity(getQuantityExecuted())
+						.setInsertTime(convertTime(getInsertTime()))
+						.setLastUpdateTime(convertTime(getLastUpdateTime()))
+						.setErrorMessage(getErrorMessage())
+						.setOrderStatus(getStatus())
+						.setUserData(getUserData())
+						.setAction(getOrderAction());
 	}
 }
