@@ -10,19 +10,17 @@ import javafx.scene.layout.TilePane;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.controlsfx.control.action.AbstractAction;
-import org.controlsfx.control.action.Action;
-import org.controlsfx.dialog.Dialog;
 import org.reactfx.EventStreams;
 
 import com.kensai.gui.services.model.market.MarketConnectionModel;
+import com.kensai.gui.views.util.DefaultOkAction;
 
 public class MarketConnectionsEditController {
 	private static Logger log = LogManager.getLogger(MarketConnectionsEditController.class);
 
 	private MarketConnectionModel connection;
 
-	private Action action;
+	private DefaultOkAction action = new DefaultOkAction();
 
 	private TilePane root = new TilePane();
 
@@ -39,20 +37,8 @@ public class MarketConnectionsEditController {
 		this.connection = connection;
 		log.info("edit " + connection);
 
-		initAction();
 		initComponents();
 		initView();
-	}
-
-	private void initAction() {
-		action = new AbstractAction("OK") {
-
-			@Override
-			public void execute(ActionEvent event) {
-				Dialog dlg = (Dialog) event.getSource();
-				dlg.hide();
-			}
-		};
 	}
 
 	private void initComponents() {
@@ -104,7 +90,7 @@ public class MarketConnectionsEditController {
 		return root;
 	}
 
-	public Action getAction() {
+	public DefaultOkAction getAction() {
 		return action;
 	}
 

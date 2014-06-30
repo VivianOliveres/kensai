@@ -16,6 +16,7 @@ import com.google.common.base.Splitter;
 import com.kensai.market.core.InstrumentDepth;
 import com.kensai.protocol.Trading.Depth;
 import com.kensai.protocol.Trading.Instrument;
+import com.kensai.protocol.Trading.InstrumentType;
 import com.kensai.protocol.Trading.MarketStatus;
 import com.kensai.protocol.Trading.Summary;
 
@@ -68,6 +69,15 @@ public class InstrumentDepthsLoader {
 		String desc = iterator.next();
 		String name = iterator.next();
 		String isin = iterator.next();
+		String typeString = iterator.next();
+		String market = iterator.next();
+
+		InstrumentType type = null;
+		try {
+			type = InstrumentType.valueOf(typeString);
+		} catch (NumberFormatException e) {
+			log.error("Can not parse InstrumentType from [{}] in line: {}", typeString, line);
+		}
 
 		String tmp = iterator.next();
 		double last = 0.0;
@@ -110,7 +120,7 @@ public class InstrumentDepthsLoader {
 		}
 
 		long now = System.currentTimeMillis();
-		Instrument instr = Instrument.newBuilder().setDescription(desc).setName(name).setIsin(isin).build();
+		Instrument instr = Instrument.newBuilder().setDescription(desc).setName(name).setIsin(isin).setType(type).setMarket(market).build();
 		Depth buyDepth = Depth.newBuilder().setPrice(low).setQuantity(8).setDepth(0).build();
 		Depth sellDepth = Depth.newBuilder().setPrice(high).setQuantity(8).setDepth(0).build();
 		Summary summary = Summary.newBuilder().setInstrument(instr).setOpen(open).setClose(close).setLast(last).addBuyDepths(buyDepth)

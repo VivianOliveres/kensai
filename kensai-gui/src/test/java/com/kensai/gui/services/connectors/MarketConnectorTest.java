@@ -1,5 +1,6 @@
 package com.kensai.gui.services.connectors;
 
+import static com.kensai.protocol.Trading.InstrumentType.STOCK;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
@@ -22,10 +23,15 @@ import org.junit.Test;
 import com.kensai.gui.AbstractTestJavaFX;
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.ModelService;
+import com.kensai.gui.services.model.instruments.InstrumentModel;
 import com.kensai.gui.services.model.instruments.InstrumentsModel;
 import com.kensai.gui.services.model.market.ConnectionState;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
+import com.kensai.gui.services.model.orders.OrderModel;
 import com.kensai.gui.services.task.TaskService;
+import com.kensai.protocol.Trading.BuySell;
+import com.kensai.protocol.Trading.Order;
+import com.kensai.protocol.Trading.OrderAction;
 import com.kensai.protocol.Trading.SubscribeCommand;
 import com.kensai.protocol.Trading.UnsubscribeCommand;
 
@@ -338,6 +344,33 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 		assertThat(connector.getConnectionState()).isEqualTo(ConnectionState.CONNECTING);
 
 		// AND: connection is done in background
+		verify(taskService).runInBackground(any(Runnable.class));
+	}
+
+	@Test
+	public void should_doSendOrder_delegate_to_MsgSender() {
+		// GIVEN: OrderModel
+		InstrumentModel instrument = new InstrumentModel("isin", "name", "market", "description", STOCK.toString(), "marketConnectionName");
+		OrderModel model = new OrderModel(instrument, 0, BuySell.BUY, 123.456, 789);
+
+		// WHEN: doSendOrder
+		connector.doSendOrder(model);
+
+		// THEN: Send order is delegated to MsgSender
+		Order order = model.toOrder().setUser(MarketConnector.DEFAULT_USER).setAction(OrderAction.INSERT).build();
+		verify(sender).send(any(Channel.class), eq(order));
+	}
+
+	@Test
+	public void should_SendOrder_run_in_background() {
+		// GIVEN: OrderModel
+		InstrumentModel instrument = new InstrumentModel("isin", "name", "market", "description", STOCK.toString(), "marketConnectionName");
+		OrderModel model = new OrderModel(instrument, 0, BuySell.BUY, 123.456, 789);
+
+		// WHEN: sendOrder
+		connector.sendOrder(model);
+
+		// THEN: Send order run in background
 		verify(taskService).runInBackground(any(Runnable.class));
 	}
 }

@@ -55,7 +55,7 @@ public class MarketConnectionsViewController {
 	}
 
 	private void initConnectionsView() {
-		// Double clic will connect or disconnect to market
+		// Double click will connect or disconnect to market
 		EventStreams.eventsOf(connexionsList, MouseEvent.MOUSE_CLICKED)
 						.filter(event -> event.getClickCount() == 2)
 						.filter(event -> event.getButton().equals(MouseButton.PRIMARY))

@@ -1,16 +1,27 @@
 package com.kensai.gui.views.instruments;
 
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialog;
+
 import com.kensai.gui.services.ApplicationContext;
+import com.kensai.gui.services.connectors.MarketConnector;
 import com.kensai.gui.services.model.instruments.InstrumentModel;
+import com.kensai.gui.services.model.orders.OrderModel;
 import com.kensai.gui.views.util.FlashingTableCell;
+import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.MarketStatus;
 
 public class InstrumentsViewController {
+	private static final Logger log = LogManager.getLogger(InstrumentsViewController.class);
 
 	private BorderPane root = new BorderPane();
 	private TableView<InstrumentModel> table = new TableView<>();
@@ -71,27 +82,60 @@ public class InstrumentsViewController {
 
 		TableColumn<InstrumentModel, Number> columnBuyQty = new TableColumn<>("BuyQty");
 		columnBuyQty.setCellValueFactory((cell) -> cell.getValue().getSummary().buyQtyProperty());
-		columnBuyQty.setCellFactory(column -> new FlashingTableCell<>());
+		columnBuyQty.setCellFactory(column -> createEnhancedFlashingTableCell(BuySell.BUY));
 		table.getColumns().add(columnBuyQty);
 
 		TableColumn<InstrumentModel, Number> columnBuyPrice = new TableColumn<>("Buy");
 		columnBuyPrice.setCellValueFactory((cell) -> cell.getValue().getSummary().buyPriceProperty());
-		columnBuyPrice.setCellFactory(column -> new FlashingTableCell<>());
+		columnBuyPrice.setCellFactory(column -> createEnhancedFlashingTableCell(BuySell.BUY));
 		table.getColumns().add(columnBuyPrice);
 
 		TableColumn<InstrumentModel, Number> columnSellPrice = new TableColumn<>("Sell");
 		columnSellPrice.setCellValueFactory((cell) -> cell.getValue().getSummary().sellPriceProperty());
-		columnSellPrice.setCellFactory(column -> new FlashingTableCell<>());
+		columnSellPrice.setCellFactory(column -> createEnhancedFlashingTableCell(BuySell.SELL));
 		table.getColumns().add(columnSellPrice);
 
 		TableColumn<InstrumentModel, Number> columnSellQty = new TableColumn<>("SellQty");
 		columnSellQty.setCellValueFactory((cell) -> cell.getValue().getSummary().sellQtyProperty());
-		columnSellQty.setCellFactory(column -> new FlashingTableCell<>());
+		columnSellQty.setCellFactory(column -> createEnhancedFlashingTableCell(BuySell.SELL));
 		table.getColumns().add(columnSellQty);
 
 		// Init rows in table
 		ObservableList<InstrumentModel> rows = context.getModelService().getInstruments().getInstruments();
 		table.setItems(rows);
+	}
+
+	private FlashingTableCell createEnhancedFlashingTableCell(BuySell side) {
+		FlashingTableCell cell = new FlashingTableCell<>();
+		cell.setOnMouseClicked(event -> doMouseClicked(event, side));
+		return cell;
+	}
+
+	private void doMouseClicked(MouseEvent event, BuySell side) {
+		if (event.getClickCount() < 2) {
+			return;
+		}
+
+		TableCell cell = (TableCell) event.getSource();
+		InstrumentModel instrument = (InstrumentModel) cell.getTableRow().getItem();
+
+		SendOrderViewController controller = new SendOrderViewController(instrument, side);
+		Dialog dialog = new Dialog(root, side + " " + instrument.getName());
+		dialog.setResizable(false);
+		dialog.setIconifiable(false);
+		dialog.setContent(controller.getView());
+		dialog.getActions().addAll(controller.getAction(), Dialog.Actions.CANCEL);
+
+		Action answer = dialog.show();
+		if (answer.equals(Dialog.Actions.CANCEL)) {
+			return;
+		}
+
+		// Send order
+		OrderModel order = controller.getOrder();
+		log.info("sendOrder: {}", order);
+		MarketConnector connector = context.getModelService().getConnectorService().getConnector(instrument.getConnectionName());
+		connector.sendOrder(order);
 	}
 
 	private void initView() {

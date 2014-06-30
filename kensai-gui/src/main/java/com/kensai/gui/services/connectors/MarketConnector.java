@@ -16,6 +16,10 @@ import com.google.common.base.Objects;
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.model.market.ConnectionState;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
+import com.kensai.gui.services.model.orders.OrderModel;
+import com.kensai.protocol.Trading.Order;
+import com.kensai.protocol.Trading.OrderAction;
+import com.kensai.protocol.Trading.Role;
 import com.kensai.protocol.Trading.SubscribeCommand;
 import com.kensai.protocol.Trading.UnsubscribeCommand;
 import com.kensai.protocol.Trading.User;
@@ -23,8 +27,14 @@ import com.kensai.protocol.Trading.User;
 public class MarketConnector {
 	private static final Logger log = LogManager.getLogger(MarketConnector.class);
 
-	public static final User DEFAULT_USER = User.newBuilder().setName("GUI").addGroups("Animator").addGroups("GUI").setIsListeningSummary(true)
-		.setExecListeningRole(ADMIN).setOrderListeningRole(ADMIN).build();
+	public static final User DEFAULT_USER = User.newBuilder()
+															  .setName("GUI")
+															  .addGroups("GUI")
+															  .setIsListeningSummary(true)
+															  .setExecListeningRole(Role.GROUPS)
+															  .setOrderListeningRole(Role.GROUPS)
+															  .addListeningGroupsOrder("GUI")
+															  .build();
 
 	private ApplicationContext context;
 	private MarketConnectionModel model;
@@ -190,6 +200,16 @@ public class MarketConnector {
 
 	public void channelDisconnected() {
 		Platform.runLater(() -> model.setConnectionState(ConnectionState.DISCONNECTED));
+	}
+
+	public void sendOrder(OrderModel order) {
+		context.getTaskService().runInBackground(() -> doSendOrder(order));
+	}
+
+	protected void doSendOrder(OrderModel model) {
+		log.info("Send order: " + model);
+		Order order = model.toOrder().setAction(OrderAction.INSERT).setUser(DEFAULT_USER).build();
+		sender.send(connectedChannel, order);
 	}
 
 }

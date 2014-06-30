@@ -19,7 +19,7 @@ public class UserCredentials {
 
 	public UserCredentials(User user, Channel channel) {
 		this.user = user;
-		this.writter = new ChannelWritter(channel);
+		this.writter = new ChannelWritter(channel, user.getName());
 	}
 
 	public UserCredentials(User user, ChannelWritter writter) {

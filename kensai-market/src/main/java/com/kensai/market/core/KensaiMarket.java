@@ -1,8 +1,10 @@
 package com.kensai.market.core;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static java.util.stream.Collectors.toList;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
@@ -166,13 +168,15 @@ public class KensaiMarket {
 	}
 
 	private InstrumentDepth getDepth(Instrument instrument) {
-		for (InstrumentDepth depth : depths) {
-			if (depth.getInstrument().equals(instrument)) {
-				return depth;
-			}
-		}
+		Optional<InstrumentDepth> optional = depths.stream().filter(depth -> depth.getInstrument().equals(instrument)).findFirst();
+		if (optional.isPresent()) {
+			return optional.get();
 
-		return null;
+		} else {
+			List<String> instruments = depths.stream().map(depth -> depth.getInstrument().getName() + "[" + depth.getInstrument().getIsin() + "]").collect(toList());
+			log.error("getDepth: Can not find any Depth for {}[{}] into: {}", instrument.getName(), instrument.getIsin(), instruments);
+			return null;
+		}
 	}
 
 	private void manageResult(InsertionResult result, Channel channel) {

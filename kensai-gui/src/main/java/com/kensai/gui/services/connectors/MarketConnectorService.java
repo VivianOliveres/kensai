@@ -55,4 +55,8 @@ public class MarketConnectorService {
 		// Select first matching model
 		return connectors.stream().filter(connector -> connector.getModel().equals(model)).findFirst().get();
 	}
+
+	public MarketConnector getConnector(String connectionName) {
+		return connectors.stream().filter(connector -> connector.getMarketName().equals(connectionName)).findFirst().get();
+	}
 }

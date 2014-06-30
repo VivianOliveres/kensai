@@ -66,5 +66,4 @@ public class InstrumentsModel implements Iterable<InstrumentModel> {
 
 		return instrumentModel.getSummary();
 	}
-
 }

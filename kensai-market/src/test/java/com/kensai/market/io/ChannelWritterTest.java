@@ -32,7 +32,7 @@ public class ChannelWritterTest {
 		given(channel.isConnected()).willReturn(true);
 		given(channel.isWritable()).willReturn(true);
 
-		writter = new ChannelWritter(channel);
+		writter = new ChannelWritter(channel, "DefaultUser");
 	}
 
 	@Test

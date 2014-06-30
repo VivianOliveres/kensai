@@ -238,18 +238,18 @@ public class OrderModel {
 	@Override
 	public String toString() {
 		return Objects.toStringHelper(this)
-			.add("id", id)
-			.add("side", side)
-			.add("instrument", instrument)
-			.add("price", price)
-			.add("priceExecution", priceExecution)
-			.add("quantityInitial", quantityInitial)
-			.add("quantityExecuted", quantityExecuted)
-			.add("insertTime", insertTime)
-			.add("lastUpdateTime", lastUpdateTime)
-			.add("status", status)
-			.add("errorMessage", errorMessage)
-			.toString();
+						  .add("id", id.get())
+						  .add("side", side.get())
+						  .add("instrument", instrument.getName())
+						  .add("price", price.get())
+						  .add("priceExecution", priceExecution.get())
+						  .add("quantityInitial", quantityInitial.get())
+						  .add("quantityExecuted", quantityExecuted.get())
+						  .add("insertTime", insertTime.get())
+						  .add("lastUpdateTime", lastUpdateTime.get())
+						  .add("status", status.get())
+						  .add("errorMessage", errorMessage.get())
+						  .toString();
 	}
 
 	public void update(Order order) {

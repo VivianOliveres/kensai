@@ -15,7 +15,6 @@ import static org.mockito.Mockito.verify;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.netty.channel.Channel;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -328,7 +327,7 @@ public class KensaiMessageSenderTest {
 		SubscribeCommand cmd = SubscribeCommand.newBuilder().setUser(USER).build();
 		sender.addUser(uc1, cmd);
 		assertThat(sender.contains(USER)).isTrue();
-		
+
 		// AND: USER_UNLISTENER
 		cmd = SubscribeCommand.newBuilder().setUser(USER_UNLISTENER).build();
 		sender.addUser(uc4, cmd);
@@ -338,7 +337,7 @@ public class KensaiMessageSenderTest {
 		cmd = SubscribeCommand.newBuilder().setUser(USER_LISTENER).build();
 		sender.addUser(uc5, cmd);
 		assertThat(sender.contains(USER_LISTENER)).isTrue();
-		
+
 		// AND: an order sent by USER
 		Order order = OrderFactory.create(123.456, 789, BUY).build();
 
@@ -353,6 +352,24 @@ public class KensaiMessageSenderTest {
 
 		// AND: order is sent to USER_LISTENER
 		verify(channel5).write(argThat(new OrderMatcher(order)));
+	}
+
+	@Test
+	public void should_sendOrder_to_self() {
+		// GIVEN: USER
+		User guiUser = User.newBuilder().setName("GUI").addGroups("GUI").setIsListeningSummary(true).setExecListeningRole(Role.GROUPS)
+			.setOrderListeningRole(Role.GROUPS).addListeningGroupsOrder("GUI").build();
+		SubscribeCommand cmd = SubscribeCommand.newBuilder().setUser(guiUser).build();
+		UserCredentials uc = new UserCredentials(guiUser, channel1);
+		sender.addUser(uc, cmd);
+		assertThat(sender.contains(guiUser)).isTrue();
+
+		// WHEN: sendOrder
+		Order order = OrderFactory.create(123.456, 789, BUY).setUser(guiUser).build();
+		sender.send(order);
+
+		// THEN: order is sent to USER
+		verify(channel1).write(argThat(new OrderMatcher(order)));
 	}
 
 	@Test

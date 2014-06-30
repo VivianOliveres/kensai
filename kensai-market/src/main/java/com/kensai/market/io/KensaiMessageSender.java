@@ -203,7 +203,7 @@ public class KensaiMessageSender {
 
 	public void send(Order order) {
 		Messages msg = Messages.newBuilder().setOrder(order).build();
-		users.stream().filter(user -> user.isListeningOrderFrom(order.getUser())).forEach(user -> user.getWritter().write(msg));
+		users.stream().filter(user -> user.isListeningOrderFrom(order)).forEach(user -> user.getWritter().write(msg));
 	}
 
 	public void send(Execution exec) {
