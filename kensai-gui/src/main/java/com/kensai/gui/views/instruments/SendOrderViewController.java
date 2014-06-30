@@ -2,7 +2,13 @@ package com.kensai.gui.views.instruments;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -40,17 +46,18 @@ public class SendOrderViewController {
 
 		log.info("Open edition view for [{}] on [{}]", instrument.getName(), side);
 		initComponents();
-		initView();
+		initView(side);
 	}
 
 	private void initComponents() {
 		instrumentLabel = new Label(instrument.getName());
+		instrumentLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
 		connectionLabel = new Label(instrument.getConnectionName());
 		priceField = new DoubleTextField(order.priceProperty());
 		qtyField = new IntegerTextField(order.quantityInitialProperty());
 	}
 
-	private void initView() {
+	private void initView(BuySell side) {
 		root.setPadding(new Insets(5));
 		root.setVgap(4);
 		root.setHgap(4);
@@ -64,6 +71,10 @@ public class SendOrderViewController {
 		root.getChildren().add(priceField);
 		root.getChildren().add(new Label("Qty: "));
 		root.getChildren().add(qtyField);
+
+		Color color = side == BuySell.BUY ? Color.ALICEBLUE : Color.TOMATO;
+		BackgroundFill fill = new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY);
+		root.setBackground(new Background(fill));
 	}
 
 	public Action getAction() {
