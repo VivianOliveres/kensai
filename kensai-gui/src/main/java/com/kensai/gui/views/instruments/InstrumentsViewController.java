@@ -9,9 +9,8 @@ import javafx.scene.layout.BorderPane;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.controlsfx.control.action.Action;
-import org.controlsfx.dialog.Dialog;
 
+import com.kensai.gui.actions.OrderInsertAction;
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.connectors.MarketConnector;
 import com.kensai.gui.services.model.instruments.InstrumentModel;
@@ -119,30 +118,13 @@ public class InstrumentsViewController {
 
 		TableCell cell = (TableCell) event.getSource();
 		InstrumentModel instrument = (InstrumentModel) cell.getTableRow().getItem();
+		MarketConnector connector = context.getModelService().getConnectorService().getConnector(instrument.getConnectionName());
 
 		// Initialize new order
 		SummaryModel summary = instrument.getSummary();
 		double price = side == BuySell.BUY ? summary.getBuyPrice() : summary.getSellPrice();
 		OrderModel newOrder = new OrderModel(instrument, 0L, side, price, 1);
-
-		// Show dialog
-		SendOrderViewController controller = new SendOrderViewController(newOrder);
-		Dialog dialog = new Dialog(root, side + " " + instrument.getName());
-		dialog.setResizable(false);
-		dialog.setIconifiable(false);
-		dialog.setContent(controller.getView());
-		dialog.getActions().addAll(controller.getAction(), Dialog.Actions.CANCEL);
-
-		// Get user answer
-		Action answer = dialog.show();
-		if (answer.equals(Dialog.Actions.CANCEL)) {
-			return;
-		}
-
-		// Send order
-		log.info("sendOrder: {}", newOrder);
-		MarketConnector connector = context.getModelService().getConnectorService().getConnector(instrument.getConnectionName());
-		connector.sendInsertOrder(newOrder);
+		new OrderInsertAction(root, newOrder, connector).execute();
 	}
 
 	private void initView() {
