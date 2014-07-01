@@ -13,16 +13,13 @@ import javafx.scene.layout.BorderPane;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.controlsfx.control.action.Action;
-import org.controlsfx.dialog.Dialog;
-import org.controlsfx.dialog.Dialogs;
 
+import com.kensai.gui.actions.OrderDeleteAction;
+import com.kensai.gui.actions.OrderUpdateAction;
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.connectors.MarketConnector;
-import com.kensai.gui.services.model.instruments.InstrumentModel;
 import com.kensai.gui.services.model.orders.OrderModel;
 import com.kensai.gui.services.model.orders.OrdersModel;
-import com.kensai.gui.views.instruments.SendOrderViewController;
 import com.kensai.gui.views.util.FlashingTableCell;
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.OrderStatus;
@@ -127,30 +124,8 @@ public class OrdersViewController {
 
 		TableRow<OrderModel> row = (TableRow<OrderModel>) event.getSource();
 		OrderModel order = new OrderModel(row.getItem());
-		doUpdateOrder(order);
-	}
-
-	private void doUpdateOrder(OrderModel order) {
-		InstrumentModel instrument = order.getInstrument();
-
-		// Show dialog
-		SendOrderViewController controller = new SendOrderViewController(order);
-		Dialog dialog = new Dialog(root, "Update order on " + instrument.getName());
-		dialog.setResizable(false);
-		dialog.setIconifiable(false);
-		dialog.setContent(controller.getView());
-		dialog.getActions().addAll(controller.getAction(), Dialog.Actions.CANCEL);
-
-		// Get user answer
-		Action answer = dialog.show();
-		if (answer.equals(Dialog.Actions.CANCEL)) {
-			return;
-		}
-
-		// Send order
-		log.info("sendUpdateOrder: {}", order);
-		MarketConnector connector = context.getModelService().getConnectorService().getConnector(instrument.getConnectionName());
-		connector.sendUpdateOrder(order);
+		MarketConnector connector = context.getModelService().getConnectorService().getConnector(order.getInstrument());
+		new OrderUpdateAction(root, order, connector).execute();
 	}
 
 	private void initView() {
@@ -158,45 +133,35 @@ public class OrdersViewController {
 	}
 
 	private void initContextualMenu() {
-		// TODO Auto-generated method stub
 		MenuItem menuUpdate = new MenuItem("Update order");
 		menuUpdate.setOnAction(event -> {
 			OrderModel orderModel = table.getSelectionModel().getSelectedItem();
+			if (!orderModel.getStatus().equals(OrderStatus.ON_MARKET)) {
+				log.info("Can not update a [{}] order", orderModel.getStatus());
+				return;
+			}
+
 			OrderModel order = new OrderModel(orderModel);
-			doUpdateOrder(order);
+			MarketConnector connector = context.getModelService().getConnectorService().getConnector(order.getInstrument());
+			new OrderUpdateAction(root, order, connector).execute();
 		});
 
 		MenuItem menuDelete = new MenuItem("Delete order");
 		menuDelete.setOnAction(event -> {
 			OrderModel orderModel = table.getSelectionModel().getSelectedItem();
+			if (!orderModel.getStatus().equals(OrderStatus.ON_MARKET)) {
+				log.info("Can not delete a [{}] order", orderModel.getStatus());
+				return;
+			}
+
 			OrderModel order = new OrderModel(orderModel);
-			doDeleteOrder(order);
+			MarketConnector connector = context.getModelService().getConnectorService().getConnector(order.getInstrument());
+			new OrderDeleteAction(root, order, connector).execute();
 		});
 
 		ContextMenu menu = new ContextMenu();
 		menu.getItems().addAll(menuUpdate, menuDelete);
 		table.setContextMenu(menu);
-	}
-
-	private void doDeleteOrder(OrderModel order) {
-		InstrumentModel instrument = order.getInstrument();
-
-		// Show confirm dialog
-		Action response = Dialogs.create()
-										 .owner(table)
-										 .title("Delete order")
-										 .masthead("Delete order on " + instrument.getName())
-										 .message("Do you want to delete order id[" + order.getId() + "]")
-										 .showConfirm();
-
-		if (response != Dialog.Actions.YES) {
-			return;
-		}
-
-		// Send order delete
-		log.info("sendUpdateOrder: {}", order);
-		MarketConnector connector = context.getModelService().getConnectorService().getConnector(instrument.getConnectionName());
-		connector.sendDeleteOrder(order);
 	}
 
 	public BorderPane getView() {

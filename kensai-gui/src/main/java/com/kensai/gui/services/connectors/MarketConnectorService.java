@@ -10,6 +10,7 @@ import org.reactfx.EventStreams;
 
 import com.google.common.collect.Lists;
 import com.kensai.gui.services.ApplicationContext;
+import com.kensai.gui.services.model.instruments.InstrumentModel;
 import com.kensai.gui.services.model.market.MarketConnectionModel;
 import com.kensai.gui.services.model.market.MarketConnectionsModel;
 
@@ -54,6 +55,10 @@ public class MarketConnectorService {
 	public MarketConnector getConnector(MarketConnectionModel model) {
 		// Select first matching model
 		return connectors.stream().filter(connector -> connector.getModel().equals(model)).findFirst().get();
+	}
+
+	public MarketConnector getConnector(InstrumentModel instrument) {
+		return getConnector(instrument.getConnectionName());
 	}
 
 	public MarketConnector getConnector(String connectionName) {
