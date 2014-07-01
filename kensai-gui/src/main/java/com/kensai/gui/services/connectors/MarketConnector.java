@@ -1,7 +1,5 @@
 package com.kensai.gui.services.connectors;
 
-import static com.kensai.protocol.Trading.Role.ADMIN;
-
 import java.net.InetSocketAddress;
 
 import javafx.application.Platform;
@@ -202,14 +200,23 @@ public class MarketConnector {
 		Platform.runLater(() -> model.setConnectionState(ConnectionState.DISCONNECTED));
 	}
 
-	public void sendOrder(OrderModel order) {
-		context.getTaskService().runInBackground(() -> doSendOrder(order));
+	public void sendInsertOrder(OrderModel order) {
+		context.getTaskService().runInBackground(() -> doSendInsertOrder(order));
 	}
 
-	protected void doSendOrder(OrderModel model) {
-		log.info("Send order: " + model);
+	protected void doSendInsertOrder(OrderModel model) {
+		log.info("Send insert order msg: " + model);
 		Order order = model.toOrder().setAction(OrderAction.INSERT).setUser(DEFAULT_USER).build();
 		sender.send(connectedChannel, order);
 	}
 
+	public void sendUpdateOrder(OrderModel order) {
+		context.getTaskService().runInBackground(() -> doSendUpdateOrder(order));
+	}
+
+	protected void doSendUpdateOrder(OrderModel model) {
+		log.info("Send update order msg: " + model);
+		Order order = model.toOrder().setAction(OrderAction.UPDATE).setUser(DEFAULT_USER).build();
+		sender.send(connectedChannel, order);
+	}
 }

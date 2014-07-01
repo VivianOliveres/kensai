@@ -15,6 +15,7 @@ import org.controlsfx.dialog.Dialog;
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.connectors.MarketConnector;
 import com.kensai.gui.services.model.instruments.InstrumentModel;
+import com.kensai.gui.services.model.instruments.SummaryModel;
 import com.kensai.gui.services.model.orders.OrderModel;
 import com.kensai.gui.views.util.FlashingTableCell;
 import com.kensai.protocol.Trading.BuySell;
@@ -119,23 +120,29 @@ public class InstrumentsViewController {
 		TableCell cell = (TableCell) event.getSource();
 		InstrumentModel instrument = (InstrumentModel) cell.getTableRow().getItem();
 
-		SendOrderViewController controller = new SendOrderViewController(instrument, side);
+		// Initialize new order
+		SummaryModel summary = instrument.getSummary();
+		double price = side == BuySell.BUY ? summary.getBuyPrice() : summary.getSellPrice();
+		OrderModel newOrder = new OrderModel(instrument, 0L, side, price, 1);
+
+		// Show dialog
+		SendOrderViewController controller = new SendOrderViewController(newOrder);
 		Dialog dialog = new Dialog(root, side + " " + instrument.getName());
 		dialog.setResizable(false);
 		dialog.setIconifiable(false);
 		dialog.setContent(controller.getView());
 		dialog.getActions().addAll(controller.getAction(), Dialog.Actions.CANCEL);
 
+		// Get user answer
 		Action answer = dialog.show();
 		if (answer.equals(Dialog.Actions.CANCEL)) {
 			return;
 		}
 
 		// Send order
-		OrderModel order = controller.getOrder();
-		log.info("sendOrder: {}", order);
+		log.info("sendOrder: {}", newOrder);
 		MarketConnector connector = context.getModelService().getConnectorService().getConnector(instrument.getConnectionName());
-		connector.sendOrder(order);
+		connector.sendInsertOrder(newOrder);
 	}
 
 	private void initView() {

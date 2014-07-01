@@ -3,11 +3,10 @@ package com.kensai.gui.views.orders;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import javafx.scene.control.TableCell;
-
 import com.kensai.gui.services.model.orders.OrderModel;
+import com.kensai.gui.views.util.FlashingTableCell;
 
-public class OrderTimeTableCell extends TableCell<OrderModel, LocalDateTime> {
+public class OrderTimeTableCell extends FlashingTableCell<OrderModel, LocalDateTime> {
 
 	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 

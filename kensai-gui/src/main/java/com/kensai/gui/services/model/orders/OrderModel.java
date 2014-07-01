@@ -50,6 +50,10 @@ public class OrderModel {
 		this.orderAction.set(order.getAction());
 	}
 
+	public OrderModel(InstrumentModel instrument, BuySell side, double price, int qty) {
+		this(instrument, 0L, side, price, qty);
+	}
+
 	public OrderModel(InstrumentModel instrument, long id, BuySell side, double price, int qty) {
 		this.id.set(id);
 		this.side.set(side);
@@ -64,6 +68,22 @@ public class OrderModel {
 		this.userData.set("");
 		this.errorMessage.set("");
 		this.orderAction.set(OrderAction.INSERT);
+	}
+
+	public OrderModel(OrderModel item) {
+		this.id.set(item.getId());
+		this.side.set(item.getSide());
+		this.instrument = item.getInstrument();
+		this.price.set(item.getPrice());
+		this.priceExecution.set(item.getPriceExecution());
+		this.quantityInitial.set(item.getQuantityInitial());
+		this.quantityExecuted.set(item.getQuantityExecuted());
+		this.insertTime.set(item.getInsertTime());
+		this.lastUpdateTime.set(item.getLastUpdateTime());
+		this.status.set(item.getStatus());
+		this.userData.set(item.getUserData());
+		this.errorMessage.set(item.getErrorMessage());
+		this.orderAction.set(item.getOrderAction());
 	}
 
 	private LocalDateTime convertTime(long milli) {

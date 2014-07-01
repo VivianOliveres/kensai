@@ -15,7 +15,6 @@ import org.apache.logging.log4j.Logger;
 import org.controlsfx.control.action.Action;
 
 import com.kensai.gui.services.model.instruments.InstrumentModel;
-import com.kensai.gui.services.model.instruments.SummaryModel;
 import com.kensai.gui.services.model.orders.OrderModel;
 import com.kensai.gui.views.util.DefaultOkAction;
 import com.kensai.gui.views.util.textfields.DoubleTextField;
@@ -25,10 +24,10 @@ import com.kensai.protocol.Trading.BuySell;
 public class SendOrderViewController {
 	private static Logger log = LogManager.getLogger(SendOrderViewController.class);
 
-	private final InstrumentModel instrument;
-
 	private DefaultOkAction action = new DefaultOkAction();
+
 	private OrderModel order;
+	private InstrumentModel instrument;
 
 	private TilePane root = new TilePane();
 
@@ -37,16 +36,13 @@ public class SendOrderViewController {
 	private DoubleTextField priceField;
 	private IntegerTextField qtyField;
 
-	public SendOrderViewController(InstrumentModel instrument, BuySell side) {
-		this.instrument = instrument;
+	public SendOrderViewController(OrderModel order) {
+		this.order = order;
+		this.instrument = order.getInstrument();
 
-		SummaryModel summary = instrument.getSummary();
-		double price = side == BuySell.BUY ? summary.getBuyPrice() : summary.getSellPrice();
-		this.order = new OrderModel(instrument, 0L, side, price, 1);
-
-		log.info("Open edition view for [{}] on [{}]", instrument.getName(), side);
+		log.info("Open edition view for [{}] on [{}]", instrument.getName(), order.getSide());
 		initComponents();
-		initView(side);
+		initView();
 	}
 
 	private void initComponents() {
@@ -57,7 +53,7 @@ public class SendOrderViewController {
 		qtyField = new IntegerTextField(order.quantityInitialProperty());
 	}
 
-	private void initView(BuySell side) {
+	private void initView() {
 		root.setPadding(new Insets(5));
 		root.setVgap(4);
 		root.setHgap(4);
@@ -72,7 +68,7 @@ public class SendOrderViewController {
 		root.getChildren().add(new Label("Qty: "));
 		root.getChildren().add(qtyField);
 
-		Color color = side == BuySell.BUY ? Color.ALICEBLUE : Color.TOMATO;
+		Color color = order.getSide() == BuySell.BUY ? Color.ALICEBLUE : Color.TOMATO;
 		BackgroundFill fill = new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY);
 		root.setBackground(new Background(fill));
 	}

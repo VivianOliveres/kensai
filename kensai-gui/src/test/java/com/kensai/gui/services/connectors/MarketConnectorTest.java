@@ -348,13 +348,13 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 	}
 
 	@Test
-	public void should_doSendOrder_delegate_to_MsgSender() {
+	public void should_doSendInsertOrder_delegate_to_MsgSender() {
 		// GIVEN: OrderModel
 		InstrumentModel instrument = new InstrumentModel("isin", "name", "market", "description", STOCK.toString(), "marketConnectionName");
 		OrderModel model = new OrderModel(instrument, 0, BuySell.BUY, 123.456, 789);
 
-		// WHEN: doSendOrder
-		connector.doSendOrder(model);
+		// WHEN: doSendInsertOrder
+		connector.doSendInsertOrder(model);
 
 		// THEN: Send order is delegated to MsgSender
 		Order order = model.toOrder().setUser(MarketConnector.DEFAULT_USER).setAction(OrderAction.INSERT).build();
@@ -362,13 +362,40 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 	}
 
 	@Test
-	public void should_SendOrder_run_in_background() {
+	public void should_SendInsertOrder_run_in_background() {
 		// GIVEN: OrderModel
 		InstrumentModel instrument = new InstrumentModel("isin", "name", "market", "description", STOCK.toString(), "marketConnectionName");
 		OrderModel model = new OrderModel(instrument, 0, BuySell.BUY, 123.456, 789);
 
-		// WHEN: sendOrder
-		connector.sendOrder(model);
+		// WHEN: sendInsertOrder
+		connector.sendInsertOrder(model);
+
+		// THEN: Send order run in background
+		verify(taskService).runInBackground(any(Runnable.class));
+	}
+
+	@Test
+	public void should_doSendUpdateOrder_delegate_to_MsgSender() {
+		// GIVEN: OrderModel
+		InstrumentModel instrument = new InstrumentModel("isin", "name", "market", "description", STOCK.toString(), "marketConnectionName");
+		OrderModel model = new OrderModel(instrument, 0, BuySell.BUY, 123.456, 789);
+
+		// WHEN: doSendUpdateOrder
+		connector.doSendUpdateOrder(model);
+
+		// THEN: Send order is delegated to MsgSender
+		Order order = model.toOrder().setUser(MarketConnector.DEFAULT_USER).setAction(OrderAction.UPDATE).build();
+		verify(sender).send(any(Channel.class), eq(order));
+	}
+
+	@Test
+	public void should_SendUpdateOrder_run_in_background() {
+		// GIVEN: OrderModel
+		InstrumentModel instrument = new InstrumentModel("isin", "name", "market", "description", STOCK.toString(), "marketConnectionName");
+		OrderModel model = new OrderModel(instrument, 0, BuySell.BUY, 123.456, 789);
+
+		// WHEN: sendUpdateOrder
+		connector.sendUpdateOrder(model);
 
 		// THEN: Send order run in background
 		verify(taskService).runInBackground(any(Runnable.class));
