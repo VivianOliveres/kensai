@@ -400,4 +400,31 @@ public class MarketConnectorTest extends AbstractTestJavaFX {
 		// THEN: Send order run in background
 		verify(taskService).runInBackground(any(Runnable.class));
 	}
+
+	@Test
+	public void should_doSendDeleteOrder_delegate_to_MsgSender() {
+		// GIVEN: OrderModel
+		InstrumentModel instrument = new InstrumentModel("isin", "name", "market", "description", STOCK.toString(), "marketConnectionName");
+		OrderModel model = new OrderModel(instrument, 0, BuySell.BUY, 123.456, 789);
+
+		// WHEN: doSendDeleteOrder
+		connector.doSendDeleteOrder(model);
+
+		// THEN: Send order is delegated to MsgSender
+		Order order = model.toOrder().setUser(MarketConnector.DEFAULT_USER).setAction(OrderAction.DELETE).build();
+		verify(sender).send(any(Channel.class), eq(order));
+	}
+
+	@Test
+	public void should_SendDeleteOrder_run_in_background() {
+		// GIVEN: OrderModel
+		InstrumentModel instrument = new InstrumentModel("isin", "name", "market", "description", STOCK.toString(), "marketConnectionName");
+		OrderModel model = new OrderModel(instrument, 0, BuySell.BUY, 123.456, 789);
+
+		// WHEN: sendDeleteOrder
+		connector.sendDeleteOrder(model);
+
+		// THEN: Send order run in background
+		verify(taskService).runInBackground(any(Runnable.class));
+	}
 }

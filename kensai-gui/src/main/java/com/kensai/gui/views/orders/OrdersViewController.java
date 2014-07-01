@@ -3,6 +3,8 @@ package com.kensai.gui.views.orders;
 import java.time.LocalDateTime;
 
 import javafx.collections.ObservableList;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -13,6 +15,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.Dialogs;
 
 import com.kensai.gui.services.ApplicationContext;
 import com.kensai.gui.services.connectors.MarketConnector;
@@ -38,6 +41,7 @@ public class OrdersViewController {
 
 		initTable();
 		initView();
+		initContextualMenu();
 	}
 
 	public OrdersViewController(ApplicationContext context) {
@@ -123,6 +127,10 @@ public class OrdersViewController {
 
 		TableRow<OrderModel> row = (TableRow<OrderModel>) event.getSource();
 		OrderModel order = new OrderModel(row.getItem());
+		doUpdateOrder(order);
+	}
+
+	private void doUpdateOrder(OrderModel order) {
 		InstrumentModel instrument = order.getInstrument();
 
 		// Show dialog
@@ -147,6 +155,48 @@ public class OrdersViewController {
 
 	private void initView() {
 		root.setCenter(table);
+	}
+
+	private void initContextualMenu() {
+		// TODO Auto-generated method stub
+		MenuItem menuUpdate = new MenuItem("Update order");
+		menuUpdate.setOnAction(event -> {
+			OrderModel orderModel = table.getSelectionModel().getSelectedItem();
+			OrderModel order = new OrderModel(orderModel);
+			doUpdateOrder(order);
+		});
+
+		MenuItem menuDelete = new MenuItem("Delete order");
+		menuDelete.setOnAction(event -> {
+			OrderModel orderModel = table.getSelectionModel().getSelectedItem();
+			OrderModel order = new OrderModel(orderModel);
+			doDeleteOrder(order);
+		});
+
+		ContextMenu menu = new ContextMenu();
+		menu.getItems().addAll(menuUpdate, menuDelete);
+		table.setContextMenu(menu);
+	}
+
+	private void doDeleteOrder(OrderModel order) {
+		InstrumentModel instrument = order.getInstrument();
+
+		// Show confirm dialog
+		Action response = Dialogs.create()
+										 .owner(table)
+										 .title("Delete order")
+										 .masthead("Delete order on " + instrument.getName())
+										 .message("Do you want to delete order id[" + order.getId() + "]")
+										 .showConfirm();
+
+		if (response != Dialog.Actions.YES) {
+			return;
+		}
+
+		// Send order delete
+		log.info("sendUpdateOrder: {}", order);
+		MarketConnector connector = context.getModelService().getConnectorService().getConnector(instrument.getConnectionName());
+		connector.sendDeleteOrder(order);
 	}
 
 	public BorderPane getView() {

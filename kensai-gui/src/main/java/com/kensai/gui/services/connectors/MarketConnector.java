@@ -219,4 +219,14 @@ public class MarketConnector {
 		Order order = model.toOrder().setAction(OrderAction.UPDATE).setUser(DEFAULT_USER).build();
 		sender.send(connectedChannel, order);
 	}
+
+	public void sendDeleteOrder(OrderModel model) {
+		context.getTaskService().runInBackground(() -> doSendDeleteOrder(model));
+	}
+
+	protected void doSendDeleteOrder(OrderModel model) {
+		log.info("Send delete order msg: " + model);
+		Order order = model.toOrder().setAction(OrderAction.DELETE).setUser(DEFAULT_USER).build();
+		sender.send(connectedChannel, order);
+	}
 }
