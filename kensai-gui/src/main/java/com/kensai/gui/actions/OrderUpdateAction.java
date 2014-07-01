@@ -10,7 +10,7 @@ import org.controlsfx.dialog.Dialog;
 import com.kensai.gui.services.connectors.MarketConnector;
 import com.kensai.gui.services.model.instruments.InstrumentModel;
 import com.kensai.gui.services.model.orders.OrderModel;
-import com.kensai.gui.views.instruments.SendOrderViewController;
+import com.kensai.gui.views.summary.SendOrderViewController;
 
 public class OrderUpdateAction {
 	private static final Logger log = LogManager.getLogger(OrderUpdateAction.class);

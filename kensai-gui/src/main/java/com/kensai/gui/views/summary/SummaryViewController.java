@@ -1,4 +1,4 @@
-package com.kensai.gui.views.instruments;
+package com.kensai.gui.views.summary;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableCell;
@@ -20,15 +20,15 @@ import com.kensai.gui.views.util.FlashingTableCell;
 import com.kensai.protocol.Trading.BuySell;
 import com.kensai.protocol.Trading.MarketStatus;
 
-public class InstrumentsViewController {
-	private static final Logger log = LogManager.getLogger(InstrumentsViewController.class);
+public class SummaryViewController {
+	private static final Logger log = LogManager.getLogger(SummaryViewController.class);
 
 	private BorderPane root = new BorderPane();
 	private TableView<InstrumentModel> table = new TableView<>();
 
 	private ApplicationContext context;
 
-	public InstrumentsViewController(ApplicationContext context) {
+	public SummaryViewController(ApplicationContext context) {
 		this.context = context;
 
 		initTable();
@@ -36,7 +36,7 @@ public class InstrumentsViewController {
 	}
 
 	private void initTable() {
-		table.setId("instruments-table");
+		table.setId("summary-table");
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
 		TableColumn<InstrumentModel, String> columnIsin = new TableColumn<>("Isin");

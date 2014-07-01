@@ -1,14 +1,14 @@
 package com.kensai.gui.services;
 
-import com.kensai.gui.views.instruments.InstrumentsViewController;
 import com.kensai.gui.views.markets.MarketConnectionsViewController;
 import com.kensai.gui.views.orders.OrdersViewController;
+import com.kensai.gui.views.summary.SummaryViewController;
 
 public class GuiService {
 
 	private ApplicationContext context;
 
-	private InstrumentsViewController instrumentsViewController;
+	private SummaryViewController instrumentsViewController;
 	private MarketConnectionsViewController marketConnectionsViewController;
 	private OrdersViewController ordersViewController;
 
@@ -18,7 +18,7 @@ public class GuiService {
 	}
 
 	private void initViews() {
-		instrumentsViewController = new InstrumentsViewController(context);
+		instrumentsViewController = new SummaryViewController(context);
 		marketConnectionsViewController = new MarketConnectionsViewController(context);
 		ordersViewController = new OrdersViewController(context);
 	}
@@ -27,7 +27,7 @@ public class GuiService {
 		return marketConnectionsViewController;
 	}
 
-	public InstrumentsViewController getInstrumentsViewController() {
+	public SummaryViewController getInstrumentsViewController() {
 		return instrumentsViewController;
 	}
 

@@ -1,4 +1,4 @@
-package com.kensai.gui.views.instruments;
+package com.kensai.gui.views.summary;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;

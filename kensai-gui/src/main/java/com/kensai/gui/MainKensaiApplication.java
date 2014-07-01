@@ -20,9 +20,9 @@ import com.kensai.gui.services.connectors.PipelineFactoryService;
 import com.kensai.gui.services.model.ModelService;
 import com.kensai.gui.services.model.market.MarketConnectionsModel;
 import com.kensai.gui.services.task.TaskService;
-import com.kensai.gui.views.instruments.InstrumentsViewController;
 import com.kensai.gui.views.markets.MarketConnectionsViewController;
 import com.kensai.gui.views.orders.OrdersViewController;
+import com.kensai.gui.views.summary.SummaryViewController;
 
 public class MainKensaiApplication extends Application {
 	private static Logger log = LogManager.getLogger(MainKensaiApplication.class);
@@ -80,7 +80,7 @@ public class MainKensaiApplication extends Application {
 		MarketConnectionsViewController marketConnectionsViewController = guiService.getMarketConnectionsViewController();
 		root.setLeft(marketConnectionsViewController.getView());
 
-		InstrumentsViewController instrumentsViewController = guiService.getInstrumentsViewController();
+		SummaryViewController instrumentsViewController = guiService.getInstrumentsViewController();
 		root.setCenter(instrumentsViewController.getView());
 
 		OrdersViewController ordersViewController = guiService.getOrdersViewController();
