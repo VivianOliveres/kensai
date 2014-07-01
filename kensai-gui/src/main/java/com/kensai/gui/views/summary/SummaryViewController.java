@@ -1,6 +1,8 @@
 package com.kensai.gui.views.summary;
 
 import javafx.collections.ObservableList;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -33,6 +35,7 @@ public class SummaryViewController {
 
 		initTable();
 		initView();
+		initContextualMenu();
 	}
 
 	private void initTable() {
@@ -120,15 +123,42 @@ public class SummaryViewController {
 		InstrumentModel instrument = (InstrumentModel) cell.getTableRow().getItem();
 		MarketConnector connector = context.getModelService().getConnectorService().getConnector(instrument.getConnectionName());
 
-		// Initialize new order
+		// Send new order
+		OrderModel newOrder = createOrder(instrument, side);
+		new OrderInsertAction(root, newOrder, connector).execute();
+	}
+
+	private OrderModel createOrder(InstrumentModel instrument, BuySell side) {
 		SummaryModel summary = instrument.getSummary();
 		double price = side == BuySell.BUY ? summary.getBuyPrice() : summary.getSellPrice();
-		OrderModel newOrder = new OrderModel(instrument, 0L, side, price, 1);
-		new OrderInsertAction(root, newOrder, connector).execute();
+		return new OrderModel(instrument, 0L, side, price, 1);
 	}
 
 	private void initView() {
 		root.setCenter(table);
+	}
+
+	private void initContextualMenu() {
+		MenuItem menuUpdate = new MenuItem("Buy order");
+		menuUpdate.setOnAction(event -> doSendOrder(BuySell.BUY));
+
+		MenuItem menuDelete = new MenuItem("Sell order");
+		menuDelete.setOnAction(event -> doSendOrder(BuySell.SELL));
+
+		ContextMenu menu = new ContextMenu();
+		menu.getItems().addAll(menuUpdate, menuDelete);
+		table.setContextMenu(menu);
+	}
+
+	private void doSendOrder(BuySell side) {
+		InstrumentModel instrument = table.getSelectionModel().getSelectedItem();
+		if (instrument == null) {
+			return;
+		}
+
+		MarketConnector connector = context.getModelService().getConnectorService().getConnector(instrument);
+		OrderModel newOrder = createOrder(instrument, side);
+		new OrderInsertAction(root, newOrder, connector).execute();
 	}
 
 	public BorderPane getView() {
